@@ -1,0 +1,4 @@
+
+github "zekunyan/TTGSnackbar"
+github "Alamofire/Alamofire" ~> 4.7
+github "soffes/CommonCrypto"
