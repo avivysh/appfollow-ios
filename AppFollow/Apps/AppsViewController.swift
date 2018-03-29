@@ -12,16 +12,22 @@ class AppsViewController: UIViewController, AppsDataSourceDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var dataSource: AppsDataSource
+    var dataSource: AppsDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let auth = AppDelegate.provide.authStorage.retrieve()
         self.dataSource = AppsDataSource(auth: auth)
-        dataSource.delegate = self
-        self.tableView.dataSource = dataSource
-        
+        self.dataSource?.delegate = self
+        self.tableView.dataSource = self.dataSource
+        self.dataSource?.refresh()
+    }
+    
+    // MARK: AppsDataSourceDelegate
+    
+    func reloadTableView() {
+        self.tableView.reloadData()
     }
 
 }

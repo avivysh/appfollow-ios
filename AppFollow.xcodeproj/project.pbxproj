@@ -31,6 +31,7 @@
 		984E51E5206C3E8200CDB24D /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51E4206C3E8200CDB24D /* Codable.swift */; };
 		984E51E7206C431700CDB24D /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51E6206C431700CDB24D /* AppCell.swift */; };
 		984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51E8206C43A000CDB24D /* AppsDataSource.swift */; };
+		984E51EB206CE37100CDB24D /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984E51EA206CE37000CDB24D /* AlamofireImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		984E51E4206C3E8200CDB24D /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		984E51E6206C431700CDB24D /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 		984E51E8206C43A000CDB24D /* AppsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDataSource.swift; sourceTree = "<group>"; };
+		984E51EA206CE37000CDB24D /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				98087CB5206BE53D00EB0747 /* TTGSnackbar.framework in Frameworks */,
 				98087CB8206BE63300EB0747 /* Alamofire.framework in Frameworks */,
 				984E51DF206C261F00CDB24D /* CommonCrypto.framework in Frameworks */,
+				984E51EB206CE37100CDB24D /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +137,7 @@
 		98087CB3206BE53D00EB0747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				984E51EA206CE37000CDB24D /* AlamofireImage.framework */,
 				984E51DE206C261F00CDB24D /* CommonCrypto.framework */,
 				98087CB7206BE63300EB0747 /* Alamofire.framework */,
 				98087CB4206BE53D00EB0747 /* TTGSnackbar.framework */,
@@ -251,11 +255,13 @@
 				"$(SRCROOT)/Carthage/Build/iOS/TTGSnackbar.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CommonCrypto.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TTGSnackbar.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CommonCrypto.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

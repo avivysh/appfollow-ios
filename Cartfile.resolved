@@ -1,3 +1,4 @@
 github "Alamofire/Alamofire" "4.7.0"
+github "Alamofire/AlamofireImage" "3.3.0"
 github "soffes/CommonCrypto" "v1.1.0"
 github "zekunyan/TTGSnackbar" "1.7.2"
