@@ -18,6 +18,9 @@ struct CollectionResponse: Codable {
 }
 
 struct App: Codable {
+    
+    static let empty = App(id: 0, details: AppDetails.empty, reviewsCount: 0, whatsNewCount: 0, created: "", isFavorite: 0, store: "")
+
     let id: Int
     let details: AppDetails
     let reviewsCount: Int
@@ -42,6 +45,9 @@ struct App: Codable {
 }
 
 struct AppDetails: Codable {
+    
+    static let empty = AppDetails(publisher: "", country: "", extId: ExtId.empty, genre: "", hasIap: 0, icon: "", id: 0, kind: "", lang: "", releaseDate: "", size: 0, title: "", type: "", url: "", version: "")
+    
     let publisher: String
     let country: String
     let extId: ExtId
@@ -77,12 +83,30 @@ struct AppDetails: Codable {
         case version
     }
     
+    init(publisher: String, country: String, extId: ExtId, genre: String, hasIap: Int, icon: String, id: Int, kind: String, lang: String, releaseDate: String, size: Double, title: String, type: String, url: String, version: String) {
+        self.publisher = publisher
+        self.country = country
+        self.extId = extId
+        self.genre = genre
+        self.hasIap = hasIap
+        self.icon = icon
+        self.id = id
+        self.kind = kind
+        self.lang = lang
+        self.releaseDate = releaseDate
+        self.size = size
+        self.title = title
+        self.type = type
+        self.url = url
+        self.version = version
+    }
+    
     init(from decoder: Decoder) throws {
         let map = try decoder.container(keyedBy: CodingKeys.self)
         self.publisher = try map.decode(.publisher) ?? ""
         self.country = try map.decode(.country) ?? ""
         self.genre = try map.decode(.genre) ?? ""
-        self.extId = try map.decode(.extId) ?? ExtId(value: "")
+        self.extId = try map.decode(.extId) ?? ExtId.empty
         self.hasIap = try map.decode(.hasIap) ?? 0
         self.icon = try map.decode(.icon) ?? ""
         self.id = try map.decode(.id) ?? 0

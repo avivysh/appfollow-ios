@@ -19,17 +19,17 @@ class StateRefresh {
     }
     
     func refresh() {
-        self.requestCollections() { collections in
+        self.requestCollections() {
+            collections in
             
-            self.store.collections = collections
-            self.store.apps = [:]
+            var allApps = [Int: [App]]()
 
             let group = DispatchGroup()
-            for (index, collection) in collections.enumerated() {
+            for collection in collections {
                 group.enter()
                 self.requestApps(collectionId: collection.id) { apps in
                     group.leave()
-                    self.store.apps[index] = apps
+                    allApps[collection.id] = apps
                     
                     for app in apps {
                         if (app.extId.isEmpty) {
@@ -47,6 +47,8 @@ class StateRefresh {
             }
             
             group.notify(queue: .main) {
+                self.store.collections = collections
+                self.store.apps = allApps
                 NotificationCenter.default.post(name: .collectionsUpdate, object: self)
             }
         }

@@ -3,4 +3,4 @@ github "zekunyan/TTGSnackbar"
 github "Alamofire/Alamofire" ~> 4.7
 github "soffes/CommonCrypto"
 github "Alamofire/AlamofireImage" ~> 3.3
-
+github "evgenyneu/Cosmos" ~> 15.0

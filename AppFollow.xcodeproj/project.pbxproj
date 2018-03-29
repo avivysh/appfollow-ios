@@ -35,11 +35,16 @@
 		984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51ED206CFA0700CDB24D /* ApiRequest.swift */; };
 		984E51F1206D05CB00CDB24D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51F0206D05CB00CDB24D /* Store.swift */; };
 		984E51F3206D069000CDB24D /* ReviewsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51F2206D069000CDB24D /* ReviewsSummary.swift */; };
-		98F01F46206D420600FA461F /* ExtId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F45206D420600FA461F /* ExtId.swift */; };
+		98631889206D7D1000D6A14F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631888206D7D1000D6A14F /* ReviewCell.swift */; };
+		9863188E206D80CF00D6A14F /* Id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9863188D206D80CF00D6A14F /* Id.swift */; };
+		98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631891206D847700D6A14F /* ReviewsDataSource.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4A206D62DD00FA461F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F49206D62DD00FA461F /* Profile.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
 		98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4E206D6D6300FA461F /* ProfileViewController.swift */; };
+		98F7D31D206D704E005195BD /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7D31C206D704E005195BD /* ReviewsViewController.swift */; };
+		98F7D31F206D7462005195BD /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7D31E206D7462005195BD /* Review.swift */; };
+		98F7D321206D7ACE005195BD /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F7D320206D7ACE005195BD /* Cosmos.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,11 +78,16 @@
 		984E51ED206CFA0700CDB24D /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		984E51F0206D05CB00CDB24D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		984E51F2206D069000CDB24D /* ReviewsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsSummary.swift; sourceTree = "<group>"; };
-		98F01F45206D420600FA461F /* ExtId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtId.swift; sourceTree = "<group>"; };
+		98631888206D7D1000D6A14F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		9863188D206D80CF00D6A14F /* Id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Id.swift; sourceTree = "<group>"; };
+		98631891206D847700D6A14F /* ReviewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsDataSource.swift; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F49206D62DD00FA461F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		98F01F4E206D6D6300FA461F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		98F7D31C206D704E005195BD /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		98F7D31E206D7462005195BD /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		98F7D320206D7ACE005195BD /* Cosmos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cosmos.framework; path = Carthage/Build/iOS/Cosmos.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F7D321206D7ACE005195BD /* Cosmos.framework in Frameworks */,
 				98087CB5206BE53D00EB0747 /* TTGSnackbar.framework in Frameworks */,
 				98087CB8206BE63300EB0747 /* Alamofire.framework in Frameworks */,
 				984E51DF206C261F00CDB24D /* CommonCrypto.framework in Frameworks */,
@@ -128,6 +139,7 @@
 				984E51EF206D059000CDB24D /* Model */,
 				984E51EC206CF9F200CDB24D /* Network */,
 				98F01F4D206D6D5300FA461F /* Profile */,
+				98F7D31B206D7035005195BD /* Reviews */,
 				984E51A5206BF70300CDB24D /* Sdk */,
 			);
 			path = AppFollow;
@@ -155,6 +167,7 @@
 		98087CB3206BE53D00EB0747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98F7D320206D7ACE005195BD /* Cosmos.framework */,
 				984E51EA206CE37000CDB24D /* AlamofireImage.framework */,
 				984E51DE206C261F00CDB24D /* CommonCrypto.framework */,
 				98087CB7206BE63300EB0747 /* Alamofire.framework */,
@@ -166,14 +179,15 @@
 		984E51A5206BF70300CDB24D /* Sdk */ = {
 			isa = PBXGroup;
 			children = (
+				9863188D206D80CF00D6A14F /* Id.swift */,
+				984E51E2206C343600CDB24D /* App.swift */,
 				984E51A6206BF71500CDB24D /* Auth.swift */,
+				984E51E0206C30BB00CDB24D /* Collection.swift */,
 				984E51DA206C236300CDB24D /* Endpoint.swift */,
 				984E51DC206C244E00CDB24D /* Hash.swift */,
-				984E51E0206C30BB00CDB24D /* Collection.swift */,
-				984E51E2206C343600CDB24D /* App.swift */,
-				984E51F2206D069000CDB24D /* ReviewsSummary.swift */,
-				98F01F45206D420600FA461F /* ExtId.swift */,
 				98F01F49206D62DD00FA461F /* Profile.swift */,
+				98F7D31E206D7462005195BD /* Review.swift */,
+				984E51F2206D069000CDB24D /* ReviewsSummary.swift */,
 			);
 			path = Sdk;
 			sourceTree = "<group>";
@@ -222,6 +236,16 @@
 				98F01F4E206D6D6300FA461F /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		98F7D31B206D7035005195BD /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				98F7D31C206D704E005195BD /* ReviewsViewController.swift */,
+				98631888206D7D1000D6A14F /* ReviewCell.swift */,
+				98631891206D847700D6A14F /* ReviewsDataSource.swift */,
+			);
+			path = Reviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,12 +328,14 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CommonCrypto.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cosmos.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TTGSnackbar.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CommonCrypto.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cosmos.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -326,14 +352,17 @@
 				984E51DD206C244E00CDB24D /* Hash.swift in Sources */,
 				984E51AF206BFA1A00CDB24D /* AppsViewController.swift in Sources */,
 				98F01F4A206D62DD00FA461F /* Profile.swift in Sources */,
-				98F01F46206D420600FA461F /* ExtId.swift in Sources */,
 				984E51A7206BF71500CDB24D /* Auth.swift in Sources */,
 				984E51B5206C170D00CDB24D /* AuthStorage.swift in Sources */,
 				984E51E3206C343600CDB24D /* App.swift in Sources */,
+				98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */,
+				9863188E206D80CF00D6A14F /* Id.swift in Sources */,
+				98F7D31D206D704E005195BD /* ReviewsViewController.swift in Sources */,
 				98F01F48206D572300FA461F /* StateRefresh.swift in Sources */,
 				98087CA52069FAE000EB0747 /* AppFollow.xcdatamodeld in Sources */,
 				984E51E1206C30BB00CDB24D /* Collection.swift in Sources */,
 				984E51E5206C3E8200CDB24D /* Codable.swift in Sources */,
+				98631889206D7D1000D6A14F /* ReviewCell.swift in Sources */,
 				984E51E7206C431700CDB24D /* AppCell.swift in Sources */,
 				984E51F3206D069000CDB24D /* ReviewsSummary.swift in Sources */,
 				98087CBA206BEACB00EB0747 /* LoginProcess.swift in Sources */,
@@ -341,6 +370,7 @@
 				98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */,
 				98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */,
 				984E51F1206D05CB00CDB24D /* Store.swift in Sources */,
+				98F7D31F206D7462005195BD /* Review.swift in Sources */,
 				984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */,
 				984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */,
 				98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */,

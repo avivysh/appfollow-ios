@@ -79,6 +79,26 @@ class ReviewsSummaryEndpoint {
     }
 }
 
-
+class CollectionReviewsEndpoint {
+//    static let path = "/reviews"
+//    static let url = URL(string: ReviewsSummaryEndpoint.path, relativeTo: Endpoint.baseUrl)!
+    
+    static func path(_ collectionName: String) -> String {
+        return "/\(collectionName)/reviews"
+    }
+    
+    static func url(collectionName: String) -> URL {
+        return URL(string: CollectionReviewsEndpoint.path(collectionName), relativeTo: Endpoint.baseUrl)!
+    }
+    
+    static func parameters(collectionName: String, auth: Auth) -> [String: Any] {
+        var parameters: [String: Any] = [
+            Endpoint.keyCid : auth.cid
+        ]
+        let signature = Endpoint.sign(parameters: parameters, path: CollectionReviewsEndpoint.path(collectionName), auth: auth)
+        parameters[Endpoint.keySign] = signature
+        return parameters
+    }
+}
 
 

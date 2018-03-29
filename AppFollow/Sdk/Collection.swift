@@ -17,6 +17,8 @@ struct CollectionsResponse: Codable {
 }
  
 struct Collection: Codable {
+    static let empty = Collection(id: 0, count: 0, countries: "", languages: "", title: "", created: "")
+    
     let id: Int
     let count: Int
     let countries: String

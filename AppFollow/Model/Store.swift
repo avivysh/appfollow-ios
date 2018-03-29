@@ -15,7 +15,7 @@ extension Notification.Name {
 class Store {
     
     var collections: [Collection] = []
-    var apps: [Int : [App]] = [:]
+    var apps: [Int: [App]] = [:]
     var reviewsSummary: [ExtId : ReviewsSummary] = [:]
 
 }

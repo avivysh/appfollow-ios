@@ -15,7 +15,7 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     private var collections: [Collection] = []
     private var apps: [Int: [App]] = [:]
     private var reviewsSummary: [ExtId: ReviewsSummary] = [:]
-    
+
     // MARK: Public
 
     func updateState() {
@@ -28,12 +28,14 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return apps[section]?.count ?? 0
+        let collection = self.collections[section]
+        return apps[collection.id]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath) as! AppCell
-        cell.bind(app: apps[indexPath.section]![indexPath.row])
+        let collection = self.collections[indexPath.section]
+        cell.bind(app: apps[collection.id]![indexPath.row])
         return cell
     }
     
