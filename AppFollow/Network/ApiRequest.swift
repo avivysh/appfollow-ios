@@ -16,7 +16,10 @@ struct ApiRequest {
     func send<R: Decodable>(completion: @escaping (R?) -> Void) {
         let request = Alamofire.request(self.url, parameters: self.parameters).responseData {
             response in
-            print(response.timeline)
+            
+            print("[Response]: \(response.result.debugDescription)")
+            print("[Data]: \(response.data?.count ?? 0) bytes")
+            print("[Timeline]: \(response.timeline.description)")
             print("")
             if let data = response.result.value {
                 let decoder = JSONDecoder()
@@ -32,8 +35,9 @@ struct ApiRequest {
                 completion(nil)
             }
         }
-        print("REQUEST: \(self.url)")
+        print("[Request]: \(self.url)")
         debugPrint(request)
+        print("")
     }
 
 }
