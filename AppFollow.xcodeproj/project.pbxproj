@@ -32,6 +32,7 @@
 		984E51E7206C431700CDB24D /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51E6206C431700CDB24D /* AppCell.swift */; };
 		984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51E8206C43A000CDB24D /* AppsDataSource.swift */; };
 		984E51EB206CE37100CDB24D /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984E51EA206CE37000CDB24D /* AlamofireImage.framework */; };
+		984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51ED206CFA0700CDB24D /* ApiRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		984E51E6206C431700CDB24D /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 		984E51E8206C43A000CDB24D /* AppsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDataSource.swift; sourceTree = "<group>"; };
 		984E51EA206CE37000CDB24D /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		984E51ED206CFA0700CDB24D /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		98087C9B2069FAE000EB0747 /* AppFollow */ = {
 			isa = PBXGroup;
 			children = (
+				984E51EC206CF9F200CDB24D /* Network */,
 				984E51B0206BFA5700CDB24D /* Apps */,
 				984E51A8206BF72400CDB24D /* Framework */,
 				984E51A5206BF70300CDB24D /* Sdk */,
@@ -174,6 +177,14 @@
 				984E51E8206C43A000CDB24D /* AppsDataSource.swift */,
 			);
 			path = Apps;
+			sourceTree = "<group>";
+		};
+		984E51EC206CF9F200CDB24D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				984E51ED206CFA0700CDB24D /* ApiRequest.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +299,7 @@
 				984E51B7206C1CE400CDB24D /* DependencyProvider.swift in Sources */,
 				98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */,
 				98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */,
+				984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */,
 				984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */,
 				984E51DB206C236300CDB24D /* Endpoint.swift in Sources */,
 				984E51B9206C1DE100CDB24D /* MainViewController.swift in Sources */,

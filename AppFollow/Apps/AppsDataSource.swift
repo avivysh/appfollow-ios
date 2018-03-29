@@ -72,38 +72,24 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     // MARK: Private
     
     private func requestApps(collectionId: Int, auth: Auth, completion: @escaping ([App]) -> Void) {
-        let parameters = AppEndpoint.parameters(collectionId: collectionId, auth: auth)
-        let request = Alamofire.request(AppEndpoint.url, parameters: parameters).responseData {
-            response in
-            if let data = response.result.value {
-                let decoder = JSONDecoder()
-                do {
-                    let collectionResponse = try decoder.decode(CollectionResponse.self, from: data)
-                    completion(collectionResponse.apps)
-                } catch {
-                    print(error)
-                    completion([])
-                }
+        ApiRequest(url: AppEndpoint.url, parameters: AppEndpoint.parameters(collectionId: collectionId, auth: auth)).send {
+            (response: CollectionResponse?) in
+            if let collection = response {
+                completion(collection.apps)
+            } else {
+                completion([])
             }
         }
-        debugPrint(request)
     }
     
     private func requestCollections(auth: Auth, completion: @escaping ([Collection]) -> Void) {
-        let parameters = AppsEndpoint.parameters(auth: auth)
-        let request = Alamofire.request(AppsEndpoint.url, parameters: parameters).responseData {
-            response in
-            if let data = response.result.value {
-                let decoder = JSONDecoder()
-                do {
-                    let collectionsResponse = try decoder.decode(CollectionsResponse.self, from: data)
-                    completion(collectionsResponse.collections)
-                } catch {
-                    print(error)
-                    completion([])
-                }
+        ApiRequest(url: AppsEndpoint.url, parameters: AppsEndpoint.parameters(auth: auth)).send {
+            (response: CollectionsResponse?) in
+            if let collections = response {
+                completion(collections.collections)
+            } else {
+                completion([])
             }
         }
-        debugPrint(request)
     }
 }
