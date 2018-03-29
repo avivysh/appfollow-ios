@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         let username = self.username.text ?? ""
         let password = self.password.text ?? ""
 
-        self.loginProcess?.start(userName: username, password: password)
+        self.loginProcess?.start(email: username, password: password)
     }
     
     // MARK: LoginProcessDelegate
@@ -48,8 +48,9 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         snackbar.show()
     }
 
-    func loginSuccess(auth: Auth) {
+    func loginSuccess(auth: Auth, profile: Profile) {
         AppDelegate.provide.authStorage.persist(auth: auth)
+        AppDelegate.provide.profileStorage.persist(profile: profile)
         
         let main = MainViewController.instantiateFromStoryboard()
         let appDelegate = UIApplication.shared.delegate

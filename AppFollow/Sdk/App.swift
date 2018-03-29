@@ -26,6 +26,10 @@ struct App: Codable {
     let isFavorite: Int
     let store: String
     
+    var extId: ExtId {
+        get { return details.extId }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "app_id"
         case details = "app"
@@ -40,7 +44,7 @@ struct App: Codable {
 struct AppDetails: Codable {
     let publisher: String
     let country: String
-    let extId: String
+    let extId: ExtId
     let genre: String
     let hasIap: Int
     let icon: String
@@ -78,13 +82,7 @@ struct AppDetails: Codable {
         self.publisher = try map.decode(.publisher) ?? ""
         self.country = try map.decode(.country) ?? ""
         self.genre = try map.decode(.genre) ?? ""
-        var extId = ""
-        if let value = try? map.decode(String.self, forKey: .extId) {
-            extId = value
-        } else if let value = try? map.decode(Int.self, forKey: .extId) {
-            extId = String(value)
-        }
-        self.extId = extId
+        self.extId = try map.decode(.extId) ?? ExtId(value: "")
         self.hasIap = try map.decode(.hasIap) ?? 0
         self.icon = try map.decode(.icon) ?? ""
         self.id = try map.decode(.id) ?? 0

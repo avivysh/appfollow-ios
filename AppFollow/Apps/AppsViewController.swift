@@ -8,25 +8,29 @@
 
 import UIKit
 
-class AppsViewController: UIViewController, AppsDataSourceDelegate {
+class AppsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var dataSource: AppsDataSource?
+    let dataSource = AppsDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let auth = AppDelegate.provide.authStorage.retrieve()
-        self.dataSource = AppsDataSource(auth: auth)
-        self.dataSource?.delegate = self
+        
+        self.dataSource.updateState()
+        AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
-        self.dataSource?.refresh()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: .collectionsUpdate, object: nil)
     }
     
-    // MARK: AppsDataSourceDelegate
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
-    func reloadTableView() {
+    // MARK: NotificationCenter
+    
+    @objc func reloadTableView(notification: NSNotification) {
+        self.dataSource.updateState()
         self.tableView.reloadData()
     }
 

@@ -27,6 +27,7 @@ struct ApiRequest {
                     let object = try decoder.decode(R.self, from: data)
                     completion(object)
                 } catch {
+                    // TODO: Deserialize error
                     print(error)
                     completion(nil)
                 }

@@ -33,6 +33,13 @@
 		984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51E8206C43A000CDB24D /* AppsDataSource.swift */; };
 		984E51EB206CE37100CDB24D /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984E51EA206CE37000CDB24D /* AlamofireImage.framework */; };
 		984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51ED206CFA0700CDB24D /* ApiRequest.swift */; };
+		984E51F1206D05CB00CDB24D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51F0206D05CB00CDB24D /* Store.swift */; };
+		984E51F3206D069000CDB24D /* ReviewsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51F2206D069000CDB24D /* ReviewsSummary.swift */; };
+		98F01F46206D420600FA461F /* ExtId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F45206D420600FA461F /* ExtId.swift */; };
+		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
+		98F01F4A206D62DD00FA461F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F49206D62DD00FA461F /* Profile.swift */; };
+		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
+		98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4E206D6D6300FA461F /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +71,13 @@
 		984E51E8206C43A000CDB24D /* AppsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDataSource.swift; sourceTree = "<group>"; };
 		984E51EA206CE37000CDB24D /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		984E51ED206CFA0700CDB24D /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		984E51F0206D05CB00CDB24D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		984E51F2206D069000CDB24D /* ReviewsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsSummary.swift; sourceTree = "<group>"; };
+		98F01F45206D420600FA461F /* ExtId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtId.swift; sourceTree = "<group>"; };
+		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
+		98F01F49206D62DD00FA461F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
+		98F01F4E206D6D6300FA461F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,18 +115,20 @@
 		98087C9B2069FAE000EB0747 /* AppFollow */ = {
 			isa = PBXGroup;
 			children = (
-				984E51EC206CF9F200CDB24D /* Network */,
+				98087CAB2069FAE000EB0747 /* Info.plist */,
+				98087C9C2069FAE000EB0747 /* AppDelegate.swift */,
+				984E51B6206C1CE400CDB24D /* DependencyProvider.swift */,
+				98087CA62069FAE000EB0747 /* Assets.xcassets */,
+				98087CA32069FAE000EB0747 /* AppFollow.xcdatamodeld */,
 				984E51B0206BFA5700CDB24D /* Apps */,
 				984E51A8206BF72400CDB24D /* Framework */,
-				984E51A5206BF70300CDB24D /* Sdk */,
-				98087CB22069FB1C00EB0747 /* Main */,
-				98087CB12069FAFE00EB0747 /* Login */,
-				98087C9C2069FAE000EB0747 /* AppDelegate.swift */,
-				98087CA62069FAE000EB0747 /* Assets.xcassets */,
 				98087CA82069FAE000EB0747 /* LaunchScreen.storyboard */,
-				98087CAB2069FAE000EB0747 /* Info.plist */,
-				98087CA32069FAE000EB0747 /* AppFollow.xcdatamodeld */,
-				984E51B6206C1CE400CDB24D /* DependencyProvider.swift */,
+				98087CB12069FAFE00EB0747 /* Login */,
+				98087CB22069FB1C00EB0747 /* Main */,
+				984E51EF206D059000CDB24D /* Model */,
+				984E51EC206CF9F200CDB24D /* Network */,
+				98F01F4D206D6D5300FA461F /* Profile */,
+				984E51A5206BF70300CDB24D /* Sdk */,
 			);
 			path = AppFollow;
 			sourceTree = "<group>";
@@ -123,7 +139,6 @@
 				98087CA02069FAE000EB0747 /* Login.storyboard */,
 				98087C9E2069FAE000EB0747 /* LoginViewController.swift */,
 				98087CB9206BEACB00EB0747 /* LoginProcess.swift */,
-				984E51B4206C170D00CDB24D /* AuthStorage.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -156,6 +171,9 @@
 				984E51DC206C244E00CDB24D /* Hash.swift */,
 				984E51E0206C30BB00CDB24D /* Collection.swift */,
 				984E51E2206C343600CDB24D /* App.swift */,
+				984E51F2206D069000CDB24D /* ReviewsSummary.swift */,
+				98F01F45206D420600FA461F /* ExtId.swift */,
+				98F01F49206D62DD00FA461F /* Profile.swift */,
 			);
 			path = Sdk;
 			sourceTree = "<group>";
@@ -183,8 +201,27 @@
 			isa = PBXGroup;
 			children = (
 				984E51ED206CFA0700CDB24D /* ApiRequest.swift */,
+				98F01F47206D572300FA461F /* StateRefresh.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		984E51EF206D059000CDB24D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				984E51B4206C170D00CDB24D /* AuthStorage.swift */,
+				984E51F0206D05CB00CDB24D /* Store.swift */,
+				98F01F4B206D639800FA461F /* ProfileStorage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		98F01F4D206D6D5300FA461F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				98F01F4E206D6D6300FA461F /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,19 +325,26 @@
 				984E51AA206BF73200CDB24D /* String.swift in Sources */,
 				984E51DD206C244E00CDB24D /* Hash.swift in Sources */,
 				984E51AF206BFA1A00CDB24D /* AppsViewController.swift in Sources */,
+				98F01F4A206D62DD00FA461F /* Profile.swift in Sources */,
+				98F01F46206D420600FA461F /* ExtId.swift in Sources */,
 				984E51A7206BF71500CDB24D /* Auth.swift in Sources */,
 				984E51B5206C170D00CDB24D /* AuthStorage.swift in Sources */,
 				984E51E3206C343600CDB24D /* App.swift in Sources */,
+				98F01F48206D572300FA461F /* StateRefresh.swift in Sources */,
 				98087CA52069FAE000EB0747 /* AppFollow.xcdatamodeld in Sources */,
 				984E51E1206C30BB00CDB24D /* Collection.swift in Sources */,
 				984E51E5206C3E8200CDB24D /* Codable.swift in Sources */,
 				984E51E7206C431700CDB24D /* AppCell.swift in Sources */,
+				984E51F3206D069000CDB24D /* ReviewsSummary.swift in Sources */,
 				98087CBA206BEACB00EB0747 /* LoginProcess.swift in Sources */,
 				984E51B7206C1CE400CDB24D /* DependencyProvider.swift in Sources */,
 				98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */,
 				98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */,
+				984E51F1206D05CB00CDB24D /* Store.swift in Sources */,
 				984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */,
 				984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */,
+				98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */,
+				98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */,
 				984E51DB206C236300CDB24D /* Endpoint.swift in Sources */,
 				984E51B9206C1DE100CDB24D /* MainViewController.swift in Sources */,
 			);
@@ -439,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2M47D56S58;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -450,6 +495,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.AppFollow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -459,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2M47D56S58;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -470,6 +517,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.AppFollow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -11,5 +11,15 @@ import Foundation
 class DependencyProvider {
     
     let authStorage = UserDefaultAuthStorage(defaults: UserDefaults.standard)
-    
+    var auth: Auth {
+        get { return self.authStorage.retrieve() }
+    }
+    let store = Store()
+    var stateRefresh: StateRefresh {
+        get { return StateRefresh(store: self.store, auth: self.auth )}
+    }
+    let profileStorage = ProfileStorage(defaults: UserDefaults.standard)
+    var profile: Profile {
+        get { return self.profileStorage.retrieve() }
+    }
 }

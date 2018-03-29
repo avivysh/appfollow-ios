@@ -49,3 +49,36 @@ class AppEndpoint {
     }
 }
 
+class ReviewsEndpoint {
+    static let path = "/reviews"
+    static let url = URL(string: ReviewsEndpoint.path, relativeTo: Endpoint.baseUrl)!
+    
+    static func parameters(extId: ExtId, auth: Auth) -> [String: Any] {
+        var parameters: [String: Any] = [
+            "ext_id" : extId.value,
+            Endpoint.keyCid : auth.cid
+        ]
+        let signature = Endpoint.sign(parameters: parameters, path: ReviewsEndpoint.path, auth: auth)
+        parameters[Endpoint.keySign] = signature
+        return parameters
+    }
+}
+
+class ReviewsSummaryEndpoint {
+    static let path = "/reviews/summary"
+    static let url = URL(string: ReviewsSummaryEndpoint.path, relativeTo: Endpoint.baseUrl)!
+
+    static func parameters(extId: ExtId, auth: Auth) -> [String: Any] {
+        var parameters: [String: Any] = [
+            "ext_id" : extId.value,
+            Endpoint.keyCid : auth.cid
+        ]
+        let signature = Endpoint.sign(parameters: parameters, path: ReviewsSummaryEndpoint.path, auth: auth)
+        parameters[Endpoint.keySign] = signature
+        return parameters
+    }
+}
+
+
+
+
