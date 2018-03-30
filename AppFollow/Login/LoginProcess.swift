@@ -11,6 +11,7 @@ import WebKit
 
 protocol LoginProcessDelegate {
     func loginError(message: String)
+    func loginProgress(message: String)
     func loginSuccess(auth: Auth, profile: Profile)
 }
 
@@ -38,15 +39,20 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
     func start(email: String, password: String) {
         
         let js = """
+        (function() {
         $('#login-email').val('\(email.escapeJavaScript())');
         $('#login-password').val('\(password.escapeJavaScript())');
+        $('button.js-login-submit').removeAttr('disabled');
+        $('button.js-login-submit').click();
+        return "ok";
+        })()
         """
         self.email = email
+        self.submitted = true
         self.webView?.evaluateJavaScript(js) {
             result, error in
             print("[Login] start: \(result ?? ""), \(error?.localizedDescription ?? "")")
-            self.submitted = true
-            self.webView?.evaluateJavaScript("$('button.js-login-submit').click();", completionHandler: nil)
+            self.delegate?.loginProgress(message: "Authorizing")
         }
     }
     

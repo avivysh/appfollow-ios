@@ -47,6 +47,11 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         let snackbar = TTGSnackbar(message: message, duration: .short)
         snackbar.show()
     }
+    
+    func loginProgress(message: String) {
+        let snackbar = TTGSnackbar(message: message, duration: .long)
+        snackbar.show()
+    }
 
     func loginSuccess(auth: Auth, profile: Profile) {
         AppDelegate.provide.authStorage.persist(auth: auth)
