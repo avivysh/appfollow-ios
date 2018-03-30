@@ -13,9 +13,9 @@
 		98087CA52069FAE000EB0747 /* AppFollow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98087CA32069FAE000EB0747 /* AppFollow.xcdatamodeld */; };
 		98087CA72069FAE000EB0747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98087CA62069FAE000EB0747 /* Assets.xcassets */; };
 		98087CAA2069FAE000EB0747 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98087CA82069FAE000EB0747 /* LaunchScreen.storyboard */; };
-		98087CB5206BE53D00EB0747 /* TTGSnackbar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98087CB4206BE53D00EB0747 /* TTGSnackbar.framework */; };
 		98087CB8206BE63300EB0747 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98087CB7206BE63300EB0747 /* Alamofire.framework */; };
 		98087CBA206BEACB00EB0747 /* LoginProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98087CB9206BEACB00EB0747 /* LoginProcess.swift */; };
+		981C3B11206EBF820072E3A2 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */; };
 		984E51A7206BF71500CDB24D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A6206BF71500CDB24D /* Auth.swift */; };
 		984E51AA206BF73200CDB24D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A9206BF73200CDB24D /* String.swift */; };
 		984E51AD206BF79100CDB24D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984E51AC206BF79100CDB24D /* Main.storyboard */; };
@@ -61,6 +61,7 @@
 		98087CB4206BE53D00EB0747 /* TTGSnackbar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTGSnackbar.framework; path = Carthage/Build/iOS/TTGSnackbar.framework; sourceTree = "<group>"; };
 		98087CB7206BE63300EB0747 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		98087CB9206BEACB00EB0747 /* LoginProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProcess.swift; sourceTree = "<group>"; };
+		981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		984E51A6206BF71500CDB24D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		984E51A9206BF73200CDB24D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		984E51AC206BF79100CDB24D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -99,8 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				981C3B11206EBF820072E3A2 /* ToastSwiftFramework.framework in Frameworks */,
 				98F7D321206D7ACE005195BD /* Cosmos.framework in Frameworks */,
-				98087CB5206BE53D00EB0747 /* TTGSnackbar.framework in Frameworks */,
 				98087CB8206BE63300EB0747 /* Alamofire.framework in Frameworks */,
 				984E51DF206C261F00CDB24D /* CommonCrypto.framework in Frameworks */,
 				984E51EB206CE37100CDB24D /* AlamofireImage.framework in Frameworks */,
@@ -171,6 +172,7 @@
 		98087CB3206BE53D00EB0747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */,
 				98F7D320206D7ACE005195BD /* Cosmos.framework */,
 				984E51EA206CE37000CDB24D /* AlamofireImage.framework */,
 				984E51DE206C261F00CDB24D /* CommonCrypto.framework */,
@@ -330,18 +332,18 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/TTGSnackbar.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CommonCrypto.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Cosmos.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework",
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TTGSnackbar.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CommonCrypto.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cosmos.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ToastSwiftFramework.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -523,7 +525,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2M47D56S58;
+				DEVELOPMENT_TEAM = T94R5ASHM8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -531,7 +533,7 @@
 				INFOPLIST_FILE = AppFollow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.AppFollow;
+				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -545,7 +547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2M47D56S58;
+				DEVELOPMENT_TEAM = T94R5ASHM8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -553,7 +555,7 @@
 				INFOPLIST_FILE = AppFollow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.AppFollow;
+				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

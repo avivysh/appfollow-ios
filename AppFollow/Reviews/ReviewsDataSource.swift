@@ -21,18 +21,11 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     private var reviews: [DateSection:[Review]] = [:]
     private var apps: [Int: App] = [:]
     private var sections: [DateSection] = []
+    
     func reload(complete: @escaping () -> Void) {
         
         let collections = AppDelegate.provide.store.collections
         let auth = AppDelegate.provide.auth
-
-        self.apps = AppDelegate.provide.store.apps.reduce(into: [Int: App](), { (result, pair) in
-            let collectinApps = pair.value
-            
-            for app in collectinApps {
-                result[app.id] = app
-            }
-        })
         
         let group = DispatchGroup()
         var allReviews = [Review]()
@@ -55,6 +48,13 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
         }
         
         group.notify(queue: .main) {
+            self.apps = AppDelegate.provide.store.apps.reduce(into: [Int: App](), { (result, pair) in
+                let collectinApps = pair.value
+                
+                for app in collectinApps {
+                    result[app.id] = app
+                }
+            })
             self.reviews = self.createReviewsSections(reviews: allReviews)
             self.sections = self.reviews.keys.sorted(by: { (lds, rds) -> Bool in
                 lds.rawValue < rds.rawValue

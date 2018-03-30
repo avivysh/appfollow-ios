@@ -1,5 +1,4 @@
-
-github "zekunyan/TTGSnackbar"
+github "scalessec/Toast-Swift" ~> 3.0.1
 github "Alamofire/Alamofire" ~> 4.7
 github "soffes/CommonCrypto"
 github "Alamofire/AlamofireImage" ~> 3.3

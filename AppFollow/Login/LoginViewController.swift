@@ -8,7 +8,7 @@
 
 import UIKit
 import WebKit
-import TTGSnackbar
+import ToastSwiftFramework
 
 class LoginViewController: UIViewController, LoginProcessDelegate {
 
@@ -44,13 +44,11 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
     // MARK: LoginProcessDelegate
     
     func loginError(message: String) {
-        let snackbar = TTGSnackbar(message: message, duration: .short)
-        snackbar.show()
+        self.view.makeToast(message, duration: 3.0, position: .top)
     }
     
     func loginProgress(message: String) {
-        let snackbar = TTGSnackbar(message: message, duration: .long)
-        snackbar.show()
+        self.view.makeToast(message, duration: 3.0, position: .top)
     }
 
     func loginSuccess(auth: Auth, profile: Profile) {
@@ -62,5 +60,8 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         appDelegate?.window??.rootViewController = main
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
