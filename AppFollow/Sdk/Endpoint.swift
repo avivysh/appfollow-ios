@@ -8,6 +8,8 @@
 
 import Foundation
 
+private let dateFormatter = DateFormatter.create(format: "yyyy-MM-dd")
+
 class Endpoint {
     
     static let baseUrl = URL(string: "https://api.appfollow.io")!
@@ -91,8 +93,10 @@ class CollectionReviewsEndpoint {
         return URL(string: CollectionReviewsEndpoint.path(collectionName), relativeTo: Endpoint.baseUrl)!
     }
     
-    static func parameters(collectionName: String, auth: Auth) -> [String: Any] {
+    static func parameters(collectionName: String, from: Date, to: Date, auth: Auth) -> [String: Any] {
         var parameters: [String: Any] = [
+            "from": dateFormatter.string(from: from),
+            "to": dateFormatter.string(from: to),
             Endpoint.keyCid : auth.cid
         ]
         let signature = Endpoint.sign(parameters: parameters, path: CollectionReviewsEndpoint.path(collectionName), auth: auth)

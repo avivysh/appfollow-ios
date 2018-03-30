@@ -18,10 +18,14 @@ class ReviewsViewController: UIViewController {
         super.viewDidLoad()
         
         self.tableView.dataSource = self.dataSource
+        AppDelegate.provide.stateRefresh.refresh()
+        self.tableView.dataSource = self.dataSource
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: .collectionsUpdate, object: nil)
+    }
+    
+    @objc func reloadTableView() {
         dataSource.reload {
             self.tableView.reloadData()
         }
-
     }
-    
 }

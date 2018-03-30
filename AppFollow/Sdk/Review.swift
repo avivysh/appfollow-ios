@@ -12,6 +12,8 @@ struct ReviewsResponse: Codable {
     let reviews: [Review]
 }
 
+private let dateFormatter = DateFormatter.create(format: "yyyy-MM-dd HH:mm:ss")
+
 struct Review: Codable {
     let id: Int
     let store: String
@@ -31,6 +33,19 @@ struct Review: Codable {
     let created: String
     let updated: String
     let isAnswer: Int
+    
+    var modified: Date {
+        get {
+            var modified: Date?
+            if (!updated.isEmpty) {
+                modified = dateFormatter.date(from: updated)
+            }
+            if (modified == nil) {
+                modified = dateFormatter.date(from: created)
+            }
+            return modified ?? Date(timeIntervalSince1970: 100)
+        }
+    }
     
     enum CodingKeys: String, CodingKey {
         case id

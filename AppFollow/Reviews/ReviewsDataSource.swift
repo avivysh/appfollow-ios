@@ -8,11 +8,19 @@
 
 import UIKit
 
+private let sectionTitles: [DateSection:String] = [
+    .today:"Today",
+    .yesterday:"Yesterday",
+    .thisWeek: "This week",
+    .thisMonth: "This month",
+    .older: "Older"
+]
+
 class ReviewsDataSource: NSObject, UITableViewDataSource {
 
-    private var reviews: [Review] = []
+    private var reviews: [DateSection:[Review]] = [:]
     private var apps: [Int: App] = [:]
-    
+    private var sections: [DateSection] = []
     func reload(complete: @escaping () -> Void) {
         
         let collections = AppDelegate.provide.store.collections
@@ -28,8 +36,13 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
         
         let group = DispatchGroup()
         var allReviews = [Review]()
+        let now = Date()
         for collection in collections {
-            let parameters = CollectionReviewsEndpoint.parameters(collectionName: collection.title, auth: auth)
+            let parameters = CollectionReviewsEndpoint.parameters(
+                collectionName: collection.title,
+                from: Calendar.current.date(byAdding: .day, value: -180, to: now)!,
+                to: now,
+                auth: auth)
             group.enter()
             ApiRequest(url: CollectionReviewsEndpoint.url(collectionName: collection.title), parameters: parameters).send {
                 (response: ReviewsResponse?) in
@@ -41,14 +54,10 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
             }
         }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-       group.notify(queue: .main) {
-            self.reviews = allReviews.sorted(by: { (lr, rr) -> Bool in
-                let lcreated = dateFormatter.date(from: lr.created) ?? Date(timeIntervalSince1970: 100)
-                let rcreated = dateFormatter.date(from: rr.created) ?? Date(timeIntervalSince1970: 100)
-                return lcreated > rcreated
+        group.notify(queue: .main) {
+            self.reviews = self.createReviewsSections(reviews: allReviews)
+            self.sections = self.reviews.keys.sorted(by: { (lds, rds) -> Bool in
+                lds.rawValue < rds.rawValue
             })
             complete();
         }
@@ -57,14 +66,48 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count
+        let dateSection = sections[section]
+        return reviews[dateSection]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewCell
-        let review = reviews[indexPath.row]
+        let dateSection = sections[indexPath.section]
+        let review = reviews[dateSection]![indexPath.row]
         let app = apps[review.appId] ?? App.empty
         cell.bind(review: review, app: app)
         return cell
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[sections[section]]
+    }
+    
+    // MARK: Private
+    
+    func createReviewsSections(reviews: [Review]) -> [DateSection: [Review]] {
+        var sectionedReviews = [DateSection:[Review]]()
+
+        let now = Date()
+        for review in reviews {
+            let modified = review.modified
+            let section = DateSection.forDate(modified, today: now)
+            if (sectionedReviews[section] == nil) {
+                sectionedReviews[section] = [review]
+            } else {
+                if let index = sectionedReviews[section]!.index(where: { $0.modified < modified }) {
+                    sectionedReviews[section]!.insert(review, at: index)
+                } else {
+                    sectionedReviews[section]!.insert(review, at: 0)
+                }
+            }
+        }
+        
+        return sectionedReviews
+    }
+    
 }

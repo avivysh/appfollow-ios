@@ -23,7 +23,17 @@ class ReviewCell: UITableViewCell {
         
         self.author.text = review.author
         self.stars.rating = review.rating
-        self.content.text = review.content
+
+        if (review.title.isEmpty) {
+             self.content.text = review.content.trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            let attributedString = NSMutableAttributedString(
+                string:review.title,
+                attributes:[.font : UIFont.boldSystemFont(ofSize: 12)]
+            )
+            attributedString.append(NSMutableAttributedString(string:" " + review.content))
+            self.content.attributedText = attributedString
+        }
         
         if let url = URL(string: app.details.icon) {
             self.icon.af_setImage(
