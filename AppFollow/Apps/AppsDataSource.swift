@@ -17,6 +17,11 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     private var reviewsSummary: [ExtId: ReviewsSummary] = [:]
 
     // MARK: Public
+    
+    func appFor(indexPath: IndexPath) -> App {
+        let collection = self.collections[indexPath.section]
+        return apps[collection.id]![indexPath.row]
+    }
 
     func updateState() {
         let store = AppDelegate.provide.store
@@ -34,8 +39,7 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath) as! AppCell
-        let collection = self.collections[indexPath.section]
-        cell.bind(app: apps[collection.id]![indexPath.row])
+        cell.bind(app: self.appFor(indexPath: indexPath))
         return cell
     }
     

@@ -27,6 +27,14 @@ class AppsViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let appViewController = segue.destination as? AppViewController {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                appViewController.app = self.dataSource.appFor(indexPath: indexPath)
+            }
+        }
+    }
+    
     // MARK: NotificationCenter
     
     @objc func reloadTableView(notification: NSNotification) {

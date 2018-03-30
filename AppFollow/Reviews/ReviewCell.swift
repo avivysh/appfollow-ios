@@ -10,8 +10,6 @@ import UIKit
 import Cosmos
 import AlamofireImage
 
-private let placeholder = UIImage(named: "ic_photo_black_48px")!
-
 class ReviewCell: UITableViewCell {
     
     @IBOutlet weak var author: UILabel!
@@ -37,15 +35,6 @@ class ReviewCell: UITableViewCell {
         }
         
         self.info.text = "   \(review.date) \(review.locale) \(review.appVersion)\(review.isAnswer == 1 ? "✅" : "")"
-        
-        if let url = URL(string: app.details.icon) {
-            self.icon.af_setImage(
-                withURL: url,
-                placeholderImage: placeholder,
-                filter: AspectScaledToFitSizeFilter(size: self.icon.frame.size)
-            )
-        } else {
-            self.icon.image = placeholder
-        }
+        IconLoader.into(self.icon, url: app.details.icon)
     }
 }
