@@ -144,7 +144,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_image_black_48px" translatesAutoresizingMaskIntoConstraints="NO" id="IoE-Tx-tI6">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_photo_black_48px" translatesAutoresizingMaskIntoConstraints="NO" id="IoE-Tx-tI6">
                                                     <rect key="frame" x="8" y="8" width="48" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="lfI-gC-kab"/>
@@ -335,7 +335,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-BD-3BB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_photo_black_48px" translatesAutoresizingMaskIntoConstraints="NO" id="fZn-BD-3BB">
                                                     <rect key="frame" x="8" y="8" width="48" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="7T9-hC-AeM"/>
@@ -445,10 +445,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_account_circle_black_24px" width="18" height="18"/>
-        <image name="ic_apps_black_24px" width="18" height="18"/>
-        <image name="ic_image_black_48px" width="36" height="36"/>
-        <image name="ic_rate_review_black_24px" width="18" height="18"/>
+        <image name="ic_account_circle_black_24px" width="30" height="30"/>
+        <image name="ic_apps_black_24px" width="24" height="24"/>
+        <image name="ic_photo_black_48px" width="27" height="27"/>
+        <image name="ic_rate_review_black_24px" width="30" height="30"/>
         <image name="logo" width="1024" height="1024"/>
     </resources>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 import Cosmos
 import AlamofireImage
 
-private let placeholder = UIImage(named: "ic_image_black_48px")!
+private let placeholder = UIImage(named: "ic_photo_black_48px")!
 
 class ReviewCell: UITableViewCell {
     
