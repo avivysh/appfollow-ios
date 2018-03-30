@@ -30,19 +30,6 @@ class StateRefresh {
                 self.requestApps(collectionId: collection.id) { apps in
                     group.leave()
                     allApps[collection.id] = apps
-                    
-                    for app in apps {
-                        if (app.extId.isEmpty) {
-                            continue
-                        }
-                        group.enter()
-                        self.refreshReviewsSummary(app: app) { summary in
-                            group.leave()
-                            if summary != nil {
-                               self.store.reviewsSummary[summary!.extId] = summary!
-                            }
-                        }
-                    }
                 }
             }
             

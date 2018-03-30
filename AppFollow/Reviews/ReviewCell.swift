@@ -18,6 +18,7 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var stars: CosmosView!
     @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var info: UILabel!
     
     func bind(review: Review, app: App) {
         
@@ -34,6 +35,8 @@ class ReviewCell: UITableViewCell {
             attributedString.append(NSMutableAttributedString(string:" " + review.content))
             self.content.attributedText = attributedString
         }
+        
+        self.info.text = "   \(review.date) \(review.locale) \(review.appVersion)\(review.isAnswer == 1 ? "✅" : "")"
         
         if let url = URL(string: app.details.icon) {
             self.icon.af_setImage(
