@@ -18,6 +18,7 @@
 		981C3B11206EBF820072E3A2 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */; };
 		981C3B13206ECB9E0072E3A2 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B12206ECB9E0072E3A2 /* AppViewController.swift */; };
 		981C3B15206ED0020072E3A2 /* IconLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B14206ED0020072E3A2 /* IconLoader.swift */; };
+		981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */; };
 		984E51A7206BF71500CDB24D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A6206BF71500CDB24D /* Auth.swift */; };
 		984E51AA206BF73200CDB24D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A9206BF73200CDB24D /* String.swift */; };
 		984E51AD206BF79100CDB24D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984E51AC206BF79100CDB24D /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		981C3B12206ECB9E0072E3A2 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		981C3B14206ED0020072E3A2 /* IconLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLoader.swift; sourceTree = "<group>"; };
+		981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReviewsDataSource.swift; sourceTree = "<group>"; };
 		984E51A6206BF71500CDB24D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		984E51A9206BF73200CDB24D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		984E51AC206BF79100CDB24D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				984E51E8206C43A000CDB24D /* AppsDataSource.swift */,
 				984E51AE206BFA1A00CDB24D /* AppsViewController.swift */,
 				981C3B12206ECB9E0072E3A2 /* AppViewController.swift */,
+				981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				984E51A7206BF71500CDB24D /* Auth.swift in Sources */,
 				984E51B5206C170D00CDB24D /* AuthStorage.swift in Sources */,
 				984E51E3206C343600CDB24D /* App.swift in Sources */,
+				981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */,
 				981C3B15206ED0020072E3A2 /* IconLoader.swift in Sources */,
 				98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */,
 				9863188E206D80CF00D6A14F /* Id.swift in Sources */,

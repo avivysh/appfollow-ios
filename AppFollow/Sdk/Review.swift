@@ -8,6 +8,29 @@
 
 import Foundation
 
+struct Page: Codable {
+    let next: Int?
+    let current: Int
+    let prev: Int?
+    let total: Int
+}
+
+struct AppReviewsPage: Codable {
+    let extId: ExtId
+    let page: Page
+    let list: [Review]
+    
+    enum CodingKeys: String, CodingKey {
+        case extId = "ext_id"
+        case page
+        case list
+    }
+}
+
+struct AppReviewsResponse: Codable {
+    let reviews: AppReviewsPage
+}
+
 struct ReviewsResponse: Codable {
     let reviews: [Review]
 }
@@ -70,23 +93,25 @@ struct Review: Codable {
     
     init(from decoder: Decoder) throws {
         let map = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try map.decode(.id) ?? 0
+        // App reviews optional
+        self.id = try map.decodeIfPresent(.id) ?? 0
+        self.appId = try map.decodeIfPresent(.appId) ?? 0
+        self.extId = try map.decodeIfPresent(.extId) ?? ExtId.empty
+        self.locale = try map.decodeIfPresent(.locale) ?? ""
+        self.ratingPrevious = try map.decodeIfPresent(.ratingPrevious) ?? 0
+        self.updated = try map.decodeIfPresent(.updated) ?? ""
+        //
         self.store = try map.decode(.store) ?? ""
-        self.appId = try map.decode(.appId) ?? 0
-        self.extId = try map.decode(.extId) ?? ExtId.empty
         self.reviewId = try map.decode(.reviewId) ?? ReviewId.empty
-        self.locale = try map.decode(.locale) ?? ""
         self.userId = try map.decode(.userId) ?? UserId.empty
         self.date = try map.decode(.date) ?? ""
         self.title = try map.decode(.title) ?? ""
         self.content = try map.decode(.content) ?? ""
         self.rating = try map.decode(.rating) ?? 0
-        self.ratingPrevious = try map.decode(.ratingPrevious) ?? 0
         self.appVersion = try map.decode(.appVersion) ?? ""
         self.author = try map.decode(.author) ?? ""
         self.wasChanged = try map.decode(.wasChanged) ?? 0
         self.created = try map.decode(.created) ?? ""
-        self.updated = try map.decode(.updated) ?? ""
         self.isAnswer = try map.decode(.isAnswer) ?? 0
     }
 }

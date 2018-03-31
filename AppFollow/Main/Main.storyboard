@@ -216,7 +216,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="HGj-aO-lqD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_photo_black_48px" translatesAutoresizingMaskIntoConstraints="NO" id="FZc-3l-tKe">
@@ -238,38 +238,47 @@
                                             <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="Yxa-ic-E4S">
-                                            <rect key="frame" x="67" y="80" width="260" height="29"/>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="Yxa-ic-E4S" userLabel="SegmentedControl">
+                                            <rect key="frame" x="59" y="104" width="257" height="29"/>
                                             <segments>
                                                 <segment title="Overview"/>
                                                 <segment title="Reviews"/>
                                                 <segment title="What's new"/>
                                             </segments>
                                         </segmentedControl>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpE-Q9-y99" customClass="CosmosView" customModule="Cosmos">
+                                            <rect key="frame" x="88" y="61" width="100" height="18"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="LYN-0q-Kpz"/>
+                                                <constraint firstAttribute="width" constant="100" id="OoN-KY-aqu"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="FZc-3l-tKe" firstAttribute="top" secondItem="HGj-aO-lqD" secondAttribute="top" constant="8" id="4qL-X1-1NP"/>
                                         <constraint firstAttribute="bottom" secondItem="Yxa-ic-E4S" secondAttribute="bottom" constant="8" id="9w6-1w-HM6"/>
                                         <constraint firstAttribute="trailing" secondItem="COM-sL-OzS" secondAttribute="trailing" constant="8" id="EXK-YG-01h"/>
+                                        <constraint firstItem="rpE-Q9-y99" firstAttribute="leading" secondItem="FZc-3l-tKe" secondAttribute="trailing" constant="8" id="U8g-pe-d0s"/>
+                                        <constraint firstItem="Yxa-ic-E4S" firstAttribute="centerX" secondItem="HGj-aO-lqD" secondAttribute="centerX" id="hsL-rx-JeL"/>
                                         <constraint firstAttribute="trailing" secondItem="R33-Iq-l8h" secondAttribute="trailing" constant="8" id="ihU-vg-fes"/>
                                         <constraint firstItem="R33-Iq-l8h" firstAttribute="top" secondItem="COM-sL-OzS" secondAttribute="bottom" constant="8" id="llw-eY-bPM"/>
                                         <constraint firstItem="COM-sL-OzS" firstAttribute="top" secondItem="HGj-aO-lqD" secondAttribute="top" constant="8" id="nFv-Si-vTL"/>
-                                        <constraint firstItem="Yxa-ic-E4S" firstAttribute="leading" secondItem="HGj-aO-lqD" secondAttribute="leading" constant="67" id="oVT-3F-IrS"/>
-                                        <constraint firstAttribute="trailing" secondItem="Yxa-ic-E4S" secondAttribute="trailing" constant="48" id="r45-iz-6bg"/>
+                                        <constraint firstItem="rpE-Q9-y99" firstAttribute="top" secondItem="R33-Iq-l8h" secondAttribute="bottom" constant="6" id="qWY-zw-mZU"/>
                                         <constraint firstItem="R33-Iq-l8h" firstAttribute="leading" secondItem="FZc-3l-tKe" secondAttribute="trailing" constant="8" id="svA-Ia-spz"/>
                                         <constraint firstItem="COM-sL-OzS" firstAttribute="leading" secondItem="FZc-3l-tKe" secondAttribute="trailing" constant="8" id="vpD-9L-AIa"/>
                                         <constraint firstItem="FZc-3l-tKe" firstAttribute="leading" secondItem="HGj-aO-lqD" secondAttribute="leading" constant="16" id="w7O-bC-i8E"/>
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Evk-DB-WXd">
-                                    <rect key="frame" x="0.0" y="234" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="258" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewCell" rowHeight="90" id="0bU-fQ-DIb" customClass="ReviewCell" customModule="AppFollow" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="144" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="168" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0bU-fQ-DIb" id="fwV-0g-LOH">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
@@ -351,6 +360,8 @@
                         <outlet property="appTitle" destination="COM-sL-OzS" id="hgb-wB-gQe"/>
                         <outlet property="icon" destination="FZc-3l-tKe" id="df4-z3-fKt"/>
                         <outlet property="publisher" destination="R33-Iq-l8h" id="h4d-YP-WPn"/>
+                        <outlet property="stars" destination="rpE-Q9-y99" id="cnJ-QJ-ULO"/>
+                        <outlet property="tableView" destination="o8l-rg-Vw4" id="sgE-Uh-jC2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0k-Q8-Llc" userLabel="First Responder" sceneMemberID="firstResponder"/>

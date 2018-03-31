@@ -18,11 +18,18 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var info: UILabel!
     
+    override public func prepareForReuse() {
+        // Ensures the reused cosmos view is as good as new
+        stars.prepareForReuse()
+    }
+    
     func bind(review: Review, app: App) {
         
         self.author.text = review.author
         self.stars.rating = review.rating
-
+        self.stars.settings.updateOnTouch = false
+        self.stars.settings.starMargin = 2
+        
         if (review.title.isEmpty) {
              self.content.text = review.content.trimmingCharacters(in: .whitespacesAndNewlines)
         } else {
@@ -35,6 +42,8 @@ class ReviewCell: UITableViewCell {
         }
         
         self.info.text = "   \(review.date) \(review.locale) \(review.appVersion)\(review.isAnswer == 1 ? "✅" : "")"
-        IconLoader.into(self.icon, url: app.details.icon)
+        if self.icon != nil {
+            IconLoader.into(self.icon, url: app.details.icon)
+        }
     }
 }
