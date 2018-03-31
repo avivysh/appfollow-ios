@@ -69,10 +69,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="du0-gP-tuh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2uG-Il-KTY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DGx-dV-qem" secondAttribute="trailing" constant="123.5" id="9U8-H8-Yst"/>
+                            <constraint firstItem="DGx-dV-qem" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8Yy-Hn-k7t"/>
                             <constraint firstItem="0Pd-Q8-Vdr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="DvW-4f-NFa"/>
-                            <constraint firstItem="DGx-dV-qem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="123.5" id="IdI-ZG-962"/>
                             <constraint firstItem="DGx-dV-qem" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="MgZ-tf-Xjl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p3o-BM-mkM" secondAttribute="trailing" constant="88" id="O8w-fM-NbC"/>
                             <constraint firstItem="p3o-BM-mkM" firstAttribute="top" secondItem="du0-gP-tuh" secondAttribute="bottom" constant="26" id="QCj-2o-HOc"/>

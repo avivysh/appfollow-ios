@@ -16,6 +16,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var company: UILabel!
     @IBOutlet weak var image: UIImageView!
     
+    @IBAction func signOut(_ sender: UIButton) {
+        if let bundleID = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundleID)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
