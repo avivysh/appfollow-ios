@@ -27,7 +27,8 @@ class AppViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         self.appTitle.text = app.details.title
         self.publisher.text = app.details.publisher
-        self.stars.text = "(\(app.reviewsCount))"
+
+        self.stars.isHidden = true
         self.stars.settings.updateOnTouch = false
         self.stars.settings.starMargin = 2
         IconLoader.into(self.icon, url: app.details.icon)
@@ -38,6 +39,16 @@ class AppViewController: UIViewController {
 
         self.reviewsDataSource.reload {
             self.tableView.reloadData()
+        }
+        
+        let parameters = ReviewsSummaryEndpoint.parameters(extId: self.app.extId, from: self.app.created, to: Date(), auth: auth)
+        ApiRequest(url: ReviewsSummaryEndpoint.url, parameters: parameters).send {
+            (response: ReviewsSummary?) in
+            if let summary = response {
+                self.stars.isHidden = false
+                self.stars.rating = summary.ratingAverage
+                self.stars.text = "(\(summary.ratingCount))"
+            }
         }
     }
     

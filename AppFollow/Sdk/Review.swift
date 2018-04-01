@@ -8,9 +8,6 @@
 
 import Foundation
 
-private let dateFormatter = DateFormatter.create(format: "yyyy-MM-dd")
-private let dateTimeFormatter = DateFormatter.create(format: "yyyy-MM-dd HH:mm:ss")
-
 class ReviewsEndpoint {
     static let path = "/reviews"
     static let url = URL(string: ReviewsEndpoint.path, relativeTo: Endpoint.baseUrl)!
@@ -40,8 +37,8 @@ class CollectionReviewsEndpoint {
     
     static func parameters(collectionName: String, from: Date, to: Date, auth: Auth) -> [String: Any] {
         var parameters: [String: Any] = [
-            "from": dateFormatter.string(from: from),
-            "to": dateFormatter.string(from: to),
+            "from": Endpoint.date(from),
+            "to": Endpoint.date(to),
             Endpoint.keyCid : auth.cid
         ]
         let signature = Endpoint.sign(parameters: parameters, path: CollectionReviewsEndpoint.path(collectionName), auth: auth)
@@ -94,12 +91,12 @@ struct Review: Codable {
         get {
             var modified: Date?
             if (!updated.isEmpty) {
-                modified = dateTimeFormatter.date(from: updated)
+                modified = Endpoint.toDate(updated)
             }
-            if (modified == nil) {
-                modified = dateTimeFormatter.date(from: created)
+            if (modified == Date.unknown) {
+                modified = Endpoint.toDate(created)
             }
-            return modified ?? Date(timeIntervalSince1970: 100)
+            return modified ?? Date.unknown
         }
     }
     

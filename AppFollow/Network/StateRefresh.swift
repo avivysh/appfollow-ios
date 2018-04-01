@@ -65,9 +65,4 @@ class StateRefresh {
             }
         }
     }
-    
-    private func refreshReviewsSummary(app: App, completion: @escaping (ReviewsSummary?) -> Void) {
-        let parameters = ReviewsSummaryEndpoint.parameters(extId: app.extId, auth: self.auth)
-        ApiRequest(url: ReviewsSummaryEndpoint.url, parameters: parameters).send(completion: completion)
-    }
 }

@@ -12,9 +12,11 @@ class ReviewsSummaryEndpoint {
     static let path = "/reviews/summary"
     static let url = URL(string: ReviewsSummaryEndpoint.path, relativeTo: Endpoint.baseUrl)!
     
-    static func parameters(extId: ExtId, auth: Auth) -> [String: Any] {
+    static func parameters(extId: ExtId, from: Date, to: Date, auth: Auth) -> [String: Any] {
         var parameters: [String: Any] = [
             "ext_id" : extId.value,
+            "from": Endpoint.date(from),
+            "to": Endpoint.date(to),
             Endpoint.keyCid : auth.cid
         ]
         let signature = Endpoint.sign(parameters: parameters, path: ReviewsSummaryEndpoint.path, auth: auth)

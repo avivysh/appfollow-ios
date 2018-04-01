@@ -9,6 +9,7 @@
 import Foundation
 import CommonCrypto
 
+// TODO: Make this optional dependency
 class Hash {
     
     static func md5(input: String) -> Data {

@@ -46,14 +46,14 @@ struct CollectionResponse: Codable {
 
 struct App: Codable {
     
-    static let empty = App(id: 0, details: AppDetails.empty, reviewsCount: 0, whatsNewCount: 0, created: "", isFavorite: 0, store: "")
+    static let empty = App(id: 0, details: AppDetails.empty, reviewsCount: 0, whatsNewCount: 0, created: Date.unknown, isFavorite: false, store: "")
 
     let id: Int
     let details: AppDetails
     let reviewsCount: Int
     let whatsNewCount: Int
-    let created: String
-    let isFavorite: Int
+    let created: Date
+    let isFavorite: Bool
     let store: String
     
     var extId: ExtId {
@@ -68,6 +68,29 @@ struct App: Codable {
         case created
         case isFavorite = "is_favorite"
         case store
+    }
+    
+    init(id: Int, details: AppDetails, reviewsCount: Int, whatsNewCount: Int, created: Date, isFavorite: Bool, store: String) {
+        self.id = id
+        self.details = details
+        self.reviewsCount = reviewsCount
+        self.whatsNewCount = whatsNewCount
+        self.created = created
+        self.isFavorite = isFavorite
+        self.store = store
+    }
+    
+    init(from decoder: Decoder) throws {
+        let map = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try map.decode(.id) ?? 0
+        self.details = try map.decode(.details) ?? AppDetails.empty
+        self.reviewsCount = try map.decode(.reviewsCount) ?? 0
+        self.whatsNewCount = try map.decode(.whatsNewCount) ?? 0
+        let created = try map.decode(String.self, forKey: .created)
+        self.created = Endpoint.toDate(created)
+        let isFavorite = try map.decode(Int.self, forKey: .isFavorite)
+        self.isFavorite = isFavorite == 1
+        self.store = try map.decode(.store) ?? ""
     }
 }
 
