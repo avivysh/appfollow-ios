@@ -8,11 +8,46 @@
 
 import Foundation
 
-struct Page: Codable {
-    let next: Int?
-    let current: Int
-    let prev: Int?
-    let total: Int
+private let dateFormatter = DateFormatter.create(format: "yyyy-MM-dd")
+private let dateTimeFormatter = DateFormatter.create(format: "yyyy-MM-dd HH:mm:ss")
+
+class ReviewsEndpoint {
+    static let path = "/reviews"
+    static let url = URL(string: ReviewsEndpoint.path, relativeTo: Endpoint.baseUrl)!
+    
+    static func parameters(extId: ExtId, auth: Auth) -> [String: Any] {
+        var parameters: [String: Any] = [
+            "ext_id" : extId.value,
+            Endpoint.keyCid : auth.cid
+        ]
+        let signature = Endpoint.sign(parameters: parameters, path: ReviewsEndpoint.path, auth: auth)
+        parameters[Endpoint.keySign] = signature
+        return parameters
+    }
+}
+
+class CollectionReviewsEndpoint {
+    //    static let path = "/reviews"
+    //    static let url = URL(string: ReviewsSummaryEndpoint.path, relativeTo: Endpoint.baseUrl)!
+    
+    static func path(_ collectionName: String) -> String {
+        return "/\(collectionName)/reviews"
+    }
+    
+    static func url(collectionName: String) -> URL {
+        return URL(string: CollectionReviewsEndpoint.path(collectionName), relativeTo: Endpoint.baseUrl)!
+    }
+    
+    static func parameters(collectionName: String, from: Date, to: Date, auth: Auth) -> [String: Any] {
+        var parameters: [String: Any] = [
+            "from": dateFormatter.string(from: from),
+            "to": dateFormatter.string(from: to),
+            Endpoint.keyCid : auth.cid
+        ]
+        let signature = Endpoint.sign(parameters: parameters, path: CollectionReviewsEndpoint.path(collectionName), auth: auth)
+        parameters[Endpoint.keySign] = signature
+        return parameters
+    }
 }
 
 struct AppReviewsPage: Codable {
@@ -34,8 +69,6 @@ struct AppReviewsResponse: Codable {
 struct ReviewsResponse: Codable {
     let reviews: [Review]
 }
-
-private let dateFormatter = DateFormatter.create(format: "yyyy-MM-dd HH:mm:ss")
 
 struct Review: Codable {
     let id: Int
@@ -61,10 +94,10 @@ struct Review: Codable {
         get {
             var modified: Date?
             if (!updated.isEmpty) {
-                modified = dateFormatter.date(from: updated)
+                modified = dateTimeFormatter.date(from: updated)
             }
             if (modified == nil) {
-                modified = dateFormatter.date(from: created)
+                modified = dateTimeFormatter.date(from: created)
             }
             return modified ?? Date(timeIntervalSince1970: 100)
         }
