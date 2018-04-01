@@ -21,10 +21,25 @@ class AppsViewController: UIViewController {
         AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: .collectionsUpdate, object: nil)
+        
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AppDelegate.provide.stateRefresh.isRefreshing {
+            self.tableView.refreshControl?.beginRefreshing()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tableView.refreshControl?.endRefreshing()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,6 +55,12 @@ class AppsViewController: UIViewController {
     @objc func reloadTableView(notification: NSNotification) {
         self.dataSource.updateState()
         self.tableView.reloadData()
+        self.tableView.refreshControl?.endRefreshing()
+    }
+    
+    @objc func pullToRefresh() {
+        self.tableView.refreshControl?.beginRefreshing()
+        AppDelegate.provide.stateRefresh.refresh()
     }
 
 }

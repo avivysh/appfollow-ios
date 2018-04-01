@@ -15,9 +15,7 @@ class DependencyProvider {
         get { return self.authStorage.retrieve() }
     }
     let store = Store()
-    var stateRefresh: StateRefresh {
-        get { return StateRefresh(store: self.store, auth: self.auth )}
-    }
+    lazy var stateRefresh = StateRefresh(store: self.store, auth: self.auth )
     let profileStorage = ProfileStorage(defaults: UserDefaults.standard)
     var profile: Profile {
         get { return self.profileStorage.retrieve() }

@@ -38,6 +38,7 @@ class AppViewController: UIViewController {
         self.tableView.dataSource = self.reviewsDataSource
 
         self.reviewsDataSource.reload {
+            self.tableView.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         }
         
@@ -50,6 +51,25 @@ class AppViewController: UIViewController {
                 self.stars.text = "(\(summary.ratingCount))"
             }
         }
+        
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.refreshControl?.beginRefreshing()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tableView.refreshControl?.endRefreshing()
+    }
+    
+    @objc func pullToRefresh() {
+        self.reviewsDataSource.reload {
+            self.tableView.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
+    }
 }

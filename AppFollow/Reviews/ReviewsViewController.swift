@@ -17,15 +17,38 @@ class ReviewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.dataSource = self.dataSource
         AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: .collectionsUpdate, object: nil)
+        
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AppDelegate.provide.stateRefresh.isRefreshing {
+            self.tableView.refreshControl?.beginRefreshing()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tableView.refreshControl?.endRefreshing()
     }
     
     @objc func reloadTableView() {
         dataSource.reload {
             self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
         }
+    }
+    
+    @objc func pullToRefresh() {
+        AppDelegate.provide.stateRefresh.refresh()
     }
 }

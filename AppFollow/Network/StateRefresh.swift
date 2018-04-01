@@ -12,13 +12,15 @@ import Foundation
 class StateRefresh {
     var store: Store
     let auth: Auth
-    
+    var isRefreshing = false
+
     init(store: Store, auth: Auth) {
         self.store = store
         self.auth = auth
     }
     
     func refresh() {
+        self.isRefreshing = true
         self.requestCollections() {
             collections in
             
@@ -34,6 +36,7 @@ class StateRefresh {
             }
             
             group.notify(queue: .main) {
+                self.isRefreshing = false
                 self.store.collections = collections
                 self.store.apps = allApps
                 NotificationCenter.default.post(name: .collectionsUpdate, object: self)
