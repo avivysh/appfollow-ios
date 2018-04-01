@@ -245,6 +245,9 @@
                                                 <segment title="Reviews"/>
                                                 <segment title="What's new"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="cua-Dd-m5i" eventType="valueChanged" id="bTx-2t-jGo"/>
+                                            </connections>
                                         </segmentedControl>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpE-Q9-y99" customClass="CosmosView" customModule="Cosmos">
                                             <rect key="frame" x="88" y="61" width="100" height="18"/>
@@ -360,6 +363,7 @@
                         <outlet property="appTitle" destination="COM-sL-OzS" id="hgb-wB-gQe"/>
                         <outlet property="icon" destination="FZc-3l-tKe" id="df4-z3-fKt"/>
                         <outlet property="publisher" destination="R33-Iq-l8h" id="h4d-YP-WPn"/>
+                        <outlet property="segment" destination="Yxa-ic-E4S" id="w1L-ea-AvY"/>
                         <outlet property="stars" destination="rpE-Q9-y99" id="cnJ-QJ-ULO"/>
                         <outlet property="tableView" destination="o8l-rg-Vw4" id="sgE-Uh-jC2"/>
                     </connections>

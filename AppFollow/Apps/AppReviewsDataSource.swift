@@ -8,18 +8,38 @@
 
 import UIKit
 
-class AppReviewsDataSource: NSObject, UITableViewDataSource {
-    
+class AppReviewsDataSource: NSObject, AppViewDataSource {
     private var reviews: [Review] = []
     private let app: App
     private let auth: Auth
-    
+
+    private var loaded = false
+    var dataSourceRefreshComplete = {}
+
     init(app: App, auth: Auth) {
         self.app = app
         self.auth = auth
     }
     
-    func reload(complete: @escaping () -> Void) {
+    func reload() {
+        self.reload {
+            self.loaded = true
+            self.dataSourceRefreshComplete()
+        }
+    }
+    
+    func dataSourceBecomeActive() {
+        if (self.loaded) {
+            return
+        }
+        
+        self.reload {
+            self.loaded = true
+            self.dataSourceRefreshComplete()
+        }
+    }
+    
+    private func reload(complete: @escaping () -> Void) {
         let parameters = ReviewsEndpoint.parameters(extId: app.extId, auth: self.auth)
         ApiRequest(url: ReviewsEndpoint.url, parameters: parameters).send {
             (response: AppReviewsResponse?) in
