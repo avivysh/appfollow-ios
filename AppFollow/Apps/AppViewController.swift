@@ -32,13 +32,14 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
     
     var reviewsDataSource: AppReviewsDataSource!
     var whatsNewDataSource: WhatsNewDataSource!
-    
+    var overviewDataSource: OverviewDataSource!
+
     var currentSegment = 1
     
     var dataSourceForSegment: AppSectionDataSource {
         get {
             switch self.currentSegment {
-                case 0: return self.reviewsDataSource
+                case 0: return self.overviewDataSource
                 case 2: return self.whatsNewDataSource
                 default: return self.reviewsDataSource
             }
@@ -63,6 +64,9 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
         
         self.whatsNewDataSource = WhatsNewDataSource(app: self.app, auth: auth)
         self.whatsNewDataSource.delegate = self
+        
+        self.overviewDataSource = OverviewDataSource(app: self.app)
+        self.overviewDataSource.delegate = self
         
         self.loadSummary()
         

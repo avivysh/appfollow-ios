@@ -50,6 +50,14 @@ class WhatsNewDataSource: NSObject, AppSectionDataSource {
         return cell
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "What's new"
+    }
+    
     // MARK: Private
     
     private func reload(complete: @escaping () -> Void) {
