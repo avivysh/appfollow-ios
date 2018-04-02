@@ -25,7 +25,7 @@ class ReviewCell: UITableViewCell {
     
     func bind(review: Review, app: App) {
         
-        self.author.text = review.author
+        self.author.text = review.author.isEmpty ? "Unknown" : review.author
         self.stars.rating = review.rating
         self.stars.settings.updateOnTouch = false
         self.stars.settings.starMargin = 2
@@ -41,7 +41,7 @@ class ReviewCell: UITableViewCell {
             self.content.attributedText = attributedString
         }
         
-        self.info.text = "   \(review.date) \(review.locale) \(review.appVersion)\(review.isAnswer == 1 ? "✅" : "")"
+        self.info.text = "   \(review.date) \(review.locale) \(review.version)\(review.answered ? "✅" : "")"
         if self.icon != nil {
             IconLoader.into(self.icon, url: app.details.icon)
         }

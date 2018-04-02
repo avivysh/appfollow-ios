@@ -30,9 +30,10 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segment: UISegmentedControl!
     
-    var reviewsDataSource: AppReviewsDataSource!
-    var whatsNewDataSource: WhatsNewDataSource!
-    var overviewDataSource: OverviewDataSource!
+    lazy var auth = AppDelegate.provide.auth
+    lazy var reviewsDataSource = AppReviewsDataSource(app: self.app, auth: self.auth)
+    lazy var whatsNewDataSource = WhatsNewDataSource(app: self.app, auth: self.auth)
+    lazy var overviewDataSource = OverviewDataSource(app: self.app)
 
     var currentSegment = 1
     
@@ -58,14 +59,8 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
         self.stars.settings.starMargin = 2
         IconLoader.into(self.icon, url: app.details.icon)
         
-        let auth = AppDelegate.provide.auth
-        self.reviewsDataSource = AppReviewsDataSource(app: self.app, auth: auth)
         self.reviewsDataSource.delegate = self
-        
-        self.whatsNewDataSource = WhatsNewDataSource(app: self.app, auth: auth)
         self.whatsNewDataSource.delegate = self
-        
-        self.overviewDataSource = OverviewDataSource(app: self.app)
         self.overviewDataSource.delegate = self
         
         self.loadSummary()

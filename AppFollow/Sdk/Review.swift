@@ -11,12 +11,19 @@ import Foundation
 class ReviewsEndpoint {
     static let path = "/reviews"
     static let url = URL(string: ReviewsEndpoint.path, relativeTo: Endpoint.baseUrl)!
-    
+
     static func parameters(extId: ExtId, auth: Auth) -> [String: Any] {
+        return ReviewsEndpoint.parameters(extId: extId, reviewId: ReviewId.empty, auth: auth)
+    }
+    
+    static func parameters(extId: ExtId, reviewId: ReviewId, auth: Auth) -> [String: Any] {
         var parameters: [String: Any] = [
             "ext_id" : extId.value,
             Endpoint.keyCid : auth.cid
         ]
+        if !reviewId.isEmpty {
+           parameters["review_id"] = reviewId.value
+        }
         let signature = Endpoint.sign(parameters: parameters, path: ReviewsEndpoint.path, auth: auth)
         parameters[Endpoint.keySign] = signature
         return parameters
@@ -68,6 +75,9 @@ struct ReviewsResponse: Codable {
 }
 
 struct Review: Codable {
+    
+    static let empty = Review(id: 0, appId: 0, extId: ExtId.empty, locale: "", rating: 0, ratingPrevious: 0, store: "", reviewId: ReviewId.empty, userId: UserId.empty, date: "", title: "", content: "", version: "", author: "", wasChanged: false, created: Date.unknown, updated: Date.unknown, answered: false, answerDate: "", answer: "", history: [])
+    
     let id: Int
     let store: String
     let appId: Int
@@ -79,24 +89,23 @@ struct Review: Codable {
     let title: String
     let content: String
     let rating: Double
-    let ratingPrevious: Int
-    let appVersion: String
+    let ratingPrevious: Double
+    let version: String
     let author: String
-    let wasChanged: Int
-    let created: String
-    let updated: String
-    let isAnswer: Int
+    let wasChanged: Bool
+    let created: Date
+    let updated: Date
+    let answered: Bool
+    let answerDate: String
+    let answer: String
+    let history: [Review]
     
     var modified: Date {
         get {
-            var modified: Date?
-            if (!updated.isEmpty) {
-                modified = Endpoint.toDate(updated)
+            if (updated.isValid) {
+                return updated
             }
-            if (modified == Date.unknown) {
-                modified = Endpoint.toDate(created)
-            }
-            return modified ?? Date.unknown
+            return created
         }
     }
     
@@ -113,12 +122,39 @@ struct Review: Codable {
         case content
         case rating
         case ratingPrevious = "rating_prev"
-        case appVersion = "app_version"
+        case version = "app_version"
         case author
         case wasChanged = "was_changed"
         case created
         case updated
-        case isAnswer = "is_answer"
+        case answered = "is_answer"
+        case answerDate = "answer_date"
+        case answer = "answer_text"
+        case history = "reviews_history"
+    }
+    
+    init(id: Int, appId: Int, extId: ExtId, locale: String, rating: Double, ratingPrevious: Double, store: String, reviewId: ReviewId, userId: UserId, date: String, title: String, content: String, version: String, author: String, wasChanged: Bool, created: Date, updated: Date, answered: Bool, answerDate: String, answer: String, history: [Review]) {
+        self.id = id
+        self.appId = appId
+        self.extId = extId
+        self.locale = locale
+        self.rating = rating
+        self.ratingPrevious = ratingPrevious
+        self.store = store
+        self.reviewId = reviewId
+        self.userId = userId
+        self.date = date
+        self.title = title
+        self.content = content
+        self.version = version
+        self.author = author
+        self.wasChanged = wasChanged
+        self.created = created
+        self.updated = updated
+        self.answered = answered
+        self.answerDate = answerDate
+        self.answer = answer
+        self.history = history
     }
     
     init(from decoder: Decoder) throws {
@@ -129,20 +165,26 @@ struct Review: Codable {
         self.extId = try map.decodeIfPresent(.extId) ?? ExtId.empty
         self.locale = try map.decodeIfPresent(.locale) ?? ""
         self.ratingPrevious = try map.decodeIfPresent(.ratingPrevious) ?? 0
-        self.updated = try map.decodeIfPresent(.updated) ?? ""
+        let updated = try map.decodeIfPresent(String.self, forKey: .updated) ?? ""
+        self.updated = updated.isEmpty ? Date.unknown : Endpoint.toDate(updated)
+        self.answerDate = try map.decodeIfPresent(.answerDate) ?? ""
+        self.answer = try map.decodeIfPresent(.answer) ?? ""
+        // History optional
+        self.store = try map.decodeIfPresent(.store) ?? ""
+        self.version = try map.decodeIfPresent(.version) ?? ""
         //
-        self.store = try map.decode(.store) ?? ""
         self.reviewId = try map.decode(.reviewId) ?? ReviewId.empty
         self.userId = try map.decode(.userId) ?? UserId.empty
         self.date = try map.decode(.date) ?? ""
         self.title = try map.decode(.title) ?? ""
         self.content = try map.decode(.content) ?? ""
         self.rating = try map.decode(.rating) ?? 0
-        self.appVersion = try map.decode(.appVersion) ?? ""
         self.author = try map.decode(.author) ?? ""
-        self.wasChanged = try map.decode(.wasChanged) ?? 0
-        self.created = try map.decode(.created) ?? ""
-        self.isAnswer = try map.decode(.isAnswer) ?? 0
+        self.wasChanged = try map.decode(Int.self, forKey: .wasChanged) == 1
+        let created = try map.decodeIfPresent(String.self, forKey: .created) ?? ""
+        self.created = created.isEmpty ? Date.unknown : Endpoint.toDate(created)
+        self.answered = try map.decode(Int.self, forKey: .answered) == 1
+        self.history = try map.decodeIfPresent(.history) ?? []
     }
 }
 

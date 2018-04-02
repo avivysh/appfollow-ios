@@ -22,6 +22,15 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     private var apps: [Int: App] = [:]
     private var sections: [DateSection] = []
     
+    func reviewFor(indexPath: IndexPath) -> Review {
+        let dateSection = sections[indexPath.section]
+        return reviews[dateSection]![indexPath.row]
+    }
+    
+    func appFor(review: Review) -> App {
+        return apps[review.appId] ?? App.empty
+    }
+    
     func reload(complete: @escaping () -> Void) {
         
         let collections = AppDelegate.provide.store.collections

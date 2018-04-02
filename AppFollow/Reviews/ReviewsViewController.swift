@@ -51,4 +51,14 @@ class ReviewsViewController: UIViewController {
     @objc func pullToRefresh() {
         AppDelegate.provide.stateRefresh.refresh()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let reviewViewController = segue.destination as? ReviewViewController {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let review = self.dataSource.reviewFor(indexPath: indexPath)
+                reviewViewController.reviewId = review.reviewId
+                reviewViewController.app = self.dataSource.appFor(review: review)
+            }
+        }
+    }
 }

@@ -10,6 +10,11 @@ import Foundation
 
 extension Date {
     static let unknown = Date(timeIntervalSince1970: 0)
+    
+    var isValid: Bool {
+        get { return self != Date.unknown }
+    }
+    
     static func byAdding(_ component: Calendar.Component, value: Int, date: Date) -> Date {
         return Calendar.current.date(byAdding: component, value: value, to: date)!
     }
