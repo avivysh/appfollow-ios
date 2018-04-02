@@ -172,6 +172,7 @@ struct Review: Codable {
         // History optional
         self.store = try map.decodeIfPresent(.store) ?? ""
         self.version = try map.decodeIfPresent(.version) ?? ""
+        self.answered = (try map.decodeIfPresent(Int.self, forKey: .answered) ?? 0) == 1
         //
         self.reviewId = try map.decode(.reviewId) ?? ReviewId.empty
         self.userId = try map.decode(.userId) ?? UserId.empty
@@ -183,7 +184,6 @@ struct Review: Codable {
         self.wasChanged = try map.decode(Int.self, forKey: .wasChanged) == 1
         let created = try map.decodeIfPresent(String.self, forKey: .created) ?? ""
         self.created = created.isEmpty ? Date.unknown : Endpoint.toDate(created)
-        self.answered = try map.decode(Int.self, forKey: .answered) == 1
         self.history = try map.decodeIfPresent(.history) ?? []
     }
 }

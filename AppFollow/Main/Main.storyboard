@@ -345,6 +345,7 @@
                                             <outlet property="icon" destination="FZc-3l-tKe" id="pWY-gv-fIa"/>
                                             <outlet property="info" destination="RsO-sb-Hms" id="M6J-xC-d9f"/>
                                             <outlet property="stars" destination="uUj-zs-dAp" id="wrA-fV-EqL"/>
+                                            <segue destination="X7G-xV-bP0" kind="show" identifier="ReviewSegue" id="Ddd-8N-lRw"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WhatsNewCell" textLabel="zZX-yi-Zby" detailTextLabel="81c-go-djk" style="IBUITableViewCellStyleSubtitle" id="BYE-ev-xp2" customClass="WhatsNewCell" customModule="AppFollow" customModuleProvider="target">
@@ -907,4 +908,7 @@
         <image name="ic_rate_review_black_24px" width="30" height="30"/>
         <image name="logo" width="1024" height="1024"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ddd-8N-lRw"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -22,6 +22,10 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
         self.auth = auth
     }
     
+    func reviewFor(indexPath: IndexPath) -> Review {
+        return self.reviews[indexPath.row]
+    }
+    
     func reload() {
         self.reload {
             self.loaded = true

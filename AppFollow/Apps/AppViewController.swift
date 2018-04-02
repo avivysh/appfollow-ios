@@ -82,6 +82,16 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
         self.tableView.refreshControl?.endRefreshing()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let reviewViewController = segue.destination as? ReviewViewController {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let review = self.reviewsDataSource.reviewFor(indexPath: indexPath)
+                reviewViewController.reviewId = review.reviewId
+                reviewViewController.app = self.app
+            }
+            
+        }
+    }
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         self.currentSegment = sender.selectedSegmentIndex
         self.tableView.dataSource = self.dataSourceForSegment
