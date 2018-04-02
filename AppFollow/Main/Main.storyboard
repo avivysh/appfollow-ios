@@ -275,7 +275,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Evk-DB-WXd">
-                                    <rect key="frame" x="0.0" y="258" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="302" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
@@ -345,6 +345,34 @@
                                             <outlet property="icon" destination="FZc-3l-tKe" id="pWY-gv-fIa"/>
                                             <outlet property="info" destination="RsO-sb-Hms" id="M6J-xC-d9f"/>
                                             <outlet property="stars" destination="uUj-zs-dAp" id="wrA-fV-EqL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WhatsNewCell" textLabel="zZX-yi-Zby" detailTextLabel="81c-go-djk" style="IBUITableViewCellStyleSubtitle" id="BYE-ev-xp2" customClass="WhatsNewCell" customModule="AppFollow" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="258" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BYE-ev-xp2" id="zhC-oP-Bqg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zZX-yi-Zby">
+                                                    <rect key="frame" x="15" y="6" width="25" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="81c-go-djk">
+                                                    <rect key="frame" x="15" y="22.5" width="40.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="subtitle" destination="81c-go-djk" id="j3k-qh-LY4"/>
+                                            <outlet property="title" destination="zZX-yi-Zby" id="xOK-hf-TEs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

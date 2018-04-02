@@ -44,6 +44,9 @@
 		98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631891206D847700D6A14F /* ReviewsDataSource.swift */; };
 		98631894206E4EFE00D6A14F /* DateSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631893206E4EFE00D6A14F /* DateSection.swift */; };
 		98631896206E58A900D6A14F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631895206E58A900D6A14F /* Date.swift */; };
+		98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */; };
+		98815DBE20721CE000A7A6C6 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBD20721CE000A7A6C6 /* WhatsNew.swift */; };
+		98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4A206D62DD00FA461F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F49206D62DD00FA461F /* Profile.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
@@ -94,6 +97,9 @@
 		98631891206D847700D6A14F /* ReviewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsDataSource.swift; sourceTree = "<group>"; };
 		98631893206E4EFE00D6A14F /* DateSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSection.swift; sourceTree = "<group>"; };
 		98631895206E58A900D6A14F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewDataSource.swift; sourceTree = "<group>"; };
+		98815DBD20721CE000A7A6C6 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
+		98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewCell.swift; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F49206D62DD00FA461F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 				98F01F49206D62DD00FA461F /* Profile.swift */,
 				98F7D31E206D7462005195BD /* Review.swift */,
 				984E51F2206D069000CDB24D /* ReviewsSummary.swift */,
+				98815DBD20721CE000A7A6C6 /* WhatsNew.swift */,
 			);
 			path = Sdk;
 			sourceTree = "<group>";
@@ -226,6 +233,8 @@
 				984E51AE206BFA1A00CDB24D /* AppsViewController.swift */,
 				981C3B12206ECB9E0072E3A2 /* AppViewController.swift */,
 				981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */,
+				98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */,
+				98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -373,12 +382,14 @@
 				984E51DD206C244E00CDB24D /* Hash.swift in Sources */,
 				984E51AF206BFA1A00CDB24D /* AppsViewController.swift in Sources */,
 				981C3B192070C1F40072E3A2 /* Page.swift in Sources */,
+				98815DBE20721CE000A7A6C6 /* WhatsNew.swift in Sources */,
 				98F01F4A206D62DD00FA461F /* Profile.swift in Sources */,
 				984E51A7206BF71500CDB24D /* Auth.swift in Sources */,
 				984E51B5206C170D00CDB24D /* AuthStorage.swift in Sources */,
 				984E51E3206C343600CDB24D /* App.swift in Sources */,
 				981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */,
 				981C3B15206ED0020072E3A2 /* IconLoader.swift in Sources */,
+				98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */,
 				98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */,
 				9863188E206D80CF00D6A14F /* Id.swift in Sources */,
 				98F7D31D206D704E005195BD /* ReviewsViewController.swift in Sources */,
@@ -395,6 +406,7 @@
 				98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */,
 				98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */,
 				984E51F1206D05CB00CDB24D /* Store.swift in Sources */,
+				98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */,
 				98F7D31F206D7462005195BD /* Review.swift in Sources */,
 				984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */,
 				984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */,

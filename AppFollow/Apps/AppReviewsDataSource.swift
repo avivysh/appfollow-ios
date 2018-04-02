@@ -8,14 +8,15 @@
 
 import UIKit
 
-class AppReviewsDataSource: NSObject, AppViewDataSource {
+class AppReviewsDataSource: NSObject, AppSectionDataSource {
+    
     private var reviews: [Review] = []
     private let app: App
     private let auth: Auth
 
     private var loaded = false
-    var dataSourceRefreshComplete = {}
-
+    weak var delegate: AppSectionDataSourceDelegate?
+    
     init(app: App, auth: Auth) {
         self.app = app
         self.auth = auth
@@ -24,18 +25,18 @@ class AppReviewsDataSource: NSObject, AppViewDataSource {
     func reload() {
         self.reload {
             self.loaded = true
-            self.dataSourceRefreshComplete()
+            self.delegate?.dataSourceCompleteRefresh()
         }
     }
     
-    func dataSourceBecomeActive() {
+    func activate() {
         if (self.loaded) {
             return
         }
         
         self.reload {
             self.loaded = true
-            self.dataSourceRefreshComplete()
+            self.delegate?.dataSourceCompleteRefresh()
         }
     }
     
@@ -44,9 +45,7 @@ class AppReviewsDataSource: NSObject, AppViewDataSource {
         ApiRequest(url: ReviewsEndpoint.url, parameters: parameters).send {
             (response: AppReviewsResponse?) in
             if let reviews = response?.reviews.list {
-                self.reviews = reviews.sorted(by: { (lr, rr) -> Bool in
-                    lr.modified < rr.modified
-                })
+                self.reviews = reviews
             }
             complete()
         }

@@ -9,13 +9,17 @@
 import UIKit
 import Cosmos
 
-protocol AppViewDataSource: UITableViewDataSource {
-    func reload()
-    var dataSourceRefreshComplete: () -> Void { get set }
-    func dataSourceBecomeActive()
+protocol AppSectionDataSourceDelegate: NSObjectProtocol {
+    func dataSourceCompleteRefresh()
 }
 
-class AppViewController: UIViewController {
+protocol AppSectionDataSource: UITableViewDataSource {
+    var delegate: AppSectionDataSourceDelegate? { get set }
+    func reload()
+    func activate()
+}
+
+class AppViewController: UIViewController, AppSectionDataSourceDelegate {
     
     var app: App!
     
@@ -27,14 +31,15 @@ class AppViewController: UIViewController {
     @IBOutlet weak var segment: UISegmentedControl!
     
     var reviewsDataSource: AppReviewsDataSource!
+    var whatsNewDataSource: WhatsNewDataSource!
     
     var currentSegment = 1
     
-    var dataSourceForSegment: AppViewDataSource {
+    var dataSourceForSegment: AppSectionDataSource {
         get {
             switch self.currentSegment {
                 case 0: return self.reviewsDataSource
-                case 2: return self.reviewsDataSource
+                case 2: return self.whatsNewDataSource
                 default: return self.reviewsDataSource
             }
         }
@@ -54,18 +59,18 @@ class AppViewController: UIViewController {
         
         let auth = AppDelegate.provide.auth
         self.reviewsDataSource = AppReviewsDataSource(app: self.app, auth: auth)
-        self.reviewsDataSource.dataSourceRefreshComplete = {
-            self.tableView.reloadData()
-            self.tableView.refreshControl?.endRefreshing()
-        }
-
+        self.reviewsDataSource.delegate = self
+        
+        self.whatsNewDataSource = WhatsNewDataSource(app: self.app, auth: auth)
+        self.whatsNewDataSource.delegate = self
+        
         self.loadSummary()
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         
         self.tableView.dataSource = self.dataSourceForSegment
-        self.dataSourceForSegment.dataSourceBecomeActive()
+        self.dataSourceForSegment.activate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +87,7 @@ class AppViewController: UIViewController {
         self.currentSegment = sender.selectedSegmentIndex
         self.tableView.dataSource = self.dataSourceForSegment
         self.tableView.reloadData()
-        self.dataSourceForSegment.dataSourceBecomeActive()
+        self.dataSourceForSegment.activate()
     }
     
     @objc func pullToRefresh() {
@@ -100,5 +105,12 @@ class AppViewController: UIViewController {
                 self.stars.text = "(\(summary.ratingCount))"
             }
         }
+    }
+    
+    // MARK: AppViewDataSourceDelegate
+    
+    func dataSourceCompleteRefresh() {
+        self.tableView.reloadData()
+        self.tableView.refreshControl?.endRefreshing()
     }
 }
