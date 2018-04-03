@@ -10,12 +10,12 @@ import UIKit
 
 class ReviewViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var send: UIButton!
-    
+    @IBOutlet weak var actionBarBottom: NSLayoutConstraint!
+    @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var actionButton: UIButton!
+
     var app: App!
     var reviewId: ReviewId!
-    @IBOutlet weak var actionBarBottom: NSLayoutConstraint!
     
     lazy var dataSource = ReviewReplyDataSource(reviewId: self.reviewId, app: self.app, auth: AppDelegate.provide.auth)
     
@@ -35,6 +35,8 @@ class ReviewViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    // MARK: Keybaord
     
     @objc func keyboardWillShow(notification: NSNotification) {
         guard

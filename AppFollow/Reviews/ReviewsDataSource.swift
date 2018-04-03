@@ -46,7 +46,7 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
                 to: now,
                 auth: auth)
             group.enter()
-            ApiRequest(url: CollectionReviewsEndpoint.url(collectionName: collection.title), parameters: parameters).send {
+            ApiRequest(url: CollectionReviewsEndpoint.url(collectionName: collection.title), parameters: parameters).get {
                 (response: ReviewsResponse?) in
                 if let reviews = response?.reviews {
                     group.leave()

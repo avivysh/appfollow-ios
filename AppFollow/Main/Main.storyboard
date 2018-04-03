@@ -886,9 +886,9 @@
                     </view>
                     <connections>
                         <outlet property="actionBarBottom" destination="Ge8-ai-IrP" id="iWE-1b-7aB"/>
-                        <outlet property="send" destination="vuP-c9-i2C" id="uTK-BQ-i7X"/>
+                        <outlet property="actionButton" destination="vuP-c9-i2C" id="htR-ne-a4U"/>
                         <outlet property="tableView" destination="55U-hc-wgQ" id="yJu-rx-BH6"/>
-                        <outlet property="textView" destination="fLZ-d0-kep" id="uuS-X9-AiA"/>
+                        <outlet property="textField" destination="fLZ-d0-kep" id="XFR-Fr-j0D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJp-il-LPc" userLabel="First Responder" sceneMemberID="firstResponder"/>

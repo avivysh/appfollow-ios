@@ -12,8 +12,8 @@ class AnswerCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var content: UILabel!
     
-    func bind(answer: String, date: String) {
-        self.title.text = "Answered on \(date)"
-        self.content.text = answer
+    func bind(answer: ReviewAnswer) {
+        self.title.text = "Answered on \(answer.date)"
+        self.content.text = answer.text
     }
 }

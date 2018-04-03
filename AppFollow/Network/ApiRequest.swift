@@ -13,7 +13,7 @@ struct ApiRequest {
     let url: URL
     let parameters: [String: Any]
     
-    func send<R: Decodable>(completion: @escaping (R?) -> Void) {
+    func get<R: Decodable>(completion: @escaping (R?) -> Void) {
         let request = Alamofire.request(self.url, parameters: self.parameters).responseData {
             response in
             

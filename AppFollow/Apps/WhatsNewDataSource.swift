@@ -62,7 +62,7 @@ class WhatsNewDataSource: NSObject, AppSectionDataSource {
     
     private func reload(complete: @escaping () -> Void) {
         let parameters = WhatsNewEndpoint.parameters(extId: app.extId, auth: self.auth)
-        ApiRequest(url: WhatsNewEndpoint.url, parameters: parameters).send {
+        ApiRequest(url: WhatsNewEndpoint.url, parameters: parameters).get {
             (response: WhatsNewResponse?) in
             if let whatsnew = response?.whatsnew.list {
                 self.whatsnew = whatsnew

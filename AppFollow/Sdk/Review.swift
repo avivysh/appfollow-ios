@@ -54,7 +54,7 @@ class CollectionReviewsEndpoint {
     }
 }
 
-struct AppReviewsPage: Codable {
+struct AppReviewsPage: Decodable {
     let extId: ExtId
     let page: Page
     let list: [Review]
@@ -66,17 +66,27 @@ struct AppReviewsPage: Codable {
     }
 }
 
-struct AppReviewsResponse: Codable {
+struct AppReviewsResponse: Decodable {
     let reviews: AppReviewsPage
 }
 
-struct ReviewsResponse: Codable {
+struct ReviewsResponse: Decodable {
     let reviews: [Review]
 }
 
-struct Review: Codable {
+struct ReviewAnswer {
     
-    static let empty = Review(id: 0, appId: 0, extId: ExtId.empty, locale: "", rating: 0, ratingPrevious: 0, store: "", reviewId: ReviewId.empty, userId: UserId.empty, date: "", title: "", content: "", version: "", author: "", wasChanged: false, created: Date.unknown, updated: Date.unknown, answered: false, answerDate: "", answer: "", history: [])
+    static let empty = ReviewAnswer(answered: false, date: "", text: "")
+    
+    let answered: Bool
+    let date: String
+    let text: String
+
+}
+
+struct Review: Decodable {
+    
+    static let empty = Review(id: 0, appId: 0, extId: ExtId.empty, locale: "", rating: 0, ratingPrevious: 0, store: "", reviewId: ReviewId.empty, userId: UserId.empty, date: "", title: "", content: "", version: "", author: "", wasChanged: false, created: Date.unknown, updated: Date.unknown, answer: ReviewAnswer.empty, history: [])
     
     let id: Int
     let store: String
@@ -95,10 +105,12 @@ struct Review: Codable {
     let wasChanged: Bool
     let created: Date
     let updated: Date
-    let answered: Bool
-    let answerDate: String
-    let answer: String
+    let answer: ReviewAnswer
     let history: [Review]
+    
+    var answered: Bool {
+        get { return answer.answered }
+    }
     
     var modified: Date {
         get {
@@ -127,13 +139,13 @@ struct Review: Codable {
         case wasChanged = "was_changed"
         case created
         case updated
+        case history = "reviews_history"
         case answered = "is_answer"
         case answerDate = "answer_date"
-        case answer = "answer_text"
-        case history = "reviews_history"
+        case answerText = "answer_text"
     }
     
-    init(id: Int, appId: Int, extId: ExtId, locale: String, rating: Double, ratingPrevious: Double, store: String, reviewId: ReviewId, userId: UserId, date: String, title: String, content: String, version: String, author: String, wasChanged: Bool, created: Date, updated: Date, answered: Bool, answerDate: String, answer: String, history: [Review]) {
+    init(id: Int, appId: Int, extId: ExtId, locale: String, rating: Double, ratingPrevious: Double, store: String, reviewId: ReviewId, userId: UserId, date: String, title: String, content: String, version: String, author: String, wasChanged: Bool, created: Date, updated: Date, answer: ReviewAnswer, history: [Review]) {
         self.id = id
         self.appId = appId
         self.extId = extId
@@ -151,8 +163,6 @@ struct Review: Codable {
         self.wasChanged = wasChanged
         self.created = created
         self.updated = updated
-        self.answered = answered
-        self.answerDate = answerDate
         self.answer = answer
         self.history = history
     }
@@ -167,12 +177,14 @@ struct Review: Codable {
         self.ratingPrevious = try map.decodeIfPresent(.ratingPrevious) ?? 0
         let updated = try map.decodeIfPresent(String.self, forKey: .updated) ?? ""
         self.updated = updated.isEmpty ? Date.unknown : Endpoint.toDate(updated)
-        self.answerDate = try map.decodeIfPresent(.answerDate) ?? ""
-        self.answer = try map.decodeIfPresent(.answer) ?? ""
         // History optional
         self.store = try map.decodeIfPresent(.store) ?? ""
         self.version = try map.decodeIfPresent(.version) ?? ""
-        self.answered = (try map.decodeIfPresent(Int.self, forKey: .answered) ?? 0) == 1
+        // Answer
+        let answerDate = try map.decodeIfPresent(.answerDate) ?? ""
+        let answerText = try map.decodeIfPresent(.answerText) ?? ""
+        let answered = (try map.decodeIfPresent(Int.self, forKey: .answered) ?? 0) == 1
+        self.answer = ReviewAnswer(answered: answered, date: answerDate, text: answerText)
         //
         self.reviewId = try map.decode(.reviewId) ?? ReviewId.empty
         self.userId = try map.decode(.userId) ?? UserId.empty

@@ -48,7 +48,7 @@ class StateRefresh {
     // MARK: Private
     
     private func requestApps(collectionId: Int, completion: @escaping ([App]) -> Void) {
-        ApiRequest(url: AppEndpoint.url, parameters: AppEndpoint.parameters(collectionId: collectionId, auth: self.auth)).send {
+        ApiRequest(url: AppEndpoint.url, parameters: AppEndpoint.parameters(collectionId: collectionId, auth: self.auth)).get {
             (response: CollectionResponse?) in
             if let collection = response {
                 completion(collection.apps)
@@ -59,7 +59,7 @@ class StateRefresh {
     }
     
     private func requestCollections(completion: @escaping ([Collection]) -> Void) {
-        ApiRequest(url: AppsEndpoint.url, parameters: AppsEndpoint.parameters(auth: self.auth)).send {
+        ApiRequest(url: AppsEndpoint.url, parameters: AppsEndpoint.parameters(auth: self.auth)).get {
             (response: CollectionsResponse?) in
             if let collections = response {
                 completion(collections.collections)

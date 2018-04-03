@@ -17,8 +17,7 @@ private struct Feedback: ReplyItem {
 }
 
 private struct Reply: ReplyItem {
-    let answer: String
-    let date: String
+    let answer: ReviewAnswer
 }
 
 class ReviewReplyDataSource: NSObject, UITableViewDataSource {
@@ -38,7 +37,7 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
     
     func reload(completion: @escaping () -> Void) {
         let parameters = ReviewsEndpoint.parameters(extId: self.app.extId, reviewId: self.reviewId, auth: self.auth)
-        ApiRequest(url: ReviewsEndpoint.url, parameters: parameters).send {
+        ApiRequest(url: ReviewsEndpoint.url, parameters: parameters).get {
             (response: AppReviewsResponse?) in
             if let review = response?.reviews.list.first {
                 self.review = review
@@ -61,7 +60,7 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
             return cell
         } else if let reply = item as? Reply {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath) as! AnswerCell
-            cell.bind(answer: reply.answer, date: reply.date)
+            cell.bind(answer: reply.answer)
             return cell
         }
         
@@ -74,13 +73,13 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
             for review in review.history {
                 items.append(Feedback(review: review))
                 if review.answered {
-                    items.append(Reply(answer: review.answer, date: review.date))
+                    items.append(Reply(answer: review.answer))
                 }
             }
         }
         items.append(Feedback(review: review))
         if review.answered {
-            items.append(Reply(answer: review.answer, date: review.date))
+            items.append(Reply(answer: review.answer))
         }
         return items
     }
