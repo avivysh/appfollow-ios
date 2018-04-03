@@ -51,7 +51,7 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
         self.submitted = true
         self.webView?.evaluateJavaScript(js) {
             result, error in
-            print("[Login] start: \(result ?? ""), \(error?.localizedDescription ?? "")")
+            log.info("[Login] start: \(result ?? ""), \(error?.localizedDescription ?? "")")
             self.delegate?.loginProgress(message: "Authorizing")
         }
     }
@@ -77,7 +77,7 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
     private func checkForErrors() {
         self.webView?.evaluateJavaScript("$('div.login-wrapper__msg--error').text()") {
             result, error in
-            print("[Login] checkForErrors: \(result ?? ""), \(error?.localizedDescription ?? "")")
+            log.info("[Login] checkForErrors: \(result ?? ""), \(error?.localizedDescription ?? "")")
             guard let message = result as? String else { return }
             self.delegate?.loginError(message: message)
         }
@@ -96,7 +96,7 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
         """
         self.webView?.evaluateJavaScript(js) {
             result, error in
-            print("[Login] readAuth: \(result ?? ""), \(error?.localizedDescription ?? "")")
+            log.info("[Login] readAuth: \(result ?? ""), \(error?.localizedDescription ?? "")")
             guard let list = result as? [String:Any],
                 let cid = list["cid"] as? Int,
                 let secret = list["secret"] as? String,

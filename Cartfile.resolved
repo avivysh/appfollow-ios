@@ -1,5 +1,6 @@
 github "Alamofire/Alamofire" "4.7.1"
 github "Alamofire/AlamofireImage" "3.3.1"
+github "SwiftyBeaver/SwiftyBeaver" "1.5.1"
 github "evgenyneu/Cosmos" "15.0.0"
 github "scalessec/Toast-Swift" "3.0.1"
 github "soffes/CommonCrypto" "v1.1.0"

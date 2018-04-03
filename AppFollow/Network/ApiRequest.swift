@@ -20,10 +20,9 @@ struct ApiRequest {
         let request = Alamofire.request(url, parameters: parameters).responseData {
             response in
             
-            print("[Response]: \(response.result.debugDescription)")
-            print("[Data]: \(response.data?.count ?? 0) bytes")
-            print("[Timeline]: \(response.timeline.description)")
-            print("")
+            log.info("[Response]: \(response.result.debugDescription)")
+            log.info("[Data]: \(response.data?.count ?? 0) bytes")
+            log.info("[Timeline]: \(response.timeline.description)")
             if let data = response.result.value {
                 let decoder = JSONDecoder()
                 do {
@@ -44,9 +43,8 @@ struct ApiRequest {
                 completion(nil, response.error)
             }
         }
-        print("[Request]: \(url)")
-        debugPrint(request)
-        print("")
+        log.info("[Request]: \(url)")
+        log.debug(request.debugDescription)
     }
 
 }

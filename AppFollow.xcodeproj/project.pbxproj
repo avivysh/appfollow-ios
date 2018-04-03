@@ -58,6 +58,8 @@
 		98CB4F19207374CB00F32EEE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F18207374CB00F32EEE /* Data.swift */; };
 		98CB4F1B207380B700F32EEE /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F1A207380B700F32EEE /* Error.swift */; };
 		98CB4F1D20741AA000F32EEE /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F1C20741AA000F32EEE /* Types.swift */; };
+		98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */; };
+		98CB4F22207432CD00F32EEE /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F21207432CD00F32EEE /* PushNotifications.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4A206D62DD00FA461F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F49206D62DD00FA461F /* Profile.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
@@ -122,6 +124,9 @@
 		98CB4F18207374CB00F32EEE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		98CB4F1A207380B700F32EEE /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		98CB4F1C20741AA000F32EEE /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		98CB4F1E207428F100F32EEE /* AppFollow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppFollow.entitlements; sourceTree = "<group>"; };
+		98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		98CB4F21207432CD00F32EEE /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F49206D62DD00FA461F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -136,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */,
 				981C3B11206EBF820072E3A2 /* ToastSwiftFramework.framework in Frameworks */,
 				98F7D321206D7ACE005195BD /* Cosmos.framework in Frameworks */,
 				98087CB8206BE63300EB0747 /* Alamofire.framework in Frameworks */,
@@ -167,6 +173,7 @@
 		98087C9B2069FAE000EB0747 /* AppFollow */ = {
 			isa = PBXGroup;
 			children = (
+				98CB4F1E207428F100F32EEE /* AppFollow.entitlements */,
 				98087CAB2069FAE000EB0747 /* Info.plist */,
 				98087C9C2069FAE000EB0747 /* AppDelegate.swift */,
 				984E51B6206C1CE400CDB24D /* DependencyProvider.swift */,
@@ -209,6 +216,7 @@
 		98087CB3206BE53D00EB0747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */,
 				981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */,
 				98F7D320206D7ACE005195BD /* Cosmos.framework */,
 				984E51EA206CE37000CDB24D /* AlamofireImage.framework */,
@@ -250,6 +258,7 @@
 				984E51A9206BF73200CDB24D /* String.swift */,
 				98815DC12072576600A7A6C6 /* SubtitleTableCell.swift */,
 				98815DC72072749300A7A6C6 /* UIView.swift */,
+				98CB4F21207432CD00F32EEE /* PushNotifications.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -344,6 +353,11 @@
 					98087C982069FAE000EB0747 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -391,6 +405,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Cosmos.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
@@ -398,6 +413,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cosmos.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ToastSwiftFramework.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -444,6 +460,7 @@
 				98087CBA206BEACB00EB0747 /* LoginProcess.swift in Sources */,
 				984E51B7206C1CE400CDB24D /* DependencyProvider.swift in Sources */,
 				98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */,
+				98CB4F22207432CD00F32EEE /* PushNotifications.swift in Sources */,
 				98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */,
 				98CB4F152073630100F32EEE /* TabViewController.swift in Sources */,
 				984E51F1206D05CB00CDB24D /* Store.swift in Sources */,
@@ -599,6 +616,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AppFollow/AppFollow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -623,6 +641,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AppFollow/AppFollow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

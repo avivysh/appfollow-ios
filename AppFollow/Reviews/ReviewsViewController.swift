@@ -23,6 +23,8 @@ class ReviewsViewController: UIViewController {
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        
+        AppDelegate.provide.push.registerForRemoteNotifications()
     }
     
     deinit {

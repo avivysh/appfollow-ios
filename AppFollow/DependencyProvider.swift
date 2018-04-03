@@ -20,4 +20,6 @@ class DependencyProvider {
     var profile: Profile {
         get { return self.profileStorage.retrieve() }
     }
+    
+    lazy var push = PushNotifications(auth: self.auth)
 }

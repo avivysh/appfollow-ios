@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import SwiftyBeaver
+let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,13 +20,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let console = ConsoleDestination()
+        log.addDestination(console)
+        
         if (AppDelegate.provide.authStorage.retrieve().cid == emptyAuth.cid) {
             self.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
         } else {
             self.window?.rootViewController = MainViewController.instantiateFromStoryboard()
         }
+        
         // Override point for customization after application launch.
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        AppDelegate.provide.push.registerToken(deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        log.error(error)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
