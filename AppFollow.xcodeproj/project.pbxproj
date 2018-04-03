@@ -53,6 +53,7 @@
 		98815DC82072749300A7A6C6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC72072749300A7A6C6 /* UIView.swift */; };
 		98815DCA207283E200A7A6C6 /* ReviewReplyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */; };
 		98815DCC2072915800A7A6C6 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DCB2072915800A7A6C6 /* AnswerCell.swift */; };
+		98CB4F152073630100F32EEE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F142073630100F32EEE /* TabViewController.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4A206D62DD00FA461F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F49206D62DD00FA461F /* Profile.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
@@ -112,6 +113,7 @@
 		98815DC72072749300A7A6C6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewReplyDataSource.swift; sourceTree = "<group>"; };
 		98815DCB2072915800A7A6C6 /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
+		98CB4F142073630100F32EEE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F49206D62DD00FA461F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				984E51AC206BF79100CDB24D /* Main.storyboard */,
 				984E51B8206C1DE100CDB24D /* MainViewController.swift */,
+				98CB4F142073630100F32EEE /* TabViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				984E51B7206C1CE400CDB24D /* DependencyProvider.swift in Sources */,
 				98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */,
 				98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */,
+				98CB4F152073630100F32EEE /* TabViewController.swift in Sources */,
 				984E51F1206D05CB00CDB24D /* Store.swift in Sources */,
 				98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */,
 				98F7D31F206D7462005195BD /* Review.swift in Sources */,

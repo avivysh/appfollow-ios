@@ -42,7 +42,7 @@ class ReviewsViewController: UIViewController {
     }
     
     @objc func reloadTableView() {
-        dataSource.reload {
+        self.dataSource.reload {
             self.tableView.reloadData()
             self.tableView.refreshControl?.endRefreshing()
         }
