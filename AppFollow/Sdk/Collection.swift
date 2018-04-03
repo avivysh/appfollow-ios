@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CollectionsResponse: Codable {
+struct CollectionsResponse: Decodable {
     let collections: [Collection]
     
     enum CodingKeys: String, CodingKey {
@@ -16,7 +16,7 @@ struct CollectionsResponse: Codable {
     }
 }
  
-struct Collection: Codable {
+struct Collection: Decodable {
     static let empty = Collection(id: 0, count: 0, countries: "", languages: "", title: "", created: "")
     
     let id: Int

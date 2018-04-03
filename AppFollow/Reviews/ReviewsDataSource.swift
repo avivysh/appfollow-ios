@@ -40,13 +40,12 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
         var allReviews = [Review]()
         let now = Date()
         for collection in collections {
-            let parameters = CollectionReviewsEndpoint.parameters(
+            let route = CollectionReviewsRoute(
                 collectionName: collection.title,
                 from: Calendar.current.date(byAdding: .day, value: -180, to: now)!,
-                to: now,
-                auth: auth)
+                to: now)
             group.enter()
-            ApiRequest(url: CollectionReviewsEndpoint.url(collectionName: collection.title), parameters: parameters).get {
+            ApiRequest(route: route, auth: auth).get {
                 (response: ReviewsResponse?) in
                 if let reviews = response?.reviews {
                     group.leave()

@@ -19,7 +19,7 @@ private func decode(from decoder: Decoder) throws -> String {
     return id
 }
 
-protocol Id : Codable, Hashable {
+protocol Id : Decodable, Hashable {
     var value: String { get }
     var isEmpty: Bool { get }
     init(value: String)

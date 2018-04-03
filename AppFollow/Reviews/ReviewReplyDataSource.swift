@@ -36,8 +36,7 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
     }
     
     func reload(completion: @escaping () -> Void) {
-        let parameters = ReviewsEndpoint.parameters(extId: self.app.extId, reviewId: self.reviewId, auth: self.auth)
-        ApiRequest(url: ReviewsEndpoint.url, parameters: parameters).get {
+        ApiRequest(route: ReviewsRoute(extId: self.app.extId, reviewId: self.reviewId), auth: self.auth).get {
             (response: AppReviewsResponse?) in
             if let review = response?.reviews.list.first {
                 self.review = review

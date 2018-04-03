@@ -8,25 +8,21 @@
 
 import Foundation
 
-class ReviewsSummaryEndpoint {
-    static let path = "/reviews/summary"
-    static let url = URL(string: ReviewsSummaryEndpoint.path, relativeTo: Endpoint.baseUrl)!
-    
-    static func parameters(extId: ExtId, from: Date, to: Date, auth: Auth) -> [String: Any] {
-        var parameters: [String: Any] = [
-            "ext_id" : extId.value,
-            "from": Endpoint.date(from),
-            "to": Endpoint.date(to),
-            Endpoint.keyCid : auth.cid
-        ]
-        let signature = Endpoint.sign(parameters: parameters, path: ReviewsSummaryEndpoint.path, auth: auth)
-        parameters[Endpoint.keySign] = signature
-        return parameters
+struct ReviewsSummaryRoute: EndpointRoute {
+    let extId: ExtId
+    let from: Date
+    let to: Date
+    // MARK: EndpointRoute
+    let path = "/reviews/summary"
+    var parameters: [String: Any] { get { return [
+        "ext_id" : extId.value,
+        "from": from.ymd(),
+        "to": to.ymd()
+        ]}
     }
 }
 
-struct ReviewsSummary: Codable {
-
+struct ReviewsSummary: Decodable {
     let extId: ExtId
     let reviewsCount: Int
     let reviewsAverage: Double

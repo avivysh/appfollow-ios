@@ -10,11 +10,14 @@ import Foundation
 import Alamofire
 
 struct ApiRequest {
-    let url: URL
-    let parameters: [String: Any]
+    let route: EndpointRoute
+    let auth: Auth
+    let endpoint = Endpoint()
     
     func get<R: Decodable>(completion: @escaping (R?) -> Void) {
-        let request = Alamofire.request(self.url, parameters: self.parameters).responseData {
+        let url = URL(string: route.path, relativeTo: endpoint.baseUrl)!
+        let parameters = endpoint.sign(route: route, auth: auth)
+        let request = Alamofire.request(url, parameters: parameters).responseData {
             response in
             
             print("[Response]: \(response.result.debugDescription)")
@@ -36,7 +39,7 @@ struct ApiRequest {
                 completion(nil)
             }
         }
-        print("[Request]: \(self.url)")
+        print("[Request]: \(url)")
         debugPrint(request)
         print("")
     }

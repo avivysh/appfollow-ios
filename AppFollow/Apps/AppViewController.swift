@@ -105,8 +105,7 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
     
     func loadSummary() {
         let auth = AppDelegate.provide.auth
-        let parameters = ReviewsSummaryEndpoint.parameters(extId: self.app.extId, from: self.app.created, to: Date(), auth: auth)
-        ApiRequest(url: ReviewsSummaryEndpoint.url, parameters: parameters).get {
+        ApiRequest(route: ReviewsSummaryRoute(extId: self.app.extId, from: self.app.created, to: Date()), auth: auth).get {
             (response: ReviewsSummary?) in
             if let summary = response {
                 self.stars.isHidden = false

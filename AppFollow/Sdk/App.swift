@@ -8,35 +8,23 @@
 
 import Foundation
 
-class AppsEndpoint {
-    
-    static let path = "/apps"
-    static let url = URL(string: AppsEndpoint.path, relativeTo: Endpoint.baseUrl)!
-    
-    static func parameters(auth: Auth) -> [String: Any] {
-        var parameters: [String: Any] = [ Endpoint.keyCid : auth.cid ]
-        let signature = Endpoint.sign(parameters: parameters, path: AppsEndpoint.path, auth: auth)
-        parameters[Endpoint.keySign] = signature
-        return parameters
+struct AppsRoute: EndpointRoute {
+    let path = "/apps"
+    let parameters: [String: Any] = [:]
+}
+
+struct AppRoute: EndpointRoute {
+    let collectionId: Int
+    // MARK: EndpointRoute
+    let path = "/apps/app"
+    var parameters: [String: Any] { get {
+        return [
+            "apps_id" : collectionId
+        ]}
     }
 }
 
-class AppEndpoint {
-    static let path = "/apps/app"
-    static let url = URL(string: AppEndpoint.path, relativeTo: Endpoint.baseUrl)!
-    
-    static func parameters(collectionId: Int, auth: Auth) -> [String: Any] {
-        var parameters: [String: Any] = [
-            "apps_id" : collectionId,
-            Endpoint.keyCid : auth.cid
-        ]
-        let signature = Endpoint.sign(parameters: parameters, path: AppEndpoint.path, auth: auth)
-        parameters[Endpoint.keySign] = signature
-        return parameters
-    }
-}
-
-struct CollectionResponse: Codable {
+struct CollectionResponse: Decodable {
     let apps: [App]
     
     enum CodingKeys: String, CodingKey {
@@ -44,8 +32,7 @@ struct CollectionResponse: Codable {
     }
 }
 
-struct App: Codable {
-    
+struct App: Decodable {
     static let empty = App(id: 0, details: AppDetails.empty, reviewsCount: 0, whatsNewCount: 0, created: Date.unknown, isFavorite: false, store: "")
 
     let id: Int
@@ -87,14 +74,14 @@ struct App: Codable {
         self.reviewsCount = try map.decode(.reviewsCount) ?? 0
         self.whatsNewCount = try map.decode(.whatsNewCount) ?? 0
         let created = try map.decode(String.self, forKey: .created)
-        self.created = Endpoint.toDate(created)
+        self.created = DateFormatter.date(ymdhms: created)
         let isFavorite = try map.decode(Int.self, forKey: .isFavorite)
         self.isFavorite = isFavorite == 1
         self.store = try map.decode(.store) ?? ""
     }
 }
 
-struct AppDetails: Codable {
+struct AppDetails: Decodable {
     
     static let empty = AppDetails(publisher: "", country: "", extId: ExtId.empty, genre: "", hasIap: 0, icon: "", id: 0, kind: "", lang: "", releaseDate: "", size: 0, title: "", type: "", url: "", version: "")
     

@@ -8,26 +8,20 @@
 
 import Foundation
 
-class WhatsNewEndpoint {
-    static let path = "/whatsnew"
-    static let url = URL(string: WhatsNewEndpoint.path, relativeTo: Endpoint.baseUrl)!
-    
-    static func parameters(extId: ExtId, auth: Auth) -> [String: Any] {
-        var parameters: [String: Any] = [
-            "ext_id" : extId.value,
-            Endpoint.keyCid : auth.cid
-        ]
-        let signature = Endpoint.sign(parameters: parameters, path: WhatsNewEndpoint.path, auth: auth)
-        parameters[Endpoint.keySign] = signature
-        return parameters
-    }
+struct WhatsNewRoute: EndpointRoute {
+    let extId: ExtId
+    // MARK: EndpointRoute
+    let path = "/whatsnew"
+    var parameters: [String : Any] { get { return [
+        "ext_id"  : extId.value
+    ]}}
 }
 
-struct WhatsNewResponse: Codable {
+struct WhatsNewResponse: Decodable {
     let whatsnew: WhatsNewList
 }
 
-struct WhatsNewList: Codable {
+struct WhatsNewList: Decodable {
     let extId: ExtId
     let list: [WhatsNew]
     let total: Int
@@ -43,7 +37,7 @@ struct WhatsNewList: Codable {
     }
 }
 
-struct WhatsNew: Codable {
+struct WhatsNew: Decodable {
     let releaseDate: String
     let lang: String
     let created: Date
@@ -70,7 +64,7 @@ struct WhatsNew: Codable {
         self.whatsnew = try map.decode(.whatsnew) ?? ""
         self.lang = try map.decodeIfPresent(.lang) ?? ""
         let created = try map.decode(String.self, forKey: .created)
-        self.created = Endpoint.toDate(created)
+        self.created = DateFormatter.date(ymdhms: created)
         self.country = try map.decodeIfPresent(.country) ?? ""
     }
 }

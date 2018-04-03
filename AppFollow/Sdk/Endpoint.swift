@@ -8,28 +8,25 @@
 
 import Foundation
 
-private let dateFormatter = DateFormatter.create(format: "yyyy-MM-dd")
-private let dateTimeFormatter = DateFormatter.create(format: "yyyy-MM-dd HH:mm:ss")
+protocol EndpointRoute {
+    var path: String { get }
+    var parameters: [String: Any] { get }
+}
 
 class Endpoint {
-    static let baseUrl = URL(string: "https://api.appfollow.io")!
-    static let keySign = "sign"
-    static let keyCid = "cid"
-
-    static func date(_ date: Date) -> String {
-        return dateFormatter.string(from: date)
+    let baseUrl = URL(string: "https://api.appfollow.io")!
+    
+    func sign(route: EndpointRoute, auth: Auth) -> [String: Any] {
+        var parameters = route.parameters
+        parameters["cid"] = auth.cid
+        let signature = self.sign(parameters: parameters, path: route.path, auth: auth)
+        parameters["sign"] = signature
+        return parameters
     }
     
-    static func toDate(_ string: String) -> Date {
-        if string.isEmpty {
-            return Date.unknown
-        }
-        return dateTimeFormatter.date(from: string) ?? Date.unknown
-    }
-    
-    static func sign(parameters: [String: Any], path: String, auth: Auth) -> String {
+    private func sign(parameters: [String: Any], path: String, auth: Auth) -> String {
         let sortedKeys = parameters.keys.sorted()
         let paramersString = (sortedKeys.map { "\($0)=\(String(describing: parameters[$0]!))" } as [String]).joined(separator: "")
-        return Hash.md5(input: "\(paramersString)\(path)\(auth.secret)").map { String(format: "%02hhx", $0) }.joined()
+        return Hash(input: "\(paramersString)\(path)\(auth.secret)").md5.hex
     }
 }

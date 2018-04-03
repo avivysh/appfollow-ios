@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Page: Codable {
+struct Page: Decodable {
     let next: Int?
     let current: Int
     let prev: Int?

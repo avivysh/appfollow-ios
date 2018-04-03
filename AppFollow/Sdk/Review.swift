@@ -8,49 +8,47 @@
 
 import Foundation
 
-class ReviewsEndpoint {
-    static let path = "/reviews"
-    static let url = URL(string: ReviewsEndpoint.path, relativeTo: Endpoint.baseUrl)!
-
-    static func parameters(extId: ExtId, auth: Auth) -> [String: Any] {
-        return ReviewsEndpoint.parameters(extId: extId, reviewId: ReviewId.empty, auth: auth)
+struct ReviewsRoute: EndpointRoute {
+    let extId: ExtId
+    let reviewId: ReviewId
+    
+    init(extId: ExtId, reviewId: ReviewId) {
+        self.extId = extId
+        self.reviewId = reviewId
     }
     
-    static func parameters(extId: ExtId, reviewId: ReviewId, auth: Auth) -> [String: Any] {
+    init(extId: ExtId) {
+        self.init(extId: extId, reviewId: ReviewId.empty)
+    }
+    
+    // MARK: EndpointRoute
+    let path = "/reviews"
+    var parameters: [String : Any] { get {
         var parameters: [String: Any] = [
-            "ext_id" : extId.value,
-            Endpoint.keyCid : auth.cid
+            "ext_id" : extId.value
         ]
         if !reviewId.isEmpty {
-           parameters["review_id"] = reviewId.value
+            parameters["review_id"] = reviewId.value
         }
-        let signature = Endpoint.sign(parameters: parameters, path: ReviewsEndpoint.path, auth: auth)
-        parameters[Endpoint.keySign] = signature
         return parameters
-    }
+    }}
 }
 
-class CollectionReviewsEndpoint {
-    //    static let path = "/reviews"
-    //    static let url = URL(string: ReviewsSummaryEndpoint.path, relativeTo: Endpoint.baseUrl)!
+struct CollectionReviewsRoute: EndpointRoute {
+    let collectionName: String
+    let from: Date
+    let to: Date
     
-    static func path(_ collectionName: String) -> String {
-        return "/\(collectionName)/reviews"
+    var path: String {
+        get { return "/\(collectionName)/reviews" }
     }
-    
-    static func url(collectionName: String) -> URL {
-        return URL(string: CollectionReviewsEndpoint.path(collectionName), relativeTo: Endpoint.baseUrl)!
-    }
-    
-    static func parameters(collectionName: String, from: Date, to: Date, auth: Auth) -> [String: Any] {
-        var parameters: [String: Any] = [
-            "from": Endpoint.date(from),
-            "to": Endpoint.date(to),
-            Endpoint.keyCid : auth.cid
-        ]
-        let signature = Endpoint.sign(parameters: parameters, path: CollectionReviewsEndpoint.path(collectionName), auth: auth)
-        parameters[Endpoint.keySign] = signature
-        return parameters
+    var parameters: [String: Any] {
+        get {
+            return [
+                "from": from.ymd(),
+                "to": to.ymd()
+            ]
+        }
     }
 }
 
@@ -176,7 +174,7 @@ struct Review: Decodable {
         self.locale = try map.decodeIfPresent(.locale) ?? ""
         self.ratingPrevious = try map.decodeIfPresent(.ratingPrevious) ?? 0
         let updated = try map.decodeIfPresent(String.self, forKey: .updated) ?? ""
-        self.updated = updated.isEmpty ? Date.unknown : Endpoint.toDate(updated)
+        self.updated = updated.isEmpty ? Date.unknown : DateFormatter.date(ymdhms: updated)
         // History optional
         self.store = try map.decodeIfPresent(.store) ?? ""
         self.version = try map.decodeIfPresent(.version) ?? ""
@@ -195,7 +193,7 @@ struct Review: Decodable {
         self.author = try map.decode(.author) ?? ""
         self.wasChanged = try map.decode(Int.self, forKey: .wasChanged) == 1
         let created = try map.decodeIfPresent(String.self, forKey: .created) ?? ""
-        self.created = created.isEmpty ? Date.unknown : Endpoint.toDate(created)
+        self.created = created.isEmpty ? Date.unknown : DateFormatter.date(ymdhms: created)
         self.history = try map.decodeIfPresent(.history) ?? []
     }
 }
