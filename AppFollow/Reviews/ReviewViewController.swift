@@ -61,7 +61,7 @@ class ReviewViewController: UIViewController {
                         }
                     } else {
                         let errorMessage = error?.localizedDescription
-                        self.view.makeToast(errorMessage ?? "Error occured")
+                        self.tableView.makeToast(errorMessage ?? "Error occured")
                     }
                     self.actionButton.isEnabled = true
                 }
