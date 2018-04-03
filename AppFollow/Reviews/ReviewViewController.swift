@@ -22,8 +22,13 @@ class ReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.actionButton.isEnabled = false
+        self.textField.isEditable = false
         self.tableView.dataSource = self.dataSource
         self.dataSource.reload {
+            review in
+            self.actionButton.isEnabled = true
+            self.textField.isEditable = true
             self.tableView.reloadData()
         }
         
@@ -35,6 +40,35 @@ class ReviewViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    @IBAction func actionButtonPresssed(_ sender: UIButton) {
+        if sender.tag == 8 {
+            self.actionButton.setTitle("Send", for: .normal)
+            self.actionButton.tag = 0
+            self.textField.isEditable = true
+            self.textField.becomeFirstResponder()
+        } else {
+            let answerText = self.textField.text ?? ""
+            if !answerText.isEmpty {
+                self.actionButton.isEnabled = false
+                ApiRequest(route: ReplyRoute(extId: self.app.extId, reviewId: self.reviewId, answer: answerText), auth: AppDelegate.provide.auth).get { (response: ReplyResponse?, error: Error?) in
+                    if let replyResponse = response {
+                        print(replyResponse)
+                        let answer = ReviewAnswer(answered: true, date: Date().ymd(), text: answerText)
+                        self.textField.text = ""
+                        self.dataSource.updateAnswer(answer: answer) {
+                            self.tableView.reloadData()
+                        }
+                    } else {
+                        let errorMessage = error?.localizedDescription
+                        self.view.makeToast(errorMessage ?? "Error occured")
+                    }
+                    self.actionButton.isEnabled = true
+                }
+            }
+        }
+    }
+    
     
     // MARK: Keybaord
     
@@ -60,4 +94,5 @@ class ReviewViewController: UIViewController {
             }
         }
     }
+    
 }

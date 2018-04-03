@@ -49,7 +49,7 @@ class StateRefresh {
     
     private func requestApps(collectionId: Int, completion: @escaping ([App]) -> Void) {
         ApiRequest(route: AppRoute(collectionId: collectionId), auth: self.auth).get {
-            (response: CollectionResponse?) in
+            (response: CollectionResponse?, _) in
             if let collection = response {
                 completion(collection.apps)
             } else {
@@ -60,7 +60,7 @@ class StateRefresh {
     
     private func requestCollections(completion: @escaping ([Collection]) -> Void) {
         ApiRequest(route: AppsRoute(), auth: self.auth).get {
-            (response: CollectionsResponse?) in
+            (response: CollectionsResponse?, _) in
             if let collections = response {
                 completion(collections.collections)
             } else {

@@ -46,7 +46,7 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
                 to: now)
             group.enter()
             ApiRequest(route: route, auth: auth).get {
-                (response: ReviewsResponse?) in
+                (response: ReviewsResponse?, _) in
                 if let reviews = response?.reviews {
                     group.leave()
                     allReviews.append(contentsOf: reviews)

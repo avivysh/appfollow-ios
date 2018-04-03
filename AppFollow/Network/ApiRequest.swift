@@ -14,7 +14,7 @@ struct ApiRequest {
     let auth: Auth
     let endpoint = Endpoint()
     
-    func get<R: Decodable>(completion: @escaping (R?) -> Void) {
+    func get<R: Decodable>(completion: @escaping (R?, Error?) -> Void) {
         let url = URL(string: route.path, relativeTo: endpoint.baseUrl)!
         let parameters = endpoint.sign(route: route, auth: auth)
         let request = Alamofire.request(url, parameters: parameters).responseData {
@@ -28,15 +28,20 @@ struct ApiRequest {
                 let decoder = JSONDecoder()
                 do {
                     let object = try decoder.decode(R.self, from: data)
-                    completion(object)
-                } catch {
-                    // TODO: Deserialize error
-                    print(error)
-                    completion(nil)
+                    completion(object, nil)
+                } catch let responseDeserializeError {
+                    do {
+                        let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                        print(errorResponse)
+                        completion(nil, errorResponse.error)
+                    } catch {
+                        print(responseDeserializeError)
+                        completion(nil, responseDeserializeError)
+                    }
                 }
             } else {
                 print(response.error?.localizedDescription ?? "")
-                completion(nil)
+                completion(nil, response.error)
             }
         }
         print("[Request]: \(url)")

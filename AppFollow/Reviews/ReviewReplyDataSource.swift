@@ -35,15 +35,26 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
         self.auth = auth
     }
     
-    func reload(completion: @escaping () -> Void) {
+    func reload(completion: @escaping (_ review: Review) -> Void) {
         ApiRequest(route: ReviewsRoute(extId: self.app.extId, reviewId: self.reviewId), auth: self.auth).get {
-            (response: AppReviewsResponse?) in
+            (response: AppReviewsResponse?, _) in
             if let review = response?.reviews.list.first {
                 self.review = review
                 self.items = self.createItems(review: review)
+                completion(review)
+            } else {
+                completion(Review.empty)
             }
-            completion()
         }
+    }
+    
+    func updateAnswer(answer: ReviewAnswer, completion: @escaping () -> Void) {
+        if let _ = self.items.last as? Reply {
+            self.items[self.items.count - 1] = Reply(answer: answer)
+        } else {
+            self.items.append(Reply(answer: answer))
+        }
+        completion()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

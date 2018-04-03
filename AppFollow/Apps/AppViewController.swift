@@ -106,7 +106,7 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
     func loadSummary() {
         let auth = AppDelegate.provide.auth
         ApiRequest(route: ReviewsSummaryRoute(extId: self.app.extId, from: self.app.created, to: Date()), auth: auth).get {
-            (response: ReviewsSummary?) in
+            (response: ReviewsSummary?, _) in
             if let summary = response {
                 self.stars.isHidden = false
                 self.stars.rating = summary.ratingAverage

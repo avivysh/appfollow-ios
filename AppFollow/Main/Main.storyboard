@@ -849,6 +849,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuP-c9-i2C">
                                                 <rect key="frame" x="331" y="9" width="36" height="30"/>
                                                 <state key="normal" title="Send"/>
+                                                <connections>
+                                                    <action selector="actionButtonPresssed:" destination="X7G-xV-bP0" eventType="touchUpInside" id="bO0-EE-L3P"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -46,7 +46,7 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
     
     private func reload(complete: @escaping () -> Void) {
         ApiRequest(route: ReviewsRoute(extId: app.extId), auth: self.auth).get {
-            (response: AppReviewsResponse?) in
+            (response: AppReviewsResponse?, _) in
             if let reviews = response?.reviews.list {
                 self.reviews = reviews
             }

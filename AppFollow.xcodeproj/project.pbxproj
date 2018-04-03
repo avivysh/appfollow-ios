@@ -56,6 +56,7 @@
 		98CB4F152073630100F32EEE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F142073630100F32EEE /* TabViewController.swift */; };
 		98CB4F172073719A00F32EEE /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F162073719A00F32EEE /* Reply.swift */; };
 		98CB4F19207374CB00F32EEE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F18207374CB00F32EEE /* Data.swift */; };
+		98CB4F1B207380B700F32EEE /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F1A207380B700F32EEE /* Error.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4A206D62DD00FA461F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F49206D62DD00FA461F /* Profile.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
@@ -118,6 +119,7 @@
 		98CB4F142073630100F32EEE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		98CB4F162073719A00F32EEE /* Reply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		98CB4F18207374CB00F32EEE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		98CB4F1A207380B700F32EEE /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F49206D62DD00FA461F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				984E51A6206BF71500CDB24D /* Auth.swift */,
 				984E51E0206C30BB00CDB24D /* Collection.swift */,
 				984E51DA206C236300CDB24D /* Endpoint.swift */,
+				98CB4F1A207380B700F32EEE /* Error.swift */,
 				9863188D206D80CF00D6A14F /* Id.swift */,
 				981C3B182070C1F40072E3A2 /* Page.swift */,
 				98F01F49206D62DD00FA461F /* Profile.swift */,
@@ -420,6 +423,7 @@
 				981C3B15206ED0020072E3A2 /* IconLoader.swift in Sources */,
 				98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */,
 				98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */,
+				98CB4F1B207380B700F32EEE /* Error.swift in Sources */,
 				9863188E206D80CF00D6A14F /* Id.swift in Sources */,
 				98F7D31D206D704E005195BD /* ReviewsViewController.swift in Sources */,
 				98F01F48206D572300FA461F /* StateRefresh.swift in Sources */,
