@@ -35,6 +35,24 @@ extension Id {
     }
 }
 
+struct ValueId: Id {
+    static let empty = ValueId(value: "")
+    
+    let value: String
+    
+    static func ==(lhs: ValueId, rhs: ValueId) -> Bool {
+        return lhs.value == rhs.value
+    }
+    
+    init(value: String) {
+        self.value = value
+    }
+    
+    init(from decoder: Decoder) throws {
+        self.init(value: try decode(from: decoder))
+    }
+}
+
 struct UserId: Id {
     static let empty = UserId(value: "")
 
@@ -89,3 +107,38 @@ struct ReviewId: Id {
     }
 }
 
+struct AppId: Id {
+    static let empty = AppId(value: "")
+    
+    let value: String
+    
+    static func ==(lhs: AppId, rhs: AppId) -> Bool {
+        return lhs.value == rhs.value
+    }
+    
+    init(value: String) {
+        self.value = value
+    }
+    
+    init(from decoder: Decoder) throws {
+        self.init(value: try decode(from: decoder))
+    }
+}
+
+struct CollectionId: Id {
+    static let empty = CollectionId(value: "")
+    
+    let value: String
+    
+    static func ==(lhs: CollectionId, rhs: CollectionId) -> Bool {
+        return lhs.value == rhs.value
+    }
+    
+    init(value: String) {
+        self.value = value
+    }
+    
+    init(from decoder: Decoder) throws {
+        self.init(value: try decode(from: decoder))
+    }
+}

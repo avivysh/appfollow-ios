@@ -13,7 +13,7 @@ import Alamofire
 class AppsDataSource: NSObject, UITableViewDataSource {
     
     private var collections: [Collection] = []
-    private var apps: [Int: [App]] = [:]
+    private var apps: [CollectionId: [App]] = [:]
     private var reviewsSummary: [ExtId: ReviewsSummary] = [:]
 
     // MARK: Public

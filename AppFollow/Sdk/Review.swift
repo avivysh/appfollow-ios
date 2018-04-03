@@ -84,11 +84,11 @@ struct ReviewAnswer {
 
 struct Review: Decodable {
     
-    static let empty = Review(id: 0, appId: 0, extId: ExtId.empty, locale: "", rating: 0, ratingPrevious: 0, store: "", reviewId: ReviewId.empty, userId: UserId.empty, date: "", title: "", content: "", version: "", author: "", wasChanged: false, created: Date.unknown, updated: Date.unknown, answer: ReviewAnswer.empty, history: [])
+    static let empty = Review(id: ValueId.empty, appId: AppId.empty, extId: ExtId.empty, locale: "", rating: DoubleValue.empty, ratingPrevious: DoubleValue.empty, store: "", reviewId: ReviewId.empty, userId: UserId.empty, date: "", title: "", content: "", version: "", author: "", wasChanged: BoolValue.empty, created: Date.unknown, updated: Date.unknown, answer: ReviewAnswer.empty, history: [])
     
-    let id: Int
+    let id: ValueId
     let store: String
-    let appId: Int
+    let appId: AppId
     let extId: ExtId
     let reviewId: ReviewId
     let locale: String
@@ -96,11 +96,11 @@ struct Review: Decodable {
     let date: String
     let title: String
     let content: String
-    let rating: Double
-    let ratingPrevious: Double
+    let rating: DoubleValue
+    let ratingPrevious: DoubleValue
     let version: String
     let author: String
-    let wasChanged: Bool
+    let wasChanged: BoolValue
     let created: Date
     let updated: Date
     let answer: ReviewAnswer
@@ -143,7 +143,7 @@ struct Review: Decodable {
         case answerText = "answer_text"
     }
     
-    init(id: Int, appId: Int, extId: ExtId, locale: String, rating: Double, ratingPrevious: Double, store: String, reviewId: ReviewId, userId: UserId, date: String, title: String, content: String, version: String, author: String, wasChanged: Bool, created: Date, updated: Date, answer: ReviewAnswer, history: [Review]) {
+    init(id: ValueId, appId: AppId, extId: ExtId, locale: String, rating: DoubleValue, ratingPrevious: DoubleValue, store: String, reviewId: ReviewId, userId: UserId, date: String, title: String, content: String, version: String, author: String, wasChanged: BoolValue, created: Date, updated: Date, answer: ReviewAnswer, history: [Review]) {
         self.id = id
         self.appId = appId
         self.extId = extId
@@ -168,11 +168,11 @@ struct Review: Decodable {
     init(from decoder: Decoder) throws {
         let map = try decoder.container(keyedBy: CodingKeys.self)
         // App reviews optional
-        self.id = try map.decodeIfPresent(.id) ?? 0
-        self.appId = try map.decodeIfPresent(.appId) ?? 0
+        self.id = try map.decodeIfPresent(.id) ?? ValueId.empty
+        self.appId = try map.decodeIfPresent(.appId) ?? AppId.empty
         self.extId = try map.decodeIfPresent(.extId) ?? ExtId.empty
         self.locale = try map.decodeIfPresent(.locale) ?? ""
-        self.ratingPrevious = try map.decodeIfPresent(.ratingPrevious) ?? 0
+        self.ratingPrevious = try map.decodeIfPresent(.ratingPrevious) ?? DoubleValue.empty
         let updated = try map.decodeIfPresent(String.self, forKey: .updated) ?? ""
         self.updated = updated.isEmpty ? Date.unknown : DateFormatter.date(ymdhms: updated)
         // History optional
@@ -181,17 +181,17 @@ struct Review: Decodable {
         // Answer
         let answerDate = try map.decodeIfPresent(.answerDate) ?? ""
         let answerText = try map.decodeIfPresent(.answerText) ?? ""
-        let answered = (try map.decodeIfPresent(Int.self, forKey: .answered) ?? 0) == 1
-        self.answer = ReviewAnswer(answered: answered, date: answerDate, text: answerText)
+        let answered = try map.decodeIfPresent(BoolValue.self, forKey: .answered) ?? BoolValue.empty
+        self.answer = ReviewAnswer(answered: answered.value, date: answerDate, text: answerText)
         //
         self.reviewId = try map.decode(.reviewId) ?? ReviewId.empty
         self.userId = try map.decode(.userId) ?? UserId.empty
         self.date = try map.decode(.date) ?? ""
         self.title = try map.decode(.title) ?? ""
         self.content = try map.decode(.content) ?? ""
-        self.rating = try map.decode(.rating) ?? 0
+        self.rating = try map.decode(.rating) ?? DoubleValue.empty
         self.author = try map.decode(.author) ?? ""
-        self.wasChanged = try map.decode(Int.self, forKey: .wasChanged) == 1
+        self.wasChanged = try map.decode(BoolValue.self, forKey: .wasChanged)
         let created = try map.decodeIfPresent(String.self, forKey: .created) ?? ""
         self.created = created.isEmpty ? Date.unknown : DateFormatter.date(ymdhms: created)
         self.history = try map.decodeIfPresent(.history) ?? []

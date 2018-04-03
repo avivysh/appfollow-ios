@@ -24,7 +24,7 @@ class StateRefresh {
         self.requestCollections() {
             collections in
             
-            var allApps = [Int: [App]]()
+            var allApps = [CollectionId: [App]]()
 
             let group = DispatchGroup()
             for collection in collections {
@@ -47,7 +47,7 @@ class StateRefresh {
     
     // MARK: Private
     
-    private func requestApps(collectionId: Int, completion: @escaping ([App]) -> Void) {
+    private func requestApps(collectionId: CollectionId, completion: @escaping ([App]) -> Void) {
         ApiRequest(route: AppRoute(collectionId: collectionId), auth: self.auth).get {
             (response: CollectionResponse?, _) in
             if let collection = response {

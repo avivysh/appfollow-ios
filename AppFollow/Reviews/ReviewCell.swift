@@ -26,7 +26,7 @@ class ReviewCell: UITableViewCell {
     func bind(review: Review, app: App) {
         
         self.author.text = review.author.isEmpty ? "User" : review.author
-        self.stars.rating = review.rating
+        self.stars.rating = review.rating.value
         self.stars.settings.updateOnTouch = false
         self.stars.settings.starMargin = 2
         

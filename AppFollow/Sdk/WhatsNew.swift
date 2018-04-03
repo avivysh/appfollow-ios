@@ -42,7 +42,7 @@ struct WhatsNew: Decodable {
     let lang: String
     let created: Date
     let whatsnew: String
-    let id: Int
+    let id: IntValue
     let version: String
     let country: String
     
@@ -58,7 +58,7 @@ struct WhatsNew: Decodable {
     
     init(from decoder: Decoder) throws {
         let map = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try map.decode(.id) ?? 0
+        self.id = try map.decode(.id)
         self.releaseDate = try map.decode(.releaseDate) ?? ""
         self.version = try map.decode(.version) ?? ""
         self.whatsnew = try map.decode(.whatsnew) ?? ""

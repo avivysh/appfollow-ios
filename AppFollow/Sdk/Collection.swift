@@ -17,10 +17,10 @@ struct CollectionsResponse: Decodable {
 }
  
 struct Collection: Decodable {
-    static let empty = Collection(id: 0, count: 0, countries: "", languages: "", title: "", created: "")
+    static let empty = Collection(id: CollectionId.empty, count: IntValue.empty, countries: "", languages: "", title: "", created: "")
     
-    let id: Int
-    let count: Int
+    let id: CollectionId
+    let count: IntValue
     let countries: String
     let languages: String
     let title: String

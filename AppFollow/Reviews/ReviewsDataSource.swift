@@ -19,7 +19,7 @@ private let sectionTitles: [DateSection:String] = [
 class ReviewsDataSource: NSObject, UITableViewDataSource {
 
     private var reviews: [DateSection:[Review]] = [:]
-    private var apps: [Int: App] = [:]
+    private var apps: [AppId: App] = [:]
     private var sections: [DateSection] = []
     
     func reviewFor(indexPath: IndexPath) -> Review {
@@ -56,10 +56,10 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
         }
         
         group.notify(queue: .main) {
-            self.apps = AppDelegate.provide.store.apps.reduce(into: [Int: App](), { (result, pair) in
-                let collectinApps = pair.value
+            self.apps = AppDelegate.provide.store.apps.reduce(into: [AppId: App](), { (result, pair) in
+                let collectionApps = pair.value
                 
-                for app in collectinApps {
+                for app in collectionApps {
                     result[app.id] = app
                 }
             })
