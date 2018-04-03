@@ -19,6 +19,7 @@ class Endpoint {
     func sign(route: EndpointRoute, auth: Auth) -> [String: Any] {
         var parameters = route.parameters
         parameters["cid"] = auth.cid
+        parameters["s"] = "app"
         let signature = self.sign(parameters: parameters, path: route.path, auth: auth)
         parameters["sign"] = signature
         return parameters
