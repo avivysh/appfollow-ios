@@ -30,6 +30,7 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
         self.webView = webView
         super.init()
         
+        webView.configuration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
         webView.navigationDelegate = self
         webView.load(URLRequest(url: URL(string: "https://watch.appfollow.io/login")!))
     }
@@ -110,6 +111,7 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
                 return
             }
             
+            self.webView?.load(URLRequest(url: URL(string: "https://watch.appfollow.io/logout")!))
             self.delegate?.loginSuccess(auth: Auth(cid: cid, secret: secret), profile: Profile(email: self.email, name: name, image: image, description: description, company: company))
         }
     }

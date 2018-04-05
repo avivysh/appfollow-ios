@@ -20,6 +20,9 @@ class ProfileViewController: UIViewController {
     @IBAction func signOut(_ sender: UIButton) {
         if let bundleID = Bundle.main.bundleIdentifier {
             UserDefaults.standard.removePersistentDomain(forName: bundleID)
+            AppDelegate.provide.store.apps = [:]
+            AppDelegate.provide.store.collections = []
+            AppDelegate.provide.store.reviewsSummary = [:]
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
         }
