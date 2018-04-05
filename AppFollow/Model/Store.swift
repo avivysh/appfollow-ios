@@ -18,4 +18,14 @@ class Store {
     var apps: [CollectionId: [App]] = [:]
     var reviewsSummary: [ExtId : ReviewsSummary] = [:]
 
+    func appFor(appId: AppId) -> App {
+        for pair in apps {
+            for app in pair.value {
+                if app.id == appId {
+                    return app
+                }
+            }
+        }
+        return App.empty
+    }
 }

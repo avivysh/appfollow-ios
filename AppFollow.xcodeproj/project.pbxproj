@@ -60,6 +60,11 @@
 		98CB4F1D20741AA000F32EEE /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F1C20741AA000F32EEE /* Types.swift */; };
 		98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */; };
 		98CB4F22207432CD00F32EEE /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F21207432CD00F32EEE /* PushNotifications.swift */; };
+		98CB4F25207632DD00F32EEE /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F24207632DD00F32EEE /* Deeplink.swift */; };
+		98CB4F27207634CC00F32EEE /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */; };
+		98CB4F2F207650A000F32EEE /* DeeplinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */; };
+		98CB4F372076554E00F32EEE /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F362076554D00F32EEE /* URL.swift */; };
+		98CB4F3920765D0900F32EEE /* DeeplinkNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F3820765D0900F32EEE /* DeeplinkNavigation.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4A206D62DD00FA461F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F49206D62DD00FA461F /* Profile.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
@@ -68,6 +73,16 @@
 		98F7D31F206D7462005195BD /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7D31E206D7462005195BD /* Review.swift */; };
 		98F7D321206D7ACE005195BD /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F7D320206D7ACE005195BD /* Cosmos.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		98CB4F31207650A000F32EEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98087C912069FAE000EB0747 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98087C982069FAE000EB0747;
+			remoteInfo = AppFollow;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		98087C992069FAE000EB0747 /* AppFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +142,13 @@
 		98CB4F1E207428F100F32EEE /* AppFollow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppFollow.entitlements; sourceTree = "<group>"; };
 		98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		98CB4F21207432CD00F32EEE /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
+		98CB4F24207632DD00F32EEE /* Deeplink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
+		98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
+		98CB4F2C207650A000F32EEE /* AppFollowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFollowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkTests.swift; sourceTree = "<group>"; };
+		98CB4F30207650A000F32EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98CB4F362076554D00F32EEE /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		98CB4F3820765D0900F32EEE /* DeeplinkNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigation.swift; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F49206D62DD00FA461F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -150,6 +172,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		98CB4F292076509F00F32EEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -157,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				98087C9B2069FAE000EB0747 /* AppFollow */,
+				98CB4F2D207650A000F32EEE /* AppFollowTests */,
 				98087C9A2069FAE000EB0747 /* Products */,
 				98087CB3206BE53D00EB0747 /* Frameworks */,
 			);
@@ -166,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				98087C992069FAE000EB0747 /* AppFollow.app */,
+				98CB4F2C207650A000F32EEE /* AppFollowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +211,7 @@
 				98087CA62069FAE000EB0747 /* Assets.xcassets */,
 				98087CA32069FAE000EB0747 /* AppFollow.xcdatamodeld */,
 				984E51B0206BFA5700CDB24D /* Apps */,
+				98CB4F23207632BA00F32EEE /* Notifications */,
 				984E51A8206BF72400CDB24D /* Framework */,
 				98087CA82069FAE000EB0747 /* LaunchScreen.storyboard */,
 				98087CB12069FAFE00EB0747 /* Login */,
@@ -258,7 +290,7 @@
 				984E51A9206BF73200CDB24D /* String.swift */,
 				98815DC12072576600A7A6C6 /* SubtitleTableCell.swift */,
 				98815DC72072749300A7A6C6 /* UIView.swift */,
-				98CB4F21207432CD00F32EEE /* PushNotifications.swift */,
+				98CB4F362076554D00F32EEE /* URL.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -296,6 +328,26 @@
 				98F01F4B206D639800FA461F /* ProfileStorage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		98CB4F23207632BA00F32EEE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				98CB4F21207432CD00F32EEE /* PushNotifications.swift */,
+				98CB4F24207632DD00F32EEE /* Deeplink.swift */,
+				98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */,
+				98CB4F3820765D0900F32EEE /* DeeplinkNavigation.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		98CB4F2D207650A000F32EEE /* AppFollowTests */ = {
+			isa = PBXGroup;
+			children = (
+				98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */,
+				98CB4F30207650A000F32EEE /* Info.plist */,
+			);
+			path = AppFollowTests;
 			sourceTree = "<group>";
 		};
 		98F01F4D206D6D5300FA461F /* Profile */ = {
@@ -340,13 +392,31 @@
 			productReference = 98087C992069FAE000EB0747 /* AppFollow.app */;
 			productType = "com.apple.product-type.application";
 		};
+		98CB4F2B2076509F00F32EEE /* AppFollowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98CB4F33207650A000F32EEE /* Build configuration list for PBXNativeTarget "AppFollowTests" */;
+			buildPhases = (
+				98CB4F282076509F00F32EEE /* Sources */,
+				98CB4F292076509F00F32EEE /* Frameworks */,
+				98CB4F2A2076509F00F32EEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98CB4F32207650A000F32EEE /* PBXTargetDependency */,
+			);
+			name = AppFollowTests;
+			productName = AppFollowTests;
+			productReference = 98CB4F2C207650A000F32EEE /* AppFollowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		98087C912069FAE000EB0747 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Anodsplace;
 				TargetAttributes = {
@@ -361,6 +431,11 @@
 								enabled = 1;
 							};
 						};
+					};
+					98CB4F2B2076509F00F32EEE = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 98087C982069FAE000EB0747;
 					};
 				};
 			};
@@ -378,6 +453,7 @@
 			projectRoot = "";
 			targets = (
 				98087C982069FAE000EB0747 /* AppFollow */,
+				98CB4F2B2076509F00F32EEE /* AppFollowTests */,
 			);
 		};
 /* End PBXProject section */
@@ -391,6 +467,13 @@
 				98087CA72069FAE000EB0747 /* Assets.xcassets in Resources */,
 				98087CA22069FAE000EB0747 /* Login.storyboard in Resources */,
 				984E51AD206BF79100CDB24D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98CB4F2A2076509F00F32EEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +515,7 @@
 				984E51AA206BF73200CDB24D /* String.swift in Sources */,
 				98631894206E4EFE00D6A14F /* DateSection.swift in Sources */,
 				984E51DD206C244E00CDB24D /* Hash.swift in Sources */,
+				98CB4F27207634CC00F32EEE /* NotificationsDelegate.swift in Sources */,
 				98815DCC2072915800A7A6C6 /* AnswerCell.swift in Sources */,
 				984E51AF206BFA1A00CDB24D /* AppsViewController.swift in Sources */,
 				981C3B192070C1F40072E3A2 /* Page.swift in Sources */,
@@ -468,6 +552,7 @@
 				98CB4F152073630100F32EEE /* TabViewController.swift in Sources */,
 				984E51F1206D05CB00CDB24D /* Store.swift in Sources */,
 				98CB4F19207374CB00F32EEE /* Data.swift in Sources */,
+				98CB4F372076554E00F32EEE /* URL.swift in Sources */,
 				98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */,
 				98F7D31F206D7462005195BD /* Review.swift in Sources */,
 				984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */,
@@ -478,11 +563,29 @@
 				98631896206E58A900D6A14F /* Date.swift in Sources */,
 				98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */,
 				984E51DB206C236300CDB24D /* Endpoint.swift in Sources */,
+				98CB4F3920765D0900F32EEE /* DeeplinkNavigation.swift in Sources */,
 				984E51B9206C1DE100CDB24D /* MainViewController.swift in Sources */,
+				98CB4F25207632DD00F32EEE /* Deeplink.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98CB4F282076509F00F32EEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98CB4F2F207650A000F32EEE /* DeeplinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98CB4F32207650A000F32EEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98087C982069FAE000EB0747 /* AppFollow */;
+			targetProxy = 98CB4F31207650A000F32EEE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		98087CA02069FAE000EB0747 /* Login.storyboard */ = {
@@ -665,6 +768,42 @@
 			};
 			name = Release;
 		};
+		98CB4F34207650A000F32EEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C3GDDK48KG;
+				INFOPLIST_FILE = AppFollowTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.AppFollowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppFollow.app/AppFollow";
+			};
+			name = Debug;
+		};
+		98CB4F35207650A000F32EEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C3GDDK48KG;
+				INFOPLIST_FILE = AppFollowTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.AppFollowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppFollow.app/AppFollow";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -682,6 +821,15 @@
 			buildConfigurations = (
 				98087CAF2069FAE000EB0747 /* Debug */,
 				98087CB02069FAE000EB0747 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98CB4F33207650A000F32EEE /* Build configuration list for PBXNativeTarget "AppFollowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98CB4F34207650A000F32EEE /* Debug */,
+				98CB4F35207650A000F32EEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

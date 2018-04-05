@@ -14,4 +14,19 @@ class MainViewController: UITabBarController {
         let controller = storyboard.instantiateInitialViewController() as! MainViewController
         return controller
     }
+    
+    func navigateToApp(app: App) {
+        self.selectedIndex = 1
+        if let tabViewContainer = self.selectedViewController as? TabViewController {
+            let appViewController = AppViewController.instantiateFromStoryboard(app: app)
+            tabViewContainer.embedController?.navigationController?.pushViewController(appViewController, animated: true)
+        }
+    }
+    
+    func navigateToApps() {
+        self.selectedIndex = 1
+        if let tabViewContainer = self.selectedViewController as? TabViewController {
+            tabViewContainer.embedController?.navigationController?.popToRootViewController(animated: true)
+        }
+    }
 }

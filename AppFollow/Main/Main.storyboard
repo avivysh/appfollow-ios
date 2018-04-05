@@ -20,7 +20,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYh-mN-Dq3">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <connections>
-                                    <segue destination="LIF-Fq-KES" kind="embed" id="RjI-29-bJZ"/>
+                                    <segue destination="LIF-Fq-KES" kind="embed" identifier="EmbedSegue" id="RjI-29-bJZ"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -42,7 +42,7 @@
         <!--Profile-->
         <scene sceneID="F7D-42-2K1">
             <objects>
-                <viewController id="j7k-Hq-ddV" sceneMemberID="viewController">
+                <viewController id="j7k-Hq-ddV" customClass="TabViewController" customModule="AppFollow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NnZ-fV-mmz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1g-y3-s0L">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <connections>
-                                    <segue destination="ZHb-x4-xxh" kind="embed" id="fub-gr-OXN"/>
+                                    <segue destination="ZHb-x4-xxh" kind="embed" identifier="EmbedSegue" id="fub-gr-OXN"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -73,7 +73,7 @@
         <!--Apps-->
         <scene sceneID="pPQ-Bs-NNp">
             <objects>
-                <viewController title="Apps" id="WYi-sj-kaf" sceneMemberID="viewController">
+                <viewController title="Apps" id="WYi-sj-kaf" customClass="TabViewController" customModule="AppFollow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XeT-89-o0A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfQ-RY-9KP">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <connections>
-                                    <segue destination="TNy-jz-8Jq" kind="embed" id="PdR-Ta-li2"/>
+                                    <segue destination="TNy-jz-8Jq" kind="embed" identifier="EmbedSegue" id="PdR-Ta-li2"/>
                                 </connections>
                             </containerView>
                         </subviews>

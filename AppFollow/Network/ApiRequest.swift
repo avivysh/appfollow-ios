@@ -9,21 +9,33 @@
 import Foundation
 import Alamofire
 
-struct ApiRequest {
+private let session: SessionManager = {
+    let configuration = URLSessionConfiguration.ephemeral
+    configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+    
+    return SessionManager(configuration: configuration)
+}()
+
+class ApiRequest {
     let route: EndpointRoute
     let auth: Auth
     let endpoint = Endpoint()
     
+    init(route: EndpointRoute, auth: Auth) {
+        self.route = route
+        self.auth = auth
+    }
+    
     func get<R: Decodable>(completion: @escaping (R?, Error?) -> Void) {
         let url = URL(string: route.path, relativeTo: endpoint.baseUrl)!
         let parameters = endpoint.sign(route: route, auth: auth)
-        let request = Alamofire.request(url, parameters: parameters).responseData {
+        let request = session.request(url, parameters: parameters).responseData {
             response in
             
-            log.info("[Response]: \(response.result.debugDescription)")
-            log.info("[Data]: \(response.data?.count ?? 0) bytes")
-            log.info("[Timeline]: \(response.timeline.description)")
             if let data = response.result.value {
+                log.info("[Response]: \(response.result.debugDescription)")
+                log.info("[Data]: \(response.data?.count ?? 0) bytes")
+                log.info("[Timeline]: \(response.timeline.description)")
                 let decoder = JSONDecoder()
                 do {
                     let object = try decoder.decode(R.self, from: data)
@@ -39,12 +51,11 @@ struct ApiRequest {
                     }
                 }
             } else {
-                print(response.error?.localizedDescription ?? "")
+                log.error(response.error?.localizedDescription ?? "")
                 completion(nil, response.error)
             }
         }
         log.info("[Request]: \(url)")
         log.debug(request.debugDescription)
     }
-
 }

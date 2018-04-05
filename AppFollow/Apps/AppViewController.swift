@@ -20,6 +20,12 @@ protocol AppSectionDataSource: UITableViewDataSource {
 }
 
 class AppViewController: UIViewController, AppSectionDataSourceDelegate {
+    static func instantiateFromStoryboard(app: App) -> AppViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "AppViewController") as! AppViewController
+        controller.app = app
+        return controller
+    }
     
     var app: App!
     

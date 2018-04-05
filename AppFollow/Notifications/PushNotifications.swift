@@ -43,7 +43,7 @@ class PushNotifications {
     }
     
     func registerToken(_ deviceToken: Data) {
-        ApiRequest(route: PushRoute(deviceToken: deviceToken.base64EncodedString()), auth: self.auth).get {
+        ApiRequest(route: PushRoute(deviceToken: deviceToken.hex), auth: self.auth).get {
             (result: PushResponse?, error) in
             if error != nil {
                 log.error(error!)

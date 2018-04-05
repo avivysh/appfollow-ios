@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import SwiftyBeaver
+import UserNotifications
+
 let log = SwiftyBeaver.self
 
 @UIApplicationMain
@@ -29,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = MainViewController.instantiateFromStoryboard()
         }
         
+        UNUserNotificationCenter.current().delegate = AppDelegate.provide.notificationsDelegate
         // Override point for customization after application launch.
         return true
     }

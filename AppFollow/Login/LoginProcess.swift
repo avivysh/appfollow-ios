@@ -63,7 +63,7 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
             return
         }
         
-        if (webView.url?.path == "/apps/myapps" || webView.url?.path == "/apps/apps") {
+        if (webView.url?.path.hasPrefix("/apps") == true) {
             let settingsUrl = URL(string: "/settings/general", relativeTo: webView.url)!
             webView.load(URLRequest(url: settingsUrl))
             return
