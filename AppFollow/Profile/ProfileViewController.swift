@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var company: UILabel!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var appVersion: UILabel!
     
     @IBAction func signOut(_ sender: UIButton) {
         if let bundleID = Bundle.main.bundleIdentifier {
@@ -35,5 +36,9 @@ class ProfileViewController: UIViewController {
         if (!profile.image.isEmpty) {
             self.image.af_setImage(withURL: URL(string: profile.image, relativeTo: URL(string: "https://watch.appfollow.io"))!)
         }
+        
+        let versionName = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        let versionCode = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+        self.appVersion.text = "\(versionName) (\(versionCode))"
     }
 }

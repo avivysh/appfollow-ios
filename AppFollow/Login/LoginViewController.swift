@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import ToastSwiftFramework
+import SafariServices
 
 class LoginViewController: UIViewController, LoginProcessDelegate {
 
@@ -32,13 +33,24 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     @IBAction func actionLogin(_ sender: Any) {
         let username = self.username.text ?? ""
         let password = self.password.text ?? ""
 
         self.loginProcess?.start(email: username, password: password)
+    }
+    
+    @IBAction func actionSignup(_ sender: UIButton) {
+        self.openUrl(url: URL(string: "https://appfollow.io")!)
+    }
+
+    @IBAction func actionReset(_ sender: UIButton) {
+        self.openUrl(url: URL(string: "https://watch.appfollow.io/forgot")!)
     }
     
     // MARK: LoginProcessDelegate
@@ -48,7 +60,7 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
     }
     
     func loginProgress(message: String) {
-        self.view.makeToast(message, duration: 3.0, position: .top)
+        self.view.makeToast(message, duration: 5.0, position: .top)
     }
 
     func loginSuccess(auth: Auth, profile: Profile) {
@@ -60,8 +72,13 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         appDelegate?.window??.rootViewController = main
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    // MARK: Private
+    
+    func openUrl(url: URL) {
+        let safari = SFSafariViewController(url: url)
+        safari.dismissButtonStyle = .close
+        safari.preferredBarTintColor = UIColor.black
+        self.show(safari, sender: self)
     }
 }
 

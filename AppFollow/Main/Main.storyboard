@@ -493,11 +493,18 @@
                                     <constraint firstAttribute="height" constant="96" id="bY6-ug-jAo"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AppFollow 1.0 (5)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozP-A2-THx">
+                                <rect key="frame" x="16" y="568.5" width="343" height="13.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ycG-8b-Ysp" firstAttribute="leading" secondItem="SG3-iN-zYt" secondAttribute="trailing" constant="16" id="6dy-Q6-d02"/>
                             <constraint firstItem="eBE-o1-kGE" firstAttribute="top" secondItem="J3s-4h-7cs" secondAttribute="top" constant="128" id="By2-vz-Vxd"/>
+                            <constraint firstItem="ozP-A2-THx" firstAttribute="leading" secondItem="BNR-me-rJZ" secondAttribute="leading" constant="16" id="G49-pU-2KY"/>
                             <constraint firstItem="SG3-iN-zYt" firstAttribute="leading" secondItem="J3s-4h-7cs" secondAttribute="leading" constant="16" id="GM3-ZT-Uwo"/>
                             <constraint firstAttribute="trailing" secondItem="eBE-o1-kGE" secondAttribute="trailing" constant="16" id="JrD-Ls-619"/>
                             <constraint firstItem="jpA-9m-WRl" firstAttribute="leading" secondItem="SG3-iN-zYt" secondAttribute="trailing" constant="16" id="LB5-uu-IDm"/>
@@ -506,18 +513,21 @@
                             <constraint firstItem="ycG-8b-Ysp" firstAttribute="top" secondItem="eBE-o1-kGE" secondAttribute="bottom" constant="8" id="T9a-3s-neQ"/>
                             <constraint firstAttribute="trailing" secondItem="LWV-M7-EpV" secondAttribute="trailing" constant="16" id="U62-z8-2Yk"/>
                             <constraint firstAttribute="trailing" secondItem="ycG-8b-Ysp" secondAttribute="trailing" constant="16" id="U8T-d5-7EC"/>
+                            <constraint firstItem="BNR-me-rJZ" firstAttribute="bottom" secondItem="ozP-A2-THx" secondAttribute="bottom" constant="16" id="Ybo-Vr-cB5"/>
                             <constraint firstItem="eBE-o1-kGE" firstAttribute="leading" secondItem="SG3-iN-zYt" secondAttribute="trailing" constant="16" id="bIu-J0-xJU"/>
                             <constraint firstItem="BNR-me-rJZ" firstAttribute="trailing" secondItem="jpA-9m-WRl" secondAttribute="trailing" constant="187" id="fcQ-rp-Moi"/>
                             <constraint firstItem="LWV-M7-EpV" firstAttribute="leading" secondItem="SG3-iN-zYt" secondAttribute="trailing" constant="16" id="g2i-76-SiZ"/>
                             <constraint firstItem="LWV-M7-EpV" firstAttribute="top" secondItem="pie-cb-FkB" secondAttribute="bottom" constant="8" id="hgm-kr-8h5"/>
                             <constraint firstItem="SG3-iN-zYt" firstAttribute="top" secondItem="J3s-4h-7cs" secondAttribute="top" constant="128" id="jwk-IZ-mMP"/>
                             <constraint firstItem="jpA-9m-WRl" firstAttribute="top" secondItem="LWV-M7-EpV" secondAttribute="bottom" constant="8" id="lbI-ub-WCI"/>
+                            <constraint firstItem="BNR-me-rJZ" firstAttribute="trailing" secondItem="ozP-A2-THx" secondAttribute="trailing" constant="16" id="qLI-2D-t7t"/>
                             <constraint firstItem="pie-cb-FkB" firstAttribute="top" secondItem="ycG-8b-Ysp" secondAttribute="bottom" constant="8" id="tA4-Pu-XYZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BNR-me-rJZ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="6bx-wC-P62"/>
                     <connections>
+                        <outlet property="appVersion" destination="ozP-A2-THx" id="c9M-lE-tUO"/>
                         <outlet property="company" destination="LWV-M7-EpV" id="hdZ-3Z-HeC"/>
                         <outlet property="descr" destination="ycG-8b-Ysp" id="2ve-FH-iDu"/>
                         <outlet property="email" destination="pie-cb-FkB" id="lm7-Yz-Kw7"/>
