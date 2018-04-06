@@ -18,17 +18,17 @@ private let session: SessionManager = {
 
 class ApiRequest {
     let route: EndpointRoute
-    let auth: Auth
+    let auth: AuthProvider
     let endpoint = Endpoint()
     
-    init(route: EndpointRoute, auth: Auth) {
+    init(route: EndpointRoute, auth: AuthProvider) {
         self.route = route
         self.auth = auth
     }
     
     func get<R: Decodable>(completion: @escaping (R?, Error?) -> Void) {
         let url = URL(string: route.path, relativeTo: endpoint.baseUrl)!
-        let parameters = endpoint.sign(route: route, auth: auth)
+        let parameters = endpoint.sign(route: route, auth: auth.actual)
         let request = session.request(url, parameters: parameters).responseData {
             response in
             

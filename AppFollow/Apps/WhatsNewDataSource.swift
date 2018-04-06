@@ -13,10 +13,10 @@ class WhatsNewDataSource: NSObject, AppSectionDataSource {
     
     private var whatsnew: [WhatsNew] = []
     private let app: App
-    private let auth: Auth
+    private let auth: AuthProvider
     private var loaded = false
     
-    init(app: App, auth: Auth) {
+    init(app: App, auth: AuthProvider) {
         self.app = app
         self.auth = auth
     }

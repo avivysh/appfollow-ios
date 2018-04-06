@@ -24,12 +24,12 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
     
     let reviewId: ReviewId
     let app: App
-    let auth: Auth
+    let auth: AuthProvider
     
     private var items: [ReplyItem] = []
     private var review = Review.empty
     
-    init(reviewId: ReviewId, app: App, auth: Auth) {
+    init(reviewId: ReviewId, app: App, auth: AuthProvider) {
         self.reviewId = reviewId
         self.app = app
         self.auth = auth

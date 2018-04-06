@@ -23,7 +23,7 @@ extension Date {
         return Calendar.current.date(byAdding: component, value: value, to: date)!
     }
 
-    func ymd() -> String {
+    var ymd: String {
         return ymdFormatter.string(from: self)
     }
 }
@@ -40,6 +40,13 @@ extension DateFormatter {
             return Date.unknown
         }
         return ymdhmsFomrmatter.date(from: ymdhms) ?? Date.unknown
+    }
+    
+    static func date(ymd: String) -> Date {
+        if ymd.isEmpty {
+            return Date.unknown
+        }
+        return ymdFormatter.date(from: ymd) ?? Date.unknown
     }
 }
 

@@ -36,7 +36,7 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segment: UISegmentedControl!
     
-    lazy var auth = AppDelegate.provide.auth
+    var auth: AuthProvider { return AppDelegate.provide.auth }
     lazy var reviewsDataSource = AppReviewsDataSource(app: self.app, auth: self.auth)
     lazy var whatsNewDataSource = WhatsNewDataSource(app: self.app, auth: self.auth)
     lazy var overviewDataSource = OverviewDataSource(app: self.app)

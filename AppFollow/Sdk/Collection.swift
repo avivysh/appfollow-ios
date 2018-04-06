@@ -17,7 +17,7 @@ struct CollectionsResponse: Decodable {
 }
  
 struct Collection: Decodable {
-    static let empty = Collection(id: CollectionId.empty, count: IntValue.empty, countries: "", languages: "", title: "", created: "")
+    static let empty = Collection(id: CollectionId.empty, count: IntValue.zero, countries: "", languages: "", title: "", created: "")
     
     let id: CollectionId
     let count: IntValue

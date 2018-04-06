@@ -33,7 +33,7 @@ struct CollectionResponse: Decodable {
 }
 
 struct App: Decodable {
-    static let empty = App(id: AppId.empty, details: AppDetails.empty, reviewsCount: IntValue.empty, whatsNewCount: IntValue.empty, created: Date.unknown, isFavorite: BoolValue.empty, store: "")
+    static let empty = App(id: AppId.empty, details: AppDetails.empty, reviewsCount: IntValue.zero, whatsNewCount: IntValue.zero, created: Date.unknown, isFavorite: BoolValue.false, store: "")
 
     let id: AppId
     let details: AppDetails
@@ -82,7 +82,7 @@ struct App: Decodable {
 
 struct AppDetails: Decodable {
     
-    static let empty = AppDetails(publisher: "", country: "", extId: ExtId.empty, genre: "", hasIap: BoolValue.empty, icon: "", id: AppId.empty, kind: "", lang: "", releaseDate: "", size: DoubleValue.empty, title: "", type: "", url: "", version: "")
+    static let empty = AppDetails(publisher: "", country: "", extId: ExtId.empty, genre: "", hasIap: BoolValue.false, icon: "", id: AppId.empty, kind: "", lang: "", releaseDate: "", size: DoubleValue.zero, title: "", type: "", url: "", version: "")
     
     let publisher: String
     let country: String

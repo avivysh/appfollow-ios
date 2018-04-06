@@ -32,7 +32,7 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
         
         webView.configuration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
         webView.navigationDelegate = self
-        webView.load(URLRequest(url: URL(string: "https://watch.appfollow.io/login")!))
+        webView.load(URLRequest(url: URL(string: "https://watch.appfollow.io/logout")!))
     }
     
     var delegate: LoginProcessDelegate?
@@ -58,7 +58,11 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        
+        log.info("[Login] Finish navigation to \(webView.url?.path ?? "")")
+        if (webView.url?.path == "/logout" && !self.submitted) {
+            webView.load(URLRequest(url: URL(string: "https://watch.appfollow.io/login")!))
+            return
+        }
         if (webView.url?.path == "/login" && self.submitted) {
             self.checkForErrors()
             return
@@ -107,7 +111,7 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
                 let company = list["company"] as? String
             else {
                 self.webView?.load(URLRequest(url: URL(string: "https://watch.appfollow.io/login")!))
-                self.delegate?.loginError(message: "Cennot fetch api secret")
+                self.delegate?.loginError(message: "Cannot fetch api secret")
                 return
             }
             

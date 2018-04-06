@@ -15,7 +15,7 @@ enum DateSection: Int {
     case thisMonth
     case older
     
-    static func forDate(_ date: Date, today: Date) -> DateSection {
+    static func `for`(date: Date, today: Date) -> DateSection {
         
         if (Calendar.current.isDate(date, inSameDayAs: today))
         {

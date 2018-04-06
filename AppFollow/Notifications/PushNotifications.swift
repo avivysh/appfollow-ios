@@ -25,8 +25,8 @@ struct PushResponse: Decodable { }
 
 class PushNotifications {
 
-    private let auth: Auth
-    init(auth: Auth) {
+    private let auth: AuthProvider
+    init(auth: AuthProvider) {
         self.auth = auth
     }
 

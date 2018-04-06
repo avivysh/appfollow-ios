@@ -41,7 +41,7 @@ class ReviewCell: UITableViewCell {
             self.content.attributedText = attributedString
         }
         
-        self.info.text = "   \(review.date) \(review.locale) \(review.version)\(review.answered ? "✅" : "")"
+        self.info.text = "   \(review.date.ymd) \(review.locale) \(review.version)\(review.answered ? "✅" : "")"
         if self.icon != nil {
             IconLoader.into(self.icon, url: app.details.icon)
         }

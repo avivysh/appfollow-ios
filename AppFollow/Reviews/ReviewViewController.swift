@@ -54,7 +54,7 @@ class ReviewViewController: UIViewController {
                 ApiRequest(route: ReplyRoute(extId: self.app.extId, reviewId: self.reviewId, answer: answerText), auth: AppDelegate.provide.auth).get { (response: ReplyResponse?, error: Error?) in
                     if let replyResponse = response {
                         log.info(replyResponse)
-                        let answer = ReviewAnswer(answered: true, date: Date().ymd(), text: answerText)
+                        let answer = ReviewAnswer(answered: true, date: Date().ymd, text: answerText)
                         self.textField.text = ""
                         self.dataSource.updateAnswer(answer: answer) {
                             self.tableView.reloadData()

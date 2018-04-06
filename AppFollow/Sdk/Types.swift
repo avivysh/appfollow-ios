@@ -33,8 +33,8 @@ private func decodeBool(from decoder: Decoder) throws -> Bool {
     return value == 1
 }
 
-struct DoubleValue: Decodable, Hashable {
-    static let empty = DoubleValue(value: 0)
+struct DoubleValue: Decodable, Hashable, CustomStringConvertible {
+    static let `zero` = DoubleValue(value: 0)
     
     let value: Double
     
@@ -50,13 +50,12 @@ struct DoubleValue: Decodable, Hashable {
         self.init(value: try decodeDouble(from: decoder))
     }
     
-    var hashValue: Int {
-        return self.value.hashValue
-    }
+    var hashValue: Int { return self.value.hashValue }
+    var description: String { return "\(self.value)" }
 }
 
-struct IntValue: Decodable, Hashable {
-    static let empty = IntValue(value: 0)
+struct IntValue: Decodable, Hashable, CustomStringConvertible {
+    static let `zero` = IntValue(value: 0)
     
     let value: Int
     
@@ -72,13 +71,12 @@ struct IntValue: Decodable, Hashable {
         self.init(value: try decodeInt(from: decoder))
     }
     
-    var hashValue: Int {
-        return self.value.hashValue
-    }
+    var hashValue: Int { return self.value.hashValue }
+    var description: String { return "\(self.value)" }
 }
 
-struct BoolValue: Decodable, Hashable {
-    static let empty = BoolValue(value: false)
+struct BoolValue: Decodable, Hashable, CustomStringConvertible {
+    static let `false` = BoolValue(value: false)
     
     let value: Bool
     
@@ -94,7 +92,6 @@ struct BoolValue: Decodable, Hashable {
         self.init(value: try decodeBool(from: decoder))
     }
     
-    var hashValue: Int {
-        return self.value.hashValue
-    }
+    var hashValue: Int { return self.value.hashValue }
+    var description: String { return self.value ? "Yes" : "No" }
 }

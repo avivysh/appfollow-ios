@@ -11,10 +11,10 @@ import Foundation
 
 class StateRefresh {
     var store: Store
-    let auth: Auth
+    let auth: AuthProvider
     var isRefreshing = false
 
-    init(store: Store, auth: Auth) {
+    init(store: Store, auth: AuthProvider) {
         self.store = store
         self.auth = auth
     }

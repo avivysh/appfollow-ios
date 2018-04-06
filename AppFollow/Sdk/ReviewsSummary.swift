@@ -16,8 +16,8 @@ struct ReviewsSummaryRoute: EndpointRoute {
     let path = "/reviews/summary"
     var parameters: [String: Any] { get { return [
         "ext_id" : extId.value,
-        "from": from.ymd(),
-        "to": to.ymd()
+        "from": from.ymd,
+        "to": to.ymd
         ]}
     }
 }

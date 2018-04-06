@@ -102,12 +102,12 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
 
         let now = Date()
         for review in reviews {
-            let modified = review.modified
-            let section = DateSection.forDate(modified, today: now)
+            let date = review.date
+            let section = DateSection.for(date: date, today: now)
             if (sectionedReviews[section] == nil) {
                 sectionedReviews[section] = [review]
             } else {
-                if let index = sectionedReviews[section]!.index(where: { $0.modified < modified }) {
+                if let index = sectionedReviews[section]!.index(where: { $0.date < date }) {
                     sectionedReviews[section]!.insert(review, at: index)
                 } else {
                     sectionedReviews[section]!.insert(review, at: 0)

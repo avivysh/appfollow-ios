@@ -45,8 +45,8 @@ struct CollectionReviewsRoute: EndpointRoute {
     var parameters: [String: Any] {
         get {
             return [
-                "from": from.ymd(),
-                "to": to.ymd()
+                "from": from.ymd,
+                "to": to.ymd
             ]
         }
     }
@@ -84,7 +84,7 @@ struct ReviewAnswer {
 
 struct Review: Decodable {
     
-    static let empty = Review(id: ValueId.empty, appId: AppId.empty, extId: ExtId.empty, locale: "", rating: DoubleValue.empty, ratingPrevious: DoubleValue.empty, store: "", reviewId: ReviewId.empty, userId: UserId.empty, date: "", title: "", content: "", version: "", author: "", wasChanged: BoolValue.empty, created: Date.unknown, updated: Date.unknown, answer: ReviewAnswer.empty, history: [])
+    static let empty = Review(id: ValueId.empty, appId: AppId.empty, extId: ExtId.empty, locale: "", rating: DoubleValue.zero, ratingPrevious: DoubleValue.zero, store: "", reviewId: ReviewId.empty, userId: UserId.empty, date: Date.unknown, title: "", content: "", version: "", author: "", wasChanged: BoolValue.false, created: Date.unknown, updated: Date.unknown, answer: ReviewAnswer.empty, history: [])
     
     let id: ValueId
     let store: String
@@ -93,7 +93,7 @@ struct Review: Decodable {
     let reviewId: ReviewId
     let locale: String
     let userId: UserId
-    let date: String
+    let date: Date
     let title: String
     let content: String
     let rating: DoubleValue
@@ -143,7 +143,7 @@ struct Review: Decodable {
         case answerText = "answer_text"
     }
     
-    init(id: ValueId, appId: AppId, extId: ExtId, locale: String, rating: DoubleValue, ratingPrevious: DoubleValue, store: String, reviewId: ReviewId, userId: UserId, date: String, title: String, content: String, version: String, author: String, wasChanged: BoolValue, created: Date, updated: Date, answer: ReviewAnswer, history: [Review]) {
+    init(id: ValueId, appId: AppId, extId: ExtId, locale: String, rating: DoubleValue, ratingPrevious: DoubleValue, store: String, reviewId: ReviewId, userId: UserId, date: Date, title: String, content: String, version: String, author: String, wasChanged: BoolValue, created: Date, updated: Date, answer: ReviewAnswer, history: [Review]) {
         self.id = id
         self.appId = appId
         self.extId = extId
@@ -172,7 +172,7 @@ struct Review: Decodable {
         self.appId = try map.decodeIfPresent(.appId) ?? AppId.empty
         self.extId = try map.decodeIfPresent(.extId) ?? ExtId.empty
         self.locale = try map.decodeIfPresent(.locale) ?? ""
-        self.ratingPrevious = try map.decodeIfPresent(.ratingPrevious) ?? DoubleValue.empty
+        self.ratingPrevious = try map.decodeIfPresent(.ratingPrevious) ?? DoubleValue.zero
         let updated = try map.decodeIfPresent(String.self, forKey: .updated) ?? ""
         self.updated = updated.isEmpty ? Date.unknown : DateFormatter.date(ymdhms: updated)
         // History optional
@@ -181,15 +181,16 @@ struct Review: Decodable {
         // Answer
         let answerDate = try map.decodeIfPresent(.answerDate) ?? ""
         let answerText = try map.decodeIfPresent(.answerText) ?? ""
-        let answered = try map.decodeIfPresent(BoolValue.self, forKey: .answered) ?? BoolValue.empty
+        let answered = try map.decodeIfPresent(BoolValue.self, forKey: .answered) ?? BoolValue.false
         self.answer = ReviewAnswer(answered: answered.value, date: answerDate, text: answerText)
         //
         self.reviewId = try map.decode(.reviewId) ?? ReviewId.empty
         self.userId = try map.decode(.userId) ?? UserId.empty
-        self.date = try map.decode(.date) ?? ""
+        let date = try map.decode(String.self, forKey: .date)
+        self.date = DateFormatter.date(ymd: date)
         self.title = try map.decode(.title) ?? ""
         self.content = try map.decode(.content) ?? ""
-        self.rating = try map.decode(.rating) ?? DoubleValue.empty
+        self.rating = try map.decode(.rating) ?? DoubleValue.zero
         self.author = try map.decode(.author) ?? ""
         self.wasChanged = try map.decode(BoolValue.self, forKey: .wasChanged)
         let created = try map.decodeIfPresent(String.self, forKey: .created) ?? ""

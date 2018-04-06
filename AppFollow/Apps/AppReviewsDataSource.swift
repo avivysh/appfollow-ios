@@ -12,12 +12,12 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
     
     private var reviews: [Review] = []
     private let app: App
-    private let auth: Auth
+    private let auth: AuthProvider
 
     private var loaded = false
     weak var delegate: AppSectionDataSourceDelegate?
     
-    init(app: App, auth: Auth) {
+    init(app: App, auth: AuthProvider) {
         self.app = app
         self.auth = auth
     }
