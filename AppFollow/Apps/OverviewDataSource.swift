@@ -33,7 +33,7 @@ class OverviewDataSource: NSObject, AppSectionDataSource {
             OverviewItem(title: "Kind", subtitle: app.details.kind),
             OverviewItem(title: "Language", subtitle: app.details.lang),
             OverviewItem(title: "Publisher", subtitle: app.details.publisher),
-            OverviewItem(title: "Release date", subtitle: app.details.releaseDate),
+            OverviewItem(title: "Release date", subtitle: app.details.released.isValid ? app.details.released.ymd : ""),
             OverviewItem(title: "Size", subtitle: "\(app.details.size.value)"),
             OverviewItem(title: "Version", subtitle: "\(app.details.version)"),
             OverviewItem(title: "Url", subtitle: "\(app.details.url)"),

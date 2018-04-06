@@ -82,7 +82,7 @@ struct App: Decodable {
 
 struct AppDetails: Decodable {
     
-    static let empty = AppDetails(publisher: "", country: "", extId: ExtId.empty, genre: "", hasIap: BoolValue.false, icon: "", id: AppId.empty, kind: "", lang: "", releaseDate: "", size: DoubleValue.zero, title: "", type: "", url: "", version: "")
+    static let empty = AppDetails(publisher: "", country: "", extId: ExtId.empty, genre: "", hasIap: BoolValue.false, icon: "", id: AppId.empty, kind: "", lang: "", released: Date.unknown, size: DoubleValue.zero, title: "", type: "", url: "", version: "")
     
     let publisher: String
     let country: String
@@ -93,7 +93,7 @@ struct AppDetails: Decodable {
     let id: AppId
     let kind: String
     let lang: String
-    let releaseDate: String
+    let released: Date
     let size: DoubleValue
     let title: String
     let type: String
@@ -111,7 +111,7 @@ struct AppDetails: Decodable {
         case id
         case kind
         case lang
-        case releaseDate = "release_date"
+        case released = "release_date"
         case size
         case title
         case type
@@ -119,7 +119,7 @@ struct AppDetails: Decodable {
         case version
     }
     
-    init(publisher: String, country: String, extId: ExtId, genre: String, hasIap: BoolValue, icon: String, id: AppId, kind: String, lang: String, releaseDate: String, size: DoubleValue, title: String, type: String, url: String, version: String) {
+    init(publisher: String, country: String, extId: ExtId, genre: String, hasIap: BoolValue, icon: String, id: AppId, kind: String, lang: String, released: Date, size: DoubleValue, title: String, type: String, url: String, version: String) {
         self.publisher = publisher
         self.country = country
         self.extId = extId
@@ -129,7 +129,7 @@ struct AppDetails: Decodable {
         self.id = id
         self.kind = kind
         self.lang = lang
-        self.releaseDate = releaseDate
+        self.released = released
         self.size = size
         self.title = title
         self.type = type
@@ -148,7 +148,8 @@ struct AppDetails: Decodable {
         self.id = try map.decode(.id)
         self.kind = try map.decode(.kind) ?? ""
         self.lang = try map.decode(.lang) ?? ""
-        self.releaseDate = try map.decode(.releaseDate) ?? ""
+        let releaseDate = try map.decode(.released) ?? ""
+        self.released = DateFormatter.date(ymd: releaseDate)
         self.size = try map.decode(.size)
         self.title = try map.decode(.title) ?? ""
         self.type = try map.decode(.type) ?? ""

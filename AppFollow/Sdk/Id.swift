@@ -19,14 +19,14 @@ private func decode(from decoder: Decoder) throws -> String {
     return id
 }
 
-protocol Id : Decodable, Hashable {
+protocol IdType : Decodable, Hashable {
     var value: String { get }
     var isEmpty: Bool { get }
     init(value: String)
     init(from decoder: Decoder) throws
 }
 
-extension Id {
+extension IdType {
     var isEmpty: Bool {
         get { return self.value.isEmpty }
     }
@@ -35,7 +35,7 @@ extension Id {
     }
 }
 
-struct ValueId: Id {
+struct ValueId: IdType {
     static let empty = ValueId(value: "")
     
     let value: String
@@ -53,7 +53,7 @@ struct ValueId: Id {
     }
 }
 
-struct UserId: Id {
+struct UserId: IdType {
     static let empty = UserId(value: "")
 
     let value: String
@@ -71,7 +71,7 @@ struct UserId: Id {
     }
 }
 
-struct ExtId: Id {
+struct ExtId: IdType {
     static let empty = ExtId(value: "")
 
     let value: String
@@ -89,7 +89,7 @@ struct ExtId: Id {
     }
 }
 
-struct ReviewId: Id {
+struct ReviewId: IdType {
     static let empty = ReviewId(value: "")
 
     let value: String
@@ -107,7 +107,7 @@ struct ReviewId: Id {
     }
 }
 
-struct AppId: Id {
+struct AppId: IdType {
     static let empty = AppId(value: "")
     
     let value: String
@@ -125,7 +125,7 @@ struct AppId: Id {
     }
 }
 
-struct CollectionId: Id {
+struct CollectionId: IdType {
     static let empty = CollectionId(value: "")
     
     let value: String
