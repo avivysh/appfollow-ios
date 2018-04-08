@@ -50,4 +50,13 @@ class PushNotifications {
             }
         }
     }
+
+    func removeToken() {
+        ApiRequest(route: PushRoute(deviceToken: ""), auth: self.auth).get {
+            (result: PushResponse?, error) in
+            if error != nil {
+                log.error(error!)
+            }
+        }
+    }
 }

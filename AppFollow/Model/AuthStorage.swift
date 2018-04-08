@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct AuthProvider {
+    let authStorage: AuthStorage
+    var actual: Auth { return authStorage.retrieve() }
+}
+
 // TODO: Async?
 protocol AuthStorage {
     func retrieve() -> Auth

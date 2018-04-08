@@ -12,18 +12,17 @@ import UserNotifications
 class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        guard let url = response.notification.request.content.userInfo["deeplink"] as? String,
-            let deeplinkURL = URL(string: url)
-            else {
-                log.error("Cannot parse deeplink \(response.notification.request.content.userInfo.debugDescription)")
+        guard 
+            let userInfo = response.notification.request.content.userInfo as? [String:AnyObject],
+            let payload = Payload(userInfo: userInfo)
+        else {
+                log.error("Cannot parse userInfo \(response.notification.request.content.debugDescription)")
                 completionHandler()
                 return
         }
-        log.info("Received deeplink: \(deeplinkURL.debugDescription)")
+        log.info("Received payload: \(response.notification.request.content.userInfo.debugDescription)")
         
-        let deeplink = Deeplink(url: deeplinkURL)
-        if deeplink.isValid {
+        if payload.isValid {
             DeeplinkNavigation(deeplink: deeplink).perform {
                 completionHandler()
             }
@@ -33,7 +32,6 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
         completionHandler(.alert)
     }
 }

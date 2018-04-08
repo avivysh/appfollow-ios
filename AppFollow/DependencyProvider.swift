@@ -8,14 +8,10 @@
 
 import Foundation
 
-class AuthProvider {
-    var actual: Auth { return AppDelegate.provide.authStorage.retrieve() }
-}
-
 class DependencyProvider {
     
     let authStorage = UserDefaultAuthStorage(defaults: UserDefaults.standard)
-    lazy var auth = AuthProvider()
+    lazy var auth = AuthProvider(authStorage: authStorage)
     let store = Store()
     lazy var stateRefresh = StateRefresh(store: self.store, auth: self.auth )
     let profileStorage = ProfileStorage(defaults: UserDefaults.standard)

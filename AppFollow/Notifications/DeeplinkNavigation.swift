@@ -9,17 +9,17 @@
 import UIKit
 
 class DeeplinkNavigation {
-    let deeplink: Deeplink
+    let payload: Payload
     
-    init(deeplink: Deeplink) {
-        self.deeplink = deeplink
+    init(payload: Payload) {
+        self.payload = payload
     }
     
     func perform(complete: () -> Void) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if let mainViewController = appDelegate.window?.rootViewController as? MainViewController {
-            if !deeplink.appId.isEmpty {
-                let app = AppDelegate.provide.store.appFor(appId: deeplink.appId)
+            if !payload.extId.isEmpty {
+                let app = AppDelegate.provide.store.appFor(extId: payload.extId)
                 // TODO: Fetch if not available
                 mainViewController.navigateToApp(app: app)
             } else if !deeplink.collection.isEmpty {
@@ -27,6 +27,5 @@ class DeeplinkNavigation {
             }
             complete()
         }
-        
     }
 }
