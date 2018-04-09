@@ -19,19 +19,28 @@ private func decode(from decoder: Decoder) throws -> String {
     return id
 }
 
-protocol IdType : Decodable, Hashable {
+protocol IdType : Codable, Hashable, CustomStringConvertible {
     var value: String { get }
     var isEmpty: Bool { get }
     init(value: String)
     init(from decoder: Decoder) throws
+    func encode(to encoder: Encoder) throws
 }
 
 extension IdType {
+    var description: String { return "\(self.value)" }
+
     var isEmpty: Bool {
         get { return self.value.isEmpty }
     }
+    
     var hashValue: Int {
         return self.value.hashValue
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self.value)
     }
 }
 

@@ -14,7 +14,6 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     
     private var collections: [Collection] = []
     private var apps: [CollectionId: [App]] = [:]
-    private var reviewsSummary: [ExtId: ReviewsSummary] = [:]
 
     // MARK: Public
     
@@ -27,7 +26,6 @@ class AppsDataSource: NSObject, UITableViewDataSource {
         let store = AppDelegate.provide.store
         self.collections = store.collections
         self.apps = store.apps
-        self.reviewsSummary = store.reviewsSummary
     }
     
     // MARK: UITableViewDataSource

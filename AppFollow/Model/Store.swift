@@ -16,7 +16,6 @@ class Store {
     
     var collections: [Collection] = []
     var apps: [CollectionId: [App]] = [:]
-    var reviewsSummary: [ExtId : ReviewsSummary] = [:]
 
     func appFor(appId: AppId) -> App {
         for pair in apps {
@@ -38,5 +37,10 @@ class Store {
             }
         }
         return App.empty
+    }
+    
+    func reset() {
+        apps = [:]
+        collections = []
     }
 }
