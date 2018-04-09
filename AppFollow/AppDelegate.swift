@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let console = ConsoleDestination()
-        log.addDestination(console)
-        
+        log.addDestination(ConsoleDestination())
+        log.addDestination(FileDestination())
+
         if (AppDelegate.provide.authStorage.retrieve().cid == emptyAuth.cid) {
             self.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
         } else {

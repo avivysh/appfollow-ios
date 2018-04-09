@@ -8,6 +8,12 @@
 
 import UIKit
 
+private enum Tab: Int {
+    case Reviews = 0
+    case Apps
+    case Profile
+}
+
 class MainViewController: UITabBarController {
     static func instantiateFromStoryboard() -> MainViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -16,17 +22,17 @@ class MainViewController: UITabBarController {
     }
     
     func navigateToApp(app: App) {
-        self.selectedIndex = 1
+        self.selectedIndex = Tab.Apps.rawValue
         if let tabViewContainer = self.selectedViewController as? TabViewController {
             let appViewController = AppViewController.instantiateFromStoryboard(app: app)
-            tabViewContainer.embedController?.navigationController?.pushViewController(appViewController, animated: true)
+            tabViewContainer.embedController?.pushViewController(appViewController, animated: true)
         }
     }
     
     func navigateToApps() {
-        self.selectedIndex = 1
+        self.selectedIndex = Tab.Apps.rawValue
         if let tabViewContainer = self.selectedViewController as? TabViewController {
-            tabViewContainer.embedController?.navigationController?.popToRootViewController(animated: true)
+            tabViewContainer.embedController?.popToRootViewController(animated: true)
         }
     }
 }

@@ -10,11 +10,11 @@ import UIKit
 
 class TabViewController: UIViewController {
 
-    weak var embedController: UIViewController?
+    weak var embedController: UINavigationController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedSegue" {
-            self.embedController = segue.destination
+            self.embedController = segue.destination as? UINavigationController
         }
     }
 }

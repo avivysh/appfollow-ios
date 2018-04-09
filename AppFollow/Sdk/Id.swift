@@ -90,11 +90,11 @@ struct ExtId: IdType {
     
     init(from value: Any) {
         if let number = value as? Int {
-            self.init(from: String(number))
+            self.init(value: String(number))
         } else if let str = value as? String {
-            self.init(from: str)
+            self.init(value: str)
         } else {
-            self.init(from: "")
+            self.init(value: "")
         }
     }
 }
@@ -118,11 +118,11 @@ struct ReviewId: IdType {
     
     init(from value: Any) {
         if let number = value as? Int {
-            self.init(from: String(number))
+            self.init(value: String(number))
         } else if let str = value as? String {
-            self.init(from: str)
+            self.init(value: str)
         } else {
-            self.init(from: "")
+            self.init(value: "")
         }
     }
 }
