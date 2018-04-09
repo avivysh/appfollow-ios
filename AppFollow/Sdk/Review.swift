@@ -40,7 +40,10 @@ struct CollectionReviewsRoute: EndpointRoute {
     let to: Date
     
     var path: String {
-        get { return "/\(collectionName)/reviews" }
+        get {
+            let encoded = collectionName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+            return "/\(encoded)/reviews"
+        }
     }
     var parameters: [String: Any] {
         get {
