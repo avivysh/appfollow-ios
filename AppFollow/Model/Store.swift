@@ -28,4 +28,15 @@ class Store {
         }
         return App.empty
     }
+
+    func appFor(extId: ExtId) -> App {
+        for pair in apps {
+            for app in pair.value {
+                if app.details.extId == extId {
+                    return app
+                }
+            }
+        }
+        return App.empty
+    }
 }
