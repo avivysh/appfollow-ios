@@ -87,6 +87,16 @@ struct ExtId: IdType {
     init(from decoder: Decoder) throws {
         self.init(value: try decode(from: decoder))
     }
+    
+    init(from value: Any) {
+        if let number = value as? Int {
+            self.init(from: String(number))
+        } else if let str = value as? String {
+            self.init(from: str)
+        } else {
+            self.init(from: "")
+        }
+    }
 }
 
 struct ReviewId: IdType {
@@ -104,6 +114,16 @@ struct ReviewId: IdType {
     
     init(from decoder: Decoder) throws {
         self.init(value: try decode(from: decoder))
+    }
+    
+    init(from value: Any) {
+        if let number = value as? Int {
+            self.init(from: String(number))
+        } else if let str = value as? String {
+            self.init(from: str)
+        } else {
+            self.init(from: "")
+        }
     }
 }
 

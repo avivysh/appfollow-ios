@@ -23,7 +23,7 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
         log.info("Received payload: \(response.notification.request.content.userInfo.debugDescription)")
         
         if payload.isValid {
-            DeeplinkNavigation(deeplink: deeplink).perform {
+            PayloadNavigation(payload: payload).perform {
                 completionHandler()
             }
         } else {

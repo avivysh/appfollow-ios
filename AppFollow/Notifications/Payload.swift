@@ -25,16 +25,16 @@ struct Payload {
         self.reviewId = reviewId
     }
 
-    convenience init?(userInfo: [String:AnyObject]) {
+    init?(userInfo: [String:Any]) {
         guard 
-            let apsInfo = userInfo["aps"] as? [String:AnyObject],
+            let apsInfo = userInfo["aps"] as? [String:Any],
             let message = apsInfo["alert"] as? String,
             let badge = apsInfo["badge"] as? Int        
         else { return nil }
 
-        let extId = userInfo["ext_id"] ?? ExtId.empty
-        let reviewId = userInfo["review_id"] ?? ReviewId.empty
-
+        let extId = ExtId(from: userInfo["ext_id"] ?? "")
+        let reviewId = ReviewId(from: userInfo["review_id"] ?? "")
+        
         self.init(message: message, badge: badge, extId: extId, reviewId: reviewId)
     }
 }

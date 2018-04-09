@@ -20,6 +20,7 @@
 		981C3B15206ED0020072E3A2 /* IconLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B14206ED0020072E3A2 /* IconLoader.swift */; };
 		981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */; };
 		981C3B192070C1F40072E3A2 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B182070C1F40072E3A2 /* Page.swift */; };
+		982D5505207B5B880001A6D9 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982D5504207B5B870001A6D9 /* Payload.swift */; };
 		984E51A7206BF71500CDB24D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A6206BF71500CDB24D /* Auth.swift */; };
 		984E51AA206BF73200CDB24D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A9206BF73200CDB24D /* String.swift */; };
 		984E51AD206BF79100CDB24D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984E51AC206BF79100CDB24D /* Main.storyboard */; };
@@ -60,11 +61,10 @@
 		98CB4F1D20741AA000F32EEE /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F1C20741AA000F32EEE /* Types.swift */; };
 		98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */; };
 		98CB4F22207432CD00F32EEE /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F21207432CD00F32EEE /* PushNotifications.swift */; };
-		98CB4F25207632DD00F32EEE /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F24207632DD00F32EEE /* Deeplink.swift */; };
 		98CB4F27207634CC00F32EEE /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */; };
 		98CB4F2F207650A000F32EEE /* DeeplinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */; };
 		98CB4F372076554E00F32EEE /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F362076554D00F32EEE /* URL.swift */; };
-		98CB4F3920765D0900F32EEE /* DeeplinkNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F3820765D0900F32EEE /* DeeplinkNavigation.swift */; };
+		98CB4F3920765D0900F32EEE /* PayloadNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4A206D62DD00FA461F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F49206D62DD00FA461F /* Profile.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
@@ -101,6 +101,7 @@
 		981C3B14206ED0020072E3A2 /* IconLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLoader.swift; sourceTree = "<group>"; };
 		981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReviewsDataSource.swift; sourceTree = "<group>"; };
 		981C3B182070C1F40072E3A2 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		982D5504207B5B870001A6D9 /* Payload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		984E51A6206BF71500CDB24D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		984E51A9206BF73200CDB24D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		984E51AC206BF79100CDB24D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -142,13 +143,12 @@
 		98CB4F1E207428F100F32EEE /* AppFollow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppFollow.entitlements; sourceTree = "<group>"; };
 		98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		98CB4F21207432CD00F32EEE /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
-		98CB4F24207632DD00F32EEE /* Deeplink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
 		98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
 		98CB4F2C207650A000F32EEE /* AppFollowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFollowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkTests.swift; sourceTree = "<group>"; };
 		98CB4F30207650A000F32EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98CB4F362076554D00F32EEE /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		98CB4F3820765D0900F32EEE /* DeeplinkNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigation.swift; sourceTree = "<group>"; };
+		98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadNavigation.swift; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F49206D62DD00FA461F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
@@ -333,10 +333,10 @@
 		98CB4F23207632BA00F32EEE /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				982D5504207B5B870001A6D9 /* Payload.swift */,
 				98CB4F21207432CD00F32EEE /* PushNotifications.swift */,
-				98CB4F24207632DD00F32EEE /* Deeplink.swift */,
 				98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */,
-				98CB4F3820765D0900F32EEE /* DeeplinkNavigation.swift */,
+				98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -560,12 +560,12 @@
 				98815DCA207283E200A7A6C6 /* ReviewReplyDataSource.swift in Sources */,
 				98CB4F172073719A00F32EEE /* Reply.swift in Sources */,
 				98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */,
+				982D5505207B5B880001A6D9 /* Payload.swift in Sources */,
 				98631896206E58A900D6A14F /* Date.swift in Sources */,
 				98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */,
 				984E51DB206C236300CDB24D /* Endpoint.swift in Sources */,
-				98CB4F3920765D0900F32EEE /* DeeplinkNavigation.swift in Sources */,
+				98CB4F3920765D0900F32EEE /* PayloadNavigation.swift in Sources */,
 				984E51B9206C1DE100CDB24D /* MainViewController.swift in Sources */,
-				98CB4F25207632DD00F32EEE /* Deeplink.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

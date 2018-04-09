@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DeeplinkNavigation {
+class PayloadNavigation {
     let payload: Payload
     
     init(payload: Payload) {
@@ -22,7 +22,7 @@ class DeeplinkNavigation {
                 let app = AppDelegate.provide.store.appFor(extId: payload.extId)
                 // TODO: Fetch if not available
                 mainViewController.navigateToApp(app: app)
-            } else if !deeplink.collection.isEmpty {
+            } else {
                 mainViewController.navigateToApps()
             }
             complete()
