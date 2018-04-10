@@ -9,6 +9,14 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
+    static func instantiateFromStoryboard(app: App, reviewId: ReviewId) -> ReviewViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as! ReviewViewController
+        controller.app = app
+        controller.reviewId = reviewId
+        return controller
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var actionBarBottom: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextView!

@@ -29,6 +29,15 @@ class MainViewController: UITabBarController {
         }
     }
     
+    func navigateToReview(app: App, reviewId: ReviewId) {
+        self.selectedIndex = Tab.Apps.rawValue
+        if let tabViewContainer = self.selectedViewController as? TabViewController {
+            let appViewController = AppViewController.instantiateFromStoryboard(app: app)
+            let reviewViewController = ReviewViewController.instantiateFromStoryboard(app: app, reviewId: reviewId)
+            tabViewContainer.embedController?.setViewControllers([appViewController, reviewViewController], animated: true)
+        }
+    }
+    
     func navigateToApps() {
         self.selectedIndex = Tab.Apps.rawValue
         if let tabViewContainer = self.selectedViewController as? TabViewController {

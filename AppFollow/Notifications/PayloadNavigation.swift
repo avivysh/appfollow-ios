@@ -20,8 +20,12 @@ class PayloadNavigation {
         if let mainViewController = appDelegate.window?.rootViewController as? MainViewController {
             if !payload.extId.isEmpty {
                 let app = AppDelegate.provide.store.appFor(extId: payload.extId)
-                // TODO: Fetch if not available
-                mainViewController.navigateToApp(app: app)
+                if payload.reviewId.isEmpty {
+                    // TODO: Fetch if not available
+                    mainViewController.navigateToApp(app: app)
+                } else {
+                    mainViewController.navigateToReview(app: app, reviewId: payload.reviewId)
+                }
             } else {
                 mainViewController.navigateToApps()
             }
