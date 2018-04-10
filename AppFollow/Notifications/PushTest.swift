@@ -14,6 +14,13 @@ struct PushApp: Encodable {
     let title: String
     let extId: ExtId
     
+    enum CodingKeys: String, CodingKey {
+        case link
+        case icon
+        case title
+        case extId = "ext_id"
+    }
+    
     init(app: App) {
         self.link = app.details.url
         self.icon = app.details.icon
@@ -36,6 +43,22 @@ struct PushReview: Encodable {
     let date: String
     let countryCode: String
     let permalink: String
+    
+    enum CodingKeys: String, CodingKey {
+        case replyLink
+        case reviewId = "review_id"
+        case title
+        case store
+        case country
+        case version
+        case content
+        case author
+        case app
+        case rating
+        case date
+        case countryCode = "country_code"
+        case permalink
+    }
     
     init(review: Review, app: App, collection: Collection) {
         let collectionName = collection.title.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
