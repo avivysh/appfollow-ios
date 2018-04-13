@@ -9,7 +9,12 @@
 import UIKit
 
 class AppsViewController: UIViewController {
-
+    static func instantiateFromStoryboard() -> AppsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "AppsViewController") as! AppsViewController
+        return controller
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     let dataSource = AppsDataSource()

@@ -122,7 +122,7 @@
         <!--Apps-->
         <scene sceneID="TKm-pl-siQ">
             <objects>
-                <viewController title="Apps" id="fHe-aN-NTG" customClass="AppsViewController" customModule="AppFollow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AppsViewController" title="Apps" id="fHe-aN-NTG" customClass="AppsViewController" customModule="AppFollow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="euC-0L-MLj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

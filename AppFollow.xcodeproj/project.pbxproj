@@ -48,6 +48,9 @@
 		98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631891206D847700D6A14F /* ReviewsDataSource.swift */; };
 		98631894206E4EFE00D6A14F /* DateSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631893206E4EFE00D6A14F /* DateSection.swift */; };
 		98631896206E58A900D6A14F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98631895206E58A900D6A14F /* Date.swift */; };
+		986B85792080A4D50051F8F8 /* DeveloperActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B85782080A4D50051F8F8 /* DeveloperActions.swift */; };
+		986B857B2080A8170051F8F8 /* UIAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857A2080A8170051F8F8 /* UIAlertAction.swift */; };
+		986B857E2080A91C0051F8F8 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */; };
 		98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */; };
 		98815DBE20721CE000A7A6C6 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBD20721CE000A7A6C6 /* WhatsNew.swift */; };
 		98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */; };
@@ -132,6 +135,9 @@
 		98631891206D847700D6A14F /* ReviewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsDataSource.swift; sourceTree = "<group>"; };
 		98631893206E4EFE00D6A14F /* DateSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSection.swift; sourceTree = "<group>"; };
 		98631895206E58A900D6A14F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		986B85782080A4D50051F8F8 /* DeveloperActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperActions.swift; sourceTree = "<group>"; };
+		986B857A2080A8170051F8F8 /* UIAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertAction.swift; sourceTree = "<group>"; };
+		986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
 		98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewDataSource.swift; sourceTree = "<group>"; };
 		98815DBD20721CE000A7A6C6 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewCell.swift; sourceTree = "<group>"; };
@@ -210,20 +216,21 @@
 		98087C9B2069FAE000EB0747 /* AppFollow */ = {
 			isa = PBXGroup;
 			children = (
-				98CB4F1E207428F100F32EEE /* AppFollow.entitlements */,
-				98087CAB2069FAE000EB0747 /* Info.plist */,
 				98087C9C2069FAE000EB0747 /* AppDelegate.swift */,
-				984E51B6206C1CE400CDB24D /* DependencyProvider.swift */,
-				98087CA62069FAE000EB0747 /* Assets.xcassets */,
+				98CB4F1E207428F100F32EEE /* AppFollow.entitlements */,
 				98087CA32069FAE000EB0747 /* AppFollow.xcdatamodeld */,
 				984E51B0206BFA5700CDB24D /* Apps */,
-				98CB4F23207632BA00F32EEE /* Notifications */,
+				98087CA62069FAE000EB0747 /* Assets.xcassets */,
+				984E51B6206C1CE400CDB24D /* DependencyProvider.swift */,
+				986B857C2080A90B0051F8F8 /* Extensions */,
 				984E51A8206BF72400CDB24D /* Framework */,
+				98087CAB2069FAE000EB0747 /* Info.plist */,
 				98087CA82069FAE000EB0747 /* LaunchScreen.storyboard */,
 				98087CB12069FAFE00EB0747 /* Login */,
 				98087CB22069FB1C00EB0747 /* Main */,
 				984E51EF206D059000CDB24D /* Model */,
 				984E51EC206CF9F200CDB24D /* Network */,
+				98CB4F23207632BA00F32EEE /* Notifications */,
 				98F01F4D206D6D5300FA461F /* Profile */,
 				98F7D31B206D7035005195BD /* Reviews */,
 				984E51A5206BF70300CDB24D /* Sdk */,
@@ -299,6 +306,7 @@
 				98CB4F362076554D00F32EEE /* URL.swift */,
 				982D5508207BBAF90001A6D9 /* Int.swift */,
 				982D550A207BBB620001A6D9 /* Array.swift */,
+				986B857A2080A8170051F8F8 /* UIAlertAction.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -338,6 +346,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		986B857C2080A90B0051F8F8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		98CB4F23207632BA00F32EEE /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				98F01F4E206D6D6300FA461F /* ProfileViewController.swift */,
+				986B85782080A4D50051F8F8 /* DeveloperActions.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -534,6 +551,7 @@
 				984E51A7206BF71500CDB24D /* Auth.swift in Sources */,
 				984E51B5206C170D00CDB24D /* AuthStorage.swift in Sources */,
 				984E51E3206C343600CDB24D /* App.swift in Sources */,
+				986B857B2080A8170051F8F8 /* UIAlertAction.swift in Sources */,
 				98815DC82072749300A7A6C6 /* UIView.swift in Sources */,
 				981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */,
 				981C3B15206ED0020072E3A2 /* IconLoader.swift in Sources */,
@@ -560,6 +578,7 @@
 				984E51B7206C1CE400CDB24D /* DependencyProvider.swift in Sources */,
 				98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */,
 				98CB4F22207432CD00F32EEE /* PushNotifications.swift in Sources */,
+				986B857E2080A91C0051F8F8 /* SwiftyBeaver.swift in Sources */,
 				98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */,
 				98CB4F152073630100F32EEE /* TabViewController.swift in Sources */,
 				984E51F1206D05CB00CDB24D /* Store.swift in Sources */,
@@ -571,6 +590,7 @@
 				984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */,
 				98815DCA207283E200A7A6C6 /* ReviewReplyDataSource.swift in Sources */,
 				98CB4F172073719A00F32EEE /* Reply.swift in Sources */,
+				986B85792080A4D50051F8F8 /* DeveloperActions.swift in Sources */,
 				98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */,
 				982D5505207B5B880001A6D9 /* Payload.swift in Sources */,
 				98631896206E58A900D6A14F /* Date.swift in Sources */,
