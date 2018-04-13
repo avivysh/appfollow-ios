@@ -17,6 +17,6 @@ class AppCell: UITableViewCell {
     func bind(app: App) {
         self.title.text = app.details.title.isEmpty ? "Unknown" : app.details.title
         self.publisher.text = app.details.publisher.isEmpty ? "Unknown" : app.details.publisher
-        IconLoader.into(self.icon, url: app.details.icon)
+        IconRemote(url: app.details.icon).into(self.icon)
     }
 }

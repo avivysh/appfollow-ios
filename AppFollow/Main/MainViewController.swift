@@ -14,7 +14,7 @@ private enum Tab: Int {
     case Profile
 }
 
-class MainViewController: UITabBarController {
+class MainViewController: UITabBarController, NavigationDelegate {
     static func instantiateFromStoryboard() -> MainViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as! MainViewController

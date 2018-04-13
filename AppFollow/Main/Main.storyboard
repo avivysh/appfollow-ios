@@ -897,9 +897,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ckS-bD-bf3"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Reply" id="yyS-VQ-HNU">
+                        <barButtonItem key="rightBarButtonItem" id="18I-2f-0P3">
+                            <connections>
+                                <action selector="actionApp:" destination="X7G-xV-bP0" id="EbH-Qs-oRP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="actionBarBottom" destination="Ge8-ai-IrP" id="iWE-1b-7aB"/>
                         <outlet property="actionButton" destination="vuP-c9-i2C" id="htR-ne-a4U"/>
+                        <outlet property="appTitle" destination="18I-2f-0P3" id="y3K-eq-u4e"/>
                         <outlet property="tableView" destination="55U-hc-wgQ" id="yJu-rx-BH6"/>
                         <outlet property="textField" destination="fLZ-d0-kep" id="XFR-Fr-j0D"/>
                     </connections>

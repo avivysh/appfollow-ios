@@ -21,7 +21,8 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var actionBarBottom: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var actionButton: UIButton!
-
+    @IBOutlet weak var appTitle: UIBarButtonItem!
+    
     var app: App!
     var reviewId: ReviewId!
     
@@ -42,6 +43,8 @@ class ReviewViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        IconRemote(url: app.details.icon).into(self.appTitle)
+
         self.dataSource.reload {
             review in
             self.actionButton.isEnabled = true
@@ -50,6 +53,13 @@ class ReviewViewController: UIViewController {
             if let lastIndex = self.dataSource.lastIndex {
                 self.tableView.scrollToRow(at: lastIndex, at: .top, animated: true)
             }
+        }
+    }
+    
+    @IBAction func actionApp(_ sender: UIBarButtonItem) {
+        if let mainNavigation = AppDelegate.provide.mainNavigation {
+            let appViewController = AppViewController.instantiateFromStoryboard(app: self.app)
+            self.navigationController?.pushViewController(appViewController, animated: true)
         }
     }
     

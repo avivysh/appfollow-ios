@@ -43,7 +43,7 @@ class ReviewCell: UITableViewCell {
         
         self.info.text = "   \(review.date.ymd) \(review.locale) \(review.version)\(review.answered ? "✅" : "")"
         if self.icon != nil {
-            IconLoader.into(self.icon, url: app.details.icon)
+            IconRemote(url: app.details.icon).into(self.icon)
         }
     }
 }

@@ -65,7 +65,7 @@ class AppViewController: UIViewController, UITableViewDelegate, AppSectionDataSo
         self.stars.isHidden = true
         self.stars.settings.updateOnTouch = false
         self.stars.settings.starMargin = 2
-        IconLoader.into(self.icon, url: app.details.icon)
+        IconRemote(url: app.details.icon).into(self.icon)
         
         self.reviewsDataSource.delegate = self
         self.whatsNewDataSource.delegate = self

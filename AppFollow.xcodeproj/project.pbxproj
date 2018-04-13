@@ -17,7 +17,7 @@
 		98087CBA206BEACB00EB0747 /* LoginProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98087CB9206BEACB00EB0747 /* LoginProcess.swift */; };
 		981C3B11206EBF820072E3A2 /* ToastSwiftFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */; };
 		981C3B13206ECB9E0072E3A2 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B12206ECB9E0072E3A2 /* AppViewController.swift */; };
-		981C3B15206ED0020072E3A2 /* IconLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B14206ED0020072E3A2 /* IconLoader.swift */; };
+		981C3B15206ED0020072E3A2 /* IconRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B14206ED0020072E3A2 /* IconRemote.swift */; };
 		981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */; };
 		981C3B192070C1F40072E3A2 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981C3B182070C1F40072E3A2 /* Page.swift */; };
 		982D5505207B5B880001A6D9 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982D5504207B5B870001A6D9 /* Payload.swift */; };
@@ -52,6 +52,7 @@
 		986B857B2080A8170051F8F8 /* UIAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857A2080A8170051F8F8 /* UIAlertAction.swift */; };
 		986B857E2080A91C0051F8F8 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */; };
 		986B85802080B4210051F8F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857F2080B4210051F8F8 /* UIViewController.swift */; };
+		986B85822080C3A20051F8F8 /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B85812080C3A20051F8F8 /* NavigationDelegate.swift */; };
 		98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */; };
 		98815DBE20721CE000A7A6C6 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBD20721CE000A7A6C6 /* WhatsNew.swift */; };
 		98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */; };
@@ -105,7 +106,7 @@
 		98087CB9206BEACB00EB0747 /* LoginProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProcess.swift; sourceTree = "<group>"; };
 		981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
 		981C3B12206ECB9E0072E3A2 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
-		981C3B14206ED0020072E3A2 /* IconLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLoader.swift; sourceTree = "<group>"; };
+		981C3B14206ED0020072E3A2 /* IconRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRemote.swift; sourceTree = "<group>"; };
 		981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReviewsDataSource.swift; sourceTree = "<group>"; };
 		981C3B182070C1F40072E3A2 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		982D5504207B5B870001A6D9 /* Payload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 		986B857A2080A8170051F8F8 /* UIAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertAction.swift; sourceTree = "<group>"; };
 		986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
 		986B857F2080B4210051F8F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		986B85812080C3A20051F8F8 /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewDataSource.swift; sourceTree = "<group>"; };
 		98815DBD20721CE000A7A6C6 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewCell.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				984E51AC206BF79100CDB24D /* Main.storyboard */,
 				984E51B8206C1DE100CDB24D /* MainViewController.swift */,
 				98CB4F142073630100F32EEE /* TabViewController.swift */,
+				986B85812080C3A20051F8F8 /* NavigationDelegate.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -334,7 +337,7 @@
 			children = (
 				984E51ED206CFA0700CDB24D /* ApiRequest.swift */,
 				98F01F47206D572300FA461F /* StateRefresh.swift */,
-				981C3B14206ED0020072E3A2 /* IconLoader.swift */,
+				981C3B14206ED0020072E3A2 /* IconRemote.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -390,12 +393,12 @@
 		98F7D31B206D7035005195BD /* Reviews */ = {
 			isa = PBXGroup;
 			children = (
-				98F7D31C206D704E005195BD /* ReviewsViewController.swift */,
-				98631888206D7D1000D6A14F /* ReviewCell.swift */,
-				98631891206D847700D6A14F /* ReviewsDataSource.swift */,
-				98815DC52072735800A7A6C6 /* ReviewViewController.swift */,
-				98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */,
 				98815DCB2072915800A7A6C6 /* AnswerCell.swift */,
+				98631888206D7D1000D6A14F /* ReviewCell.swift */,
+				98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */,
+				98631891206D847700D6A14F /* ReviewsDataSource.swift */,
+				98F7D31C206D704E005195BD /* ReviewsViewController.swift */,
+				98815DC52072735800A7A6C6 /* ReviewViewController.swift */,
 			);
 			path = Reviews;
 			sourceTree = "<group>";
@@ -555,9 +558,10 @@
 				984E51B5206C170D00CDB24D /* AuthStorage.swift in Sources */,
 				984E51E3206C343600CDB24D /* App.swift in Sources */,
 				986B857B2080A8170051F8F8 /* UIAlertAction.swift in Sources */,
+				986B85822080C3A20051F8F8 /* NavigationDelegate.swift in Sources */,
 				98815DC82072749300A7A6C6 /* UIView.swift in Sources */,
 				981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */,
-				981C3B15206ED0020072E3A2 /* IconLoader.swift in Sources */,
+				981C3B15206ED0020072E3A2 /* IconRemote.swift in Sources */,
 				98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */,
 				98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */,
 				98CB4F1B207380B700F32EEE /* Error.swift in Sources */,
