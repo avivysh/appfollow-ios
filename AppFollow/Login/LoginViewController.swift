@@ -46,11 +46,11 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
     }
     
     @IBAction func actionSignup(_ sender: UIButton) {
-        self.openUrl(url: URL(string: "https://appfollow.io")!)
+        self.present(url: URL(string: "https://appfollow.io")!)
     }
 
     @IBAction func actionReset(_ sender: UIButton) {
-        self.openUrl(url: URL(string: "https://watch.appfollow.io/forgot")!)
+        self.present(url: URL(string: "https://watch.appfollow.io/forgot")!)
     }
     
     // MARK: LoginProcessDelegate
@@ -72,13 +72,5 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         appDelegate?.window??.rootViewController = main
     }
 
-    // MARK: Private
-    
-    func openUrl(url: URL) {
-        let safari = SFSafariViewController(url: url)
-        safari.dismissButtonStyle = .close
-        safari.preferredBarTintColor = UIColor.black
-        self.show(safari, sender: self)
-    }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 class WhatsNewDataSource: NSObject, AppSectionDataSource {
-    var delegate: AppSectionDataSourceDelegate?
+    weak var delegate: AppSectionDataSourceDelegate?
     
     private var whatsnew: [WhatsNew] = []
     private let app: App
@@ -37,6 +37,10 @@ class WhatsNewDataSource: NSObject, AppSectionDataSource {
             self.loaded = true
             self.delegate?.dataSourceCompleteRefresh()
         }
+    }
+    
+    func didSelectRowAt(indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

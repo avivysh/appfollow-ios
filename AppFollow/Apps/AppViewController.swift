@@ -17,9 +17,11 @@ protocol AppSectionDataSource: UITableViewDataSource {
     var delegate: AppSectionDataSourceDelegate? { get set }
     func reload()
     func activate()
+    func didSelectRowAt(indexPath: IndexPath)
 }
 
-class AppViewController: UIViewController, AppSectionDataSourceDelegate {
+class AppViewController: UIViewController, UITableViewDelegate, AppSectionDataSourceDelegate {
+
     static func instantiateFromStoryboard(app: App) -> AppViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "AppViewController") as! AppViewController
@@ -40,7 +42,7 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
     lazy var reviewsDataSource = AppReviewsDataSource(app: self.app, auth: self.auth)
     lazy var whatsNewDataSource = WhatsNewDataSource(app: self.app, auth: self.auth)
     lazy var overviewDataSource = OverviewDataSource(app: self.app)
-
+    
     var currentSegment = 1
     
     var dataSourceForSegment: AppSectionDataSource {
@@ -68,12 +70,14 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
         self.reviewsDataSource.delegate = self
         self.whatsNewDataSource.delegate = self
         self.overviewDataSource.delegate = self
-        
+        self.overviewDataSource.viewController = self
+
         self.loadSummary()
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         
+        self.tableView.delegate = self
         self.tableView.dataSource = self.dataSourceForSegment
         self.dataSourceForSegment.activate()
     }
@@ -109,7 +113,7 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
         self.reviewsDataSource.reload()
     }
     
-    func loadSummary() {
+    private func loadSummary() {
         let auth = AppDelegate.provide.auth
         ApiRequest(route: ReviewsSummaryRoute(extId: self.app.extId, from: self.app.created, to: Date()), auth: auth).get {
             (response: ReviewsSummary?, _) in
@@ -119,6 +123,12 @@ class AppViewController: UIViewController, AppSectionDataSourceDelegate {
                 self.stars.text = "(\(summary.ratingCount))"
             }
         }
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.dataSourceForSegment.didSelectRowAt(indexPath: indexPath)
     }
     
     // MARK: AppViewDataSourceDelegate

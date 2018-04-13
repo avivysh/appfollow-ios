@@ -11,33 +11,31 @@ import UIKit
 private struct OverviewItem {
     let title: String
     let subtitle: String
+    let action: (() -> Void)
+    
+    init(title: String, subtitle: String) {
+        self.init(title: title, subtitle: subtitle, action: {})
+    }
+    
+    init(title: String, subtitle: String, action: @escaping () -> Void) {
+        self.title = title
+        self.subtitle = subtitle
+        self.action = action
+    }
 }
 
 class OverviewDataSource: NSObject, AppSectionDataSource {
-    var delegate: AppSectionDataSourceDelegate?
+    
+    weak var delegate: AppSectionDataSourceDelegate?
+    weak var viewController: UIViewController?
     
     private let app: App
-    private let data: [OverviewItem]
-    
+    private var data = [OverviewItem]()
     
     init(app: App) {
         self.app = app
-        self.data = [
-            OverviewItem(title: "Store", subtitle: app.store),
-            OverviewItem(title: "External ID", subtitle: app.extId.value),
-            OverviewItem(title: "Number of reviews", subtitle: "\(app.reviewsCount)"),
-            OverviewItem(title: "Number of what's new", subtitle: "\(app.whatsNewCount)"),
-            OverviewItem(title: "Country", subtitle: app.details.country),
-            OverviewItem(title: "Genre", subtitle: app.details.genre),
-            OverviewItem(title: "In-app purchases", subtitle: "\(app.details.hasIap)"),
-            OverviewItem(title: "Kind", subtitle: app.details.kind),
-            OverviewItem(title: "Language", subtitle: app.details.lang),
-            OverviewItem(title: "Publisher", subtitle: app.details.publisher),
-            OverviewItem(title: "Release date", subtitle: app.details.released.isValid ? app.details.released.ymd : ""),
-            OverviewItem(title: "Size", subtitle: "\(app.details.size.value)"),
-            OverviewItem(title: "Version", subtitle: "\(app.details.version)"),
-            OverviewItem(title: "Url", subtitle: "\(app.details.url)"),
-        ]
+        super.init()
+        self.data = self.prepareItems()
     }
     
     func reload() {
@@ -46,6 +44,10 @@ class OverviewDataSource: NSObject, AppSectionDataSource {
     
     func activate() {
         self.delegate?.dataSourceCompleteRefresh()
+    }
+    
+    func didSelectRowAt(indexPath: IndexPath) {
+        self.data[indexPath.row].action()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,5 +67,32 @@ class OverviewDataSource: NSObject, AppSectionDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Overview"
+    }
+    
+    // MARK: Private
+    
+    private func prepareItems() -> [OverviewItem] {
+        return [
+            OverviewItem(title: "Store", subtitle: app.store),
+            OverviewItem(title: "External ID", subtitle: app.extId.value),
+            OverviewItem(title: "Number of reviews", subtitle: "\(app.reviewsCount)"),
+            OverviewItem(title: "Number of what's new", subtitle: "\(app.whatsNewCount)"),
+            OverviewItem(title: "Country", subtitle: app.details.country),
+            OverviewItem(title: "Genre", subtitle: app.details.genre),
+            OverviewItem(title: "In-app purchases", subtitle: "\(app.details.hasIap)"),
+            OverviewItem(title: "Kind", subtitle: app.details.kind),
+            OverviewItem(title: "Language", subtitle: app.details.lang),
+            OverviewItem(title: "Publisher", subtitle: app.details.publisher),
+            OverviewItem(title: "Release date", subtitle: app.details.released.isValid ? app.details.released.ymd : ""),
+            OverviewItem(title: "Size", subtitle: "\(app.details.size.value)"),
+            OverviewItem(title: "Version", subtitle: "\(app.details.version)"),
+            OverviewItem(title: "Url", subtitle: "\(app.details.url)", action: { self.openUrl(self.app.details.url) }),
+        ]
+    }
+    
+    private func openUrl(_ dest: String) {
+        if let url = URL(string: dest), !dest.isEmpty {
+            self.viewController?.present(url: url)
+        }
     }
 }

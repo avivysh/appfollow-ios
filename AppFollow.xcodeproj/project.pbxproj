@@ -51,6 +51,7 @@
 		986B85792080A4D50051F8F8 /* DeveloperActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B85782080A4D50051F8F8 /* DeveloperActions.swift */; };
 		986B857B2080A8170051F8F8 /* UIAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857A2080A8170051F8F8 /* UIAlertAction.swift */; };
 		986B857E2080A91C0051F8F8 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */; };
+		986B85802080B4210051F8F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857F2080B4210051F8F8 /* UIViewController.swift */; };
 		98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */; };
 		98815DBE20721CE000A7A6C6 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBD20721CE000A7A6C6 /* WhatsNew.swift */; };
 		98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */; };
@@ -138,6 +139,7 @@
 		986B85782080A4D50051F8F8 /* DeveloperActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperActions.swift; sourceTree = "<group>"; };
 		986B857A2080A8170051F8F8 /* UIAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertAction.swift; sourceTree = "<group>"; };
 		986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
+		986B857F2080B4210051F8F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewDataSource.swift; sourceTree = "<group>"; };
 		98815DBD20721CE000A7A6C6 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewCell.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				982D5508207BBAF90001A6D9 /* Int.swift */,
 				982D550A207BBB620001A6D9 /* Array.swift */,
 				986B857A2080A8170051F8F8 /* UIAlertAction.swift */,
+				986B857F2080B4210051F8F8 /* UIViewController.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				98815DC42072585C00A7A6C6 /* OverviewDataSource.swift in Sources */,
 				98631889206D7D1000D6A14F /* ReviewCell.swift in Sources */,
 				984E51E7206C431700CDB24D /* AppCell.swift in Sources */,
+				986B85802080B4210051F8F8 /* UIViewController.swift in Sources */,
 				982D5509207BBAF90001A6D9 /* Int.swift in Sources */,
 				984E51F3206D069000CDB24D /* ReviewsSummary.swift in Sources */,
 				981C3B13206ECB9E0072E3A2 /* AppViewController.swift in Sources */,

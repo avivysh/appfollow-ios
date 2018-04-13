@@ -10,12 +10,13 @@ import UIKit
 
 class AppReviewsDataSource: NSObject, AppSectionDataSource {
     
+    weak var delegate: AppSectionDataSourceDelegate?
+
     private var reviews: [Review] = []
     private let app: App
     private let auth: AuthProvider
 
     private var loaded = false
-    weak var delegate: AppSectionDataSourceDelegate?
     
     init(app: App, auth: AuthProvider) {
         self.app = app
@@ -42,6 +43,10 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
             self.loaded = true
             self.delegate?.dataSourceCompleteRefresh()
         }
+    }
+    
+    func didSelectRowAt(indexPath: IndexPath) {
+        
     }
     
     private func reload(complete: @escaping () -> Void) {
