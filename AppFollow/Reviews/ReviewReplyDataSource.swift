@@ -29,6 +29,13 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
     private var items: [ReplyItem] = []
     private var review = Review.empty
     
+    var lastIndex: IndexPath? {
+        if items.count > 0 {
+            return IndexPath(row: items.count - 1, section: 0)
+        }
+        return nil
+    }
+    
     init(reviewId: ReviewId, app: App, auth: AuthProvider) {
         self.reviewId = reviewId
         self.app = app

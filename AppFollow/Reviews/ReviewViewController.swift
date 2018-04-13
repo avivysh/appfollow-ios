@@ -33,16 +33,24 @@ class ReviewViewController: UIViewController {
         self.actionButton.isEnabled = false
         self.textField.isEditable = false
         self.tableView.dataSource = self.dataSource
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.dataSource.reload {
             review in
             self.actionButton.isEnabled = true
             self.textField.isEditable = true
             self.tableView.reloadData()
+            if let lastIndex = self.dataSource.lastIndex {
+                self.tableView.scrollToRow(at: lastIndex, at: .top, animated: true)
+            }
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     deinit {
