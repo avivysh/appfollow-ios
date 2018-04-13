@@ -57,10 +57,8 @@ class ReviewViewController: UIViewController {
     }
     
     @IBAction func actionApp(_ sender: UIBarButtonItem) {
-        if let mainNavigation = AppDelegate.provide.mainNavigation {
-            let appViewController = AppViewController.instantiateFromStoryboard(app: self.app)
-            self.navigationController?.pushViewController(appViewController, animated: true)
-        }
+        let appViewController = AppViewController.instantiateFromStoryboard(app: self.app)
+        self.navigationController?.pushViewController(appViewController, animated: true)
     }
     
     deinit {
