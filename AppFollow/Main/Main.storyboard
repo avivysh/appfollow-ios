@@ -90,7 +90,9 @@
                             <constraint firstItem="ii7-vw-te0" firstAttribute="trailing" secondItem="lfQ-RY-9KP" secondAttribute="trailing" id="8Wf-Cn-lQl"/>
                             <constraint firstItem="lfQ-RY-9KP" firstAttribute="top" secondItem="ii7-vw-te0" secondAttribute="top" id="WAd-DK-i4u"/>
                             <constraint firstItem="lfQ-RY-9KP" firstAttribute="leading" secondItem="ii7-vw-te0" secondAttribute="leading" id="gGx-UC-q4T"/>
-                            <constraint firstItem="ii7-vw-te0" firstAttribute="bottom" secondItem="lfQ-RY-9KP" secondAttribute="bottom" id="w0t-I4-Nwf"/>
+                            <constraint firstItem="ii7-vw-te0" firstAttribute="bottom" secondItem="lfQ-RY-9KP" secondAttribute="bottom" id="w0t-I4-Nwf">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ii7-vw-te0"/>
                     </view>
@@ -189,7 +191,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="17K-vw-SaZ" firstAttribute="top" secondItem="euC-0L-MLj" secondAttribute="top" id="76R-xp-jIx"/>
-                            <constraint firstItem="17K-vw-SaZ" firstAttribute="leading" secondItem="euC-0L-MLj" secondAttribute="leading" id="Y1h-C9-ghg"/>
+                            <constraint firstItem="17K-vw-SaZ" firstAttribute="leading" secondItem="euC-0L-MLj" secondAttribute="leading" id="Y1h-C9-ghg">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstAttribute="bottom" secondItem="17K-vw-SaZ" secondAttribute="bottom" id="adw-bm-GCl"/>
                             <constraint firstAttribute="trailing" secondItem="17K-vw-SaZ" secondAttribute="trailing" id="jik-G4-UhN"/>
                         </constraints>
@@ -943,6 +947,6 @@
         <image name="logo" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ddd-8N-lRw"/>
+        <segue reference="wgr-m8-XiW"/>
     </inferredMetricsTieBreakers>
 </document>

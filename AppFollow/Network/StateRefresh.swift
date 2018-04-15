@@ -39,7 +39,7 @@ class StateRefresh {
                 self.isRefreshing = false
                 self.store.collections = collections
                 self.store.apps = allApps
-                NotificationCenter.default.post(name: .collectionsUpdate, object: self)
+                self.store.refreshed.on(.next(true))
             }
         }
     }

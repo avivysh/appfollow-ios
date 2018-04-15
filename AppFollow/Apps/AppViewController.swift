@@ -75,7 +75,9 @@ class AppViewController: UIViewController, UITableViewDelegate, AppSectionDataSo
         self.loadSummary()
         
         self.tableView.refreshControl = UIRefreshControl()
-        self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        self.tableView.refreshControl?.controlEvent(.valueChanged).subscribe(
+            onNext: { [weak self] _ in self?.reviewsDataSource.reload() }
+        )
         
         self.tableView.delegate = self
         self.tableView.dataSource = self.dataSourceForSegment
@@ -102,15 +104,12 @@ class AppViewController: UIViewController, UITableViewDelegate, AppSectionDataSo
             
         }
     }
+    
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         self.currentSegment = sender.selectedSegmentIndex
         self.tableView.dataSource = self.dataSourceForSegment
         self.tableView.reloadData()
         self.dataSourceForSegment.activate()
-    }
-    
-    @objc func pullToRefresh() {
-        self.reviewsDataSource.reload()
     }
     
     private func loadSummary() {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Snail
 
 class AppsViewController: UIViewController {
     static func instantiateFromStoryboard() -> AppsViewController {
@@ -22,13 +23,22 @@ class AppsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.dataSource.updateState()
         AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: .collectionsUpdate, object: nil)
         
         self.tableView.refreshControl = UIRefreshControl()
-        self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        self.tableView.refreshControl?.controlEvent(.valueChanged).subscribe(
+            onNext: { _ in
+                self.tableView.refreshControl?.beginRefreshing()
+                AppDelegate.provide.stateRefresh.refresh()
+            }
+        )
+        self.dataSource.refreshed.subscribe(
+            onNext: { _ in
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        )
     }
     
     deinit {
@@ -53,19 +63,6 @@ class AppsViewController: UIViewController {
                 appViewController.app = self.dataSource.appFor(indexPath: indexPath)
             }
         }
-    }
-    
-    // MARK: NotificationCenter
-    
-    @objc func reloadTableView(notification: NSNotification) {
-        self.dataSource.updateState()
-        self.tableView.reloadData()
-        self.tableView.refreshControl?.endRefreshing()
-    }
-    
-    @objc func pullToRefresh() {
-        self.tableView.refreshControl?.beginRefreshing()
-        AppDelegate.provide.stateRefresh.refresh()
     }
 
 }

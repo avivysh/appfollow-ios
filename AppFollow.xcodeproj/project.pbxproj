@@ -24,6 +24,7 @@
 		982D5507207BB5D10001A6D9 /* PushTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982D5506207BB5D10001A6D9 /* PushTest.swift */; };
 		982D5509207BBAF90001A6D9 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982D5508207BBAF90001A6D9 /* Int.swift */; };
 		982D550B207BBB620001A6D9 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982D550A207BBB620001A6D9 /* Array.swift */; };
+		982D88262083D35100940CE7 /* Snail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D88252083D35000940CE7 /* Snail.framework */; };
 		984E51A7206BF71500CDB24D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A6206BF71500CDB24D /* Auth.swift */; };
 		984E51AA206BF73200CDB24D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A9206BF73200CDB24D /* String.swift */; };
 		984E51AD206BF79100CDB24D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984E51AC206BF79100CDB24D /* Main.storyboard */; };
@@ -113,6 +114,7 @@
 		982D5506207BB5D10001A6D9 /* PushTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTest.swift; sourceTree = "<group>"; };
 		982D5508207BBAF90001A6D9 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		982D550A207BBB620001A6D9 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		982D88252083D35000940CE7 /* Snail.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Snail.framework; path = Carthage/Build/iOS/Snail.framework; sourceTree = "<group>"; };
 		984E51A6206BF71500CDB24D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		984E51A9206BF73200CDB24D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		984E51AC206BF79100CDB24D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				982D88262083D35100940CE7 /* Snail.framework in Frameworks */,
 				98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */,
 				981C3B11206EBF820072E3A2 /* ToastSwiftFramework.framework in Frameworks */,
 				98F7D321206D7ACE005195BD /* Cosmos.framework in Frameworks */,
@@ -266,6 +269,7 @@
 		98087CB3206BE53D00EB0747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				982D88252083D35000940CE7 /* Snail.framework */,
 				98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */,
 				981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */,
 				98F7D320206D7ACE005195BD /* Cosmos.framework */,
@@ -524,6 +528,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Cosmos.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Snail.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
@@ -532,6 +537,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Cosmos.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ToastSwiftFramework.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Snail.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

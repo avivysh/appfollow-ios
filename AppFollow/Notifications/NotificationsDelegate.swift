@@ -22,6 +22,8 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
         }
         log.info("Received payload: \(response.notification.request.content.userInfo.debugDescription)")
         
+        AppDelegate.provide.stateRefresh.refresh()
+        
         if payload.isValid {
             PayloadNavigation(payload: payload).perform {
                 completionHandler()

@@ -8,13 +8,32 @@
 
 import UIKit
 import Alamofire
-
+import Snail
 
 class AppsDataSource: NSObject, UITableViewDataSource {
     
     private var collections: [Collection] = []
     private var apps: [CollectionId: [App]] = [:]
 
+    let refreshed = Observable<Bool>()
+    
+    override init() {
+        super.init()
+        
+        let store = AppDelegate.provide.store
+        self.collections = store.collections
+        self.apps = store.apps
+        
+        AppDelegate.provide.store.refreshed.subscribe(
+            onNext: { [weak self] _ in
+                let store = AppDelegate.provide.store
+                self?.collections = store.collections
+                self?.apps = store.apps
+                self?.refreshed.on(.next(true))
+            }
+        )
+    }
+    
     // MARK: Public
     
     func appFor(indexPath: IndexPath) -> App {
@@ -22,12 +41,6 @@ class AppsDataSource: NSObject, UITableViewDataSource {
         return apps[collection.id]![indexPath.row]
     }
 
-    func updateState() {
-        let store = AppDelegate.provide.store
-        self.collections = store.collections
-        self.apps = store.apps
-    }
-    
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

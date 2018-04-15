@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import Snail
 
-extension Notification.Name {
-    static let collectionsUpdate = Notification.Name("collectionsUpdate")
-}
+typealias CollectionApps = [CollectionId: [App]]
+typealias Collections = [Collection]
 
 class Store {
     
-    var collections: [Collection] = []
-    var apps: [CollectionId: [App]] = [:]
-
+    var collections: Collections = []
+    var apps: CollectionApps = [:]
+    
+    let refreshed = Observable<Bool>()
+    
     func appFor(appId: AppId) -> App {
         for pair in apps {
             for app in pair.value {

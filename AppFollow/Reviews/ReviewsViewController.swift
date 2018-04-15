@@ -19,16 +19,20 @@ class ReviewsViewController: UIViewController {
         
         AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: .collectionsUpdate, object: nil)
         
         self.tableView.refreshControl = UIRefreshControl()
-        self.tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        self.tableView.refreshControl?.controlEvent(.valueChanged).subscribe(
+            onNext: { _ in AppDelegate.provide.stateRefresh.refresh() }
+        )
         
         AppDelegate.provide.push.registerForRemoteNotifications()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        
+        self.dataSource.refreshed.subscribe(
+            onNext: { _ in
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,18 +46,7 @@ class ReviewsViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.tableView.refreshControl?.endRefreshing()
     }
-    
-    @objc func reloadTableView() {
-        self.dataSource.reload {
-            self.tableView.reloadData()
-            self.tableView.refreshControl?.endRefreshing()
-        }
-    }
-    
-    @objc func pullToRefresh() {
-        AppDelegate.provide.stateRefresh.refresh()
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let reviewViewController = segue.destination as? ReviewViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {

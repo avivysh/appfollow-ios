@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Snail
 
 private let sectionTitles: [DateSection:String] = [
     .today:"Today",
@@ -22,6 +23,19 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     private var apps: [AppId: App] = [:]
     private var sections: [DateSection] = []
     
+    let refreshed = Observable<Bool>()
+    
+    override init() {
+        super.init()
+        AppDelegate.provide.store.refreshed.subscribe(
+            onNext: { [weak self] _ in
+                self?.reload {
+                    self?.refreshed.on(.next(true))
+                }
+            }
+        )
+    }
+    
     func reviewFor(indexPath: IndexPath) -> Review {
         let dateSection = sections[indexPath.section]
         return reviews[dateSection]![indexPath.row]
@@ -31,7 +45,7 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
         return apps[review.appId] ?? App.empty
     }
     
-    func reload(complete: @escaping () -> Void) {
+    private func reload(complete: @escaping () -> Void) {
         
         let collections = AppDelegate.provide.store.collections
         let auth = AppDelegate.provide.auth
