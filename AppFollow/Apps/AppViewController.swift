@@ -8,19 +8,16 @@
 
 import UIKit
 import Cosmos
-
-protocol AppSectionDataSourceDelegate: NSObjectProtocol {
-    func dataSourceCompleteRefresh()
-}
+import Snail
 
 protocol AppSectionDataSource: UITableViewDataSource {
-    var delegate: AppSectionDataSourceDelegate? { get set }
+    var refreshed: Observable<Bool> { get }
     func reload()
     func activate()
     func didSelectRowAt(indexPath: IndexPath)
 }
 
-class AppViewController: UIViewController, UITableViewDelegate, AppSectionDataSourceDelegate {
+class AppViewController: UIViewController, UITableViewDelegate {
 
     static func instantiateFromStoryboard(app: App) -> AppViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -67,16 +64,24 @@ class AppViewController: UIViewController, UITableViewDelegate, AppSectionDataSo
         self.stars.settings.starMargin = 2
         IconRemote(url: app.details.icon).into(self.icon)
         
-        self.reviewsDataSource.delegate = self
-        self.whatsNewDataSource.delegate = self
-        self.overviewDataSource.delegate = self
+        self.reviewsDataSource.refreshed.subscribe( onNext: { [weak self] _ in
+            self?.reload()
+        })
+        self.whatsNewDataSource.refreshed.subscribe( onNext: { [weak self] _ in
+            self?.reload()
+        })
+        self.overviewDataSource.refreshed.subscribe( onNext: { [weak self] _ in
+            self?.reload()
+        })
         self.overviewDataSource.viewController = self
 
         self.loadSummary()
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.controlEvent(.valueChanged).subscribe(
-            onNext: { [weak self] _ in self?.reviewsDataSource.reload() }
+            onNext: { _ in
+                self.reviewsDataSource.reload()
+            }
         )
         
         self.tableView.delegate = self
@@ -101,7 +106,6 @@ class AppViewController: UIViewController, UITableViewDelegate, AppSectionDataSo
                 reviewViewController.reviewId = review.reviewId
                 reviewViewController.app = self.app
             }
-            
         }
     }
     
@@ -130,9 +134,9 @@ class AppViewController: UIViewController, UITableViewDelegate, AppSectionDataSo
         self.dataSourceForSegment.didSelectRowAt(indexPath: indexPath)
     }
     
-    // MARK: AppViewDataSourceDelegate
+    // MARK: Private
     
-    func dataSourceCompleteRefresh() {
+    private func reload() {
         self.tableView.reloadData()
         self.tableView.refreshControl?.endRefreshing()
     }

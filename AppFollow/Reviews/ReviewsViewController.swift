@@ -28,9 +28,9 @@ class ReviewsViewController: UIViewController {
         AppDelegate.provide.push.registerForRemoteNotifications()
         
         self.dataSource.refreshed.subscribe(
-            onNext: { _ in
-                self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
+            onNext: { [weak self] _ in
+                self?.tableView.reloadData()
+                self?.tableView.refreshControl?.endRefreshing()
             }
         )
     }

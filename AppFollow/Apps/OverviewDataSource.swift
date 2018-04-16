@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Snail
 
 private struct OverviewItem {
     let title: String
@@ -25,8 +26,8 @@ private struct OverviewItem {
 }
 
 class OverviewDataSource: NSObject, AppSectionDataSource {
+    let refreshed = Observable<Bool>()
     
-    weak var delegate: AppSectionDataSourceDelegate?
     weak var viewController: UIViewController?
     
     private let app: App
@@ -39,11 +40,11 @@ class OverviewDataSource: NSObject, AppSectionDataSource {
     }
     
     func reload() {
-        self.delegate?.dataSourceCompleteRefresh()
+        self.refreshed.on(.next(true))
     }
     
     func activate() {
-        self.delegate?.dataSourceCompleteRefresh()
+        self.refreshed.on(.next(true))
     }
     
     func didSelectRowAt(indexPath: IndexPath) {

@@ -56,6 +56,15 @@ class ReviewViewController: UIViewController {
                 }
             }
         )
+        
+        self.dataSource.refreshed.subscribe(
+            onNext: { [weak self] _ in
+                self?.reload()
+            },
+            onError: { [weak self] error in
+                self?.tableView.makeToast("Error: \(error.localizedDescription)")
+            }
+        )
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -63,7 +72,7 @@ class ReviewViewController: UIViewController {
         
         IconRemote(url: app.details.icon).into(self.appTitle)
 
-        self.reload()
+        self.dataSource.reload()
     }
     
     @IBAction func actionApp(_ sender: UIBarButtonItem) {
@@ -85,14 +94,13 @@ class ReviewViewController: UIViewController {
             let answerText = self.textField.text ?? ""
             if !answerText.isEmpty {
                 self.actionButton.isEnabled = false
-                ApiRequest(route: ReplyRoute(extId: self.app.extId, reviewId: self.reviewId, answer: answerText), auth: AppDelegate.provide.auth).get { (response: ReplyResponse?, error: Error?) in
+                ApiRequest(route: ReplyRoute(extId: self.app.extId, reviewId: self.reviewId, answer: answerText), auth: AppDelegate.provide.auth).get {
+                    (response: ReplyResponse?, error: Error?) in
                     if let replyResponse = response {
                         log.info(replyResponse)
                         let answer = ReviewAnswer(answered: true, date: Date().ymd, text: answerText)
                         self.textField.text = ""
-                        self.dataSource.updateAnswer(answer: answer) {
-                            self.tableView.reloadData()
-                        }
+                        self.dataSource.updateAnswer(answer: answer)
                     } else {
                         let errorMessage = error?.localizedDescription
                         self.tableView.makeToast(errorMessage ?? "Error occured")
@@ -104,14 +112,11 @@ class ReviewViewController: UIViewController {
     }
     
     private func reload() {
-        self.dataSource.reload {
-            review in
-            self.actionButton.isEnabled = true
-            self.textField.isEditable = true
-            self.tableView.reloadData()
-            if let lastIndex = self.dataSource.lastIndex {
-                self.tableView.scrollToRow(at: lastIndex, at: .top, animated: true)
-            }
+        self.actionButton.isEnabled = true
+        self.textField.isEditable = true
+        self.tableView.reloadData()
+        if let lastIndex = self.dataSource.lastIndex {
+            self.tableView.scrollToRow(at: lastIndex, at: .top, animated: true)
         }
     }
 }

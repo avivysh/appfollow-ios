@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Snail
 
 class WhatsNewDataSource: NSObject, AppSectionDataSource {
-    weak var delegate: AppSectionDataSourceDelegate?
+    let refreshed = Observable<Bool>()
     
     private var whatsnew: [WhatsNew] = []
     private let app: App
@@ -19,24 +20,28 @@ class WhatsNewDataSource: NSObject, AppSectionDataSource {
     init(app: App, auth: AuthProvider) {
         self.app = app
         self.auth = auth
+        super.init()
+        
+        self.refreshed.subscribe(onNext: { _ in self.loaded = true })
     }
     
     func reload() {
-        self.reload {
-            self.loaded = true
-            self.delegate?.dataSourceCompleteRefresh()
+        ApiRequest(route: WhatsNewRoute(extId: app.extId), auth: self.auth).get {
+            (response: WhatsNewResponse?, _) in
+            if let whatsnew = response?.whatsnew.list {
+                self.whatsnew = whatsnew
+            }
+            self.refreshed.on(.next(true))
         }
     }
     
     func activate() {
         if (self.loaded) {
+            self.refreshed.on(.next(true))
             return
         }
         
-        self.reload {
-            self.loaded = true
-            self.delegate?.dataSourceCompleteRefresh()
-        }
+        self.reload()
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
@@ -60,17 +65,5 @@ class WhatsNewDataSource: NSObject, AppSectionDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "What's new"
-    }
-    
-    // MARK: Private
-    
-    private func reload(complete: @escaping () -> Void) {
-        ApiRequest(route: WhatsNewRoute(extId: app.extId), auth: self.auth).get {
-            (response: WhatsNewResponse?, _) in
-            if let whatsnew = response?.whatsnew.list {
-                self.whatsnew = whatsnew
-            }
-            complete()
-        }
     }
 }

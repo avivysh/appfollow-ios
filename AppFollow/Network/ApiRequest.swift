@@ -43,6 +43,10 @@ private struct JSONBodyParameterEncoding<T: Encodable>: ParameterEncoding {
     
 }
 
+enum ApiRequestError: Error {
+    case failure
+}
+
 class ApiRequest {
     let route: EndpointRoute
     let auth: AuthProvider

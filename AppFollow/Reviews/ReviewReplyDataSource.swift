@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Snail
 
 private protocol ReplyItem {
     
@@ -29,6 +30,8 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
     private var items: [ReplyItem] = []
     private var review = Review.empty
     
+    let refreshed = Observable<Bool>()
+    
     var lastIndex: IndexPath? {
         if items.count > 0 {
             return IndexPath(row: items.count - 1, section: 0)
@@ -42,26 +45,26 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
         self.auth = auth
     }
     
-    func reload(completion: @escaping (_ review: Review) -> Void) {
+    func reload() {
         ApiRequest(route: ReviewsRoute(extId: self.app.extId, reviewId: self.reviewId), auth: self.auth).get {
-            (response: AppReviewsResponse?, _) in
+            (response: AppReviewsResponse?, error) in
             if let review = response?.reviews.list.first {
                 self.review = review
                 self.items = self.createItems(review: review)
-                completion(review)
+                self.refreshed.on(.next(true))
             } else {
-                completion(Review.empty)
+                self.refreshed.on(.error(error ?? ApiRequestError.failure))
             }
         }
     }
     
-    func updateAnswer(answer: ReviewAnswer, completion: @escaping () -> Void) {
+    func updateAnswer(answer: ReviewAnswer) {
         if let _ = self.items.last as? Reply {
             self.items[self.items.count - 1] = Reply(answer: answer)
         } else {
             self.items.append(Reply(answer: answer))
         }
-        completion()
+        self.refreshed.on(.next(true))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,13 +87,16 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    private func createItems(review: Review) -> [ReplyItem]{
+    private func createItems(review: Review) -> [ReplyItem] {
         var items = [ReplyItem]()
         if !review.history.isEmpty {
-            for review in review.history {
-                items.append(Feedback(review: review))
-                if review.answered {
-                    items.append(Reply(answer: review.answer))
+            for historic in review.history {
+                // Do not process review from the history with the same Id
+                if review.reviewId != historic.reviewId {
+                    items.append(Feedback(review: historic))
+                    if historic.answered {
+                        items.append(Reply(answer: historic.answer))
+                    }
                 }
             }
         }

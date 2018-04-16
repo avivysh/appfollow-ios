@@ -7,20 +7,22 @@
 //
 
 import UIKit
+import Snail
 
 class AppReviewsDataSource: NSObject, AppSectionDataSource {
-    
-    weak var delegate: AppSectionDataSourceDelegate?
-
     private var reviews: [Review] = []
     private let app: App
     private let auth: AuthProvider
 
+    let refreshed = Observable<Bool>()
     private var loaded = false
     
     init(app: App, auth: AuthProvider) {
         self.app = app
         self.auth = auth
+        super.init()
+        
+        self.refreshed.subscribe(onNext: { _ in self.loaded = true })
     }
     
     func reviewFor(indexPath: IndexPath) -> Review {
@@ -28,35 +30,26 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
     }
     
     func reload() {
-        self.reload {
-            self.loaded = true
-            self.delegate?.dataSourceCompleteRefresh()
-        }
-    }
-    
-    func activate() {
-        if (self.loaded) {
-            return
-        }
-        
-        self.reload {
-            self.loaded = true
-            self.delegate?.dataSourceCompleteRefresh()
-        }
-    }
-    
-    func didSelectRowAt(indexPath: IndexPath) {
-        
-    }
-    
-    private func reload(complete: @escaping () -> Void) {
         ApiRequest(route: ReviewsRoute(extId: app.extId), auth: self.auth).get {
             (response: AppReviewsResponse?, _) in
             if let reviews = response?.reviews.list {
                 self.reviews = reviews
             }
-            complete()
+            self.refreshed.on(.next(true))
         }
+    }
+    
+    func activate() {
+        if self.loaded {
+            self.refreshed.on(.next(true))
+            return
+        }
+        
+        self.reload()
+    }
+    
+    func didSelectRowAt(indexPath: IndexPath) {
+        
     }
     
     // MARK: UITableViewDataSource
