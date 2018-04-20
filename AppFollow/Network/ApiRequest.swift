@@ -64,9 +64,7 @@ class ApiRequest {
             response in
             
             if let data = response.result.value {
-                log.info("[Response]: \(response.result.debugDescription)")
-                log.info("[Data]: \(response.data?.count ?? 0) bytes")
-                log.info("[Timeline]: \(response.timeline.description)")
+                log.info("[Response]: \(response.result.debugDescription) [Data]: \(response.data?.count ?? 0) bytes [Timeline]: \(response.timeline.description)")
                 let decoder = JSONDecoder()
                 do {
                     let object = try decoder.decode(R.self, from: data)
@@ -74,10 +72,10 @@ class ApiRequest {
                 } catch let responseDeserializeError {
                     do {
                         let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
-                        print(errorResponse)
+                        log.error(errorResponse)
                         completion(nil, errorResponse.error)
                     } catch {
-                        print(responseDeserializeError)
+                        log.error(responseDeserializeError)
                         completion(nil, responseDeserializeError)
                     }
                 }

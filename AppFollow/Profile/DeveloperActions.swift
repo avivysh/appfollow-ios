@@ -35,6 +35,8 @@ class PushTestAction: UIAlertAction {
                             pushTestAction.view?.makeToast("Error: \(error?.localizedDescription ?? "Unknown")")
                         }
                     }
+                } else {
+                    pushTestAction.view?.makeToast("Error: no review")
                 }
             })
         }
@@ -46,6 +48,7 @@ class SendLogsAction: UIAlertAction {
     
     convenience init(viewController: UIViewController) {
         self.init(title: "Send logs", style: .default, handler: SendLogsAction.handler)
+        self.viewController = viewController
     }
 
     static private let handler: ((UIAlertAction) -> Swift.Void) = { action in

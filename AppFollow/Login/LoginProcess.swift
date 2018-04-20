@@ -41,8 +41,8 @@ class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
         
         let js = """
         (function() {
-        $('#login-email').val('\(email.escapeJavaScript())');
-        $('#login-password').val('\(password.escapeJavaScript())');
+        $('#login-email').val('\(email.safeJavaScript)');
+        $('#login-password').val('\(password.safeJavaScript)');
         $('button.js-login-submit').removeAttr('disabled');
         $('button.js-login-submit').click();
         return "ok";
