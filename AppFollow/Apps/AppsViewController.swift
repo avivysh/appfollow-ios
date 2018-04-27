@@ -26,6 +26,9 @@ class AppsViewController: UIViewController {
         AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.controlEvent(.valueChanged).subscribe(
             onNext: { _ in
@@ -45,16 +48,13 @@ class AppsViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if AppDelegate.provide.stateRefresh.isRefreshing {
             self.tableView.refreshControl?.beginRefreshing()
+        } else {
+            self.tableView.refreshControl?.endRefreshing()
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.tableView.refreshControl?.endRefreshing()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

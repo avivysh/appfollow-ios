@@ -30,8 +30,13 @@ class ProfileViewController: UIViewController {
     @IBAction func versionMenu(_ sender: UITapGestureRecognizer) {
         let alert = UIAlertController(title: "Developer options", message: nil, preferredStyle: .actionSheet)
         alert.addAction(PushTestAction(view: self.view))
+        alert.addAction(LocalNotificationAction(view: self.view))
         alert.addAction(SendLogsAction(viewController: self))
         alert.addAction(UIAlertAction.cancel)
+        if let popoverPresentationController = alert.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = self.appVersion.bounds
+        }
         self.present(alert, animated: true, completion: nil)
     }
     

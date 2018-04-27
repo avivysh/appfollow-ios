@@ -35,16 +35,17 @@ class ReviewsViewController: UIViewController {
         )
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if AppDelegate.provide.stateRefresh.isRefreshing {
             self.tableView.refreshControl?.beginRefreshing()
+        } else {
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.tableView.refreshControl?.endRefreshing()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

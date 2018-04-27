@@ -46,7 +46,11 @@ struct App: Decodable {
     var extId: ExtId {
         get { return details.extId }
     }
-    
+
+    var isEmpty: Bool {
+        return id == AppId.empty
+    }    
+
     enum CodingKeys: String, CodingKey {
         case id = "app_id"
         case details = "app"
