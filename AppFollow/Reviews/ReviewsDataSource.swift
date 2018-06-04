@@ -55,14 +55,8 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
         let now = Date()
         
         for collection in collections {
-            let collecionName = collection.title
-                .lowercased()
-                .trimmingCharacters(in: .whitespaces)
-                .replacingOccurrences(of: " ", with: "-")
-                .toTranslit
-
             let route = CollectionReviewsRoute(
-                collectionName: collecionName,
+                collectionName: collection.title,
                 from: Calendar.current.date(byAdding: .day, value: -60, to: now)!,
                 to: now)
             group.enter()
