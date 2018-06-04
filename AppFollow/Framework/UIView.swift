@@ -41,4 +41,38 @@ extension UIView {
             }
         }
     }
+    
+    func applyVibrancy(style: UIBlurEffectStyle, blurAlpha: CGFloat) {
+        guard UIAccessibilityIsReduceTransparencyEnabled() == false else {
+            return
+        }
+        
+        self.backgroundColor = .clear
+        
+        let blurEffect = UIBlurEffect(style: style)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.alpha = blurAlpha
+        self.insertSubview(blurView, at: 0)
+        
+        NSLayoutConstraint.activate([
+            blurView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            blurView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            blurView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            blurView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            ])
+        
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
+        vibrancyView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.contentView.addSubview(vibrancyView)
+        
+        NSLayoutConstraint.activate([
+            vibrancyView.heightAnchor.constraint(equalTo: blurView.contentView.heightAnchor),
+            vibrancyView.widthAnchor.constraint(equalTo: blurView.contentView.widthAnchor),
+            vibrancyView.centerXAnchor.constraint(equalTo: blurView.contentView.centerXAnchor),
+            vibrancyView.centerYAnchor.constraint(equalTo: blurView.contentView.centerYAnchor)
+            ])
+    }
+
 }

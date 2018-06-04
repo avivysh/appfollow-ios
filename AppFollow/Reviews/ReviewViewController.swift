@@ -23,6 +23,7 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var appTitle: UIBarButtonItem!
+    @IBOutlet weak var integrationDisabled: UIView!
     
     var app: App!
     var reviewId: ReviewId!
@@ -35,6 +36,13 @@ class ReviewViewController: UIViewController {
         self.actionButton.isEnabled = false
         self.textField.isEditable = false
         self.tableView.dataSource = self.dataSource
+        
+        if (app.hasReplyIntegration.value) {
+            self.integrationDisabled.isHidden = true
+        } else {
+            self.integrationDisabled.isHidden = false
+            self.integrationDisabled.applyVibrancy(style: .light, blurAlpha: 0.65)
+        }
         
         self.view.keyboardHeightWillChange.subscribe(
             onNext: { [weak self] (height, duration) in
@@ -78,6 +86,10 @@ class ReviewViewController: UIViewController {
     @IBAction func actionApp(_ sender: UIBarButtonItem) {
         let appViewController = AppViewController.instantiateFromStoryboard(app: self.app)
         self.navigationController?.pushViewController(appViewController, animated: true)
+    }
+    
+    @IBAction func actionOpenIntegration(_ sender: UIButton) {
+        
     }
     
     deinit {

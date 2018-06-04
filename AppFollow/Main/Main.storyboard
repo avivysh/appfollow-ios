@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yRl-Uz-d7U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yRl-Uz-d7U">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -879,15 +879,54 @@
                                             <constraint firstItem="vuP-c9-i2C" firstAttribute="centerY" secondItem="fLZ-d0-kep" secondAttribute="centerY" id="zTl-ZL-iSK"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0l-Yu-GDS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="482"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store integration is not enabled for the app. it can be eanbled in app settings" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jv2-XA-DxO">
+                                                <rect key="frame" x="16" y="220.5" width="343" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="WxX-Ff-Zq2">
+                                                <rect key="frame" x="126.5" y="277.5" width="123" height="30"/>
+                                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                                                <state key="normal" title="Open integrations"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionOpenIntegration:" destination="X7G-xV-bP0" eventType="touchUpInside" id="w0e-M0-2Hl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="WxX-Ff-Zq2" firstAttribute="top" secondItem="jv2-XA-DxO" secondAttribute="bottom" constant="16" id="IBz-OD-6lt"/>
+                                            <constraint firstAttribute="trailing" secondItem="jv2-XA-DxO" secondAttribute="trailing" constant="16" id="Noa-4s-AnT"/>
+                                            <constraint firstItem="jv2-XA-DxO" firstAttribute="centerY" secondItem="T0l-Yu-GDS" secondAttribute="centerY" id="PQG-qu-cdN"/>
+                                            <constraint firstItem="WxX-Ff-Zq2" firstAttribute="centerX" secondItem="jv2-XA-DxO" secondAttribute="centerX" id="f2R-fX-3wK"/>
+                                            <constraint firstItem="jv2-XA-DxO" firstAttribute="leading" secondItem="T0l-Yu-GDS" secondAttribute="leading" constant="16" id="uSH-vx-09V"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="55U-hc-wgQ" firstAttribute="leading" secondItem="O5z-Vc-K4H" secondAttribute="leading" id="Fjf-nW-f48"/>
                                     <constraint firstAttribute="bottom" secondItem="lwu-cx-q8Z" secondAttribute="bottom" id="Ge8-ai-IrP"/>
+                                    <constraint firstAttribute="trailing" secondItem="T0l-Yu-GDS" secondAttribute="trailing" id="LkE-KG-dEZ"/>
                                     <constraint firstItem="55U-hc-wgQ" firstAttribute="top" secondItem="O5z-Vc-K4H" secondAttribute="top" id="R5n-jB-9Xn"/>
                                     <constraint firstAttribute="trailing" secondItem="55U-hc-wgQ" secondAttribute="trailing" id="Rsr-wL-3eG"/>
+                                    <constraint firstItem="T0l-Yu-GDS" firstAttribute="top" secondItem="O5z-Vc-K4H" secondAttribute="top" id="SE8-aQ-LQe"/>
                                     <constraint firstAttribute="trailing" secondItem="lwu-cx-q8Z" secondAttribute="trailing" id="TuJ-rH-vMl"/>
+                                    <constraint firstAttribute="bottom" secondItem="T0l-Yu-GDS" secondAttribute="bottom" id="UZU-n1-0Z4"/>
                                     <constraint firstItem="lwu-cx-q8Z" firstAttribute="leading" secondItem="O5z-Vc-K4H" secondAttribute="leading" id="V3v-pn-Sh8"/>
+                                    <constraint firstItem="T0l-Yu-GDS" firstAttribute="leading" secondItem="O5z-Vc-K4H" secondAttribute="leading" id="stA-vQ-m4W"/>
                                     <constraint firstItem="lwu-cx-q8Z" firstAttribute="top" secondItem="55U-hc-wgQ" secondAttribute="bottom" id="uoP-ww-vSs"/>
                                 </constraints>
                             </view>
@@ -912,6 +951,7 @@
                         <outlet property="actionBarBottom" destination="Ge8-ai-IrP" id="iWE-1b-7aB"/>
                         <outlet property="actionButton" destination="vuP-c9-i2C" id="htR-ne-a4U"/>
                         <outlet property="appTitle" destination="18I-2f-0P3" id="y3K-eq-u4e"/>
+                        <outlet property="integrationDisabled" destination="T0l-Yu-GDS" id="Y8k-AQ-xq0"/>
                         <outlet property="tableView" destination="55U-hc-wgQ" id="yJu-rx-BH6"/>
                         <outlet property="textField" destination="fLZ-d0-kep" id="XFR-Fr-j0D"/>
                     </connections>

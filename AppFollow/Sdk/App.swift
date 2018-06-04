@@ -33,7 +33,7 @@ struct CollectionResponse: Decodable {
 }
 
 struct App: Decodable {
-    static let empty = App(id: AppId.empty, details: AppDetails.empty, reviewsCount: IntValue.zero, whatsNewCount: IntValue.zero, created: Date.unknown, isFavorite: BoolValue.false, store: "")
+    static let empty = App(id: AppId.empty, details: AppDetails.empty, reviewsCount: IntValue.zero, whatsNewCount: IntValue.zero, created: Date.unknown, isFavorite: BoolValue.false, store: "", hasReplyIntegration: BoolValue.false)
 
     let id: AppId
     let details: AppDetails
@@ -42,6 +42,7 @@ struct App: Decodable {
     let created: Date
     let isFavorite: BoolValue
     let store: String
+    let hasReplyIntegration: BoolValue
     
     var extId: ExtId {
         get { return details.extId }
@@ -59,9 +60,10 @@ struct App: Decodable {
         case created
         case isFavorite = "is_favorite"
         case store
+        case hasReplyIntegration = "has_reply_integration"
     }
     
-    init(id: AppId, details: AppDetails, reviewsCount: IntValue, whatsNewCount: IntValue, created: Date, isFavorite: BoolValue, store: String) {
+    init(id: AppId, details: AppDetails, reviewsCount: IntValue, whatsNewCount: IntValue, created: Date, isFavorite: BoolValue, store: String, hasReplyIntegration: BoolValue) {
         self.id = id
         self.details = details
         self.reviewsCount = reviewsCount
@@ -69,6 +71,7 @@ struct App: Decodable {
         self.created = created
         self.isFavorite = isFavorite
         self.store = store
+        self.hasReplyIntegration = hasReplyIntegration
     }
     
     init(from decoder: Decoder) throws {
@@ -81,6 +84,7 @@ struct App: Decodable {
         self.created = DateFormatter.date(ymdhms: created)
         self.isFavorite = try map.decode(BoolValue.self, forKey: .isFavorite)
         self.store = try map.decode(.store) ?? ""
+        self.hasReplyIntegration = try map.decode(BoolValue.self, forKey: .hasReplyIntegration)
     }
 }
 
