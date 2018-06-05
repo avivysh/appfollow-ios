@@ -20,6 +20,10 @@ private enum JSONBodyParameterEncodingError: Error {
     case missingBodyParameter
 }
 
+struct EmptyBody: Decodable {
+    
+}
+
 private struct JSONBodyParameterEncoding<T: Encodable>: ParameterEncoding {
 
     func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
@@ -88,19 +92,38 @@ class ApiRequest {
         log.debug(request.debugDescription)
     }
     
-    func post<P: Encodable>(body: P, completion: @escaping (Error?) -> Void) {
+    func post<B: Encodable, R: Decodable>(body: B, completion: @escaping (R?, Error?) -> Void) {
         let parameters = endpoint.sign(route: route, auth: auth.actual)
         let pathWithQuery = "\(route.path)?\(query(parameters))"
         let url = URL(string: pathWithQuery, relativeTo: endpoint.baseUrl)!
-        let request = session.request(url, method: .post, parameters: ["body": body], encoding: JSONBodyParameterEncoding<P>()).response {
-            (result) in
-            
-            if let error = result.error {
-                log.error(error.localizedDescription)
+        let request = session.request(url, method: .post, parameters: ["body": body], encoding: JSONBodyParameterEncoding<B>()).response {
+            response in
+
+            if let data = response.data {
+                log.info("[Response]: \(response) [Data]: \(response.data?.count ?? 0) bytes [Timeline]: \(response.timeline.description)")
+                let decoder = JSONDecoder()
+                do {
+                    let object = try decoder.decode(R.self, from: data)
+                    completion(object, nil)
+                } catch let responseDeserializeError {
+                    do {
+                        let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                        log.error(errorResponse)
+                        completion(nil, errorResponse.error)
+                    } catch {
+                        log.error(responseDeserializeError)
+                        completion(nil, responseDeserializeError)
+                    }
+                }
             } else {
-                log.info("[Response]: \(result.response.debugDescription)")
+                if let error = response.error {
+                    log.error(error.localizedDescription)
+                } else {
+                    log.info("[Response]: \(response)")
+                }
+                completion(nil, response.error)
             }
-            completion(result.error)
+
         }
         
         log.info("[Request]: \(url)")

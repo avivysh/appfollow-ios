@@ -11,7 +11,7 @@ import UIKit
 class DependencyProvider {
     
     let authStorage = UserDefaultAuthStorage(defaults: UserDefaults.standard)
-    lazy var auth = AuthProvider(authStorage: authStorage)
+    lazy var auth: AuthProvider = AuthProviderStorage(authStorage: authStorage)
 
     let store = Store()
     lazy var stateRefresh = StateRefresh(store: self.store, auth: self.auth )

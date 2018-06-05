@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log.addDestination(ConsoleDestination())
         log.addDestination(FileDestination())
 
-        if (AppDelegate.provide.authStorage.retrieve().cid == emptyAuth.cid) {
+        if (AppDelegate.provide.authStorage.retrieve().cid == Auth.empty.cid) {
             self.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
         } else {
             self.window?.rootViewController = MainViewController.instantiateFromStoryboard()

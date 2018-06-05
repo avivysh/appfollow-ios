@@ -86,7 +86,7 @@ class PushTestAction: UIAlertAction {
                 let auth = AppDelegate.provide.auth
                 let body = PushTest(review: review!, app: app, collection: collection)
                 ApiRequest(route: PushTestRoute(cid: auth.actual.cid), auth: auth).post(body: body) {
-                    error in
+                    (_: EmptyBody?, error: Error?) in
                     
                     if error == nil {
                         pushTestAction.view?.makeToast("Push sent")

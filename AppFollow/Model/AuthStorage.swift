@@ -8,7 +8,15 @@
 
 import Foundation
 
-struct AuthProvider {
+protocol AuthProvider {
+    var actual: Auth { get }
+}
+
+struct AuthProviderEmpty: AuthProvider {
+    let actual = Auth.empty
+}
+
+struct AuthProviderStorage: AuthProvider {
     let authStorage: AuthStorage
     var actual: Auth { return authStorage.retrieve() }
 }
@@ -18,8 +26,6 @@ protocol AuthStorage {
     func retrieve() -> Auth
     func persist(auth: Auth)
 }
-
-let emptyAuth = Auth(cid: 0, secret: "")
 
 class UserDefaultAuthStorage: AuthStorage {
     private static let keyCid = "auth_cid"
@@ -34,7 +40,7 @@ class UserDefaultAuthStorage: AuthStorage {
     func retrieve() -> Auth {
         let cid = self.defaults.integer(forKey: UserDefaultAuthStorage.keyCid)
         if (cid == 0) {
-            return emptyAuth
+            return Auth.empty
         }
         let secret = self.defaults.string(forKey: UserDefaultAuthStorage.keySecret) ?? ""
         return Auth(cid: cid, secret: secret)

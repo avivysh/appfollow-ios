@@ -20,6 +20,23 @@ protocol LoginProcess {
     func start(email: String, password: String)
 }
 
+class PostLoginProcess: LoginProcess {
+    var delegate: LoginProcessDelegate?
+    
+    func start(email: String, password: String) {
+        let route: ProfileRoute = ProfileRoute(body: LoginRequest(email: email, password: password))
+        self.delegate?.loginProgress(message: "Authorizing")
+        ApiRequest(route: route, auth: AuthProviderEmpty()).post(body: route.body) {
+            (auth: Auth?, error: Error?) in
+                if let auth = auth {
+                    self.delegate?.loginSuccess(auth: auth, profile: Profile(email: email, name: "", image: "/assets/img/avatar/steve.jpg", description: "", company: ""))
+                } else {
+                    self.delegate?.loginError(message: "Unrecognized email/password")
+                }
+            }
+        }
+}
+
 class WebViewLoginProcess: NSObject, WKNavigationDelegate, LoginProcess {
     
     private weak var webView: WKWebView?

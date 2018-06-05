@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loginProcess = WebViewLoginProcess(webView: webView)
+        self.loginProcess = PostLoginProcess()
         self.loginProcess?.delegate = self
     }
     

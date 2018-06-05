@@ -8,7 +8,20 @@
 
 import Foundation
 
-struct Auth {
+struct Auth: Decodable {
+    static let empty = Auth(cid: 0, secret: "")
+
     let cid: Int
     let secret: String
+}
+
+struct LoginRequest: Encodable {
+    let email: String
+    let password: String
+}
+
+struct ProfileRoute: EndpointRouteBody {
+    let path = "/profile"
+    let parameters: [String: Any] = [:]
+    let body: LoginRequest
 }

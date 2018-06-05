@@ -13,6 +13,12 @@ protocol EndpointRoute {
     var parameters: [String: Any] { get }
 }
 
+protocol EndpointRouteBody: EndpointRoute {
+    associatedtype Body = Encodable
+    var body: Body { get }
+}
+
+
 class Endpoint {
     let baseUrl = URL(string: "https://api.appfollow.io")!
     
