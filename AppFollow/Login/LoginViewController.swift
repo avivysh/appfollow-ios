@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import ToastSwiftFramework
 import SafariServices
+import Intercom
 
 class LoginViewController: UIViewController, LoginProcessDelegate {
 
@@ -67,6 +68,7 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         AppDelegate.provide.authStorage.persist(auth: auth)
         AppDelegate.provide.profileStorage.persist(profile: profile)
         
+        Intercom.registerUser(withUserId: "\(auth.cid)")
         let main = MainViewController.instantiateFromStoryboard()
         let appDelegate = UIApplication.shared.delegate
         appDelegate?.window??.rootViewController = main

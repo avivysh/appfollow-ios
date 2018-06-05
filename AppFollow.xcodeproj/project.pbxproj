@@ -25,6 +25,9 @@
 		982D5509207BBAF90001A6D9 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982D5508207BBAF90001A6D9 /* Int.swift */; };
 		982D550B207BBB620001A6D9 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982D550A207BBB620001A6D9 /* Array.swift */; };
 		982D88262083D35100940CE7 /* Snail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D88252083D35000940CE7 /* Snail.framework */; };
+		9847B12720C720EE00FD0122 /* Intercom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9847B12620C720ED00FD0122 /* Intercom.framework */; };
+		9847B12920C723E000FD0122 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9847B12820C723E000FD0122 /* Configuration.plist */; };
+		9847B12B20C724C300FD0122 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9847B12A20C724C300FD0122 /* Configuration.swift */; };
 		984E51A7206BF71500CDB24D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A6206BF71500CDB24D /* Auth.swift */; };
 		984E51AA206BF73200CDB24D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984E51A9206BF73200CDB24D /* String.swift */; };
 		984E51AD206BF79100CDB24D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984E51AC206BF79100CDB24D /* Main.storyboard */; };
@@ -115,6 +118,9 @@
 		982D5508207BBAF90001A6D9 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		982D550A207BBB620001A6D9 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		982D88252083D35000940CE7 /* Snail.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Snail.framework; path = Carthage/Build/iOS/Snail.framework; sourceTree = "<group>"; };
+		9847B12620C720ED00FD0122 /* Intercom.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intercom.framework; path = Carthage/Build/iOS/Intercom.framework; sourceTree = "<group>"; };
+		9847B12820C723E000FD0122 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		9847B12A20C724C300FD0122 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		984E51A6206BF71500CDB24D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		984E51A9206BF73200CDB24D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		984E51AC206BF79100CDB24D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9847B12720C720EE00FD0122 /* Intercom.framework in Frameworks */,
 				982D88262083D35100940CE7 /* Snail.framework in Frameworks */,
 				98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */,
 				981C3B11206EBF820072E3A2 /* ToastSwiftFramework.framework in Frameworks */,
@@ -241,6 +248,8 @@
 				98F01F4D206D6D5300FA461F /* Profile */,
 				98F7D31B206D7035005195BD /* Reviews */,
 				984E51A5206BF70300CDB24D /* Sdk */,
+				9847B12820C723E000FD0122 /* Configuration.plist */,
+				9847B12A20C724C300FD0122 /* Configuration.swift */,
 			);
 			path = AppFollow;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 		98087CB3206BE53D00EB0747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9847B12620C720ED00FD0122 /* Intercom.framework */,
 				982D88252083D35000940CE7 /* Snail.framework */,
 				98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */,
 				981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */,
@@ -500,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98087CAA2069FAE000EB0747 /* LaunchScreen.storyboard in Resources */,
+				9847B12920C723E000FD0122 /* Configuration.plist in Resources */,
 				98087CA72069FAE000EB0747 /* Assets.xcassets in Resources */,
 				98087CA22069FAE000EB0747 /* Login.storyboard in Resources */,
 				984E51AD206BF79100CDB24D /* Main.storyboard in Resources */,
@@ -529,6 +540,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ToastSwiftFramework.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Snail.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Intercom.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
@@ -538,6 +550,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ToastSwiftFramework.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Snail.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Intercom.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -580,6 +593,7 @@
 				984E51E1206C30BB00CDB24D /* Collection.swift in Sources */,
 				982D5507207BB5D10001A6D9 /* PushTest.swift in Sources */,
 				98815DC62072735800A7A6C6 /* ReviewViewController.swift in Sources */,
+				9847B12B20C724C300FD0122 /* Configuration.swift in Sources */,
 				984E51E5206C3E8200CDB24D /* Codable.swift in Sources */,
 				98815DC42072585C00A7A6C6 /* OverviewDataSource.swift in Sources */,
 				98631889206D7D1000D6A14F /* ReviewCell.swift in Sources */,

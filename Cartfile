@@ -5,3 +5,4 @@ github "Alamofire/AlamofireImage" ~> 3.3
 github "evgenyneu/Cosmos" ~> 15.0
 github "SwiftyBeaver/SwiftyBeaver"
 github "UrbanCompass/Snail" ~> 0.2.0
+github "intercom/intercom-ios" ~> 5.0.0

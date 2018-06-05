@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import SwiftyBeaver
 import UserNotifications
+import Intercom
 
 let log = SwiftyBeaver.self
 
@@ -25,9 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log.addDestination(ConsoleDestination())
         log.addDestination(FileDestination())
 
-        if (AppDelegate.provide.authStorage.retrieve().cid == Auth.empty.cid) {
+        let configuration = AppDelegate.provide.configuration
+        Intercom.setApiKey(configuration.intercomApiKey, forAppId: configuration.intercomAppId)
+        
+        let auth = AppDelegate.provide.authStorage.retrieve()
+        
+        if (auth.cid == Auth.empty.cid) {
             self.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
         } else {
+            Intercom.registerUser(withUserId: "\(auth.cid)")
             self.window?.rootViewController = MainViewController.instantiateFromStoryboard()
         }
         

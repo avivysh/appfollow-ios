@@ -89,7 +89,7 @@ class ReviewViewController: UIViewController {
     }
     
     @IBAction func actionOpenIntegration(_ sender: UIButton) {
-        
+        self.present(url: URL(string: "https://help.appfollow.io/integrations")!)
     }
     
     deinit {

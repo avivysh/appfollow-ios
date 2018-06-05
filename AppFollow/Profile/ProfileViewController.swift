@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intercom
 
 class ProfileViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class ProfileViewController: UIViewController {
         if let bundleID = Bundle.main.bundleIdentifier {
             UserDefaults.standard.removePersistentDomain(forName: bundleID)
             AppDelegate.provide.store.reset()
+            Intercom.logout()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let _ = log.fileDestinations.first?.deleteLogFile()
             appDelegate.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
@@ -55,5 +57,17 @@ class ProfileViewController: UIViewController {
         let versionName = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
         let versionCode = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
         self.appVersion.setTitle("AppFollow \(versionName) (\(versionCode))", for: .normal)
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Intercom.setBottomPadding(80)
+        Intercom.setLauncherVisible(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Intercom.setLauncherVisible(false)
+        super.viewWillDisappear(animated)
     }
 }

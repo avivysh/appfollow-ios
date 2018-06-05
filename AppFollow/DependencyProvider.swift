@@ -26,4 +26,6 @@ class DependencyProvider {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.window?.rootViewController as? NavigationDelegate
     }
+    
+    lazy var configuration = Configuration.load()
 }
