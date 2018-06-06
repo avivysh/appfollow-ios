@@ -6,5 +6,9 @@
 	<string></string>
 	<key>intercomApiKey</key>
 	<string></string>
+    <key>demoUser</key>
+    <string></string>
+    <key>demoPassword</key>
+    <string></string>
 </dict>
 </plist>

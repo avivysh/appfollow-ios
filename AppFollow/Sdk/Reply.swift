@@ -12,14 +12,16 @@ struct ReplyRoute: EndpointRoute {
     let extId: ExtId
     let reviewId: ReviewId
     let answer: String
+    let store: String
     // MARK: EndpointRoute
     let path = "/reply"
     var parameters: [String: Any] {
         get { return [
             "ext_id" : extId.value,
             "review_id" : reviewId.value,
-            "answer_text" : answer
-            ]}
+            "answer_text" : answer,
+            "store": store
+        ]}
     }
 }
 

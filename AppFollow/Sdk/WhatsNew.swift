@@ -10,10 +10,12 @@ import Foundation
 
 struct WhatsNewRoute: EndpointRoute {
     let extId: ExtId
+    let store: String
     // MARK: EndpointRoute
     let path = "/whatsnew"
     var parameters: [String : Any] { get { return [
-        "ext_id"  : extId.value
+        "ext_id" : extId.value,
+        "store"  : store
     ]}}
 }
 

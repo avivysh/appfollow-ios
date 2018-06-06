@@ -54,6 +54,17 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         self.present(url: URL(string: "https://watch.appfollow.io/forgot")!)
     }
     
+    @IBAction func actionLiveDemo(_ sender: UIButton) {
+        let config = AppDelegate.provide.configuration
+        self.username.text = config.demoUser
+        self.password.text = config.demoPassword
+        
+        let username = self.username.text ?? ""
+        let password = self.password.text ?? ""
+        
+        self.loginProcess?.start(email: username, password: password)
+    }
+    
     // MARK: LoginProcessDelegate
     
     func loginError(message: String) {

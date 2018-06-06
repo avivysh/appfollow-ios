@@ -11,6 +11,8 @@ import Foundation
 struct Configuration: Decodable {
     var intercomAppId: String
     var intercomApiKey: String
+    var demoUser: String
+    var demoPassword: String
 
     static func load() -> Configuration {
         let path = Bundle.main.path(forResource: "Configuration", ofType: "plist")!

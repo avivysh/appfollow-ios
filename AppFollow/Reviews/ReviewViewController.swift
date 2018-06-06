@@ -106,7 +106,7 @@ class ReviewViewController: UIViewController {
             let answerText = self.textField.text ?? ""
             if !answerText.isEmpty {
                 self.actionButton.isEnabled = false
-                ApiRequest(route: ReplyRoute(extId: self.app.extId, reviewId: self.reviewId, answer: answerText), auth: AppDelegate.provide.auth).get {
+                ApiRequest(route: ReplyRoute(extId: self.app.extId, reviewId: self.reviewId, answer: answerText, store: app.store), auth: AppDelegate.provide.auth).get {
                     (response: ReplyResponse?, error: Error?) in
                     if let replyResponse = response {
                         log.info(replyResponse)

@@ -6,5 +6,9 @@
 	<string>ck7hmg8t</string>
 	<key>intercomApiKey</key>
 	<string>ios_sdk-daf960e3510806bb9c97ed5dcaedc96b5c906633</string>
+    <key>demoUser</key>
+    <string>demo@appfollow.io</string>
+    <key>demoPassword</key>
+    <string>DemoAppFollow103</string>
 </dict>
 </plist>

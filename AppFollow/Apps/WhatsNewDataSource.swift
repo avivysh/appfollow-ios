@@ -26,7 +26,7 @@ class WhatsNewDataSource: NSObject, AppSectionDataSource {
     }
     
     func reload() {
-        ApiRequest(route: WhatsNewRoute(extId: app.extId), auth: self.auth).get {
+        ApiRequest(route: WhatsNewRoute(extId: app.extId, store: app.store), auth: self.auth).get {
             (response: WhatsNewResponse?, _) in
             if let whatsnew = response?.whatsnew.list {
                 self.whatsnew = whatsnew

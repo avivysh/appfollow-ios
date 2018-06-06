@@ -118,7 +118,7 @@ class AppViewController: UIViewController, UITableViewDelegate {
     
     private func loadSummary() {
         let auth = AppDelegate.provide.auth
-        ApiRequest(route: ReviewsSummaryRoute(extId: self.app.extId, from: self.app.created, to: Date()), auth: auth).get {
+        ApiRequest(route: ReviewsSummaryRoute(extId: self.app.extId, from: self.app.created, to: Date(), store: app.store), auth: auth).get {
             (response: ReviewsSummary?, _) in
             if let summary = response {
                 self.stars.isHidden = false

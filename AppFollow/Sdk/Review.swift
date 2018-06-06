@@ -11,21 +11,24 @@ import Foundation
 struct ReviewsRoute: EndpointRoute {
     let extId: ExtId
     let reviewId: ReviewId
-    
-    init(extId: ExtId, reviewId: ReviewId) {
+    let store: String
+
+    init(extId: ExtId, reviewId: ReviewId, store: String) {
         self.extId = extId
         self.reviewId = reviewId
+        self.store = store
     }
     
-    init(extId: ExtId) {
-        self.init(extId: extId, reviewId: ReviewId.empty)
+    init(extId: ExtId, store: String) {
+        self.init(extId: extId, reviewId: ReviewId.empty, store: store)
     }
     
     // MARK: EndpointRoute
     let path = "/reviews"
     var parameters: [String : Any] { get {
         var parameters: [String: Any] = [
-            "ext_id" : extId.value
+            "ext_id" : extId.value,
+            "store": store
         ]
         if !reviewId.isEmpty {
             parameters["review_id"] = reviewId.value

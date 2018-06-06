@@ -12,12 +12,15 @@ struct ReviewsSummaryRoute: EndpointRoute {
     let extId: ExtId
     let from: Date
     let to: Date
+    let store: String
+
     // MARK: EndpointRoute
     let path = "/reviews/summary"
     var parameters: [String: Any] { get { return [
         "ext_id" : extId.value,
         "from": from.ymd,
-        "to": to.ymd
+        "to": to.ymd,
+        "store": store
         ]}
     }
 }

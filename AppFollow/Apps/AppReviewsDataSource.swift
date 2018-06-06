@@ -30,7 +30,7 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
     }
     
     func reload() {
-        ApiRequest(route: ReviewsRoute(extId: app.extId), auth: self.auth).get {
+        ApiRequest(route: ReviewsRoute(extId: app.extId, store: app.store), auth: self.auth).get {
             (response: AppReviewsResponse?, _) in
             if let reviews = response?.reviews.list {
                 self.reviews = reviews

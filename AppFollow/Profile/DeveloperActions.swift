@@ -14,7 +14,7 @@ private func fetchReview(completion: @escaping (_ review: Review?,_ app: App,_ c
     let collection = AppDelegate.provide.store.collections.random()
     if let app = AppDelegate.provide.store.apps[collection.id]?.random() {
         let auth = AppDelegate.provide.auth
-        ApiRequest(route: ReviewsRoute(extId: app.extId), auth: auth).get(completion: {
+        ApiRequest(route: ReviewsRoute(extId: app.extId, store: app.store), auth: auth).get(completion: {
             (response: AppReviewsResponse?, _) in
             if let review = response?.reviews.list.first {
                 completion(review, app, collection)
