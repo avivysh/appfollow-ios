@@ -12,12 +12,26 @@ import Snail
 typealias CollectionApps = [CollectionId: [App]]
 typealias Collections = [Collection]
 
+struct NextOrError<T> {
+    let next: T
+    let error: Error?
+    
+    init(_ next: T) {
+        self.init(next, nil)
+    }
+    
+    init(_ next: T,_ error: Error?) {
+        self.next = next
+        self.error = error
+    }
+}
+
 class Store {
     
     var collections: Collections = []
     var apps: CollectionApps = [:]
     
-    let refreshed = Observable<Bool>()
+    let refreshed = Observable<NextOrError<Bool>>()
     
     func appFor(appId: AppId) -> App {
         for pair in apps {

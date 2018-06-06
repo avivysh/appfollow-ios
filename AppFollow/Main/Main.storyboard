@@ -145,10 +145,16 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aDr-tX-NX6">
+                                        <rect key="frame" x="169" y="24" width="37" height="37"/>
+                                        <color key="color" red="0.23137255009999999" green="0.23137255009999999" blue="0.23137255009999999" alpha="1" colorSpace="deviceRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="aDr-tX-NX6" firstAttribute="centerX" secondItem="ju5-Rn-kNB" secondAttribute="centerX" id="Dcf-Tm-U1U"/>
                                     <constraint firstItem="VHT-4W-Lri" firstAttribute="centerX" secondItem="ju5-Rn-kNB" secondAttribute="centerX" id="F11-de-Biu"/>
+                                    <constraint firstItem="aDr-tX-NX6" firstAttribute="top" secondItem="ju5-Rn-kNB" secondAttribute="top" constant="24" id="I9E-2h-uAm"/>
                                     <constraint firstItem="VHT-4W-Lri" firstAttribute="centerY" secondItem="ju5-Rn-kNB" secondAttribute="centerY" id="oX2-Ib-129"/>
                                 </constraints>
                             </view>
@@ -237,6 +243,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Apps" id="gsC-K7-8cb"/>
                     <connections>
+                        <outlet property="loadingAnimation" destination="aDr-tX-NX6" id="fev-zC-7H1"/>
                         <outlet property="tableView" destination="17K-vw-SaZ" id="rRg-nR-uY4"/>
                     </connections>
                 </viewController>
@@ -621,11 +628,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mTj-j2-x5x">
+                                        <rect key="frame" x="169" y="24" width="37" height="37"/>
+                                        <color key="color" red="0.23137255009999999" green="0.23137255009999999" blue="0.23137255009999999" alpha="1" colorSpace="deviceRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="owE-X8-NY6" firstAttribute="centerY" secondItem="pqn-i9-5Br" secondAttribute="centerY" id="MjN-iP-oLM"/>
+                                    <constraint firstItem="mTj-j2-x5x" firstAttribute="centerX" secondItem="pqn-i9-5Br" secondAttribute="centerX" id="gx5-mu-Go7"/>
                                     <constraint firstItem="owE-X8-NY6" firstAttribute="centerX" secondItem="pqn-i9-5Br" secondAttribute="centerX" id="kG2-y4-Vgd"/>
+                                    <constraint firstItem="mTj-j2-x5x" firstAttribute="top" secondItem="pqn-i9-5Br" secondAttribute="top" constant="24" id="nwO-MG-jSH"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xce-7W-XCc">
@@ -732,6 +745,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Reviews" id="15N-Pf-rsO"/>
                     <connections>
+                        <outlet property="loadingAnimation" destination="mTj-j2-x5x" id="qLs-We-PhQ"/>
                         <outlet property="tableView" destination="xce-7W-XCc" id="yy3-Dy-7fL"/>
                     </connections>
                 </viewController>

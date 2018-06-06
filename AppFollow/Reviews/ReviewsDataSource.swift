@@ -23,14 +23,14 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     private var apps: [AppId: App] = [:]
     private var sections: [DateSection] = []
     
-    let refreshed = Observable<Bool>()
+    let refreshed = Observable<NextOrError<Bool>>()
     
     override init() {
         super.init()
         AppDelegate.provide.store.refreshed.subscribe(
-            onNext: { [weak self] _ in
+            onNext: { [weak self] result in
                 self?.reload {
-                    self?.refreshed.on(.next(true))
+                    self?.refreshed.on(.next(result))
                 }
             }
         )

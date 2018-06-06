@@ -15,7 +15,7 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     private var collections: [Collection] = []
     private var apps: [CollectionId: [App]] = [:]
 
-    let refreshed = Observable<Bool>()
+    let refreshed = Observable<NextOrError<Bool>>()
     
     override init() {
         super.init()
@@ -25,11 +25,11 @@ class AppsDataSource: NSObject, UITableViewDataSource {
         self.apps = store.apps
         
         AppDelegate.provide.store.refreshed.subscribe(
-            onNext: { [weak self] _ in
+            onNext: { [weak self] result in
                 let store = AppDelegate.provide.store
                 self?.collections = store.collections
                 self?.apps = store.apps
-                self?.refreshed.on(.next(true))
+                self?.refreshed.on(.next(result))
             }
         )
     }

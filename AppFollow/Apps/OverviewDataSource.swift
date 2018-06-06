@@ -26,7 +26,7 @@ private struct OverviewItem {
 }
 
 class OverviewDataSource: NSObject, AppSectionDataSource {
-    let refreshed = Observable<Bool>()
+    let refreshed = Observable<NextOrError<Bool>>()
     
     weak var viewController: UIViewController?
     
@@ -40,11 +40,11 @@ class OverviewDataSource: NSObject, AppSectionDataSource {
     }
     
     func reload() {
-        self.refreshed.on(.next(true))
+        self.refreshed.on(.next(NextOrError(true)))
     }
     
     func activate() {
-        self.refreshed.on(.next(true))
+        self.refreshed.on(.next(NextOrError(true)))
     }
     
     func didSelectRowAt(indexPath: IndexPath) {

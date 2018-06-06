@@ -30,7 +30,7 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
     private var items: [ReplyItem] = []
     private var review = Review.empty
     
-    let refreshed = Observable<Bool>()
+    let refreshed = Observable<NextOrError<Bool>>()
     
     var lastIndex: IndexPath? {
         if items.count > 0 {
@@ -51,9 +51,9 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
             if let review = response?.reviews.list.first {
                 self.review = review
                 self.items = self.createItems(review: review)
-                self.refreshed.on(.next(true))
+                self.refreshed.on(.next(NextOrError(true, nil)))
             } else {
-                self.refreshed.on(.error(error ?? ApiRequestError.failure))
+                self.refreshed.on(.next(NextOrError(false, error ?? ApiRequestError.failure)))
             }
         }
     }
@@ -64,7 +64,7 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
         } else {
             self.items.append(Reply(answer: answer))
         }
-        self.refreshed.on(.next(true))
+        self.refreshed.on(.next(NextOrError(true, nil)))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

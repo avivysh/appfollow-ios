@@ -66,11 +66,12 @@ class ReviewViewController: UIViewController {
         )
         
         self.dataSource.refreshed.subscribe(
-            onNext: { [weak self] _ in
-                self?.reload()
-            },
-            onError: { [weak self] error in
-                self?.tableView.makeToast("Error: \(error.localizedDescription)")
+            onNext: { [weak self] result in
+                if let error = result.error {
+                    self?.tableView.makeToast("Error: \(error.localizedDescription)")
+                } else {
+                    self?.reload()
+                }
             }
         )
     }

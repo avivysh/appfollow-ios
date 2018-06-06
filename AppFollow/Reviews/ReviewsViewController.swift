@@ -11,6 +11,7 @@ import Alamofire
 
 class ReviewsViewController: UIViewController {
 
+    @IBOutlet weak var loadingAnimation: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     let dataSource = ReviewsDataSource()
     
@@ -28,9 +29,16 @@ class ReviewsViewController: UIViewController {
         AppDelegate.provide.push.registerForRemoteNotifications()
         
         self.dataSource.refreshed.subscribe(
-            onNext: { [weak self] _ in
-                self?.tableView.reloadData()
-                self?.tableView.refreshControl?.endRefreshing()
+            onNext: { [weak self] result in
+                if let error = result.error {
+                    self?.tableView.refreshControl?.endRefreshing()
+                    self?.loadingAnimation.stopAnimating()
+                    self?.view.makeToast("Error: \(error.localizedDescription)")
+                } else {
+                    self?.tableView.reloadData()
+                    self?.tableView.refreshControl?.endRefreshing()
+                    self?.loadingAnimation.stopAnimating()
+                }
             }
         )
     }
@@ -38,14 +46,17 @@ class ReviewsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if AppDelegate.provide.stateRefresh.isRefreshing {
+            self.loadingAnimation.startAnimating()
             self.tableView.refreshControl?.beginRefreshing()
         } else {
+            self.loadingAnimation.stopAnimating()
             self.tableView.refreshControl?.endRefreshing()
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        self.tableView.refreshControl?.endRefreshing()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

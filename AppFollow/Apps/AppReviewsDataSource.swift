@@ -14,7 +14,7 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
     private let app: App
     private let auth: AuthProvider
 
-    let refreshed = Observable<Bool>()
+    let refreshed = Observable<NextOrError<Bool>>()
     private var loaded = false
     
     init(app: App, auth: AuthProvider) {
@@ -31,17 +31,17 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
     
     func reload() {
         ApiRequest(route: ReviewsRoute(extId: app.extId, store: app.store), auth: self.auth).get {
-            (response: AppReviewsResponse?, _) in
+            (response: AppReviewsResponse?, error) in
             if let reviews = response?.reviews.list {
                 self.reviews = reviews
             }
-            self.refreshed.on(.next(true))
+            self.refreshed.on(.next(NextOrError(error != nil, error)))
         }
     }
     
     func activate() {
         if self.loaded {
-            self.refreshed.on(.next(true))
+            self.refreshed.on(.next(NextOrError(true)))
             return
         }
         

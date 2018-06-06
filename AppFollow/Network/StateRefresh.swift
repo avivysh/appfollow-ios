@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class StateRefresh {
     var store: Store
     let auth: AuthProvider
@@ -22,7 +21,15 @@ class StateRefresh {
     func refresh() {
         self.isRefreshing = true
         self.requestCollections() {
-            collections in
+            collections, error in
+            
+            if let error = error {
+                self.isRefreshing = false
+                self.store.collections = []
+                self.store.apps = [:]
+                self.store.refreshed.on(.next(NextOrError(false, error)))
+                return
+            }
             
             var allApps = [CollectionId: [App]]()
 
@@ -39,7 +46,7 @@ class StateRefresh {
                 self.isRefreshing = false
                 self.store.collections = collections
                 self.store.apps = allApps
-                self.store.refreshed.on(.next(true))
+                self.store.refreshed.on(.next(NextOrError(true)))
             }
         }
     }
@@ -58,13 +65,13 @@ class StateRefresh {
         }
     }
     
-    private func requestCollections(completion: @escaping ([Collection]) -> Void) {
+    private func requestCollections(completion: @escaping ([Collection], Error?) -> Void) {
         ApiRequest(route: AppsRoute(), auth: self.auth).get {
-            (response: CollectionsResponse?, _) in
+            (response: CollectionsResponse?, error) in
             if let collections = response {
-                completion(collections.collections)
+                completion(collections.collections, nil)
             } else {
-                completion([])
+                completion([], error)
             }
         }
     }

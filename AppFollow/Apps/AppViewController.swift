@@ -11,7 +11,7 @@ import Cosmos
 import Snail
 
 protocol AppSectionDataSource: UITableViewDataSource {
-    var refreshed: Observable<Bool> { get }
+    var refreshed: Observable<NextOrError<Bool>> { get }
     func reload()
     func activate()
     func didSelectRowAt(indexPath: IndexPath)

@@ -10,7 +10,7 @@ import UIKit
 import Snail
 
 class WhatsNewDataSource: NSObject, AppSectionDataSource {
-    let refreshed = Observable<Bool>()
+    let refreshed = Observable<NextOrError<Bool>>()
     
     private var whatsnew: [WhatsNew] = []
     private let app: App
@@ -27,17 +27,17 @@ class WhatsNewDataSource: NSObject, AppSectionDataSource {
     
     func reload() {
         ApiRequest(route: WhatsNewRoute(extId: app.extId, store: app.store), auth: self.auth).get {
-            (response: WhatsNewResponse?, _) in
+            (response: WhatsNewResponse?, error) in
             if let whatsnew = response?.whatsnew.list {
                 self.whatsnew = whatsnew
             }
-            self.refreshed.on(.next(true))
+            self.refreshed.on(.next(NextOrError(error != nil, error)))
         }
     }
     
     func activate() {
         if (self.loaded) {
-            self.refreshed.on(.next(true))
+            self.refreshed.on(.next(NextOrError(true)))
             return
         }
         
