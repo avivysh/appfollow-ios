@@ -23,7 +23,8 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var appTitle: UIBarButtonItem!
-    @IBOutlet weak var integrationDisabled: UIView!
+    @IBOutlet weak var actionBar: UIView!
+    @IBOutlet weak var loadingAnimation: UIActivityIndicatorView!
     
     var app: App!
     var reviewId: ReviewId!
@@ -38,10 +39,9 @@ class ReviewViewController: UIViewController {
         self.tableView.dataSource = self.dataSource
         
         if (app.hasReplyIntegration.value) {
-            self.integrationDisabled.isHidden = true
+            self.actionBar.isHidden = false
         } else {
-            self.integrationDisabled.isHidden = false
-            self.integrationDisabled.applyVibrancy(style: .light, blurAlpha: 0.65)
+            self.actionBar.isHidden = true
         }
         
         self.view.keyboardHeightWillChange.subscribe(
@@ -68,8 +68,10 @@ class ReviewViewController: UIViewController {
         self.dataSource.refreshed.subscribe(
             onNext: { [weak self] result in
                 if let error = result.error {
+                    self?.loadingAnimation.stopAnimating()
                     self?.tableView.makeToast("Error: \(error.localizedDescription)")
                 } else {
+                    self?.loadingAnimation.stopAnimating()
                     self?.reload()
                 }
             }
@@ -78,19 +80,13 @@ class ReviewViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         IconRemote(url: app.details.icon).into(self.appTitle)
-
         self.dataSource.reload()
     }
     
     @IBAction func actionApp(_ sender: UIBarButtonItem) {
         let appViewController = AppViewController.instantiateFromStoryboard(app: self.app)
         self.navigationController?.pushViewController(appViewController, animated: true)
-    }
-    
-    @IBAction func actionOpenIntegration(_ sender: UIButton) {
-        self.present(url: URL(string: "https://help.appfollow.io/integrations")!)
     }
     
     deinit {
