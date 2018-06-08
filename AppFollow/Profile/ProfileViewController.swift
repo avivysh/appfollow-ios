@@ -50,8 +50,8 @@ class ProfileViewController: UIViewController {
         self.descr.text = profile.description
         self.email.text = profile.email
         self.company.text = profile.company
-        if (!profile.image.isEmpty) {
-            self.image.af_setImage(withURL: URL(string: profile.image, relativeTo: URL(string: "https://watch.appfollow.io"))!)
+        if let imageURL = URL(string: profile.image), !profile.image.isEmpty {
+            self.image.af_setImage(withURL: imageURL)
         }
         
         let versionName = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
