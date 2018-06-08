@@ -112,24 +112,21 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     // MARK: Private
     
     func createReviewsSections(reviews: [Review]) -> [DateSection: [Review]] {
-        var sectionedReviews = [DateSection:[Review]]()
+        var sections = [DateSection:[Review]]()
 
         let now = Date()
-        for review in reviews {
+        let sorted = reviews.sorted(by: { $0.date > $1.date })
+        for review in sorted {
             let date = review.date
             let section = DateSection.for(date: date, today: now)
-            if (sectionedReviews[section] == nil) {
-                sectionedReviews[section] = [review]
+            if (sections[section] == nil) {
+                sections[section] = [review]
             } else {
-                if let index = sectionedReviews[section]!.index(where: { $0.date < date }) {
-                    sectionedReviews[section]!.insert(review, at: index)
-                } else {
-                    sectionedReviews[section]!.insert(review, at: 0)
-                }
+                sections[section]!.append(review)
             }
         }
-        
-        return sectionedReviews
+
+        return sections
     }
     
 }
