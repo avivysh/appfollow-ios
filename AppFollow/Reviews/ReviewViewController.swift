@@ -38,6 +38,11 @@ class ReviewViewController: UIViewController {
         self.textField.isEditable = false
         self.tableView.dataSource = self.dataSource
         
+        let titleImageView = UIImageView()
+        titleImageView.image = UIImage(named: "logo-white")
+        titleImageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = titleImageView
+        
         if (app.hasReplyIntegration.value) {
             self.actionBar.isHidden = false
         } else {

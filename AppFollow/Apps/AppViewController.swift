@@ -34,19 +34,18 @@ class AppViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var stars: CosmosView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segment: UISegmentedControl!
+    @IBOutlet weak var overview: UIStackView!
     
     var auth: AuthProvider { return AppDelegate.provide.auth }
     lazy var reviewsDataSource = AppReviewsDataSource(app: self.app, auth: self.auth)
     lazy var whatsNewDataSource = WhatsNewDataSource(app: self.app, auth: self.auth)
-    lazy var overviewDataSource = OverviewDataSource(app: self.app)
     
-    var currentSegment = 1
+    var currentSegment = 0
     
     var dataSourceForSegment: AppSectionDataSource {
         get {
             switch self.currentSegment {
-                case 0: return self.overviewDataSource
-                case 2: return self.whatsNewDataSource
+                case 1: return self.whatsNewDataSource
                 default: return self.reviewsDataSource
             }
         }
@@ -59,9 +58,15 @@ class AppViewController: UIViewController, UITableViewDelegate {
         self.appTitle.text = app.details.title
         self.publisher.text = app.details.publisher
 
+        let titleImageView = UIImageView()
+        titleImageView.image = UIImage(named: "logo-white")
+        titleImageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = titleImageView
+        
         self.stars.isHidden = true
         self.stars.settings.updateOnTouch = false
         self.stars.settings.starMargin = 2
+        self.icon.addGradientLayer(colors: [.coal, .clear])
         IconRemote(url: app.details.icon).into(self.icon)
         
         self.reviewsDataSource.refreshed.subscribe( onNext: { [weak self] _ in
@@ -70,10 +75,12 @@ class AppViewController: UIViewController, UITableViewDelegate {
         self.whatsNewDataSource.refreshed.subscribe( onNext: { [weak self] _ in
             self?.reload()
         })
-        self.overviewDataSource.refreshed.subscribe( onNext: { [weak self] _ in
-            self?.reload()
-        })
-        self.overviewDataSource.viewController = self
+        
+        (self.overview.arrangedSubviews[0] as? UILabel)?.text = "Store\n\(app.nameForStore)"
+        (self.overview.arrangedSubviews[1] as? UILabel)?.text = "ExternalID\n\(app.extId.value)"
+        (self.overview.arrangedSubviews[2] as? UILabel)?.text = "Category\n\(app.details.genre)"
+        (self.overview.arrangedSubviews[3] as? UILabel)?.text = "Version\n\(app.details.version)"
+        (self.overview.arrangedSubviews[4] as? UILabel)?.text = "Updated\n\(app.details.released.isValid ? app.details.released.ymd : ""))"
 
         self.loadSummary()
         

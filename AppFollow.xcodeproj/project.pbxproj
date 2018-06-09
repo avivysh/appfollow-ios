@@ -61,7 +61,6 @@
 		98815DBE20721CE000A7A6C6 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBD20721CE000A7A6C6 /* WhatsNew.swift */; };
 		98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */; };
 		98815DC22072576600A7A6C6 /* SubtitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC12072576600A7A6C6 /* SubtitleTableCell.swift */; };
-		98815DC42072585C00A7A6C6 /* OverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC32072585C00A7A6C6 /* OverviewDataSource.swift */; };
 		98815DC62072735800A7A6C6 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC52072735800A7A6C6 /* ReviewViewController.swift */; };
 		98815DC82072749300A7A6C6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC72072749300A7A6C6 /* UIView.swift */; };
 		98815DCA207283E200A7A6C6 /* ReviewReplyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */; };
@@ -79,6 +78,8 @@
 		98CB4F3920765D0900F32EEE /* PayloadNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */; };
 		98D5E10B20CBEF4800B75316 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98D5E10A20CBEF4800B75316 /* fa-brands-400.ttf */; };
 		98D5E10D20CBF8E700B75316 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E10C20CBF8E700B75316 /* UIColor.swift */; };
+		98D5E10F20CC1FAD00B75316 /* App+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E10E20CC1FAD00B75316 /* App+Store.swift */; };
+		98D5E11120CC212100B75316 /* UIImageView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E11020CC212100B75316 /* UIImageView+Gradient.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
 		98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4E206D6D6300FA461F /* ProfileViewController.swift */; };
@@ -155,7 +156,6 @@
 		98815DBD20721CE000A7A6C6 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewCell.swift; sourceTree = "<group>"; };
 		98815DC12072576600A7A6C6 /* SubtitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableCell.swift; sourceTree = "<group>"; };
-		98815DC32072585C00A7A6C6 /* OverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewDataSource.swift; sourceTree = "<group>"; };
 		98815DC52072735800A7A6C6 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		98815DC72072749300A7A6C6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewReplyDataSource.swift; sourceTree = "<group>"; };
@@ -176,6 +176,8 @@
 		98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadNavigation.swift; sourceTree = "<group>"; };
 		98D5E10A20CBEF4800B75316 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
 		98D5E10C20CBF8E700B75316 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		98D5E10E20CC1FAD00B75316 /* App+Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Store.swift"; sourceTree = "<group>"; };
+		98D5E11020CC212100B75316 /* UIImageView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Gradient.swift"; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		98F01F4E206D6D6300FA461F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -343,7 +345,6 @@
 				981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */,
 				98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */,
 				98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */,
-				98815DC32072585C00A7A6C6 /* OverviewDataSource.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -373,6 +374,8 @@
 			children = (
 				986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */,
 				98D5E10C20CBF8E700B75316 /* UIColor.swift */,
+				98D5E10E20CC1FAD00B75316 /* App+Store.swift */,
+				98D5E11020CC212100B75316 /* UIImageView+Gradient.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -607,7 +610,6 @@
 				98815DC62072735800A7A6C6 /* ReviewViewController.swift in Sources */,
 				9847B12B20C724C300FD0122 /* Configuration.swift in Sources */,
 				984E51E5206C3E8200CDB24D /* Codable.swift in Sources */,
-				98815DC42072585C00A7A6C6 /* OverviewDataSource.swift in Sources */,
 				98631889206D7D1000D6A14F /* ReviewCell.swift in Sources */,
 				984E51E7206C431700CDB24D /* AppCell.swift in Sources */,
 				986B85802080B4210051F8F8 /* UIViewController.swift in Sources */,
@@ -618,6 +620,7 @@
 				984E51B7206C1CE400CDB24D /* DependencyProvider.swift in Sources */,
 				98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */,
 				98CB4F22207432CD00F32EEE /* PushNotifications.swift in Sources */,
+				98D5E11120CC212100B75316 /* UIImageView+Gradient.swift in Sources */,
 				986B857E2080A91C0051F8F8 /* SwiftyBeaver.swift in Sources */,
 				98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */,
 				98CB4F152073630100F32EEE /* TabViewController.swift in Sources */,
@@ -630,6 +633,7 @@
 				984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */,
 				98815DCA207283E200A7A6C6 /* ReviewReplyDataSource.swift in Sources */,
 				98CB4F172073719A00F32EEE /* Reply.swift in Sources */,
+				98D5E10F20CC1FAD00B75316 /* App+Store.swift in Sources */,
 				986B85792080A4D50051F8F8 /* DeveloperActions.swift in Sources */,
 				98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */,
 				982D5505207B5B880001A6D9 /* Payload.swift in Sources */,

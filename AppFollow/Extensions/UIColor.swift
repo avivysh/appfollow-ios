@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIColor {
-    static let ash = UIColor(named: "ColorAsh") // Text Gray
-    static let night = UIColor(named: "ColorNight") // Border
-    static let coal = UIColor(named: "ColorCoal") // Bg
+    static let ash = UIColor(named: "ColorAsh")! // Text Gray
+    static let night = UIColor(named: "ColorNight")! // Border
+    static let coal = UIColor(named: "ColorCoal")! // Bg
 }

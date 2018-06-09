@@ -27,6 +27,11 @@ class ReviewsViewController: UIViewController, UITableViewDelegate {
             onNext: { _ in AppDelegate.provide.stateRefresh.refresh() }
         )
         
+        let titleImageView = UIImageView()
+        titleImageView.image = UIImage(named: "logo-white")
+        titleImageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = titleImageView
+        
         AppDelegate.provide.push.registerForRemoteNotifications()
         
         self.dataSource.refreshed.subscribe(

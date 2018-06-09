@@ -10,15 +10,6 @@ import UIKit
 import Cosmos
 import AlamofireImage
 
-enum FontAwesome: String {
-    case none = ""
-    case android = "\u{f17b}"
-    case mac = "\u{f170}"
-    case windows = "\u{f17a}"
-    case apple = "\u{f179}"
-    case amazon = "\u{f270}"
-}
-
 class ReviewCell: UITableViewCell {
     
     @IBOutlet weak var author: UILabel!
@@ -43,7 +34,7 @@ class ReviewCell: UITableViewCell {
         }
         var store = ""
         if (!app.store.isEmpty) {
-            store = self.charForStore(app.store).rawValue
+            store = app.charForStore.rawValue
             info += "・"
         }
         
@@ -83,18 +74,6 @@ class ReviewCell: UITableViewCell {
         
         if self.icon != nil {
             IconRemote(url: app.details.icon).into(self.icon)
-        }
-    }
-    
-    func charForStore(_ store: String) -> FontAwesome {
-        switch store {
-            case "googleplay": return .android
-            case "itunes": return .apple
-            case "microsoftstore": return .windows
-            case "amazon": return .amazon
-            case "macstore": return .mac
-            default:
-                return .none
         }
     }
 }

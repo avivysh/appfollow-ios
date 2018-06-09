@@ -45,6 +45,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let titleImageView = UIImageView()
+        titleImageView.image = UIImage(named: "logo-white")
+        titleImageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = titleImageView
+        
         let profile = AppDelegate.provide.profile
         self.name.text = profile.name
         self.descr.text = profile.description

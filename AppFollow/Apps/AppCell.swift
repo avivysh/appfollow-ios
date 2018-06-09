@@ -18,19 +18,7 @@ class AppCell: UITableViewCell {
     func bind(app: App) {
         self.title.text = app.details.title.isEmpty ? "Unknown" : app.details.title
         self.publisher.text = app.details.publisher.isEmpty ? "Unknown" : app.details.publisher
-        self.store.text = self.storeName(kind: app.store)
+        self.store.text = app.nameForStore
         IconRemote(url: app.details.icon).into(self.icon)
-    }
-    
-    func storeName(kind: String) -> String {
-        switch kind {
-        case "googleplay": return "Google Play"
-        case "itunes": return "App Store"
-        case "microsoftstore": return "Windows Store"
-        case "amazon": return "Amazon"
-        case "macstore": return "Mac App Store"
-        default:
-            return kind.localizedUppercase
-        }
     }
 }
