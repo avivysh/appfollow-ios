@@ -132,6 +132,13 @@ class AppViewController: UIViewController, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.dataSourceForSegment.didSelectRowAt(indexPath: indexPath)
+//        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.coal
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.ash
     }
     
     // MARK: Private

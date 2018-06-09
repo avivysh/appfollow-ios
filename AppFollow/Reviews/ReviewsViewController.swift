@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ReviewsViewController: UIViewController {
+class ReviewsViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var loadingAnimation: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +20,7 @@ class ReviewsViewController: UIViewController {
         
         AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
+        self.tableView.delegate = self
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.controlEvent(.valueChanged).subscribe(
@@ -41,6 +42,13 @@ class ReviewsViewController: UIViewController {
                 }
             }
         )
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selected = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selected, animated: false)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,5 +75,17 @@ class ReviewsViewController: UIViewController {
                 reviewViewController.app = self.dataSource.appFor(review: review)
             }
         }
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.coal
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.ash
     }
 }

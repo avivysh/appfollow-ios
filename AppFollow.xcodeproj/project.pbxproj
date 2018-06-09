@@ -77,6 +77,8 @@
 		98CB4F2F207650A000F32EEE /* DeeplinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */; };
 		98CB4F372076554E00F32EEE /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F362076554D00F32EEE /* URL.swift */; };
 		98CB4F3920765D0900F32EEE /* PayloadNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */; };
+		98D5E10B20CBEF4800B75316 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98D5E10A20CBEF4800B75316 /* fa-brands-400.ttf */; };
+		98D5E10D20CBF8E700B75316 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E10C20CBF8E700B75316 /* UIColor.swift */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
 		98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4E206D6D6300FA461F /* ProfileViewController.swift */; };
@@ -172,6 +174,8 @@
 		98CB4F30207650A000F32EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98CB4F362076554D00F32EEE /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadNavigation.swift; sourceTree = "<group>"; };
+		98D5E10A20CBEF4800B75316 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
+		98D5E10C20CBF8E700B75316 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		98F01F4E206D6D6300FA461F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 		98087C9B2069FAE000EB0747 /* AppFollow */ = {
 			isa = PBXGroup;
 			children = (
+				98D5E10720CBEEF000B75316 /* Fonts */,
 				98087C9C2069FAE000EB0747 /* AppDelegate.swift */,
 				98CB4F1E207428F100F32EEE /* AppFollow.entitlements */,
 				98087CA32069FAE000EB0747 /* AppFollow.xcdatamodeld */,
@@ -367,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */,
+				98D5E10C20CBF8E700B75316 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +396,14 @@
 				98CB4F30207650A000F32EEE /* Info.plist */,
 			);
 			path = AppFollowTests;
+			sourceTree = "<group>";
+		};
+		98D5E10720CBEEF000B75316 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				98D5E10A20CBEF4800B75316 /* fa-brands-400.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		98F01F4D206D6D5300FA461F /* Profile */ = {
@@ -510,6 +524,7 @@
 				9847B12920C723E000FD0122 /* Configuration.plist in Resources */,
 				98087CA72069FAE000EB0747 /* Assets.xcassets in Resources */,
 				98087CA22069FAE000EB0747 /* Login.storyboard in Resources */,
+				98D5E10B20CBEF4800B75316 /* fa-brands-400.ttf in Resources */,
 				984E51AD206BF79100CDB24D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +597,7 @@
 				98CB4F1B207380B700F32EEE /* Error.swift in Sources */,
 				98CB4F1D20741AA000F32EEE /* Types.swift in Sources */,
 				9863188E206D80CF00D6A14F /* Id.swift in Sources */,
+				98D5E10D20CBF8E700B75316 /* UIColor.swift in Sources */,
 				98F7D31D206D704E005195BD /* ReviewsViewController.swift in Sources */,
 				98F01F48206D572300FA461F /* StateRefresh.swift in Sources */,
 				98087CA52069FAE000EB0747 /* AppFollow.xcdatamodeld in Sources */,

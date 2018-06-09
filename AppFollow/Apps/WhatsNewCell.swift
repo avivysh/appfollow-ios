@@ -15,7 +15,15 @@ class WhatsNewCell: UITableViewCell {
     @IBOutlet weak var subtitle: UILabel!
     
     func bind(whatsnew: WhatsNew) {
-        self.title.text = "\(whatsnew.version) \(whatsnew.releaseDate)"
+        let date = "・\(whatsnew.releaseDate)"
+        let title = "\(whatsnew.version) \(date)"
+        let titleAttr = NSMutableAttributedString(string: title)
+        let attrs: [NSAttributedStringKey:Any] = [
+            .font: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize, weight: .thin),
+            .foregroundColor: UIColor.gray]
+        let range = title.range(of: date)!
+        titleAttr.addAttributes(attrs, range: NSRange(range, in: title))
+        self.title.attributedText = titleAttr
         self.subtitle.text = whatsnew.whatsnew
     }
 }

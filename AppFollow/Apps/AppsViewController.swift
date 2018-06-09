@@ -9,7 +9,7 @@
 import UIKit
 import Snail
 
-class AppsViewController: UIViewController {
+class AppsViewController: UIViewController, UITableViewDelegate {
     static func instantiateFromStoryboard() -> AppsViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "AppsViewController") as! AppsViewController
@@ -26,7 +26,8 @@ class AppsViewController: UIViewController {
         
         AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
-        
+        self.tableView.delegate = self
+            
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         
@@ -56,6 +57,13 @@ class AppsViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let selected = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selected, animated: false)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if AppDelegate.provide.stateRefresh.isRefreshing {
@@ -78,6 +86,18 @@ class AppsViewController: UIViewController {
                 appViewController.app = self.dataSource.appFor(indexPath: indexPath)
             }
         }
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.coal
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.ash
     }
 
 }
