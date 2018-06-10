@@ -57,9 +57,7 @@
 		986B857E2080A91C0051F8F8 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */; };
 		986B85802080B4210051F8F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857F2080B4210051F8F8 /* UIViewController.swift */; };
 		986B85822080C3A20051F8F8 /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B85812080C3A20051F8F8 /* NavigationDelegate.swift */; };
-		98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */; };
 		98815DBE20721CE000A7A6C6 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBD20721CE000A7A6C6 /* WhatsNew.swift */; };
-		98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */; };
 		98815DC22072576600A7A6C6 /* SubtitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC12072576600A7A6C6 /* SubtitleTableCell.swift */; };
 		98815DC62072735800A7A6C6 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC52072735800A7A6C6 /* ReviewViewController.swift */; };
 		98815DC82072749300A7A6C6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC72072749300A7A6C6 /* UIView.swift */; };
@@ -152,9 +150,7 @@
 		986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
 		986B857F2080B4210051F8F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		986B85812080C3A20051F8F8 /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
-		98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewDataSource.swift; sourceTree = "<group>"; };
 		98815DBD20721CE000A7A6C6 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
-		98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewCell.swift; sourceTree = "<group>"; };
 		98815DC12072576600A7A6C6 /* SubtitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableCell.swift; sourceTree = "<group>"; };
 		98815DC52072735800A7A6C6 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		98815DC72072749300A7A6C6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -343,8 +339,6 @@
 				984E51AE206BFA1A00CDB24D /* AppsViewController.swift */,
 				981C3B12206ECB9E0072E3A2 /* AppViewController.swift */,
 				981C3B162070309F0072E3A2 /* AppReviewsDataSource.swift */,
-				98815DBB20721C2A00A7A6C6 /* WhatsNewDataSource.swift */,
-				98815DBF20724EA300A7A6C6 /* WhatsNewCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -595,7 +589,6 @@
 				98815DC82072749300A7A6C6 /* UIView.swift in Sources */,
 				981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */,
 				981C3B15206ED0020072E3A2 /* IconRemote.swift in Sources */,
-				98815DC020724EA300A7A6C6 /* WhatsNewCell.swift in Sources */,
 				98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */,
 				98CB4F1B207380B700F32EEE /* Error.swift in Sources */,
 				98CB4F1D20741AA000F32EEE /* Types.swift in Sources */,
@@ -627,7 +620,6 @@
 				984E51F1206D05CB00CDB24D /* Store.swift in Sources */,
 				98CB4F19207374CB00F32EEE /* Data.swift in Sources */,
 				98CB4F372076554E00F32EEE /* URL.swift in Sources */,
-				98815DBC20721C2A00A7A6C6 /* WhatsNewDataSource.swift in Sources */,
 				98F7D31F206D7462005195BD /* Review.swift in Sources */,
 				984E51EE206CFA0700CDB24D /* ApiRequest.swift in Sources */,
 				984E51E9206C43A000CDB24D /* AppsDataSource.swift in Sources */,

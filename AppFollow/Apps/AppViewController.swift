@@ -33,23 +33,9 @@ class AppViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var publisher: UILabel!
     @IBOutlet weak var stars: CosmosView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segment: UISegmentedControl!
-    @IBOutlet weak var overview: UIStackView!
     
     var auth: AuthProvider { return AppDelegate.provide.auth }
     lazy var reviewsDataSource = AppReviewsDataSource(app: self.app, auth: self.auth)
-    lazy var whatsNewDataSource = WhatsNewDataSource(app: self.app, auth: self.auth)
-    
-    var currentSegment = 0
-    
-    var dataSourceForSegment: AppSectionDataSource {
-        get {
-            switch self.currentSegment {
-                case 1: return self.whatsNewDataSource
-                default: return self.reviewsDataSource
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,15 +58,6 @@ class AppViewController: UIViewController, UITableViewDelegate {
         self.reviewsDataSource.refreshed.subscribe( onNext: { [weak self] _ in
             self?.reload()
         })
-        self.whatsNewDataSource.refreshed.subscribe( onNext: { [weak self] _ in
-            self?.reload()
-        })
-        
-        (self.overview.arrangedSubviews[0] as? UILabel)?.text = "Store\n\(app.nameForStore)"
-        (self.overview.arrangedSubviews[1] as? UILabel)?.text = "ExternalID\n\(app.extId.value)"
-        (self.overview.arrangedSubviews[2] as? UILabel)?.text = "Category\n\(app.details.genre)"
-        (self.overview.arrangedSubviews[3] as? UILabel)?.text = "Version\n\(app.details.version)"
-        (self.overview.arrangedSubviews[4] as? UILabel)?.text = "Updated\n\(app.details.released.isValid ? app.details.released.ymd : ""))"
 
         self.loadSummary()
         
@@ -92,8 +69,8 @@ class AppViewController: UIViewController, UITableViewDelegate {
         )
         
         self.tableView.delegate = self
-        self.tableView.dataSource = self.dataSourceForSegment
-        self.dataSourceForSegment.activate()
+        self.tableView.dataSource = self.reviewsDataSource
+        self.reviewsDataSource.activate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,14 +92,7 @@ class AppViewController: UIViewController, UITableViewDelegate {
             }
         }
     }
-    
-    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        self.currentSegment = sender.selectedSegmentIndex
-        self.tableView.dataSource = self.dataSourceForSegment
-        self.tableView.reloadData()
-        self.dataSourceForSegment.activate()
-    }
-    
+
     private func loadSummary() {
         let auth = AppDelegate.provide.auth
         ApiRequest(route: ReviewsSummaryRoute(extId: self.app.extId, from: self.app.created, to: Date(), store: app.store), auth: auth).get {
@@ -138,8 +108,8 @@ class AppViewController: UIViewController, UITableViewDelegate {
     // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.dataSourceForSegment.didSelectRowAt(indexPath: indexPath)
-//        tableView.deselectRow(at: indexPath, animated: true)
+        self.reviewsDataSource.didSelectRowAt(indexPath: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
