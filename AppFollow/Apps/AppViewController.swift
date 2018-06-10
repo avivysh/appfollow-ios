@@ -52,7 +52,6 @@ class AppViewController: UIViewController, UITableViewDelegate {
         self.stars.isHidden = true
         self.stars.settings.updateOnTouch = false
         self.stars.settings.starMargin = 2
-        self.icon.addGradientLayer(colors: [.coal, .clear])
         IconRemote(url: app.details.icon).into(self.icon)
         
         self.reviewsDataSource.refreshed.subscribe( onNext: { [weak self] _ in
