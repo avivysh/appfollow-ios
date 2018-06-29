@@ -75,3 +75,21 @@ struct ProfileRoute: EndpointRouteBody {
     let parameters: [String: Any] = [:]
     let body: LoginRequest
 }
+
+struct ForgotRequest: Encodable {
+    let email: String
+}
+
+struct ForgotResponse: Decodable {
+    let ok: Int
+}
+
+struct ForgotRoute: EndpointRoute {
+    let email: String
+    let path = "/forgot"
+    var parameters: [String: Any] { get {
+        return [
+            "email" : email
+        ]
+    }}
+}

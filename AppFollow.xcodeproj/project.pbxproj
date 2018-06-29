@@ -57,6 +57,7 @@
 		986B857E2080A91C0051F8F8 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */; };
 		986B85802080B4210051F8F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B857F2080B4210051F8F8 /* UIViewController.swift */; };
 		986B85822080C3A20051F8F8 /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B85812080C3A20051F8F8 /* NavigationDelegate.swift */; };
+		986FC06D20D4FECC0098F958 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986FC06C20D4FECC0098F958 /* ResetViewController.swift */; };
 		98815DBE20721CE000A7A6C6 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DBD20721CE000A7A6C6 /* WhatsNew.swift */; };
 		98815DC22072576600A7A6C6 /* SubtitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC12072576600A7A6C6 /* SubtitleTableCell.swift */; };
 		98815DC62072735800A7A6C6 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC52072735800A7A6C6 /* ReviewViewController.swift */; };
@@ -150,6 +151,7 @@
 		986B857D2080A91C0051F8F8 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
 		986B857F2080B4210051F8F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		986B85812080C3A20051F8F8 /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
+		986FC06C20D4FECC0098F958 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		98815DBD20721CE000A7A6C6 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		98815DC12072576600A7A6C6 /* SubtitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableCell.swift; sourceTree = "<group>"; };
 		98815DC52072735800A7A6C6 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				98087CA02069FAE000EB0747 /* Login.storyboard */,
 				98087C9E2069FAE000EB0747 /* LoginViewController.swift */,
 				98087CB9206BEACB00EB0747 /* LoginProcess.swift */,
+				986FC06C20D4FECC0098F958 /* ResetViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				981C3B15206ED0020072E3A2 /* IconRemote.swift in Sources */,
 				98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */,
 				98CB4F1B207380B700F32EEE /* Error.swift in Sources */,
+				986FC06D20D4FECC0098F958 /* ResetViewController.swift in Sources */,
 				98CB4F1D20741AA000F32EEE /* Types.swift in Sources */,
 				9863188E206D80CF00D6A14F /* Id.swift in Sources */,
 				98D5E10D20CBF8E700B75316 /* UIColor.swift in Sources */,

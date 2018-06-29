@@ -7,27 +7,26 @@
 //
 
 import UIKit
-import WebKit
 import ToastSwiftFramework
-import SafariServices
 import Intercom
 
 class LoginViewController: UIViewController, LoginProcessDelegate {
 
-    static func instantiateFromStoryboard() -> LoginViewController {
+    static func instantiateFromStoryboard() -> UINavigationController {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController") as! UINavigationController
         return controller
     }
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var webView: WKWebView!
     
     var loginProcess: LoginProcess?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.loginProcess = PostLoginProcess()
         self.loginProcess?.delegate = self
@@ -48,10 +47,6 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
     
     @IBAction func actionSignup(_ sender: UIButton) {
         self.present(url: URL(string: "https://appfollow.io")!)
-    }
-
-    @IBAction func actionReset(_ sender: UIButton) {
-        self.present(url: URL(string: "https://watch.appfollow.io/forgot")!)
     }
     
     @IBAction func actionLiveDemo(_ sender: UIButton) {
@@ -84,6 +79,5 @@ class LoginViewController: UIViewController, LoginProcessDelegate {
         let appDelegate = UIApplication.shared.delegate
         appDelegate?.window??.rootViewController = main
     }
-
 }
 

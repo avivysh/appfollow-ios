@@ -72,5 +72,17 @@ extension String {
         return result
     }
     
-    
+    func matches(for regex: String) throws -> [String] {
+        let regex = try NSRegularExpression(pattern: regex)
+        let results = regex.matches(in: self, range: NSRange(self.startIndex..., in: self))
+        let matches: [[String]] = results.map {
+            var strings = [String]()
+            for i in 0 ..< $0.numberOfRanges {
+                let rangeValue = String(self[Range($0.range(at: i), in: self)!])
+                strings.append(rangeValue)
+            }
+            return strings
+        }
+        return matches.flatMap({ $0 })
+    }
 }

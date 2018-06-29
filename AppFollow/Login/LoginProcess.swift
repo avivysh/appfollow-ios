@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import WebKit
 
 protocol LoginProcessDelegate {
     func loginError(message: String)

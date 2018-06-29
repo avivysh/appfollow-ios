@@ -18,7 +18,21 @@ class AppCell: UITableViewCell {
     func bind(app: App) {
         self.title.text = app.details.title.isEmpty ? "Unknown" : app.details.title
         self.publisher.text = app.details.publisher.isEmpty ? "Unknown" : app.details.publisher
-        self.store.text = app.nameForStore
+        
+        let store = app.charForStore.rawValue
+        let title = (store.isEmpty) ? "\(app.nameForStore)" : "\(store) \(app.nameForStore)"
+        let titleAttr = NSMutableAttributedString(string: title)
+
+        if (!store.isEmpty) {
+            let attrs: [NSAttributedStringKey:Any] = [
+                .font: UIFont(name: "FontAwesome5BrandsRegular", size: UIFont.smallSystemFontSize)!,
+                .foregroundColor: UIColor.gray]
+            let range = title.range(of: store)!
+            titleAttr.addAttributes(attrs, range: NSRange(range, in: title))
+        }
+        
+        self.store.attributedText = titleAttr
+        
         IconRemote(url: app.details.icon).into(self.icon)
     }
 }
