@@ -30,7 +30,7 @@ class PayloadNavigation {
                     complete();
                 }
             } else {
-                mainNavigation.navigateToApps()
+                mainNavigation.navigateToReviews()
                 complete()
             }
         }

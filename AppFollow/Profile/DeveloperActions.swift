@@ -51,6 +51,7 @@ class LocalNotificationAction: UIAlertAction {
                     "alert": body.text,
                     "badge": 1,
                 ],
+                "type": "review",
                 "ext_id": app.extId.value,
                 "review_id": review!.reviewId.value
             ]

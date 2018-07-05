@@ -13,5 +13,6 @@ protocol NavigationDelegate {
     func navigateToApp(app: App)
     func navigateToReview(app: App, reviewId: ReviewId)
     func navigateToApps()
+    func navigateToReviews()
 
 }

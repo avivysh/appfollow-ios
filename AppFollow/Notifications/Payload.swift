@@ -13,16 +13,18 @@ struct Payload {
     let badge: Int
     let extId: ExtId
     let reviewId: ReviewId
-
+    let type: String
+    
     var isValid: Bool {
         get { return self.extId.isEmpty || !(self.reviewId.isEmpty && self.extId.isEmpty) }
     }
 
-    init(message: String, badge: Int, extId: ExtId, reviewId: ReviewId) {
+    init(message: String, badge: Int, extId: ExtId, reviewId: ReviewId, type: String) {
         self.message = message
         self.badge = badge
         self.extId = extId
         self.reviewId = reviewId
+        self.type = type
     }
 
     init?(userInfo: [String:Any]) {
@@ -34,7 +36,8 @@ struct Payload {
 
         let extId = ExtId(from: userInfo["ext_id"] ?? "")
         let reviewId = ReviewId(from: userInfo["review_id"] ?? "")
+        let type = userInfo["type"] as? String ?? ""
         
-        self.init(message: message, badge: badge, extId: extId, reviewId: reviewId)
+        self.init(message: message, badge: badge, extId: extId, reviewId: reviewId, type: type)
     }
 }

@@ -15,6 +15,7 @@ private enum Tab: Int {
 }
 
 class MainViewController: UITabBarController, NavigationDelegate {
+    
     static func instantiateFromStoryboard() -> MainViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as! MainViewController
@@ -43,6 +44,13 @@ class MainViewController: UITabBarController, NavigationDelegate {
     
     func navigateToApps() {
         self.selectedIndex = Tab.Apps.rawValue
+        if let tabViewContainer = self.selectedViewController as? TabViewController {
+            tabViewContainer.embedController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    func navigateToReviews() {
+        self.selectedIndex = Tab.Reviews.rawValue
         if let tabViewContainer = self.selectedViewController as? TabViewController {
             tabViewContainer.embedController?.popToRootViewController(animated: true)
         }
