@@ -67,11 +67,11 @@ class ReviewsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.tableView.refreshControl?.endRefreshing()
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let reviewViewController = segue.destination as? ReviewViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
