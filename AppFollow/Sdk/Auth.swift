@@ -9,14 +9,15 @@
 import Foundation
 
 struct Auth: Decodable {
-    static let empty = Auth(cid: 0, secret: "")
+    static let empty = Auth(cid: 0, secret: "", email: "", hmac: "")
 
     let cid: Int
     let secret: String
+    let email: String
+    let hmac: String
 }
 
 struct Profile: Decodable {
-    let email: String
     let name: String
     let image: String
     let description: String
@@ -29,16 +30,14 @@ struct Profile: Decodable {
         case company
     }
     
-    init(email: String, name: String, image: String, description: String, company: String) {
-        self.email = email
+    init(name: String, image: String, description: String, company: String) {
         self.name = name
         self.image = image
         self.description = description
         self.company = company
     }
     
-    init(email: String, profile: Profile) {
-        self.email = email
+    init(profile: Profile) {
         self.name = profile.name
         self.image = profile.image
         self.description = profile.description
@@ -47,7 +46,6 @@ struct Profile: Decodable {
     
     init(from decoder: Decoder) throws {
         let map = try decoder.container(keyedBy: CodingKeys.self)
-        self.email = ""
         self.name =  try map.decodeIfPresent(.name) ?? ""
         self.image = try map.decodeIfPresent(.image) ?? ""
         self.description = try map.decodeIfPresent(.description) ?? ""
@@ -58,10 +56,22 @@ struct Profile: Decodable {
 struct LoginResponse: Decodable {
     let cid: Int
     let secret: String
+    let hmac: String
     let profile: Profile
     
-    var auth: Auth {
-        return Auth(cid: cid, secret: secret)
+    enum CodingKeys: String, CodingKey {
+        case cid
+        case secret
+        case hmac
+        case profile
+    }
+    
+    init(from decoder: Decoder) throws {
+        let map = try decoder.container(keyedBy: CodingKeys.self)
+        self.cid =  try map.decode(.cid)
+        self.secret = try map.decode(.secret)
+        self.hmac = try map.decodeIfPresent(.hmac) ?? ""
+        self.profile = try map.decode(.profile)
     }
 }
 

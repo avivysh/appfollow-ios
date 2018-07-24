@@ -26,6 +26,7 @@ class Endpoint {
         var parameters = route.parameters
         parameters["cid"] = auth.cid
         parameters["s"] = "app"
+        parameters["app"] = "ios"
         let signature = self.sign(parameters: parameters, path: route.path, auth: auth)
         parameters["sign"] = signature
         return parameters

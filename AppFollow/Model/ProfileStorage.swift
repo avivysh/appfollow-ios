@@ -21,13 +21,11 @@ class ProfileStorage {
         let image = self.defaults.string(forKey: "profile_image") ?? ""
         let description = self.defaults.string(forKey: "profile_description") ?? ""
         let company = self.defaults.string(forKey: "profile_company") ?? ""
-        let email = self.defaults.string(forKey: "profile_email") ?? ""
 
-        return Profile(email: email, name: name, image: image, description: description, company: company)
+        return Profile(name: name, image: image, description: description, company: company)
     }
 
     func persist(profile: Profile) {
-        self.defaults.set(profile.email, forKey: "profile_email")
         self.defaults.set(profile.name, forKey: "profile_name")
         self.defaults.set(profile.image, forKey: "profile_image")
         self.defaults.set(profile.description, forKey: "profile_description")

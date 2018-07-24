@@ -28,7 +28,8 @@ class PostLoginProcess: LoginProcess {
         ApiRequest(route: route, auth: AuthProviderEmpty()).post(body: route.body) {
             (loginResponse: LoginResponse?, error: Error?) in
                 if let response = loginResponse {
-                    self.delegate?.loginSuccess(auth: response.auth, profile: Profile(email: email, profile: response.profile))
+                    let auth = Auth(cid: response.cid, secret: response.secret, email: email, hmac: response.hmac)
+                    self.delegate?.loginSuccess(auth: auth, profile: response.profile)
                 } else {
                     self.delegate?.loginError(message: "Unrecognized email/password")
                 }

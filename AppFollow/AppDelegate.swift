@@ -29,18 +29,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AppDelegate.provide.configuration
         Intercom.setApiKey(configuration.intercomApiKey, forAppId: configuration.intercomAppId)
         
-        let auth = AppDelegate.provide.authStorage.retrieve()
+        let auth = self.retrieveAuth()
         
         if (auth.cid == Auth.empty.cid) {
             self.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
         } else {
-            Intercom.registerUser(withUserId: "\(auth.cid)")
+            if (!auth.hmac.isEmpty) {
+                Intercom.setUserHash(auth.hmac)
+            }
+            Intercom.registerUser(withUserId: auth.email)
             self.window?.rootViewController = MainViewController.instantiateFromStoryboard()
         }
         
         UNUserNotificationCenter.current().delegate = AppDelegate.provide.notificationsDelegate
         // Override point for customization after application launch.
         return true
+    }
+    
+    private func retrieveAuth() -> Auth {
+        var auth = AppDelegate.provide.authStorage.retrieve()
+        if (auth.cid != Auth.empty.cid && auth.email.isEmpty) {
+            let email = UserDefaults.standard.string(forKey: "profile_email") ?? ""
+            auth = Auth(cid: auth.cid, secret: auth.secret, email: email, hmac: auth.hmac)
+            AppDelegate.provide.authStorage.persist(auth: auth)
+        }
+        return auth
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

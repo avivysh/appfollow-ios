@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
         let profile = AppDelegate.provide.profile
         self.name.text = profile.name
         self.descr.text = profile.description
-        self.email.text = profile.email
+        self.email.text = AppDelegate.provide.auth.actual.email
         self.company.text = profile.company
         if let imageURL = URL(string: profile.image), !profile.image.isEmpty {
             self.image.af_setImage(withURL: imageURL)

@@ -29,8 +29,10 @@ protocol AuthStorage {
 
 class UserDefaultAuthStorage: AuthStorage {
     private static let keyCid = "auth_cid"
+    private static let keyEmail = "auth_email"
     private static let keySecret = "auth_secret"
-    
+    private static let keyHmac = "auth_hmac"
+
     private let defaults: UserDefaults
     
     init(defaults: UserDefaults) {
@@ -43,17 +45,23 @@ class UserDefaultAuthStorage: AuthStorage {
             return Auth.empty
         }
         let secret = self.defaults.string(forKey: UserDefaultAuthStorage.keySecret) ?? ""
-        return Auth(cid: cid, secret: secret)
+        let email = self.defaults.string(forKey: UserDefaultAuthStorage.keyEmail) ?? ""
+        let hmac = self.defaults.string(forKey: UserDefaultAuthStorage.keyHmac) ?? ""
+        return Auth(cid: cid, secret: secret, email: email, hmac: hmac)
     }
     
     func persist(auth: Auth) {
         if (auth.cid == 0) {
             self.defaults.removeObject(forKey: UserDefaultAuthStorage.keyCid)
+            self.defaults.removeObject(forKey: UserDefaultAuthStorage.keyEmail)
             self.defaults.removeObject(forKey: UserDefaultAuthStorage.keySecret)
+            self.defaults.removeObject(forKey: UserDefaultAuthStorage.keyHmac)
             return
         }
         self.defaults.set(auth.cid, forKey: UserDefaultAuthStorage.keyCid)
         self.defaults.set(auth.secret, forKey: UserDefaultAuthStorage.keySecret)
+        self.defaults.set(auth.hmac, forKey: UserDefaultAuthStorage.keyHmac)
+        self.defaults.set(auth.email, forKey: UserDefaultAuthStorage.keyEmail)
     }
     
 }
