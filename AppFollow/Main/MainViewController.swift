@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intercom
 
 private enum Tab: Int {
     case Reviews = 0
@@ -53,6 +54,18 @@ class MainViewController: UITabBarController, NavigationDelegate {
         self.selectedIndex = Tab.Reviews.rawValue
         if let tabViewContainer = self.selectedViewController as? TabViewController {
             tabViewContainer.embedController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let auth = AppDelegate.provide.authStorage.retrieve()
+        if (auth.cid != Auth.empty.cid) {
+            if (!auth.hmac.isEmpty) {
+                Intercom.setUserHash(auth.hmac)
+            }
+            Intercom.registerUser(withUserId: auth.email)
         }
     }
 }

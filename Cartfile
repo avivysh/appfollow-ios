@@ -6,3 +6,5 @@ github "evgenyneu/Cosmos" ~> 15.0
 github "SwiftyBeaver/SwiftyBeaver"
 github "UrbanCompass/Snail" ~> 0.2.0
 github "intercom/intercom-ios" ~> 5.0.0
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseMessagingBinary.json"

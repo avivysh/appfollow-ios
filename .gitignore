@@ -58,3 +58,4 @@ fastlane/screenshots
 fastlane/test_output
 Carthage/Checkouts/
 /Configuration.plist
+/AppFollow/GoogleService-Info.plist

@@ -64,6 +64,14 @@
 		98815DC82072749300A7A6C6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC72072749300A7A6C6 /* UIView.swift */; };
 		98815DCA207283E200A7A6C6 /* ReviewReplyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */; };
 		98815DCC2072915800A7A6C6 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98815DCB2072915800A7A6C6 /* AnswerCell.swift */; };
+		9898E20B2110B24400D5814E /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FE2110B09B00D5814E /* FirebaseAnalytics.framework */; };
+		9898E20C2110B24400D5814E /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FC2110B09B00D5814E /* FirebaseCore.framework */; };
+		9898E20D2110B24400D5814E /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FF2110B09B00D5814E /* FirebaseCoreDiagnostics.framework */; };
+		9898E20E2110B24400D5814E /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FA2110B09A00D5814E /* FirebaseInstanceID.framework */; };
+		9898E20F2110B24400D5814E /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FD2110B09B00D5814E /* FirebaseNanoPB.framework */; };
+		9898E2112110B30F00D5814E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E2102110B30F00D5814E /* nanopb.framework */; };
+		9898E2132110B43E00D5814E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9898E2122110B43E00D5814E /* GoogleService-Info.plist */; };
+		9898E2152110B4F100D5814E /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E2142110B4F100D5814E /* GoogleToolboxForMac.framework */; };
 		98CB4F152073630100F32EEE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F142073630100F32EEE /* TabViewController.swift */; };
 		98CB4F172073719A00F32EEE /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F162073719A00F32EEE /* Reply.swift */; };
 		98CB4F19207374CB00F32EEE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F18207374CB00F32EEE /* Data.swift */; };
@@ -79,6 +87,8 @@
 		98D5E10D20CBF8E700B75316 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E10C20CBF8E700B75316 /* UIColor.swift */; };
 		98D5E10F20CC1FAD00B75316 /* App+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E10E20CC1FAD00B75316 /* App+Store.swift */; };
 		98D5E11120CC212100B75316 /* UIImageView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E11020CC212100B75316 /* UIImageView+Gradient.swift */; };
+		98E097402110BC9200C3AC95 /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E0973E2110BC9200C3AC95 /* FirebaseMessaging.framework */; };
+		98E097412110BC9200C3AC95 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E0973F2110BC9200C3AC95 /* Protobuf.framework */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
 		98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4E206D6D6300FA461F /* ProfileViewController.swift */; };
@@ -158,6 +168,16 @@
 		98815DC72072749300A7A6C6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewReplyDataSource.swift; sourceTree = "<group>"; };
 		98815DCB2072915800A7A6C6 /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
+		9898E1F72110AE0200D5814E /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
+		9898E1FA2110B09A00D5814E /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = AppFollow/Firebase/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		9898E1FB2110B09B00D5814E /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = AppFollow/Firebase/Firebase.framework; sourceTree = "<group>"; };
+		9898E1FC2110B09B00D5814E /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = AppFollow/Firebase/FirebaseCore.framework; sourceTree = "<group>"; };
+		9898E1FD2110B09B00D5814E /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = AppFollow/Firebase/FirebaseNanoPB.framework; sourceTree = "<group>"; };
+		9898E1FE2110B09B00D5814E /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = AppFollow/Firebase/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		9898E1FF2110B09B00D5814E /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = AppFollow/Firebase/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		9898E2102110B30F00D5814E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = AppFollow/Firebase/nanopb.framework; sourceTree = "<group>"; };
+		9898E2122110B43E00D5814E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9898E2142110B4F100D5814E /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = AppFollow/Firebase/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		98CB4F142073630100F32EEE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		98CB4F162073719A00F32EEE /* Reply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		98CB4F18207374CB00F32EEE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -176,6 +196,8 @@
 		98D5E10C20CBF8E700B75316 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		98D5E10E20CC1FAD00B75316 /* App+Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Store.swift"; sourceTree = "<group>"; };
 		98D5E11020CC212100B75316 /* UIImageView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Gradient.swift"; sourceTree = "<group>"; };
+		98E0973E2110BC9200C3AC95 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = AppFollow/Firebase/FirebaseMessaging.framework; sourceTree = "<group>"; };
+		98E0973F2110BC9200C3AC95 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = AppFollow/Firebase/Protobuf.framework; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		98F01F4E206D6D6300FA461F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +211,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98E097402110BC9200C3AC95 /* FirebaseMessaging.framework in Frameworks */,
+				98E097412110BC9200C3AC95 /* Protobuf.framework in Frameworks */,
+				9898E2152110B4F100D5814E /* GoogleToolboxForMac.framework in Frameworks */,
+				9898E2112110B30F00D5814E /* nanopb.framework in Frameworks */,
+				9898E20B2110B24400D5814E /* FirebaseAnalytics.framework in Frameworks */,
+				9898E20C2110B24400D5814E /* FirebaseCore.framework in Frameworks */,
+				9898E20D2110B24400D5814E /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				9898E20E2110B24400D5814E /* FirebaseInstanceID.framework in Frameworks */,
+				9898E20F2110B24400D5814E /* FirebaseNanoPB.framework in Frameworks */,
 				9847B12720C720EE00FD0122 /* Intercom.framework in Frameworks */,
 				982D88262083D35100940CE7 /* Snail.framework in Frameworks */,
 				98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */,
@@ -232,6 +263,7 @@
 		98087C9B2069FAE000EB0747 /* AppFollow */ = {
 			isa = PBXGroup;
 			children = (
+				9898E2122110B43E00D5814E /* GoogleService-Info.plist */,
 				98D5E10720CBEEF000B75316 /* Fonts */,
 				98087C9C2069FAE000EB0747 /* AppDelegate.swift */,
 				98CB4F1E207428F100F32EEE /* AppFollow.entitlements */,
@@ -282,6 +314,17 @@
 		98087CB3206BE53D00EB0747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98E0973E2110BC9200C3AC95 /* FirebaseMessaging.framework */,
+				98E0973F2110BC9200C3AC95 /* Protobuf.framework */,
+				9898E2142110B4F100D5814E /* GoogleToolboxForMac.framework */,
+				9898E2102110B30F00D5814E /* nanopb.framework */,
+				9898E1F72110AE0200D5814E /* Firebase.framework */,
+				9898E1FB2110B09B00D5814E /* Firebase.framework */,
+				9898E1FE2110B09B00D5814E /* FirebaseAnalytics.framework */,
+				9898E1FC2110B09B00D5814E /* FirebaseCore.framework */,
+				9898E1FF2110B09B00D5814E /* FirebaseCoreDiagnostics.framework */,
+				9898E1FA2110B09A00D5814E /* FirebaseInstanceID.framework */,
+				9898E1FD2110B09B00D5814E /* FirebaseNanoPB.framework */,
 				9847B12620C720ED00FD0122 /* Intercom.framework */,
 				982D88252083D35000940CE7 /* Snail.framework */,
 				98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */,
@@ -526,6 +569,7 @@
 				98087CA22069FAE000EB0747 /* Login.storyboard in Resources */,
 				98D5E10B20CBEF4800B75316 /* fa-brands-400.ttf in Resources */,
 				984E51AD206BF79100CDB24D /* Main.storyboard in Resources */,
+				9898E2132110B43E00D5814E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,10 +846,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/AppFollow/Firebase",
 				);
 				INFOPLIST_FILE = AppFollow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.mobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -827,10 +876,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/AppFollow/Firebase",
 				);
 				INFOPLIST_FILE = AppFollow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.mobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -11,6 +11,7 @@ import CoreData
 import SwiftyBeaver
 import UserNotifications
 import Intercom
+import Firebase
 
 let log = SwiftyBeaver.self
 
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        FirebaseApp.configure()
+        
         log.addDestination(ConsoleDestination())
         log.addDestination(FileDestination())
 
@@ -34,10 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (auth.cid == Auth.empty.cid) {
             self.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
         } else {
-            if (!auth.hmac.isEmpty) {
-                Intercom.setUserHash(auth.hmac)
-            }
-            Intercom.registerUser(withUserId: auth.email)
             self.window?.rootViewController = MainViewController.instantiateFromStoryboard()
         }
         

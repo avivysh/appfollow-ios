@@ -78,6 +78,8 @@ struct LoginResponse: Decodable {
 struct LoginRequest: Encodable {
     let email: String
     let password: String
+    let s = "app"
+    let app = "ios"
 }
 
 struct ProfileRoute: EndpointRouteBody {
