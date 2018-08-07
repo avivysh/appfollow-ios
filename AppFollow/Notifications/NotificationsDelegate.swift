@@ -8,6 +8,7 @@
 
 import Foundation
 import UserNotifications
+import FirebaseMessaging
 
 class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
     
@@ -16,10 +17,13 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
             let userInfo = response.notification.request.content.userInfo as? [String:AnyObject],
             let payload = Payload(userInfo: userInfo)
         else {
-                log.error("Cannot parse userInfo \(response.notification.request.content.debugDescription)")
-                completionHandler()
-                return
+            log.error("Cannot parse userInfo: \(response.notification.request.content.userInfo.debugDescription)")
+            completionHandler()
+            return
         }
+        
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+        
         log.info("Received payload: \(response.notification.request.content.userInfo.debugDescription)")
         
         AppDelegate.provide.stateRefresh.refresh()
@@ -34,6 +38,10 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        let userInfo = notification.request.content.userInfo
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+
         completionHandler(.alert)
     }
 }

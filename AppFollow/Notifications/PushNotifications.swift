@@ -13,7 +13,7 @@ private let notificationTypes: UNAuthorizationOptions = [.alert, .badge, .sound]
 
 private struct PushRoute: EndpointRoute {
     let deviceToken: String
-    let path = "/test"
+    let path = "/firebase"
     var parameters: [String : Any] {
         get {
             return [ "token": deviceToken ]
@@ -42,8 +42,8 @@ class PushNotifications {
         }
     }
     
-    func registerToken(_ deviceToken: Data) {
-        ApiRequest(route: PushRoute(deviceToken: deviceToken.hex), auth: self.auth).get {
+    func registerToken(_ fcmToken: String) {
+        ApiRequest(route: PushRoute(deviceToken: fcmToken), auth: self.auth).get {
             (result: PushResponse?, error) in
             if error != nil {
                 log.error(error!)

@@ -12,6 +12,7 @@ import SwiftyBeaver
 import UserNotifications
 import Intercom
 import Firebase
+import FirebaseMessaging
 
 let log = SwiftyBeaver.self
 
@@ -41,7 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         UNUserNotificationCenter.current().delegate = AppDelegate.provide.notificationsDelegate
-        // Override point for customization after application launch.
+        Messaging.messaging().delegate =  AppDelegate.provide.firebaseMessagingDelegate
+
         return true
     }
     
@@ -56,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        AppDelegate.provide.push.registerToken(deviceToken)
+        Messaging.messaging().apnsToken = deviceToken
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

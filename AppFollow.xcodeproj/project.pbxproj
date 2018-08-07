@@ -72,6 +72,7 @@
 		9898E2112110B30F00D5814E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E2102110B30F00D5814E /* nanopb.framework */; };
 		9898E2132110B43E00D5814E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9898E2122110B43E00D5814E /* GoogleService-Info.plist */; };
 		9898E2152110B4F100D5814E /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E2142110B4F100D5814E /* GoogleToolboxForMac.framework */; };
+		98B9E297211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9E296211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift */; };
 		98CB4F152073630100F32EEE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F142073630100F32EEE /* TabViewController.swift */; };
 		98CB4F172073719A00F32EEE /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F162073719A00F32EEE /* Reply.swift */; };
 		98CB4F19207374CB00F32EEE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F18207374CB00F32EEE /* Data.swift */; };
@@ -178,6 +179,7 @@
 		9898E2102110B30F00D5814E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = AppFollow/Firebase/nanopb.framework; sourceTree = "<group>"; };
 		9898E2122110B43E00D5814E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9898E2142110B4F100D5814E /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = AppFollow/Firebase/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		98B9E296211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingDelegate.swift; sourceTree = "<group>"; };
 		98CB4F142073630100F32EEE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		98CB4F162073719A00F32EEE /* Reply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
 		98CB4F18207374CB00F32EEE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -423,10 +425,11 @@
 		98CB4F23207632BA00F32EEE /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				982D5504207B5B870001A6D9 /* Payload.swift */,
-				98CB4F21207432CD00F32EEE /* PushNotifications.swift */,
+				98B9E296211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift */,
 				98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */,
+				982D5504207B5B870001A6D9 /* Payload.swift */,
 				98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */,
+				98CB4F21207432CD00F32EEE /* PushNotifications.swift */,
 				982D5506207BB5D10001A6D9 /* PushTest.swift */,
 			);
 			path = Notifications;
@@ -632,6 +635,7 @@
 				984E51B5206C170D00CDB24D /* AuthStorage.swift in Sources */,
 				984E51E3206C343600CDB24D /* App.swift in Sources */,
 				986B857B2080A8170051F8F8 /* UIAlertAction.swift in Sources */,
+				98B9E297211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift in Sources */,
 				986B85822080C3A20051F8F8 /* NavigationDelegate.swift in Sources */,
 				98815DC82072749300A7A6C6 /* UIView.swift in Sources */,
 				981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */,

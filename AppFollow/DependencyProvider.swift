@@ -21,7 +21,8 @@ class DependencyProvider {
     
     lazy var push = PushNotifications(auth: self.auth)    
     var notificationsDelegate = NotificationsDelegate()
-    
+    var firebaseMessagingDelegate = FirebaseMessagingDelegate()
+
     var mainNavigation: NavigationDelegate? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.window?.rootViewController as? NavigationDelegate
