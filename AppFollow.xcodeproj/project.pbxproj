@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90D0E9CDE813D2516B20EABB /* Pods_AppFollow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519BF0EDCDE77902002B5CBB /* Pods_AppFollow.framework */; };
 		98087C9D2069FAE000EB0747 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98087C9C2069FAE000EB0747 /* AppDelegate.swift */; };
 		98087C9F2069FAE000EB0747 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98087C9E2069FAE000EB0747 /* LoginViewController.swift */; };
 		98087CA22069FAE000EB0747 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98087CA02069FAE000EB0747 /* Login.storyboard */; };
@@ -68,10 +69,8 @@
 		9898E20C2110B24400D5814E /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FC2110B09B00D5814E /* FirebaseCore.framework */; };
 		9898E20D2110B24400D5814E /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FF2110B09B00D5814E /* FirebaseCoreDiagnostics.framework */; };
 		9898E20E2110B24400D5814E /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FA2110B09A00D5814E /* FirebaseInstanceID.framework */; };
-		9898E20F2110B24400D5814E /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FD2110B09B00D5814E /* FirebaseNanoPB.framework */; };
 		9898E2112110B30F00D5814E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E2102110B30F00D5814E /* nanopb.framework */; };
 		9898E2132110B43E00D5814E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9898E2122110B43E00D5814E /* GoogleService-Info.plist */; };
-		9898E2152110B4F100D5814E /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E2142110B4F100D5814E /* GoogleToolboxForMac.framework */; };
 		98B9E297211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9E296211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift */; };
 		98CB4F152073630100F32EEE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F142073630100F32EEE /* TabViewController.swift */; };
 		98CB4F172073719A00F32EEE /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F162073719A00F32EEE /* Reply.swift */; };
@@ -90,12 +89,16 @@
 		98D5E11120CC212100B75316 /* UIImageView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E11020CC212100B75316 /* UIImageView+Gradient.swift */; };
 		98E097402110BC9200C3AC95 /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E0973E2110BC9200C3AC95 /* FirebaseMessaging.framework */; };
 		98E097412110BC9200C3AC95 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E0973F2110BC9200C3AC95 /* Protobuf.framework */; };
+		98EA0E69213B938400C7AFFB /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EA0E66213B938300C7AFFB /* GoogleAppMeasurement.framework */; };
+		98EA0E6A213B938400C7AFFB /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EA0E67213B938400C7AFFB /* GoogleUtilities.framework */; };
+		98EA0E6B213B938400C7AFFB /* MeasurementNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EA0E68213B938400C7AFFB /* MeasurementNanoPB.framework */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
 		98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4E206D6D6300FA461F /* ProfileViewController.swift */; };
 		98F7D31D206D704E005195BD /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7D31C206D704E005195BD /* ReviewsViewController.swift */; };
 		98F7D31F206D7462005195BD /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7D31E206D7462005195BD /* Review.swift */; };
 		98F7D321206D7ACE005195BD /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F7D320206D7ACE005195BD /* Cosmos.framework */; };
+		CEE0B55D691E96798692BA3C /* Pods_AppFollowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73AEECF950475AE5AE13A27 /* Pods_AppFollowTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		519BF0EDCDE77902002B5CBB /* Pods_AppFollow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppFollow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8205FE8F75D49F93622DD935 /* Pods-AppFollow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFollow.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppFollow/Pods-AppFollow.release.xcconfig"; sourceTree = "<group>"; };
+		8318B859705F8C18C134F1C0 /* Pods-AppFollowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFollowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFollowTests/Pods-AppFollowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98087C992069FAE000EB0747 /* AppFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98087C9C2069FAE000EB0747 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98087C9E2069FAE000EB0747 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +123,6 @@
 		98087CA62069FAE000EB0747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98087CA92069FAE000EB0747 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98087CAB2069FAE000EB0747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98087CB4206BE53D00EB0747 /* TTGSnackbar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTGSnackbar.framework; path = Carthage/Build/iOS/TTGSnackbar.framework; sourceTree = "<group>"; };
 		98087CB7206BE63300EB0747 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		98087CB9206BEACB00EB0747 /* LoginProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProcess.swift; sourceTree = "<group>"; };
 		981C3B10206EBF820072E3A2 /* ToastSwiftFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToastSwiftFramework.framework; path = Carthage/Build/iOS/ToastSwiftFramework.framework; sourceTree = "<group>"; };
@@ -169,16 +174,13 @@
 		98815DC72072749300A7A6C6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		98815DC9207283E200A7A6C6 /* ReviewReplyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewReplyDataSource.swift; sourceTree = "<group>"; };
 		98815DCB2072915800A7A6C6 /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
-		9898E1F72110AE0200D5814E /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		9898E1FA2110B09A00D5814E /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = AppFollow/Firebase/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		9898E1FB2110B09B00D5814E /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = AppFollow/Firebase/Firebase.framework; sourceTree = "<group>"; };
 		9898E1FC2110B09B00D5814E /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = AppFollow/Firebase/FirebaseCore.framework; sourceTree = "<group>"; };
-		9898E1FD2110B09B00D5814E /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = AppFollow/Firebase/FirebaseNanoPB.framework; sourceTree = "<group>"; };
 		9898E1FE2110B09B00D5814E /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = AppFollow/Firebase/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		9898E1FF2110B09B00D5814E /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = AppFollow/Firebase/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
 		9898E2102110B30F00D5814E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = AppFollow/Firebase/nanopb.framework; sourceTree = "<group>"; };
 		9898E2122110B43E00D5814E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9898E2142110B4F100D5814E /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = AppFollow/Firebase/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		98B9E296211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingDelegate.swift; sourceTree = "<group>"; };
 		98CB4F142073630100F32EEE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		98CB4F162073719A00F32EEE /* Reply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
@@ -200,12 +202,18 @@
 		98D5E11020CC212100B75316 /* UIImageView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Gradient.swift"; sourceTree = "<group>"; };
 		98E0973E2110BC9200C3AC95 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = AppFollow/Firebase/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		98E0973F2110BC9200C3AC95 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = AppFollow/Firebase/Protobuf.framework; sourceTree = "<group>"; };
+		98EA0E66213B938300C7AFFB /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = AppFollow/Firebase/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		98EA0E67213B938400C7AFFB /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = AppFollow/Firebase/GoogleUtilities.framework; sourceTree = "<group>"; };
+		98EA0E68213B938400C7AFFB /* MeasurementNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MeasurementNanoPB.framework; path = AppFollow/Firebase/MeasurementNanoPB.framework; sourceTree = "<group>"; };
 		98F01F47206D572300FA461F /* StateRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRefresh.swift; sourceTree = "<group>"; };
 		98F01F4B206D639800FA461F /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		98F01F4E206D6D6300FA461F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		98F7D31C206D704E005195BD /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		98F7D31E206D7462005195BD /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		98F7D320206D7ACE005195BD /* Cosmos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cosmos.framework; path = Carthage/Build/iOS/Cosmos.framework; sourceTree = "<group>"; };
+		A73AEECF950475AE5AE13A27 /* Pods_AppFollowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppFollowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B71BC3DABF909A61D63BAAEE /* Pods-AppFollow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFollow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFollow/Pods-AppFollow.debug.xcconfig"; sourceTree = "<group>"; };
+		B812F229AD89981C5BE5132A /* Pods-AppFollowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFollowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppFollowTests/Pods-AppFollowTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,15 +221,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98EA0E69213B938400C7AFFB /* GoogleAppMeasurement.framework in Frameworks */,
+				98EA0E6A213B938400C7AFFB /* GoogleUtilities.framework in Frameworks */,
+				98EA0E6B213B938400C7AFFB /* MeasurementNanoPB.framework in Frameworks */,
 				98E097402110BC9200C3AC95 /* FirebaseMessaging.framework in Frameworks */,
 				98E097412110BC9200C3AC95 /* Protobuf.framework in Frameworks */,
-				9898E2152110B4F100D5814E /* GoogleToolboxForMac.framework in Frameworks */,
 				9898E2112110B30F00D5814E /* nanopb.framework in Frameworks */,
 				9898E20B2110B24400D5814E /* FirebaseAnalytics.framework in Frameworks */,
 				9898E20C2110B24400D5814E /* FirebaseCore.framework in Frameworks */,
 				9898E20D2110B24400D5814E /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				9898E20E2110B24400D5814E /* FirebaseInstanceID.framework in Frameworks */,
-				9898E20F2110B24400D5814E /* FirebaseNanoPB.framework in Frameworks */,
 				9847B12720C720EE00FD0122 /* Intercom.framework in Frameworks */,
 				982D88262083D35100940CE7 /* Snail.framework in Frameworks */,
 				98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */,
@@ -230,6 +239,7 @@
 				98087CB8206BE63300EB0747 /* Alamofire.framework in Frameworks */,
 				984E51DF206C261F00CDB24D /* CommonCrypto.framework in Frameworks */,
 				984E51EB206CE37100CDB24D /* AlamofireImage.framework in Frameworks */,
+				90D0E9CDE813D2516B20EABB /* Pods_AppFollow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,12 +247,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE0B55D691E96798692BA3C /* Pods_AppFollowTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D753BE55A25937511F98FDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B71BC3DABF909A61D63BAAEE /* Pods-AppFollow.debug.xcconfig */,
+				8205FE8F75D49F93622DD935 /* Pods-AppFollow.release.xcconfig */,
+				8318B859705F8C18C134F1C0 /* Pods-AppFollowTests.debug.xcconfig */,
+				B812F229AD89981C5BE5132A /* Pods-AppFollowTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		98087C902069FAE000EB0747 = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +272,7 @@
 				98CB4F2D207650A000F32EEE /* AppFollowTests */,
 				98087C9A2069FAE000EB0747 /* Products */,
 				98087CB3206BE53D00EB0747 /* Frameworks */,
+				4D753BE55A25937511F98FDE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,17 +339,17 @@
 		98087CB3206BE53D00EB0747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98EA0E66213B938300C7AFFB /* GoogleAppMeasurement.framework */,
+				98EA0E67213B938400C7AFFB /* GoogleUtilities.framework */,
+				98EA0E68213B938400C7AFFB /* MeasurementNanoPB.framework */,
 				98E0973E2110BC9200C3AC95 /* FirebaseMessaging.framework */,
 				98E0973F2110BC9200C3AC95 /* Protobuf.framework */,
-				9898E2142110B4F100D5814E /* GoogleToolboxForMac.framework */,
 				9898E2102110B30F00D5814E /* nanopb.framework */,
-				9898E1F72110AE0200D5814E /* Firebase.framework */,
 				9898E1FB2110B09B00D5814E /* Firebase.framework */,
 				9898E1FE2110B09B00D5814E /* FirebaseAnalytics.framework */,
 				9898E1FC2110B09B00D5814E /* FirebaseCore.framework */,
 				9898E1FF2110B09B00D5814E /* FirebaseCoreDiagnostics.framework */,
 				9898E1FA2110B09A00D5814E /* FirebaseInstanceID.framework */,
-				9898E1FD2110B09B00D5814E /* FirebaseNanoPB.framework */,
 				9847B12620C720ED00FD0122 /* Intercom.framework */,
 				982D88252083D35000940CE7 /* Snail.framework */,
 				98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */,
@@ -335,7 +358,8 @@
 				984E51EA206CE37000CDB24D /* AlamofireImage.framework */,
 				984E51DE206C261F00CDB24D /* CommonCrypto.framework */,
 				98087CB7206BE63300EB0747 /* Alamofire.framework */,
-				98087CB4206BE53D00EB0747 /* TTGSnackbar.framework */,
+				519BF0EDCDE77902002B5CBB /* Pods_AppFollow.framework */,
+				A73AEECF950475AE5AE13A27 /* Pods_AppFollowTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -481,6 +505,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98087CAE2069FAE000EB0747 /* Build configuration list for PBXNativeTarget "AppFollow" */;
 			buildPhases = (
+				59C1612FAE5F325E76FFB850 /* [CP] Check Pods Manifest.lock */,
 				98087C952069FAE000EB0747 /* Sources */,
 				98087C962069FAE000EB0747 /* Frameworks */,
 				98087C972069FAE000EB0747 /* Resources */,
@@ -499,6 +524,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98CB4F33207650A000F32EEE /* Build configuration list for PBXNativeTarget "AppFollowTests" */;
 			buildPhases = (
+				032F0CCEF5669BE45962E481 /* [CP] Check Pods Manifest.lock */,
 				98CB4F282076509F00F32EEE /* Sources */,
 				98CB4F292076509F00F32EEE /* Frameworks */,
 				98CB4F2A2076509F00F32EEE /* Resources */,
@@ -586,6 +612,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		032F0CCEF5669BE45962E481 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppFollowTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59C1612FAE5F325E76FFB850 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppFollow-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		98087CB6206BE55000EB0747 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -840,12 +902,14 @@
 		};
 		98087CAF2069FAE000EB0747 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B71BC3DABF909A61D63BAAEE /* Pods-AppFollow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AppFollow/AppFollow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = C3GDDK48KG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -870,6 +934,7 @@
 		};
 		98087CB02069FAE000EB0747 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8205FE8F75D49F93622DD935 /* Pods-AppFollow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AppFollow/AppFollow.entitlements;
@@ -900,6 +965,7 @@
 		};
 		98CB4F34207650A000F32EEE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8318B859705F8C18C134F1C0 /* Pods-AppFollowTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -918,6 +984,7 @@
 		};
 		98CB4F35207650A000F32EEE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B812F229AD89981C5BE5132A /* Pods-AppFollowTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_OBJC_WEAK = YES;
