@@ -35,6 +35,6 @@ class Endpoint {
     private func sign(parameters: [String: Any], path: String, auth: Auth) -> String {
         let sortedKeys = parameters.keys.sorted()
         let paramersString = (sortedKeys.map { "\($0)=\(String(describing: parameters[$0]!))" } as [String]).joined(separator: "")
-        return Hash(input: "\(paramersString)\(path)\(auth.secret)").md5.hex
+        return Hash(input: "\(paramersString)\(path.removingPercentEncoding ?? "")\(auth.secret)").md5.hex
     }
 }

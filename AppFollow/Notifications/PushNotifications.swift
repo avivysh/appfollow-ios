@@ -29,6 +29,23 @@ class PushNotifications {
     init(auth: AuthProvider) {
         self.auth = auth
     }
+    
+    func declareActions() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        let replyAction = UNNotificationAction(
+            identifier: "SEND_REPLY",
+            title: "Send reply",
+            options: .foreground)
+        
+        let reviewCategory = UNNotificationCategory(
+            identifier: "review",
+            actions: [replyAction],
+            intentIdentifiers: [],
+            hiddenPreviewsBodyPlaceholder: "",
+            options: UNNotificationCategoryOptions(rawValue: 0))
+        
+        notificationCenter.setNotificationCategories([reviewCategory])
+    }
 
     func registerForRemoteNotifications() {
         let notificationCenter = UNUserNotificationCenter.current()

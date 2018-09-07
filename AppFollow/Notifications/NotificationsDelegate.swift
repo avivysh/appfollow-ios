@@ -17,14 +17,14 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
             let userInfo = response.notification.request.content.userInfo as? [String:AnyObject],
             let payload = Payload(userInfo: userInfo)
         else {
-            log.error("Cannot parse userInfo: \(response.notification.request.content.userInfo.debugDescription)")
+            log.error("[PUSH] Cannot parse userInfo: \(response.notification.request.content.userInfo.debugDescription)")
             completionHandler()
             return
         }
         
         Messaging.messaging().appDidReceiveMessage(userInfo)
         
-        log.info("Received payload: \(response.notification.request.content.userInfo.debugDescription)")
+        log.info("[PUSH] Received payload: \(response.notification.request.content.userInfo.debugDescription), action: \(response.actionIdentifier), isValid: \(payload.isValid)")
         
         AppDelegate.provide.stateRefresh.refresh()
         

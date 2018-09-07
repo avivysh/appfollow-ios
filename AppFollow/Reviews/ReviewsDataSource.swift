@@ -115,7 +115,18 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
         var sections = [DateSection:[Review]]()
 
         let now = Date()
-        let sorted = reviews.sorted(by: { $0.date > $1.date })
+        let sorted = reviews.sorted(by: {
+            if ($0.date != $1.date) {
+                return $0.date > $1.date
+            }
+            if ($0.appId.value != $1.appId.value) {
+                return $0.appId.value < $1.appId.value
+            }
+            if ($0.store != $1.store) {
+                return $0.store < $1.store
+            }
+            return $0.rating.value > $1.rating.value
+        })
         for review in sorted {
             let date = review.date
             let section = DateSection.for(date: date, today: now)

@@ -43,7 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UNUserNotificationCenter.current().delegate = AppDelegate.provide.notificationsDelegate
         Messaging.messaging().delegate =  AppDelegate.provide.firebaseMessagingDelegate
-
+        AppDelegate.provide.push.declareActions()
+        
         return true
     }
     
