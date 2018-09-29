@@ -43,11 +43,6 @@ class AppViewController: UIViewController, UITableViewDelegate {
         self.navigationItem.largeTitleDisplayMode = .never
         self.appTitle.text = app.details.title
         self.publisher.text = app.details.publisher
-
-        let titleImageView = UIImageView()
-        titleImageView.image = UIImage(named: "logo-white")
-        titleImageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = titleImageView
         
         self.stars.isHidden = true
         self.stars.settings.updateOnTouch = false

@@ -23,12 +23,7 @@ class AppsViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let titleImageView = UIImageView()
-        titleImageView.image = UIImage(named: "logo-white")
-        titleImageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = titleImageView
-        
+                
         AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
         self.tableView.delegate = self

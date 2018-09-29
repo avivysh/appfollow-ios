@@ -719,8 +719,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wRi-GM-czQ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Reviews" id="15N-Pf-rsO"/>
+                    <navigationItem key="navigationItem" title="Reviews" id="15N-Pf-rsO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="xHn-yr-gDl">
+                            <connections>
+                                <action selector="actionFilter:" destination="oro-8K-xdV" id="CSV-hz-oDb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="xHn-yr-gDl" id="WUe-Qh-Fsn"/>
                         <outlet property="loadingAnimation" destination="mTj-j2-x5x" id="qLs-We-PhQ"/>
                         <outlet property="tableView" destination="xce-7W-XCc" id="yy3-Dy-7fL"/>
                     </connections>
@@ -1005,7 +1012,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ddd-8N-lRw"/>
+        <segue reference="wgr-m8-XiW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.88235294819999999" green="0.88235294819999999" blue="0.88235294819999999" alpha="1" colorSpace="deviceRGB"/>
 </document>

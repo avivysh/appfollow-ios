@@ -13,6 +13,7 @@ class ReviewsViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var loadingAnimation: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     let dataSource = ReviewsDataSource()
     
     override func viewDidLoad() {
@@ -27,12 +28,16 @@ class ReviewsViewController: UIViewController, UITableViewDelegate {
             onNext: { _ in AppDelegate.provide.stateRefresh.refresh() }
         )
         
-        let titleImageView = UIImageView()
-        titleImageView.image = UIImage(named: "logo-white")
-        titleImageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = titleImageView
-        
         AppDelegate.provide.push.registerForRemoteNotifications()
+        
+        self.filterButton.isEnabled = false
+        AppDelegate.provide.store.refreshed.subscribe(
+             onNext: { [weak self] result in
+                if (result.next) {
+                    self?.filterButton.isEnabled = true
+                }
+            }
+        )
         
         self.dataSource.refreshed.subscribe(
             onNext: { [weak self] result in
@@ -47,6 +52,17 @@ class ReviewsViewController: UIViewController, UITableViewDelegate {
                 }
             }
         )
+        
+        self.dataSource.filteredCollection.subscribe(
+            onNext: { [weak self] collection in
+                if (collection == nil) {
+                    self?.title = "Reviews"
+                } else {
+                    self?.title = "Reviews - \(collection!.title)"
+                }
+            }
+        )
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +98,20 @@ class ReviewsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    @IBAction func actionFilter(_ sender: UIBarButtonItem) {
+        let filter = UIAlertController(title: "Choose collection", message: nil, preferredStyle: .actionSheet)
+        filter.addAction(UIAlertAction(title: "None", style: .default, handler: { _ in
+            self.dataSource.filter(collection: nil)
+        }))
+        AppDelegate.provide.store.collections.forEach { collection in
+            filter.addAction(UIAlertAction(title: collection.title, style: .default, handler: { _ in
+                self.dataSource.filter(collection: collection)
+            }))
+        }
+        
+        self.present(filter, animated: true, completion: nil)
+    }
+
     // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

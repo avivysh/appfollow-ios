@@ -22,14 +22,14 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     private var reviews: [DateSection:[Review]] = [:]
     private var apps: [AppId: App] = [:]
     private var sections: [DateSection] = []
-    
     let refreshed = Observable<NextOrError<Bool>>()
+    let filteredCollection = Observable<Collection?>()
     
     override init() {
         super.init()
         AppDelegate.provide.store.refreshed.subscribe(
             onNext: { [weak self] result in
-                self?.reload {
+                self?.reload(collections: AppDelegate.provide.store.collections) {
                     self?.refreshed.on(.next(result))
                 }
             }
@@ -45,9 +45,15 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
         return apps[review.appId] ?? App.empty
     }
     
-    private func reload(complete: @escaping () -> Void) {
-        
-        let collections = AppDelegate.provide.store.collections
+    func filter(collection: Collection?) {
+        let collections = collection == nil ? AppDelegate.provide.store.collections : [collection!]
+        self.filteredCollection.on(.next(collection))
+        self.reload(collections: collections) { [weak self] in
+            self?.refreshed.on(.next(NextOrError(true)))
+        }
+    }
+    
+    private func reload(collections: Collections, complete: @escaping () -> Void) {
         let auth = AppDelegate.provide.auth
         
         let group = DispatchGroup()
@@ -111,7 +117,7 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     
     // MARK: Private
     
-    func createReviewsSections(reviews: [Review]) -> [DateSection: [Review]] {
+    private func createReviewsSections(reviews: [Review]) -> [DateSection: [Review]] {
         var sections = [DateSection:[Review]]()
 
         let now = Date()
