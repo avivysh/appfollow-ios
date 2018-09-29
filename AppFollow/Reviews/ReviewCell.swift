@@ -42,14 +42,14 @@ class ReviewCell: UITableViewCell {
         let title = answered + info + store
         
         let titleAttr = NSMutableAttributedString(string: title)
-        let attrs: [NSAttributedStringKey:Any] = [
+        let attrs: [NSAttributedString.Key:Any] = [
             .font: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize, weight: .thin),
             .foregroundColor: UIColor.gray]
         let range = title.range(of: info)!
         titleAttr.addAttributes(attrs, range: NSRange(range, in: title))
         
         if (!store.isEmpty) {
-            let attrs: [NSAttributedStringKey:Any] = [
+            let attrs: [NSAttributedString.Key:Any] = [
                 .font: UIFont(name: "FontAwesome5BrandsRegular", size: UIFont.smallSystemFontSize)!,
                 .foregroundColor: UIColor.gray]
             let range = title.range(of: store)!

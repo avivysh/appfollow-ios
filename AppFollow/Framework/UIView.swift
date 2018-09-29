@@ -42,8 +42,8 @@ extension UIView {
         }
     }
     
-    func applyVibrancy(style: UIBlurEffectStyle, blurAlpha: CGFloat) {
-        guard UIAccessibilityIsReduceTransparencyEnabled() == false else {
+    func applyVibrancy(style: UIBlurEffect.Style, blurAlpha: CGFloat) {
+        guard UIAccessibility.isReduceTransparencyEnabled == false else {
             return
         }
         

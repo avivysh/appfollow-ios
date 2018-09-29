@@ -33,8 +33,8 @@ class AppsViewController: UIViewController, UITableViewDelegate {
         self.tableView.dataSource = self.dataSource
         self.tableView.delegate = self
             
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.sectionHeaderHeight = UITableView.automaticDimension
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.controlEvent(.valueChanged).subscribe(

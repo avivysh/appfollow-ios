@@ -60,7 +60,8 @@ class ReviewViewController: UIViewController {
                 }
             }
         )
-        NotificationCenter.default.observeEvent(.UIKeyboardDidShow).subscribe (
+        
+        NotificationCenter.default.observeEvent(UIResponder.keyboardDidShowNotification).subscribe (
             onNext: { [weak self] _ in
                 if let lastIndex = self?.tableView.indexPathsForVisibleRows?.last {
                     DispatchQueue.main.async {

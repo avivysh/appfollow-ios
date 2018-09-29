@@ -12,6 +12,8 @@ class TabViewController: UIViewController {
 
     weak var embedController: UINavigationController?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedSegue" {
             self.embedController = segue.destination as? UINavigationController

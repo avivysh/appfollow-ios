@@ -24,7 +24,7 @@ class AppCell: UITableViewCell {
         let titleAttr = NSMutableAttributedString(string: title)
 
         if (!store.isEmpty) {
-            let attrs: [NSAttributedStringKey:Any] = [
+            let attrs: [NSAttributedString.Key:Any] = [
                 .font: UIFont(name: "FontAwesome5BrandsRegular", size: UIFont.smallSystemFontSize)!,
                 .foregroundColor: UIColor.gray]
             let range = title.range(of: store)!

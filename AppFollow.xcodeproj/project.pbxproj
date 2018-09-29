@@ -80,7 +80,6 @@
 		98CB4F2020742C3300F32EEE /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98CB4F1F20742C3300F32EEE /* SwiftyBeaver.framework */; };
 		98CB4F22207432CD00F32EEE /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F21207432CD00F32EEE /* PushNotifications.swift */; };
 		98CB4F27207634CC00F32EEE /* NotificationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */; };
-		98CB4F2F207650A000F32EEE /* DeeplinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */; };
 		98CB4F372076554E00F32EEE /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F362076554D00F32EEE /* URL.swift */; };
 		98CB4F3920765D0900F32EEE /* PayloadNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */; };
 		98D5E10B20CBEF4800B75316 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98D5E10A20CBEF4800B75316 /* fa-brands-400.ttf */; };
@@ -192,7 +191,6 @@
 		98CB4F21207432CD00F32EEE /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		98CB4F26207634CC00F32EEE /* NotificationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
 		98CB4F2C207650A000F32EEE /* AppFollowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFollowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkTests.swift; sourceTree = "<group>"; };
 		98CB4F30207650A000F32EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98CB4F362076554D00F32EEE /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		98CB4F3820765D0900F32EEE /* PayloadNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadNavigation.swift; sourceTree = "<group>"; };
@@ -462,7 +460,6 @@
 		98CB4F2D207650A000F32EEE /* AppFollowTests */ = {
 			isa = PBXGroup;
 			children = (
-				98CB4F2E207650A000F32EEE /* DeeplinkTests.swift */,
 				98CB4F30207650A000F32EEE /* Info.plist */,
 			);
 			path = AppFollowTests;
@@ -755,7 +752,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98CB4F2F207650A000F32EEE /* DeeplinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,7 +923,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -958,7 +954,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -976,7 +972,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.AppFollowTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppFollow.app/AppFollow";
 			};
@@ -995,7 +991,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.appfollow.AppFollowTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppFollow.app/AppFollow";
 			};
