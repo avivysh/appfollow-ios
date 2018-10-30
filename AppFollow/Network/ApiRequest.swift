@@ -92,6 +92,38 @@ class ApiRequest {
         log.debug(request.debugDescription)
     }
     
+    func delete<R: Decodable>(completion: @escaping (R?, Error?) -> Void) {
+        let url = URL(string: route.path, relativeTo: endpoint.baseUrl)!
+        let parameters = endpoint.sign(route: route, auth: auth.actual)
+        
+        let request = session.request(url, method: .delete, parameters: parameters).responseData {
+            response in
+            
+            if let data = response.result.value {
+                log.info("[Response]: \(response.result.debugDescription) [Data]: \(response.data?.count ?? 0) bytes [Timeline]: \(response.timeline.description)")
+                let decoder = JSONDecoder()
+                do {
+                    let object = try decoder.decode(R.self, from: data)
+                    completion(object, nil)
+                } catch let responseDeserializeError {
+                    do {
+                        let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                        log.error(errorResponse)
+                        completion(nil, errorResponse.error)
+                    } catch {
+                        log.error(responseDeserializeError)
+                        completion(nil, responseDeserializeError)
+                    }
+                }
+            } else {
+                log.error(response.error?.localizedDescription ?? "")
+                completion(nil, response.error)
+            }
+        }
+        log.info("[Request]: \(url)")
+        log.debug(request.debugDescription)
+    }
+    
     func post<B: Encodable, R: Decodable>(body: B, completion: @escaping (R?, Error?) -> Void) {
         let parameters = endpoint.sign(route: route, auth: auth.actual)
         let pathWithQuery = "\(route.path)?\(query(parameters))"

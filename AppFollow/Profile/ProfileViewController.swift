@@ -8,6 +8,7 @@
 
 import UIKit
 import Intercom
+import FirebaseInstanceID
 
 class ProfileViewController: UIViewController {
     
@@ -20,15 +21,19 @@ class ProfileViewController: UIViewController {
     
     @IBAction func signOut(_ sender: UIButton) {
         if let bundleID = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: bundleID)
-            AppDelegate.provide.store.reset()
+            let auth = AppDelegate.provide.auth.actual
+            PushNotifications(auth: AuthProviderValue(actual: auth)).removeToken()
             Intercom.logout()
+            AppDelegate.provide.store.reset()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let _ = log.fileDestinations.first?.deleteLogFile()
             appDelegate.window?.rootViewController = LoginViewController.instantiateFromStoryboard()
+            InstanceID.instanceID().deleteID(handler: {_ in
+                UserDefaults.standard.removePersistentDomain(forName: bundleID)
+            })
         }
     }
-    
+
     @IBAction func versionMenu(_ sender: UITapGestureRecognizer) {
         let alert = UIAlertController(title: "Developer options", message: nil, preferredStyle: .actionSheet)
         alert.addAction(PushTestAction(view: self.view))

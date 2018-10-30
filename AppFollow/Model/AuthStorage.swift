@@ -16,6 +16,10 @@ struct AuthProviderEmpty: AuthProvider {
     let actual = Auth.empty
 }
 
+struct AuthProviderValue: AuthProvider {
+    let actual: Auth
+}
+
 struct AuthProviderStorage: AuthProvider {
     let authStorage: AuthStorage
     var actual: Auth { return authStorage.retrieve() }
