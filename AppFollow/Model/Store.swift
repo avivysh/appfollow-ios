@@ -33,26 +33,24 @@ class Store {
     
     let refreshed = Observable<NextOrError<Bool>>()
     
-    func appFor(appId: AppId) -> App {
-        for pair in apps {
-            for app in pair.value {
-                if app.id == appId {
-                    return app
-                }
-            }
-        }
-        return App.empty
+    func appFor(appId: AppId, collectionId: CollectionId) -> App {
+        return apps[collectionId]?.first(where: { $0.id == appId }) ?? App.empty
     }
 
-    func appFor(extId: ExtId) -> App {
+    func appFor(extId: ExtId, collectionId: CollectionId) -> App {
+        return apps[collectionId]?.first(where: { $0.details.extId == extId }) ?? App.empty
+    }
+    
+    func appsFor(extId: ExtId) -> [App] {
+        var result = [App]()
         for pair in apps {
             for app in pair.value {
                 if app.details.extId == extId {
-                    return app
+                    result.append(app)
                 }
             }
         }
-        return App.empty
+        return result
     }
     
     func reset() {

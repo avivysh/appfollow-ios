@@ -68,6 +68,7 @@ class MainViewController: UITabBarController, NavigationDelegate {
                 Intercom.setUserHash(auth.hmac)
             }
             Intercom.registerUser(withUserId: auth.email)
+            AppDelegate.provide.stateRefresh.refresh()
         }
     }
 }

@@ -19,7 +19,6 @@ class ReviewsViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AppDelegate.provide.stateRefresh.refresh()
         self.tableView.dataSource = self.dataSource
         self.tableView.delegate = self
         

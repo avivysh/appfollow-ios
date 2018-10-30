@@ -20,14 +20,14 @@ class AppsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     let dataSource = AppsDataSource()
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        AppDelegate.provide.stateRefresh.refresh()
+        
         self.tableView.dataSource = self.dataSource
         self.tableView.delegate = self
-            
+        
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.sectionHeaderHeight = UITableView.automaticDimension
         
@@ -38,16 +38,25 @@ class AppsViewController: UIViewController, UITableViewDelegate {
                 AppDelegate.provide.stateRefresh.refresh()
             }
         )
+        
+        // Setup the Search Controller
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = "Search apps"
+        self.navigationItem.searchController = self.searchController
+        self.definesPresentationContext = true
+        
         self.dataSource.refreshed.subscribe(
             onNext: { [weak self] result in
+                guard let `self` = self else { return }
                 if let error = result.error {
-                    self?.tableView.refreshControl?.endRefreshing()
-                    self?.loadingAnimation.stopAnimating()
-                    self?.view.makeToast("Error: \(error.localizedDescription)")
+                    self.tableView.refreshControl?.endRefreshing()
+                    self.loadingAnimation.stopAnimating()
+                    self.view.makeToast("Error: \(error.localizedDescription)")
                 } else {
-                    self?.tableView.reloadData()
-                    self?.tableView.refreshControl?.endRefreshing()
-                    self?.loadingAnimation.stopAnimating()
+                    self.tableView.reloadData()
+                    self.tableView.refreshControl?.endRefreshing()
+                    self.loadingAnimation.stopAnimating()
                 }
             }
         )
@@ -100,4 +109,15 @@ class AppsViewController: UIViewController, UITableViewDelegate {
         header.textLabel?.textColor = UIColor.ash
     }
 
+}
+
+extension AppsViewController: UISearchResultsUpdating {
+
+    // MARK: - UISearchResultsUpdating Delegate
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let text = searchController.searchBar.text ?? ""
+        self.dataSource.filter = text
+        self.dataSource.reload()
+    }
 }

@@ -37,7 +37,11 @@ class PayloadNavigation {
     }
     
     func fetchApp(extId: ExtId, completion: @escaping (App) -> Void) {
-        let app = AppDelegate.provide.store.appFor(extId: payload.extId)
+        let allApps = AppDelegate.provide.store.appsFor(extId: payload.extId)
+        let app = allApps
+            .first(where: { $0.hasReplyIntegration.value })
+            ?? allApps.first
+            ?? App.empty
         log.info("Fetching app \(extId.value)")
         if app.isEmpty {
             log.info("Waiting for refresh to finish")
@@ -50,7 +54,11 @@ class PayloadNavigation {
             self.unique.asObservable().subscribe(
                 onNext: { _ in
                     log.info("Completed")
-                    let app = AppDelegate.provide.store.appFor(extId: extId)
+                    let allApps = AppDelegate.provide.store.appsFor(extId: extId)
+                    let app = allApps
+                        .first(where: { $0.hasReplyIntegration.value })
+                        ?? allApps.first
+                        ?? App.empty
                     completion(app)
                 }
             )

@@ -15,26 +15,28 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     private var collections: [Collection] = []
     private var apps: [CollectionId: [App]] = [:]
 
+    var filter = ""
     let refreshed = Observable<NextOrError<Bool>>()
     
     override init() {
         super.init()
         
-        let store = AppDelegate.provide.store
-        self.collections = store.collections
-        self.apps = store.apps
+        self.update()
         
         AppDelegate.provide.store.refreshed.subscribe(
             onNext: { [weak self] result in
-                let store = AppDelegate.provide.store
-                self?.collections = store.collections
-                self?.apps = store.apps
+                self?.update()
                 self?.refreshed.on(.next(result))
             }
         )
     }
     
     // MARK: Public
+    
+    func reload() {
+        self.update()
+        self.refreshed.on(.next(NextOrError(true)))
+    }
     
     func appFor(indexPath: IndexPath) -> App {
         let collection = self.collections[indexPath.section]
@@ -61,5 +63,29 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return collections.count
     }
-
+    
+    // MARK: Private
+    
+    private func update() {
+        let store = AppDelegate.provide.store
+        
+        if (self.filter.isEmpty) {
+            self.collections = store.collections
+            self.apps = store.apps
+        } else {
+            var filteredCollections = [Collection]()
+            var filteredApps = [CollectionId: [App]]()
+            let lowercasedFilter = self.filter.lowercased()
+            store.collections.forEach({ collection in
+                let storeApps = store.apps[collection.id] ?? [App]()
+                let apps = storeApps.filter({ $0.details.title.lowercased().range(of: lowercasedFilter) != nil })
+                if (!apps.isEmpty) {
+                    filteredCollections.append(collection)
+                    filteredApps[collection.id] = apps
+                }
+            })
+            self.collections = filteredCollections
+            self.apps = filteredApps
+        }
+    }
 }
