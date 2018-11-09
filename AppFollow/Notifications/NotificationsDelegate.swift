@@ -11,6 +11,7 @@ import UserNotifications
 import FirebaseMessaging
 
 class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
+    private lazy var payloadNavigation = PayloadNavigation()
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         guard 
@@ -26,10 +27,8 @@ class NotificationsDelegate: NSObject, UNUserNotificationCenterDelegate {
         
         log.info("[PUSH] Received payload: \(response.notification.request.content.userInfo.debugDescription), action: \(response.actionIdentifier), isValid: \(payload.isValid)")
         
-        AppDelegate.provide.stateRefresh.refresh()
-        
         if payload.isValid {
-            PayloadNavigation(payload: payload).perform {
+            self.payloadNavigation.perform(payload: payload) {
                 completionHandler()
             }
         } else {

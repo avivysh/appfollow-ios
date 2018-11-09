@@ -10,22 +10,19 @@ import UIKit
 import Snail
 
 class PayloadNavigation {
-    let payload: Payload
+    private let unique = Unique(false)
     
-    let unique = Unique(false)
-
-    init(payload: Payload) {
-        self.payload = payload
-    }
-    
-    func perform(complete: @escaping () -> Void) {
+    func perform(payload: Payload, complete: @escaping () -> Void) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.makeKeyAndVisible()
+        
         if let mainNavigation = AppDelegate.provide.mainNavigation {
             if !payload.extId.isEmpty {
                 self.fetchApp(extId: payload.extId) { app in
-                    if self.payload.reviewId.isEmpty {
+                    if payload.reviewId.isEmpty {
                         mainNavigation.navigateToApp(app: app)
                     } else {
-                        mainNavigation.navigateToReview(app: app, reviewId: self.payload.reviewId)
+                        mainNavigation.navigateToReview(app: app, reviewId: payload.reviewId)
                     }
                     complete();
                 }
@@ -37,7 +34,7 @@ class PayloadNavigation {
     }
     
     func fetchApp(extId: ExtId, completion: @escaping (App) -> Void) {
-        let allApps = AppDelegate.provide.store.appsFor(extId: payload.extId)
+        let allApps = AppDelegate.provide.store.appsFor(extId: extId)
         let app = allApps
             .first(where: { $0.hasReplyIntegration.value })
             ?? allApps.first
@@ -52,27 +49,24 @@ class PayloadNavigation {
                 }
             )
             self.unique.asObservable().subscribe(
-                onNext: { _ in
+                onNext: { value in
+                    if (!value) {
+                        return
+                    }
                     log.info("Completed")
                     let allApps = AppDelegate.provide.store.appsFor(extId: extId)
                     let app = allApps
                         .first(where: { $0.hasReplyIntegration.value })
                         ?? allApps.first
                         ?? App.empty
-                    completion(app)
+                    DispatchQueue.main.async {
+                        completion(app)
+                    }
                 }
             )
         } else {
             log.info("Available locally. Completed.")
             completion(app)
-        }
-    }
-    
-    private func navigateToApp(app: App, reviewId: ReviewId, mainNavigation: NavigationDelegate?) {
-        if payload.reviewId.isEmpty {
-            mainNavigation?.navigateToApp(app: app)
-        } else {
-            mainNavigation?.navigateToReview(app: app, reviewId: payload.reviewId)
         }
     }
 }
