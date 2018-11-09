@@ -90,7 +90,6 @@
 		98E097412110BC9200C3AC95 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E0973F2110BC9200C3AC95 /* Protobuf.framework */; };
 		98EA0E69213B938400C7AFFB /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EA0E66213B938300C7AFFB /* GoogleAppMeasurement.framework */; };
 		98EA0E6A213B938400C7AFFB /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EA0E67213B938400C7AFFB /* GoogleUtilities.framework */; };
-		98EA0E6B213B938400C7AFFB /* MeasurementNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EA0E68213B938400C7AFFB /* MeasurementNanoPB.framework */; };
 		98F01F48206D572300FA461F /* StateRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F47206D572300FA461F /* StateRefresh.swift */; };
 		98F01F4C206D639800FA461F /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4B206D639800FA461F /* ProfileStorage.swift */; };
 		98F01F4F206D6D6300FA461F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F01F4E206D6D6300FA461F /* ProfileViewController.swift */; };
@@ -221,7 +220,6 @@
 			files = (
 				98EA0E69213B938400C7AFFB /* GoogleAppMeasurement.framework in Frameworks */,
 				98EA0E6A213B938400C7AFFB /* GoogleUtilities.framework in Frameworks */,
-				98EA0E6B213B938400C7AFFB /* MeasurementNanoPB.framework in Frameworks */,
 				98E097402110BC9200C3AC95 /* FirebaseMessaging.framework in Frameworks */,
 				98E097412110BC9200C3AC95 /* Protobuf.framework in Frameworks */,
 				9898E2112110B30F00D5814E /* nanopb.framework in Frameworks */,
