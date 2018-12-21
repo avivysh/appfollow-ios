@@ -52,7 +52,7 @@ class ReviewsViewController: UIViewController, UITableViewDelegate {
             }
         )
         
-        self.dataSource.filteredCollection.subscribe(
+        self.dataSource.filteredCollection.asObservable().subscribe(
             onNext: { [weak self] collection in
                 if (collection == nil) {
                     self?.title = "Reviews"

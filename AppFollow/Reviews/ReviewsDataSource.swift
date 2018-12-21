@@ -23,13 +23,16 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     private var apps: [AppId: App] = [:]
     private var sections: [DateSection] = []
     let refreshed = Observable<NextOrError<Bool>>()
-    let filteredCollection = Observable<Collection?>()
+    let filteredCollection = Variable<Collection?>(nil)
     
     override init() {
         super.init()
         AppDelegate.provide.store.refreshed.subscribe(
             onNext: { [weak self] result in
-                self?.reload(collections: AppDelegate.provide.store.collections) {
+                guard let self = self else { return }
+                let filtered = self.filteredCollection.value
+                let collections = filtered == nil ? AppDelegate.provide.store.collections : [filtered!]
+                self.reload(collections: collections) { [weak self] in
                     self?.refreshed.on(.next(result))
                 }
             }
@@ -47,7 +50,7 @@ class ReviewsDataSource: NSObject, UITableViewDataSource {
     
     func filter(collection: Collection?) {
         let collections = collection == nil ? AppDelegate.provide.store.collections : [collection!]
-        self.filteredCollection.on(.next(collection))
+        self.filteredCollection.value = collection
         self.reload(collections: collections) { [weak self] in
             self?.refreshed.on(.next(NextOrError(true)))
         }
