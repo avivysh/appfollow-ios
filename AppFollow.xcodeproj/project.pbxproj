@@ -95,6 +95,7 @@
 		98F7D31D206D704E005195BD /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7D31C206D704E005195BD /* ReviewsViewController.swift */; };
 		98F7D31F206D7462005195BD /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7D31E206D7462005195BD /* Review.swift */; };
 		98F7D321206D7ACE005195BD /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F7D320206D7ACE005195BD /* Cosmos.framework */; };
+		A56A7749C3B483EF9CF3D287 /* Pods_AppFollowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56795D6E3251D4C70ED3901B /* Pods_AppFollowTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 
 /* Begin PBXFileReference section */
 		519BF0EDCDE77902002B5CBB /* Pods_AppFollow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppFollow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56795D6E3251D4C70ED3901B /* Pods_AppFollowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppFollowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8205FE8F75D49F93622DD935 /* Pods-AppFollow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFollow.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppFollow/Pods-AppFollow.release.xcconfig"; sourceTree = "<group>"; };
 		8318B859705F8C18C134F1C0 /* Pods-AppFollowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppFollowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppFollowTests/Pods-AppFollowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98087C992069FAE000EB0747 /* AppFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56A7749C3B483EF9CF3D287 /* Pods_AppFollowTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,16 +281,18 @@
 		98087C9B2069FAE000EB0747 /* AppFollow */ = {
 			isa = PBXGroup;
 			children = (
-				9898E2122110B43E00D5814E /* GoogleService-Info.plist */,
-				98D5E10720CBEEF000B75316 /* Fonts */,
 				98087C9C2069FAE000EB0747 /* AppDelegate.swift */,
 				98CB4F1E207428F100F32EEE /* AppFollow.entitlements */,
 				98087CA32069FAE000EB0747 /* AppFollow.xcdatamodeld */,
 				984E51B0206BFA5700CDB24D /* Apps */,
 				98087CA62069FAE000EB0747 /* Assets.xcassets */,
+				9847B12820C723E000FD0122 /* Configuration.plist */,
+				9847B12A20C724C300FD0122 /* Configuration.swift */,
 				984E51B6206C1CE400CDB24D /* DependencyProvider.swift */,
 				986B857C2080A90B0051F8F8 /* Extensions */,
+				98D5E10720CBEEF000B75316 /* Fonts */,
 				984E51A8206BF72400CDB24D /* Framework */,
+				9898E2122110B43E00D5814E /* GoogleService-Info.plist */,
 				98087CAB2069FAE000EB0747 /* Info.plist */,
 				98087CA82069FAE000EB0747 /* LaunchScreen.storyboard */,
 				98087CB12069FAFE00EB0747 /* Login */,
@@ -298,8 +303,6 @@
 				98F01F4D206D6D5300FA461F /* Profile */,
 				98F7D31B206D7035005195BD /* Reviews */,
 				984E51A5206BF70300CDB24D /* Sdk */,
-				9847B12820C723E000FD0122 /* Configuration.plist */,
-				9847B12A20C724C300FD0122 /* Configuration.swift */,
 			);
 			path = AppFollow;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				984E51DE206C261F00CDB24D /* CommonCrypto.framework */,
 				98087CB7206BE63300EB0747 /* Alamofire.framework */,
 				519BF0EDCDE77902002B5CBB /* Pods_AppFollow.framework */,
+				56795D6E3251D4C70ED3901B /* Pods_AppFollowTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
