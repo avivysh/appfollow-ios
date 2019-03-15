@@ -27,6 +27,8 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
     let app: App
     let auth: AuthProvider
     
+    weak var shareDelegate: ShareDelegate? = nil
+    
     private var items: [ReplyItem] = []
     private var review = Review.empty
     
@@ -67,6 +69,12 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
         self.refreshed.on(.next(NextOrError(true, nil)))
     }
     
+    func shouldShowMenuForRowAt(_ indexPath: IndexPath) -> Bool {
+        return self.items[indexPath.row] is Feedback
+    }
+    
+    // MARK: UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -76,16 +84,21 @@ class ReviewReplyDataSource: NSObject, UITableViewDataSource {
         
         if let feedback = item as? Feedback {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewCell
+            cell.selectedBackroundColor = .selectedItemBackground
+            cell.shareDelegate = self.shareDelegate
             cell.bind(review: feedback.review, app: self.app)
             return cell
         } else if let reply = item as? Reply {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath) as! AnswerCell
+            cell.selectedBackroundColor = .selectedItemBackground
             cell.bind(answer: reply.answer)
             return cell
         }
         
         return UITableViewCell()
     }
+    
+    // MARK: Private
     
     private func createItems(review: Review) -> [ReplyItem] {
         var items = [ReplyItem]()

@@ -9,7 +9,7 @@
 import UIKit
 import Snail
 
-class ReviewViewController: UIViewController {
+class ReviewViewController: UIViewController, UITableViewDelegate, ShareDelegate {
     static func instantiateFromStoryboard(app: App, reviewId: ReviewId) -> ReviewViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as! ReviewViewController
@@ -37,6 +37,7 @@ class ReviewViewController: UIViewController {
         self.actionButton.isEnabled = false
         self.textField.isEditable = false
         self.tableView.dataSource = self.dataSource
+        self.tableView.delegate = self
         
         if (app.hasReplyIntegration.value) {
             self.actionBar.isHidden = false
@@ -66,6 +67,7 @@ class ReviewViewController: UIViewController {
             }
         )
         
+        self.dataSource.shareDelegate = self
         self.dataSource.refreshed.subscribe(
             onNext: { [weak self] result in
                 if let error = result.error {
@@ -82,7 +84,17 @@ class ReviewViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         IconRemote(url: app.details.icon).into(self.appTitle)
+        
+        UIMenuController.shared.menuItems = [
+            UIMenuItem(title: "Share", action: #selector(ReviewCell.shareFeedback(_:))),
+            UIMenuItem(title: "Copy", action: #selector(ReviewCell.copyFeedback(_:))),
+        ]
+        
         self.dataSource.reload()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIMenuController.shared.menuItems = nil
     }
     
     @IBAction func actionApp(_ sender: UIBarButtonItem) {
@@ -128,5 +140,40 @@ class ReviewViewController: UIViewController {
         if let lastIndex = self.dataSource.lastIndex {
             self.tableView.scrollToRow(at: lastIndex, at: .top, animated: true)
         }
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        return self.dataSource.shouldShowMenuForRowAt(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool
+    {
+        if (action == #selector(ReviewCell.shareFeedback(_:)) || action == #selector(ReviewCell.copyFeedback(_:)))
+        {
+            return true
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?)
+    {
+        // Protocol function declaration is required to show menu item
+        // thus, provided intentionally an empty method
+    }
+    
+    // MARK: ShareDelegate
+    
+    func share(text: String) {
+        let items = [
+            text
+        ]
+        let vc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        self.present(vc, animated: true, completion: nil)
     }
 }

@@ -10,6 +10,10 @@ import UIKit
 import Cosmos
 import AlamofireImage
 
+protocol ShareDelegate: NSObjectProtocol {
+    func share(text: String)
+}
+
 class ReviewCell: UITableViewCell {
     
     @IBOutlet weak var author: UILabel!
@@ -17,14 +21,19 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var stars: CosmosView!
     @IBOutlet weak var content: UILabel!
     
+    weak var shareDelegate: ShareDelegate? = nil
+    
+    private var authorName = ""
+    private var appTitle = ""
+    
     override public func prepareForReuse() {
         // Ensures the reused cosmos view is as good as new
         stars.prepareForReuse()
     }
     
     func bind(review: Review, app: App) {
-        
-        let author = review.author.isEmpty ? "User" : review.author
+        self.appTitle = app.details.title
+        self.authorName = review.author.isEmpty ? "User" : review.author
         var info = "・\(review.date.ymd)"
         if (!review.locale.isEmpty) {
             info += "・\(review.locale)"
@@ -38,7 +47,7 @@ class ReviewCell: UITableViewCell {
             info += "・"
         }
         
-        let answered = author + (review.answered ? "✅" : "")
+        let answered = self.authorName + (review.answered ? "✅" : "")
         let title = answered + info + store
         
         let titleAttr = NSMutableAttributedString(string: title)
@@ -75,5 +84,29 @@ class ReviewCell: UITableViewCell {
         if self.icon != nil {
             IconRemote(url: app.details.icon).into(self.icon)
         }
+    }
+    
+    // Private
+    
+    @objc func shareFeedback(_ sender: UIMenuItem) {
+        self.shareDelegate?.share(text: textForSharing())
+    }
+    
+    @objc func copyFeedback(_ sender: UIMenuItem) {
+        UIPasteboard.general.string = textForSharing()
+    }
+    
+    private func textForSharing() -> String {
+        let rating = Int(self.stars.rating)
+        var stars = ""
+        for i in 0..<5 {
+            if (i <= rating) {
+                stars += "⭑"//✩
+            } else {
+                stars += "✩"
+            }
+        }
+        let content = self.content.attributedText?.string ?? self.content.text ?? ""
+        return "\(stars) by \(self.authorName) - \(content) for \(self.appTitle)"
     }
 }

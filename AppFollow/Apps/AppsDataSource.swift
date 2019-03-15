@@ -52,6 +52,7 @@ class AppsDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath) as! AppCell
+        cell.selectedBackroundColor = .selectedItemBackground
         cell.bind(app: self.appFor(indexPath: indexPath))
         return cell
     }

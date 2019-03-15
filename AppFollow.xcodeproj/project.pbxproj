@@ -70,6 +70,7 @@
 		9898E20E2110B24400D5814E /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E1FA2110B09A00D5814E /* FirebaseInstanceID.framework */; };
 		9898E2112110B30F00D5814E /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9898E2102110B30F00D5814E /* nanopb.framework */; };
 		9898E2132110B43E00D5814E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9898E2122110B43E00D5814E /* GoogleService-Info.plist */; };
+		98B77B50223BD4B4001E0161 /* UITableViewCell+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B77B4F223BD4B4001E0161 /* UITableViewCell+Selection.swift */; };
 		98B9E297211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9E296211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift */; };
 		98CB4F152073630100F32EEE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F142073630100F32EEE /* TabViewController.swift */; };
 		98CB4F172073719A00F32EEE /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB4F162073719A00F32EEE /* Reply.swift */; };
@@ -179,6 +180,7 @@
 		9898E1FF2110B09B00D5814E /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = AppFollow/Firebase/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
 		9898E2102110B30F00D5814E /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = AppFollow/Firebase/nanopb.framework; sourceTree = "<group>"; };
 		9898E2122110B43E00D5814E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		98B77B4F223BD4B4001E0161 /* UITableViewCell+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Selection.swift"; sourceTree = "<group>"; };
 		98B9E296211A1CF2006FFCD1 /* FirebaseMessagingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingDelegate.swift; sourceTree = "<group>"; };
 		98CB4F142073630100F32EEE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		98CB4F162073719A00F32EEE /* Reply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				982D550A207BBB620001A6D9 /* Array.swift */,
 				986B857A2080A8170051F8F8 /* UIAlertAction.swift */,
 				986B857F2080B4210051F8F8 /* UIViewController.swift */,
+				98B77B4F223BD4B4001E0161 /* UITableViewCell+Selection.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				981C3B172070309F0072E3A2 /* AppReviewsDataSource.swift in Sources */,
 				981C3B15206ED0020072E3A2 /* IconRemote.swift in Sources */,
 				98631892206D847700D6A14F /* ReviewsDataSource.swift in Sources */,
+				98B77B50223BD4B4001E0161 /* UITableViewCell+Selection.swift in Sources */,
 				98CB4F1B207380B700F32EEE /* Error.swift in Sources */,
 				986FC06D20D4FECC0098F958 /* ResetViewController.swift in Sources */,
 				98CB4F1D20741AA000F32EEE /* Types.swift in Sources */,

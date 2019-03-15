@@ -60,6 +60,7 @@ class AppReviewsDataSource: NSObject, AppSectionDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewCell
+        cell.selectedBackroundColor = .selectedItemBackground
         let review = reviews[indexPath.row]
         cell.bind(review: review, app: self.app)
         return cell
